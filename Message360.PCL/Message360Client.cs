@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/15/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/18/2016
  */
 using System;
 using message360.Controllers;
@@ -53,6 +53,17 @@ namespace message360
             get
             {
                 return message360.Controllers.UsageController.Instance;
+            }
+        }
+
+        /// <summary>
+        /// Singleton access to Email controller
+        /// </summary>
+        public EmailController Email
+        {
+            get
+            {
+                return message360.Controllers.EmailController.Instance;
             }
         }
 
