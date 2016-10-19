@@ -2,7 +2,7 @@
 <!--
  - Message360.PCL
  -
- - This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/15/2016
+ - This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/18/2016
 -->
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
@@ -10,7 +10,7 @@
     <AssemblyName>Message360.PCL</AssemblyName>
     <OutputType>Library</OutputType>
     <OutputPath>bin/DEBUG/</OutputPath>
-    <ProjectGuid>{467339b3-ddbf-4e0a-a737-9b15b434d2e6}</ProjectGuid>
+    <ProjectGuid>{64ba3809-aeb4-4c6b-946c-1cb695321852}</ProjectGuid>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <NuGetPackageImportStamp>ee2bb91c</NuGetPackageImportStamp>
@@ -85,6 +85,7 @@
     <Compile Include="Controllers\TranscriptionController.cs" />
     <Compile Include="Controllers\PhoneNumberController.cs" />
     <Compile Include="Controllers\UsageController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\SMSController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\RecordingController.cs" />

@@ -90,6 +90,7 @@ Message360Client client = new Message360Client(basicAuthUserName, basicAuthPassw
 * [TranscriptionController](#transcription_controller)
 * [PhoneNumberController](#phone_number_controller)
 * [UsageController](#usage_controller)
+* [EmailController](#email_controller)
 * [SMSController](#sms_controller)
 * [AccountController](#account_controller)
 * [RecordingController](#recording_controller)
@@ -167,10 +168,10 @@ Task<string> CreateListParticipant(
 
 ```csharp
 string conferenceSid = "ConferenceSid";
-int? page = 228;
-int? pagesize = 228;
-bool? muted = true;
-bool? deaf = true;
+int? page = 37;
+int? pagesize = 37;
+bool? muted = false;
+bool? deaf = false;
 string responseType = "json";
 
 string result = await conference.CreateListParticipant(conferenceSid, page, pagesize, muted, deaf, responseType);
@@ -210,9 +211,9 @@ Task<string> AddParticipant(
 ```csharp
 string conferencesid = "conferencesid";
 string participantnumber = "participantnumber";
-int tocountrycode = 228;
-bool? muted = true;
-bool? deaf = true;
+int tocountrycode = 37;
+bool? muted = false;
+bool? deaf = false;
 string responseType = "json";
 
 string result = await conference.AddParticipant(conferencesid, participantnumber, tocountrycode, muted, deaf, responseType);
@@ -280,8 +281,8 @@ Task<string> CreateListConference(
 #### Example Usage
 
 ```csharp
-int? page = 228;
-int? pageSize = 228;
+int? page = 37;
+int? pageSize = 37;
 string friendlyName = "FriendlyName";
 var status = InterruptedCallStatusEnum?Helper.ParseString("CANCELED");
 string dateCreated = "DateCreated";
@@ -333,8 +334,8 @@ Task<string> CreateListTranscription(
 #### Example Usage
 
 ```csharp
-int? page = 228;
-int? pageSize = 228;
+int? page = 37;
+int? pageSize = 37;
 var status = StatusEnum?Helper.ParseString("INPROGRESS");
 string dateTranscribed = "DateTranscribed";
 string responseType = "json";
@@ -468,7 +469,7 @@ Task<string> CreateAvailablePhoneNumber(
 ```csharp
 string numberType = "NumberType";
 string areaCode = "AreaCode";
-int? pageSize = 228;
+int? pageSize = 37;
 string responseType = "json";
 
 string result = await phoneNumber.CreateAvailablePhoneNumber(numberType, areaCode, pageSize, responseType);
@@ -504,8 +505,8 @@ Task<string> CreateListNumber(
 #### Example Usage
 
 ```csharp
-int? page = 228;
-int? pageSize = 228;
+int? page = 37;
+int? pageSize = 37;
 string numberType = "NumberType";
 string friendlyName = "FriendlyName";
 string responseType = "json";
@@ -718,6 +719,359 @@ string result = await usage.CreateListUsage(productCode, startDate, endDate, res
 
 [Back to List of Controllers](#list_of_controllers)
 
+### <a name="email_controller"></a>![Class: ](http://apidocs.io/img/class.png "message360.Controllers.EmailController") EmailController
+
+#### Get singleton instance
+
+The singleton instance of the ``` EmailController ``` class can be accessed from the API Client.
+
+```csharp
+IEmailController email = client.Email;
+```
+
+#### <a name="create_send_email"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateSendEmail") CreateSendEmail
+
+> Send out an email
+
+
+```csharp
+Task<string> CreateSendEmail(
+        string to,
+        string mfrom,
+        string type,
+        string subject,
+        string message,
+        string cc = null,
+        string bcc = null,
+        FileStreamInfo attachment = null,
+        string responseType = "json")
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| to |  ``` Required ```  | The to email address |
+| mfrom |  ``` Required ```  | The from email address |
+| type |  ``` Required ```  ``` DefaultValue ```  | email format type, html or text |
+| subject |  ``` Required ```  | Email subject |
+| message |  ``` Required ```  | The body of the email message |
+| cc |  ``` Optional ```  | CC Email address |
+| bcc |  ``` Optional ```  | BCC Email address |
+| attachment |  ``` Optional ```  | File to be attached.File must be less than 7MB. |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
+
+
+#### Example Usage
+
+```csharp
+string to = "to";
+string mfrom = "from";
+string type = "html";
+string subject = "subject";
+string message = "message";
+string cc = "cc";
+string bcc = "bcc";
+FileStreamInfo attachment = new FileStreamInfo(new FileStream(@"pathToFile",FileMode.Open));
+string responseType = "json";
+
+string result = await email.CreateSendEmail(to, mfrom, type, subject, message, cc, bcc, attachment, responseType);
+
+```
+
+
+#### <a name="create_delete_unsubscribes"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteUnsubscribes") CreateDeleteUnsubscribes
+
+> Delete emails from the unsubscribe list
+
+
+```csharp
+Task<string> CreateDeleteUnsubscribes(string email, string responseType = "json")
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| email |  ``` Required ```  | The email to remove from the unsubscribe list |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
+
+
+#### Example Usage
+
+```csharp
+string email = "email";
+string responseType = "json";
+
+string result = await email.CreateDeleteUnsubscribes(email, responseType);
+
+```
+
+
+#### <a name="create_list_unsubscribes"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListUnsubscribes") CreateListUnsubscribes
+
+> List all unsubscribed email addresses
+
+
+```csharp
+Task<string> CreateListUnsubscribes(string responseType = "json", string offset = null, string limit = null)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
+| offset |  ``` Optional ```  | Starting record of the list |
+| limit |  ``` Optional ```  | Maximum number of records to be returned |
+
+
+#### Example Usage
+
+```csharp
+string responseType = "json";
+string offset = "offset";
+string limit = "limit";
+
+string result = await email.CreateListUnsubscribes(responseType, offset, limit);
+
+```
+
+
+#### <a name="add_unsubscribes"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.AddUnsubscribes") AddUnsubscribes
+
+> Add an email to the unsubscribe list
+
+
+```csharp
+Task<string> AddUnsubscribes(string email, string responseType = "json")
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| email |  ``` Required ```  | The email to add to the unsubscribe list |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
+
+
+#### Example Usage
+
+```csharp
+string email = "email";
+string responseType = "json";
+
+string result = await email.AddUnsubscribes(email, responseType);
+
+```
+
+
+#### <a name="create_delete_spam"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteSpam") CreateDeleteSpam
+
+> Deletes a email address marked as spam from the spam list
+
+
+```csharp
+Task<string> CreateDeleteSpam(string email, string responseType = "json")
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| email |  ``` Required ```  | Email address |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
+
+
+#### Example Usage
+
+```csharp
+string email = "email";
+string responseType = "json";
+
+string result = await email.CreateDeleteSpam(email, responseType);
+
+```
+
+
+#### <a name="create_delete_block"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteBlock") CreateDeleteBlock
+
+> Deletes a blocked email
+
+
+```csharp
+Task<string> CreateDeleteBlock(string email, string responseType = "json")
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| email |  ``` Required ```  | Email address to remove from block list |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
+
+
+#### Example Usage
+
+```csharp
+string email = "email";
+string responseType = "json";
+
+string result = await email.CreateDeleteBlock(email, responseType);
+
+```
+
+
+#### <a name="create_list_invalid"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListInvalid") CreateListInvalid
+
+> List out all invalid email addresses
+
+
+```csharp
+Task<string> CreateListInvalid(string responseType = "json", string offet = null, string limit = null)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
+| offet |  ``` Optional ```  | Starting record for listing out emails |
+| limit |  ``` Optional ```  | Maximum number of records to return |
+
+
+#### Example Usage
+
+```csharp
+string responseType = "json";
+string offet = "offet";
+string limit = "limit";
+
+string result = await email.CreateListInvalid(responseType, offet, limit);
+
+```
+
+
+#### <a name="create_delete_bounces"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteBounces") CreateDeleteBounces
+
+> Delete an email address from the bounced address list
+
+
+```csharp
+Task<string> CreateDeleteBounces(string email, string responseType = "json")
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| email |  ``` Required ```  | The email address to remove from the bounce list |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
+
+
+#### Example Usage
+
+```csharp
+string email = "email";
+string responseType = "json";
+
+string result = await email.CreateDeleteBounces(email, responseType);
+
+```
+
+
+#### <a name="create_list_bounces"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListBounces") CreateListBounces
+
+> List out all email addresses that have bounced
+
+
+```csharp
+Task<string> CreateListBounces(string responseType = "json", string offset = null, string limit = null)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
+| offset |  ``` Optional ```  | The record to start the list at |
+| limit |  ``` Optional ```  | The maximum number of records to return |
+
+
+#### Example Usage
+
+```csharp
+string responseType = "json";
+string offset = "offset";
+string limit = "limit";
+
+string result = await email.CreateListBounces(responseType, offset, limit);
+
+```
+
+
+#### <a name="create_list_spam"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListSpam") CreateListSpam
+
+> List out all email addresses marked as spam
+
+
+```csharp
+Task<string> CreateListSpam(string responseType, string offset = null, string limit = null)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response format, xml or json |
+| offset |  ``` Optional ```  | The record number to start the list at |
+| limit |  ``` Optional ```  | Maximum number of records to return |
+
+
+#### Example Usage
+
+```csharp
+string responseType = "json";
+string offset = "offset";
+string limit = "limit";
+
+string result = await email.CreateListSpam(responseType, offset, limit);
+
+```
+
+
+#### <a name="create_list_blocks"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListBlocks") CreateListBlocks
+
+> Outputs email addresses on your blocklist
+
+
+```csharp
+Task<string> CreateListBlocks(string offset = null, string limit = null, string responseType = "json")
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| offset |  ``` Optional ```  | Where to start in the output list |
+| limit |  ``` Optional ```  | Maximum number of records to return |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
+
+
+#### Example Usage
+
+```csharp
+string offset = "offset";
+string limit = "limit";
+string responseType = "json";
+
+string result = await email.CreateListBlocks(offset, limit, responseType);
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
 ### <a name="sms_controller"></a>![Class: ](http://apidocs.io/img/class.png "message360.Controllers.SMSController") SMSController
 
 #### Get singleton instance
@@ -834,8 +1188,8 @@ Task<string> CreateListSMS(
 #### Example Usage
 
 ```csharp
-int? page = 228;
-int? pagesize = 228;
+int? page = 79;
+int? pagesize = 79;
 string mfrom = "from";
 string to = "to";
 string datesent = "datesent";
@@ -874,7 +1228,7 @@ Task<string> CreateListInboundSMS(
 #### Example Usage
 
 ```csharp
-int? page = 228;
+int? page = 79;
 string pagesize = "pagesize";
 string mfrom = "from";
 string to = "to";
@@ -1021,8 +1375,8 @@ Task<string> CreateListRecording(
 #### Example Usage
 
 ```csharp
-int? page = 228;
-int? pageSize = 228;
+int? page = 79;
+int? pageSize = 79;
 string dateCreated = "DateCreated";
 string callSid = "CallSid";
 string responseType = "json";
@@ -1145,14 +1499,14 @@ var statusCallBackMethod = HttpMethodEnum?Helper.ParseString("GET");
 string fallBackUrl = "FallBackUrl";
 var fallBackMethod = HttpMethodEnum?Helper.ParseString("GET");
 string heartBeatUrl = "HeartBeatUrl";
-bool? heartBeatMethod = true;
-int? timeout = 228;
+bool? heartBeatMethod = false;
+int? timeout = 79;
 string playDtmf = "PlayDtmf";
-bool? hideCallerId = true;
-bool? record = true;
+bool? hideCallerId = false;
+bool? record = false;
 string recordCallBackUrl = "RecordCallBackUrl";
 var recordCallBackMethod = HttpMethodEnum?Helper.ParseString("GET");
-bool? transcribe = true;
+bool? transcribe = false;
 string transcribeCallBackUrl = "TranscribeCallBackUrl";
 var ifMachine = IfMachineEnum?Helper.ParseString("CONTINUE");
 string responseType = "json";
@@ -1194,10 +1548,10 @@ Task<string> CreatePlayAudio(
 #### Example Usage
 
 ```csharp
-int length = 228;
+int length = 79;
 var direction = DirectionEnumHelper.ParseString("IN");
-bool loop = true;
-bool mix = true;
+bool loop = false;
+bool mix = false;
 string callSid = "CallSid";
 string audioUrl = "AudioUrl";
 string responseType = "json";
@@ -1240,9 +1594,9 @@ Task<string> CreateRecordCall(
 
 ```csharp
 string callSid = "CallSid";
-bool record = true;
+bool record = false;
 var direction = DirectionEnum?Helper.ParseString("IN");
-int? timeLimit = 228;
+int? timeLimit = 79;
 string callBackUrl = "CallBackUrl";
 var fileformat = AudioFormatEnum?Helper.ParseString("mp3");
 string responseType = "json";
@@ -1288,11 +1642,11 @@ Task<string> CreateVoiceEffect(
 ```csharp
 string callSid = "CallSid";
 var audioDirection = AudioDirectionEnum?Helper.ParseString("IN");
-double? pitchSemiTones = 228.786753774056;
-double? pitchOctaves = 228.786753774056;
-double? pitch = 228.786753774056;
-double? rate = 228.786753774056;
-double? tempo = 228.786753774056;
+double? pitchSemiTones = 79.4803874005938;
+double? pitchOctaves = 79.4803874005938;
+double? pitch = 79.4803874005938;
+double? rate = 79.4803874005938;
+double? tempo = 79.4803874005938;
 string responseType = "json";
 
 string result = await call.CreateVoiceEffect(callSid, audioDirection, pitchSemiTones, pitchOctaves, pitch, rate, tempo, responseType);
