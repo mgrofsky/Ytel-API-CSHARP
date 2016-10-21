@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/18/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/21/2016
  */
 using System;
 using System.Collections.Generic;
@@ -64,12 +64,12 @@ namespace message360.Controllers
         public string CreateSendEmail(
                 string to,
                 string mfrom,
-                string type,
+                SendEmailAs type,
                 string subject,
                 string message,
                 string cc = null,
                 string bcc = null,
-                FileStreamInfo attachment = null,
+                string attachment = null,
                 string responseType = "json")
         {
             Task<string> t = CreateSendEmailAsync(to, mfrom, type, subject, message, cc, bcc, attachment, responseType);
@@ -93,12 +93,12 @@ namespace message360.Controllers
         public async Task<string> CreateSendEmailAsync(
                 string to,
                 string mfrom,
-                string type,
+                SendEmailAs type,
                 string subject,
                 string message,
                 string cc = null,
                 string bcc = null,
-                FileStreamInfo attachment = null,
+                string attachment = null,
                 string responseType = "json")
         {
             //validating required parameters
@@ -107,9 +107,6 @@ namespace message360.Controllers
 
             if (null == mfrom)
                 throw new ArgumentNullException("mfrom", "The parameter \"mfrom\" is a required parameter and cannot be null.");
-
-            if (null == type)
-                throw new ArgumentNullException("type", "The parameter \"type\" is a required parameter and cannot be null.");
 
             if (null == subject)
                 throw new ArgumentNullException("subject", "The parameter \"subject\" is a required parameter and cannot be null.");
@@ -145,7 +142,7 @@ namespace message360.Controllers
             {
                 { "to", to },
                 { "from", mfrom },
-                { "type", type },
+                { "type", SendEmailAsHelper.ToValue(type) },
                 { "subject", subject },
                 { "message", message },
                 { "cc", cc },

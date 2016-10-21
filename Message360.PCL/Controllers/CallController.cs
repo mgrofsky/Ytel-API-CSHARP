@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/18/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/21/2016
  */
 using System;
 using System.Collections.Generic;
@@ -153,11 +153,11 @@ namespace message360.Controllers
                 string toCountryCode,
                 string to,
                 string url,
-                HttpMethodEnum? method = null,
+                HttpMethod? method = null,
                 string statusCallBackUrl = null,
-                HttpMethodEnum? statusCallBackMethod = null,
+                HttpMethod? statusCallBackMethod = null,
                 string fallBackUrl = null,
-                HttpMethodEnum? fallBackMethod = null,
+                HttpMethod? fallBackMethod = null,
                 string heartBeatUrl = null,
                 bool? heartBeatMethod = null,
                 int? timeout = null,
@@ -165,10 +165,10 @@ namespace message360.Controllers
                 bool? hideCallerId = null,
                 bool? record = null,
                 string recordCallBackUrl = null,
-                HttpMethodEnum? recordCallBackMethod = null,
+                HttpMethod? recordCallBackMethod = null,
                 bool? transcribe = null,
                 string transcribeCallBackUrl = null,
-                IfMachineEnum? ifMachine = null,
+                IfMachine? ifMachine = null,
                 string responseType = "json")
         {
             Task<string> t = CreateMakeCallAsync(fromCountryCode, mfrom, toCountryCode, to, url, method, statusCallBackUrl, statusCallBackMethod, fallBackUrl, fallBackMethod, heartBeatUrl, heartBeatMethod, timeout, playDtmf, hideCallerId, record, recordCallBackUrl, recordCallBackMethod, transcribe, transcribeCallBackUrl, ifMachine, responseType);
@@ -208,11 +208,11 @@ namespace message360.Controllers
                 string toCountryCode,
                 string to,
                 string url,
-                HttpMethodEnum? method = null,
+                HttpMethod? method = null,
                 string statusCallBackUrl = null,
-                HttpMethodEnum? statusCallBackMethod = null,
+                HttpMethod? statusCallBackMethod = null,
                 string fallBackUrl = null,
-                HttpMethodEnum? fallBackMethod = null,
+                HttpMethod? fallBackMethod = null,
                 string heartBeatUrl = null,
                 bool? heartBeatMethod = null,
                 int? timeout = null,
@@ -220,10 +220,10 @@ namespace message360.Controllers
                 bool? hideCallerId = null,
                 bool? record = null,
                 string recordCallBackUrl = null,
-                HttpMethodEnum? recordCallBackMethod = null,
+                HttpMethod? recordCallBackMethod = null,
                 bool? transcribe = null,
                 string transcribeCallBackUrl = null,
-                IfMachineEnum? ifMachine = null,
+                IfMachine? ifMachine = null,
                 string responseType = "json")
         {
             //validating required parameters
@@ -258,7 +258,7 @@ namespace message360.Controllers
             //process optional query parameters
             APIHelper.AppendUrlWithQueryParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "Method", (method.HasValue) ? HttpMethodEnumHelper.ToValue(method.Value) : null }
+                { "Method", (method.HasValue) ? HttpMethodHelper.ToValue(method.Value) : null }
             });
 
 
@@ -280,9 +280,9 @@ namespace message360.Controllers
                 { "To", to },
                 { "Url", url },
                 { "StatusCallBackUrl", statusCallBackUrl },
-                { "StatusCallBackMethod", (statusCallBackMethod.HasValue) ? HttpMethodEnumHelper.ToValue(statusCallBackMethod.Value) : null },
+                { "StatusCallBackMethod", (statusCallBackMethod.HasValue) ? HttpMethodHelper.ToValue(statusCallBackMethod.Value) : null },
                 { "FallBackUrl", fallBackUrl },
-                { "FallBackMethod", (fallBackMethod.HasValue) ? HttpMethodEnumHelper.ToValue(fallBackMethod.Value) : null },
+                { "FallBackMethod", (fallBackMethod.HasValue) ? HttpMethodHelper.ToValue(fallBackMethod.Value) : null },
                 { "HeartBeatUrl", heartBeatUrl },
                 { "HeartBeatMethod", heartBeatMethod },
                 { "Timeout", timeout },
@@ -290,10 +290,10 @@ namespace message360.Controllers
                 { "HideCallerId", hideCallerId },
                 { "Record", record },
                 { "RecordCallBackUrl", recordCallBackUrl },
-                { "RecordCallBackMethod", (recordCallBackMethod.HasValue) ? HttpMethodEnumHelper.ToValue(recordCallBackMethod.Value) : null },
+                { "RecordCallBackMethod", (recordCallBackMethod.HasValue) ? HttpMethodHelper.ToValue(recordCallBackMethod.Value) : null },
                 { "Transcribe", transcribe },
                 { "TranscribeCallBackUrl", transcribeCallBackUrl },
-                { "IfMachine", (ifMachine.HasValue) ? IfMachineEnumHelper.ToValue(ifMachine.Value) : null }
+                { "IfMachine", (ifMachine.HasValue) ? IfMachineHelper.ToValue(ifMachine.Value) : null }
             };
 
             //prepare the API call request to fetch the response
@@ -328,7 +328,7 @@ namespace message360.Controllers
         /// <return>Returns the string response from the API call</return>
         public string CreatePlayAudio(
                 int length,
-                DirectionEnum direction,
+                Direction direction,
                 bool loop,
                 bool mix,
                 string callSid = null,
@@ -353,7 +353,7 @@ namespace message360.Controllers
         /// <return>Returns the string response from the API call</return>
         public async Task<string> CreatePlayAudioAsync(
                 int length,
-                DirectionEnum direction,
+                Direction direction,
                 bool loop,
                 bool mix,
                 string callSid = null,
@@ -387,7 +387,7 @@ namespace message360.Controllers
             var _fields = new Dictionary<string,object>()
             {
                 { "Length", length },
-                { "Direction", DirectionEnumHelper.ToValue(direction) },
+                { "Direction", DirectionHelper.ToValue(direction) },
                 { "Loop", loop },
                 { "Mix", mix },
                 { "CallSid", callSid },
@@ -427,10 +427,10 @@ namespace message360.Controllers
         public string CreateRecordCall(
                 string callSid,
                 bool record,
-                DirectionEnum? direction = null,
+                Direction? direction = null,
                 int? timeLimit = null,
                 string callBackUrl = null,
-                AudioFormatEnum? fileformat = null,
+                AudioFormat? fileformat = null,
                 string responseType = "json")
         {
             Task<string> t = CreateRecordCallAsync(callSid, record, direction, timeLimit, callBackUrl, fileformat, responseType);
@@ -452,10 +452,10 @@ namespace message360.Controllers
         public async Task<string> CreateRecordCallAsync(
                 string callSid,
                 bool record,
-                DirectionEnum? direction = null,
+                Direction? direction = null,
                 int? timeLimit = null,
                 string callBackUrl = null,
-                AudioFormatEnum? fileformat = null,
+                AudioFormat? fileformat = null,
                 string responseType = "json")
         {
             //validating required parameters
@@ -490,10 +490,10 @@ namespace message360.Controllers
             {
                 { "CallSid", callSid },
                 { "Record", record },
-                { "Direction", (direction.HasValue) ? DirectionEnumHelper.ToValue(direction.Value) : null },
+                { "Direction", (direction.HasValue) ? DirectionHelper.ToValue(direction.Value) : null },
                 { "TimeLimit", timeLimit },
                 { "CallBackUrl", callBackUrl },
-                { "Fileformat", (fileformat.HasValue) ? AudioFormatEnumHelper.ToValue(fileformat.Value) : null }
+                { "Fileformat", (fileformat.HasValue) ? AudioFormatHelper.ToValue(fileformat.Value) : null }
             };
 
             //prepare the API call request to fetch the response
@@ -529,7 +529,7 @@ namespace message360.Controllers
         /// <return>Returns the string response from the API call</return>
         public string CreateVoiceEffect(
                 string callSid,
-                AudioDirectionEnum? audioDirection = null,
+                AudioDirection? audioDirection = null,
                 double? pitchSemiTones = null,
                 double? pitchOctaves = null,
                 double? pitch = null,
@@ -556,7 +556,7 @@ namespace message360.Controllers
         /// <return>Returns the string response from the API call</return>
         public async Task<string> CreateVoiceEffectAsync(
                 string callSid,
-                AudioDirectionEnum? audioDirection = null,
+                AudioDirection? audioDirection = null,
                 double? pitchSemiTones = null,
                 double? pitchOctaves = null,
                 double? pitch = null,
@@ -595,7 +595,7 @@ namespace message360.Controllers
             var _fields = new Dictionary<string,object>()
             {
                 { "CallSid", callSid },
-                { "AudioDirection", (audioDirection.HasValue) ? AudioDirectionEnumHelper.ToValue(audioDirection.Value) : null },
+                { "AudioDirection", (audioDirection.HasValue) ? AudioDirectionHelper.ToValue(audioDirection.Value) : null },
                 { "PitchSemiTones", pitchSemiTones },
                 { "PitchOctaves", pitchOctaves },
                 { "Pitch", pitch },
@@ -633,7 +633,7 @@ namespace message360.Controllers
         public string CreateSendDigit(
                 string callSid,
                 string playDtmf,
-                DirectionEnum? playDtmfDirection = null,
+                Direction? playDtmfDirection = null,
                 string responseType = "json")
         {
             Task<string> t = CreateSendDigitAsync(callSid, playDtmf, playDtmfDirection, responseType);
@@ -652,7 +652,7 @@ namespace message360.Controllers
         public async Task<string> CreateSendDigitAsync(
                 string callSid,
                 string playDtmf,
-                DirectionEnum? playDtmfDirection = null,
+                Direction? playDtmfDirection = null,
                 string responseType = "json")
         {
             //validating required parameters
@@ -690,7 +690,7 @@ namespace message360.Controllers
             {
                 { "CallSid", callSid },
                 { "PlayDtmf", playDtmf },
-                { "PlayDtmfDirection", (playDtmfDirection.HasValue) ? DirectionEnumHelper.ToValue(playDtmfDirection.Value) : null }
+                { "PlayDtmfDirection", (playDtmfDirection.HasValue) ? DirectionHelper.ToValue(playDtmfDirection.Value) : null }
             };
 
             //prepare the API call request to fetch the response
@@ -724,8 +724,8 @@ namespace message360.Controllers
         public string CreateInterruptedCall(
                 string callSid,
                 string url = null,
-                HttpMethodEnum? method = null,
-                InterruptedCallStatusEnum? status = null,
+                HttpMethod? method = null,
+                InterruptedCallStatus? status = null,
                 string responseType = "json")
         {
             Task<string> t = CreateInterruptedCallAsync(callSid, url, method, status, responseType);
@@ -745,8 +745,8 @@ namespace message360.Controllers
         public async Task<string> CreateInterruptedCallAsync(
                 string callSid,
                 string url = null,
-                HttpMethodEnum? method = null,
-                InterruptedCallStatusEnum? status = null,
+                HttpMethod? method = null,
+                InterruptedCallStatus? status = null,
                 string responseType = "json")
         {
             //validating required parameters
@@ -781,8 +781,8 @@ namespace message360.Controllers
             {
                 { "CallSid", callSid },
                 { "Url", url },
-                { "Method", (method.HasValue) ? HttpMethodEnumHelper.ToValue(method.Value) : null },
-                { "Status", (status.HasValue) ? InterruptedCallStatusEnumHelper.ToValue(status.Value) : null }
+                { "Method", (method.HasValue) ? HttpMethodHelper.ToValue(method.Value) : null },
+                { "Status", (status.HasValue) ? InterruptedCallStatusHelper.ToValue(status.Value) : null }
             };
 
             //prepare the API call request to fetch the response

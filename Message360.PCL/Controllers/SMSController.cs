@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/18/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/21/2016
  */
 using System;
 using System.Collections.Generic;
@@ -66,7 +66,7 @@ namespace message360.Controllers
                 int tocountrycode,
                 string to,
                 string body,
-                HttpMethodEnum? method = null,
+                HttpMethod? method = null,
                 string messagestatuscallback = null,
                 string responseType = "json")
         {
@@ -93,7 +93,7 @@ namespace message360.Controllers
                 int tocountrycode,
                 string to,
                 string body,
-                HttpMethodEnum? method = null,
+                HttpMethod? method = null,
                 string messagestatuscallback = null,
                 string responseType = "json")
         {
@@ -138,7 +138,7 @@ namespace message360.Controllers
                 { "tocountrycode", tocountrycode },
                 { "to", to },
                 { "body", body },
-                { "method", (method.HasValue) ? HttpMethodEnumHelper.ToValue(method.Value) : null },
+                { "method", (method.HasValue) ? HttpMethodHelper.ToValue(method.Value) : null },
                 { "messagestatuscallback", messagestatuscallback }
             };
 

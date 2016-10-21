@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/18/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/21/2016
  */
 using System;
 using System.Linq;
@@ -13,33 +13,33 @@ using message360;
 namespace message360.Models
 {
     [JsonConverter(typeof(StringValuedEnumConverter))]
-    public enum AudioFormatEnum
+    public enum IfMachine
     {
-        MP3, //mp3 file
-        WAV, //wav file
+        CONTINUE, //TODO: Write general description for this method
+        HANGUP, //TODO: Write general description for this method
     }
 
     /// <summary>
-    /// Helper for the enum type AudioFormatEnum
+    /// Helper for the enum type IfMachine
     /// </summary>
-    public static class AudioFormatEnumHelper
+    public static class IfMachineHelper
     {
         //string values corresponding the enum elements
-        private static List<string> stringValues = new List<string> { "mp3", "wav" };
+        private static List<string> stringValues = new List<string> { "continue", "hangup" };
 
         /// <summary>
-        /// Converts a AudioFormatEnum value to a corresponding string value
+        /// Converts a IfMachine value to a corresponding string value
         /// </summary>
-        /// <param name="enumValue">The AudioFormatEnum value to convert</param>
+        /// <param name="enumValue">The IfMachine value to convert</param>
         /// <returns>The representative string value</returns>
-        public static string ToValue(AudioFormatEnum enumValue)
+        public static string ToValue(IfMachine enumValue)
         {
             switch(enumValue)
             {
                 //only valid enum elements can be used
                 //this is necessary to avoid errors
-                case AudioFormatEnum.MP3:
-                case AudioFormatEnum.WAV:
+                case IfMachine.CONTINUE:
+                case IfMachine.HANGUP:
                     return stringValues[(int)enumValue];
 
                 //an invalid enum value was requested
@@ -49,11 +49,11 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Convert a list of AudioFormatEnum values to a list of strings
+        /// Convert a list of IfMachine values to a list of strings
         /// </summary>
-        /// <param name="enumValues">The list of AudioFormatEnum values to convert</param>
+        /// <param name="enumValues">The list of IfMachine values to convert</param>
         /// <returns>The list of representative string values</returns>
-        public static List<string> ToValue(List<AudioFormatEnum> enumValues)
+        public static List<string> ToValue(List<IfMachine> enumValues)
         {
             if (null == enumValues)
                 return null;
@@ -62,17 +62,17 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Converts a string value into AudioFormatEnum value
+        /// Converts a string value into IfMachine value
         /// </summary>
         /// <param name="value">The string value to parse</param>
-        /// <returns>The parsed AudioFormatEnum value</returns>
-        public static AudioFormatEnum ParseString(string value)
+        /// <returns>The parsed IfMachine value</returns>
+        public static IfMachine ParseString(string value)
         {
             int index = stringValues.IndexOf(value);
             if(index < 0)
-                throw new InvalidCastException(string.Format("Unable to cast value: {0} to type AudioFormatEnum", value));
+                throw new InvalidCastException(string.Format("Unable to cast value: {0} to type IfMachine", value));
 
-            return (AudioFormatEnum) index;
+            return (IfMachine) index;
         }
     }
 } 

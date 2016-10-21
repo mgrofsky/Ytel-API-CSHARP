@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/18/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/21/2016
  */
 using System;
 using System.Linq;
@@ -13,35 +13,33 @@ using message360;
 namespace message360.Models
 {
     [JsonConverter(typeof(StringValuedEnumConverter))]
-    public enum DirectionEnum
+    public enum AudioFormat
     {
-        IN, //in direction
-        OUT, //out direction
-        BOTH, //both
+        MP3, //mp3 file
+        WAV, //wav file
     }
 
     /// <summary>
-    /// Helper for the enum type DirectionEnum
+    /// Helper for the enum type AudioFormat
     /// </summary>
-    public static class DirectionEnumHelper
+    public static class AudioFormatHelper
     {
         //string values corresponding the enum elements
-        private static List<string> stringValues = new List<string> { "in", "out", "both" };
+        private static List<string> stringValues = new List<string> { "mp3", "wav" };
 
         /// <summary>
-        /// Converts a DirectionEnum value to a corresponding string value
+        /// Converts a AudioFormat value to a corresponding string value
         /// </summary>
-        /// <param name="enumValue">The DirectionEnum value to convert</param>
+        /// <param name="enumValue">The AudioFormat value to convert</param>
         /// <returns>The representative string value</returns>
-        public static string ToValue(DirectionEnum enumValue)
+        public static string ToValue(AudioFormat enumValue)
         {
             switch(enumValue)
             {
                 //only valid enum elements can be used
                 //this is necessary to avoid errors
-                case DirectionEnum.IN:
-                case DirectionEnum.OUT:
-                case DirectionEnum.BOTH:
+                case AudioFormat.MP3:
+                case AudioFormat.WAV:
                     return stringValues[(int)enumValue];
 
                 //an invalid enum value was requested
@@ -51,11 +49,11 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Convert a list of DirectionEnum values to a list of strings
+        /// Convert a list of AudioFormat values to a list of strings
         /// </summary>
-        /// <param name="enumValues">The list of DirectionEnum values to convert</param>
+        /// <param name="enumValues">The list of AudioFormat values to convert</param>
         /// <returns>The list of representative string values</returns>
-        public static List<string> ToValue(List<DirectionEnum> enumValues)
+        public static List<string> ToValue(List<AudioFormat> enumValues)
         {
             if (null == enumValues)
                 return null;
@@ -64,17 +62,17 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Converts a string value into DirectionEnum value
+        /// Converts a string value into AudioFormat value
         /// </summary>
         /// <param name="value">The string value to parse</param>
-        /// <returns>The parsed DirectionEnum value</returns>
-        public static DirectionEnum ParseString(string value)
+        /// <returns>The parsed AudioFormat value</returns>
+        public static AudioFormat ParseString(string value)
         {
             int index = stringValues.IndexOf(value);
             if(index < 0)
-                throw new InvalidCastException(string.Format("Unable to cast value: {0} to type DirectionEnum", value));
+                throw new InvalidCastException(string.Format("Unable to cast value: {0} to type AudioFormat", value));
 
-            return (DirectionEnum) index;
+            return (AudioFormat) index;
         }
     }
 } 
