@@ -1,4 +1,4 @@
-# Getting Started
+#
 
 ## How to Build
 
@@ -168,10 +168,10 @@ Task<string> CreateListParticipant(
 
 ```csharp
 string conferenceSid = "ConferenceSid";
-int? page = 37;
-int? pagesize = 37;
-bool? muted = false;
-bool? deaf = false;
+int? page = 252;
+int? pagesize = 252;
+bool? muted = true;
+bool? deaf = true;
 string responseType = "json";
 
 string result = await conference.CreateListParticipant(conferenceSid, page, pagesize, muted, deaf, responseType);
@@ -211,9 +211,9 @@ Task<string> AddParticipant(
 ```csharp
 string conferencesid = "conferencesid";
 string participantnumber = "participantnumber";
-int tocountrycode = 37;
-bool? muted = false;
-bool? deaf = false;
+int tocountrycode = 252;
+bool? muted = true;
+bool? deaf = true;
 string responseType = "json";
 
 string result = await conference.AddParticipant(conferencesid, participantnumber, tocountrycode, muted, deaf, responseType);
@@ -259,7 +259,7 @@ Task<string> CreateListConference(
         int? page = null,
         int? pageSize = null,
         string friendlyName = null,
-        InterruptedCallStatusEnum? status = null,
+        InterruptedCallStatus? status = null,
         string dateCreated = null,
         string dateUpdated = null,
         string responseType = "json")
@@ -281,10 +281,10 @@ Task<string> CreateListConference(
 #### Example Usage
 
 ```csharp
-int? page = 37;
-int? pageSize = 37;
+int? page = 252;
+int? pageSize = 252;
 string friendlyName = "FriendlyName";
-var status = InterruptedCallStatusEnum?Helper.ParseString("CANCELED");
+var status = InterruptedCallStatus?Helper.ParseString("CANCELED");
 string dateCreated = "DateCreated";
 string dateUpdated = "DateUpdated";
 string responseType = "json";
@@ -315,7 +315,7 @@ ITranscriptionController transcription = client.Transcription;
 Task<string> CreateListTranscription(
         int? page = null,
         int? pageSize = null,
-        StatusEnum? status = null,
+        Status? status = null,
         string dateTranscribed = null,
         string responseType = "json")
 ```
@@ -334,9 +334,9 @@ Task<string> CreateListTranscription(
 #### Example Usage
 
 ```csharp
-int? page = 37;
-int? pageSize = 37;
-var status = StatusEnum?Helper.ParseString("INPROGRESS");
+int? page = 252;
+int? pageSize = 252;
+var status = Status?Helper.ParseString("INPROGRESS");
 string dateTranscribed = "DateTranscribed";
 string responseType = "json";
 
@@ -469,7 +469,7 @@ Task<string> CreateAvailablePhoneNumber(
 ```csharp
 string numberType = "NumberType";
 string areaCode = "AreaCode";
-int? pageSize = 37;
+int? pageSize = 252;
 string responseType = "json";
 
 string result = await phoneNumber.CreateAvailablePhoneNumber(numberType, areaCode, pageSize, responseType);
@@ -505,8 +505,8 @@ Task<string> CreateListNumber(
 #### Example Usage
 
 ```csharp
-int? page = 37;
-int? pageSize = 37;
+int? page = 252;
+int? pageSize = 252;
 string numberType = "NumberType";
 string friendlyName = "FriendlyName";
 string responseType = "json";
@@ -610,17 +610,17 @@ Task<string> UpdatePhoneNumber(
         string phoneNumber,
         string friendlyName = null,
         string voiceUrl = null,
-        HttpMethodEnum? voiceMethod = null,
+        HttpMethod? voiceMethod = null,
         string voiceFallbackUrl = null,
-        HttpMethodEnum? voiceFallbackMethod = null,
+        HttpMethod? voiceFallbackMethod = null,
         string hangupCallback = null,
-        HttpMethodEnum? hangupCallbackMethod = null,
+        HttpMethod? hangupCallbackMethod = null,
         string heartbeatUrl = null,
-        HttpMethodEnum? heartbeatMethod = null,
+        HttpMethod? heartbeatMethod = null,
         string smsUrl = null,
-        HttpMethodEnum? smsMethod = null,
+        HttpMethod? smsMethod = null,
         string smsFallbackUrl = null,
-        HttpMethodEnum? smsFallbackMethod = null,
+        HttpMethod? smsFallbackMethod = null,
         string responseType = "json")
 ```
 
@@ -651,17 +651,17 @@ Task<string> UpdatePhoneNumber(
 string phoneNumber = "PhoneNumber";
 string friendlyName = "FriendlyName";
 string voiceUrl = "VoiceUrl";
-var voiceMethod = HttpMethodEnum?Helper.ParseString("GET");
+var voiceMethod = HttpMethod?Helper.ParseString("GET");
 string voiceFallbackUrl = "VoiceFallbackUrl";
-var voiceFallbackMethod = HttpMethodEnum?Helper.ParseString("GET");
+var voiceFallbackMethod = HttpMethod?Helper.ParseString("GET");
 string hangupCallback = "HangupCallback";
-var hangupCallbackMethod = HttpMethodEnum?Helper.ParseString("GET");
+var hangupCallbackMethod = HttpMethod?Helper.ParseString("GET");
 string heartbeatUrl = "HeartbeatUrl";
-var heartbeatMethod = HttpMethodEnum?Helper.ParseString("GET");
+var heartbeatMethod = HttpMethod?Helper.ParseString("GET");
 string smsUrl = "SmsUrl";
-var smsMethod = HttpMethodEnum?Helper.ParseString("GET");
+var smsMethod = HttpMethod?Helper.ParseString("GET");
 string smsFallbackUrl = "SmsFallbackUrl";
-var smsFallbackMethod = HttpMethodEnum?Helper.ParseString("GET");
+var smsFallbackMethod = HttpMethod?Helper.ParseString("GET");
 string responseType = "json";
 
 string result = await phoneNumber.UpdatePhoneNumber(phoneNumber, friendlyName, voiceUrl, voiceMethod, voiceFallbackUrl, voiceFallbackMethod, hangupCallback, hangupCallbackMethod, heartbeatUrl, heartbeatMethod, smsUrl, smsMethod, smsFallbackUrl, smsFallbackMethod, responseType);
@@ -738,12 +738,12 @@ IEmailController email = client.Email;
 Task<string> CreateSendEmail(
         string to,
         string mfrom,
-        string type,
+        SendEmailAs type,
         string subject,
         string message,
         string cc = null,
         string bcc = null,
-        FileStreamInfo attachment = null,
+        string attachment = null,
         string responseType = "json")
 ```
 
@@ -767,12 +767,12 @@ Task<string> CreateSendEmail(
 ```csharp
 string to = "to";
 string mfrom = "from";
-string type = "html";
+var type = SendEmailAsHelper.ParseString("HTML");
 string subject = "subject";
 string message = "message";
 string cc = "cc";
 string bcc = "bcc";
-FileStreamInfo attachment = new FileStreamInfo(new FileStream(@"pathToFile",FileMode.Open));
+string attachment = "attachment";
 string responseType = "json";
 
 string result = await email.CreateSendEmail(to, mfrom, type, subject, message, cc, bcc, attachment, responseType);
@@ -1094,7 +1094,7 @@ Task<string> CreateSendSMS(
         int tocountrycode,
         string to,
         string body,
-        HttpMethodEnum? method = null,
+        HttpMethod? method = null,
         string messagestatuscallback = null,
         string responseType = "json")
 ```
@@ -1121,7 +1121,7 @@ string mfrom = "from";
 int tocountrycode = 1;
 string to = "to";
 string body = "body";
-var method = HttpMethodEnum?Helper.ParseString("GET");
+var method = HttpMethod?Helper.ParseString("GET");
 string messagestatuscallback = "messagestatuscallback";
 string responseType = "json";
 
@@ -1188,8 +1188,8 @@ Task<string> CreateListSMS(
 #### Example Usage
 
 ```csharp
-int? page = 79;
-int? pagesize = 79;
+int? page = 252;
+int? pagesize = 252;
 string mfrom = "from";
 string to = "to";
 string datesent = "datesent";
@@ -1228,7 +1228,7 @@ Task<string> CreateListInboundSMS(
 #### Example Usage
 
 ```csharp
-int? page = 79;
+int? page = 252;
 string pagesize = "pagesize";
 string mfrom = "from";
 string to = "to";
@@ -1375,8 +1375,8 @@ Task<string> CreateListRecording(
 #### Example Usage
 
 ```csharp
-int? page = 79;
-int? pageSize = 79;
+int? page = 160;
+int? pageSize = 160;
 string dateCreated = "DateCreated";
 string callSid = "CallSid";
 string responseType = "json";
@@ -1438,11 +1438,11 @@ Task<string> CreateMakeCall(
         string toCountryCode,
         string to,
         string url,
-        HttpMethodEnum? method = null,
+        HttpMethod? method = null,
         string statusCallBackUrl = null,
-        HttpMethodEnum? statusCallBackMethod = null,
+        HttpMethod? statusCallBackMethod = null,
         string fallBackUrl = null,
-        HttpMethodEnum? fallBackMethod = null,
+        HttpMethod? fallBackMethod = null,
         string heartBeatUrl = null,
         bool? heartBeatMethod = null,
         int? timeout = null,
@@ -1450,10 +1450,10 @@ Task<string> CreateMakeCall(
         bool? hideCallerId = null,
         bool? record = null,
         string recordCallBackUrl = null,
-        HttpMethodEnum? recordCallBackMethod = null,
+        HttpMethod? recordCallBackMethod = null,
         bool? transcribe = null,
         string transcribeCallBackUrl = null,
-        IfMachineEnum? ifMachine = null,
+        IfMachine? ifMachine = null,
         string responseType = "json")
 ```
 
@@ -1493,22 +1493,22 @@ string mfrom = "From";
 string toCountryCode = "ToCountryCode";
 string to = "To";
 string url = "Url";
-var method = HttpMethodEnum?Helper.ParseString("GET");
+var method = HttpMethod?Helper.ParseString("GET");
 string statusCallBackUrl = "StatusCallBackUrl";
-var statusCallBackMethod = HttpMethodEnum?Helper.ParseString("GET");
+var statusCallBackMethod = HttpMethod?Helper.ParseString("GET");
 string fallBackUrl = "FallBackUrl";
-var fallBackMethod = HttpMethodEnum?Helper.ParseString("GET");
+var fallBackMethod = HttpMethod?Helper.ParseString("GET");
 string heartBeatUrl = "HeartBeatUrl";
-bool? heartBeatMethod = false;
-int? timeout = 79;
+bool? heartBeatMethod = true;
+int? timeout = 160;
 string playDtmf = "PlayDtmf";
-bool? hideCallerId = false;
-bool? record = false;
+bool? hideCallerId = true;
+bool? record = true;
 string recordCallBackUrl = "RecordCallBackUrl";
-var recordCallBackMethod = HttpMethodEnum?Helper.ParseString("GET");
-bool? transcribe = false;
+var recordCallBackMethod = HttpMethod?Helper.ParseString("GET");
+bool? transcribe = true;
 string transcribeCallBackUrl = "TranscribeCallBackUrl";
-var ifMachine = IfMachineEnum?Helper.ParseString("CONTINUE");
+var ifMachine = IfMachine?Helper.ParseString("CONTINUE");
 string responseType = "json";
 
 string result = await call.CreateMakeCall(fromCountryCode, mfrom, toCountryCode, to, url, method, statusCallBackUrl, statusCallBackMethod, fallBackUrl, fallBackMethod, heartBeatUrl, heartBeatMethod, timeout, playDtmf, hideCallerId, record, recordCallBackUrl, recordCallBackMethod, transcribe, transcribeCallBackUrl, ifMachine, responseType);
@@ -1524,7 +1524,7 @@ string result = await call.CreateMakeCall(fromCountryCode, mfrom, toCountryCode,
 ```csharp
 Task<string> CreatePlayAudio(
         int length,
-        DirectionEnum direction,
+        Direction direction,
         bool loop,
         bool mix,
         string callSid = null,
@@ -1548,10 +1548,10 @@ Task<string> CreatePlayAudio(
 #### Example Usage
 
 ```csharp
-int length = 79;
-var direction = DirectionEnumHelper.ParseString("IN");
-bool loop = false;
-bool mix = false;
+int length = 160;
+var direction = DirectionHelper.ParseString("IN");
+bool loop = true;
+bool mix = true;
 string callSid = "CallSid";
 string audioUrl = "AudioUrl";
 string responseType = "json";
@@ -1570,10 +1570,10 @@ string result = await call.CreatePlayAudio(length, direction, loop, mix, callSid
 Task<string> CreateRecordCall(
         string callSid,
         bool record,
-        DirectionEnum? direction = null,
+        Direction? direction = null,
         int? timeLimit = null,
         string callBackUrl = null,
-        AudioFormatEnum? fileformat = null,
+        AudioFormat? fileformat = null,
         string responseType = "json")
 ```
 
@@ -1594,11 +1594,11 @@ Task<string> CreateRecordCall(
 
 ```csharp
 string callSid = "CallSid";
-bool record = false;
-var direction = DirectionEnum?Helper.ParseString("IN");
-int? timeLimit = 79;
+bool record = true;
+var direction = Direction?Helper.ParseString("IN");
+int? timeLimit = 160;
 string callBackUrl = "CallBackUrl";
-var fileformat = AudioFormatEnum?Helper.ParseString("mp3");
+var fileformat = AudioFormat?Helper.ParseString("mp3");
 string responseType = "json";
 
 string result = await call.CreateRecordCall(callSid, record, direction, timeLimit, callBackUrl, fileformat, responseType);
@@ -1614,7 +1614,7 @@ string result = await call.CreateRecordCall(callSid, record, direction, timeLimi
 ```csharp
 Task<string> CreateVoiceEffect(
         string callSid,
-        AudioDirectionEnum? audioDirection = null,
+        AudioDirection? audioDirection = null,
         double? pitchSemiTones = null,
         double? pitchOctaves = null,
         double? pitch = null,
@@ -1641,12 +1641,12 @@ Task<string> CreateVoiceEffect(
 
 ```csharp
 string callSid = "CallSid";
-var audioDirection = AudioDirectionEnum?Helper.ParseString("IN");
-double? pitchSemiTones = 79.4803874005938;
-double? pitchOctaves = 79.4803874005938;
-double? pitch = 79.4803874005938;
-double? rate = 79.4803874005938;
-double? tempo = 79.4803874005938;
+var audioDirection = AudioDirection?Helper.ParseString("IN");
+double? pitchSemiTones = 160.881492887103;
+double? pitchOctaves = 160.881492887103;
+double? pitch = 160.881492887103;
+double? rate = 160.881492887103;
+double? tempo = 160.881492887103;
 string responseType = "json";
 
 string result = await call.CreateVoiceEffect(callSid, audioDirection, pitchSemiTones, pitchOctaves, pitch, rate, tempo, responseType);
@@ -1663,7 +1663,7 @@ string result = await call.CreateVoiceEffect(callSid, audioDirection, pitchSemiT
 Task<string> CreateSendDigit(
         string callSid,
         string playDtmf,
-        DirectionEnum? playDtmfDirection = null,
+        Direction? playDtmfDirection = null,
         string responseType = "json")
 ```
 
@@ -1682,7 +1682,7 @@ Task<string> CreateSendDigit(
 ```csharp
 string callSid = "CallSid";
 string playDtmf = "PlayDtmf";
-var playDtmfDirection = DirectionEnum?Helper.ParseString("IN");
+var playDtmfDirection = Direction?Helper.ParseString("IN");
 string responseType = "json";
 
 string result = await call.CreateSendDigit(callSid, playDtmf, playDtmfDirection, responseType);
@@ -1699,8 +1699,8 @@ string result = await call.CreateSendDigit(callSid, playDtmf, playDtmfDirection,
 Task<string> CreateInterruptedCall(
         string callSid,
         string url = null,
-        HttpMethodEnum? method = null,
-        InterruptedCallStatusEnum? status = null,
+        HttpMethod? method = null,
+        InterruptedCallStatus? status = null,
         string responseType = "json")
 ```
 
@@ -1720,8 +1720,8 @@ Task<string> CreateInterruptedCall(
 ```csharp
 string callSid = "CallSid";
 string url = "Url";
-var method = HttpMethodEnum?Helper.ParseString("GET");
-var status = InterruptedCallStatusEnum?Helper.ParseString("CANCELED");
+var method = HttpMethod?Helper.ParseString("GET");
+var status = InterruptedCallStatus?Helper.ParseString("CANCELED");
 string responseType = "json";
 
 string result = await call.CreateInterruptedCall(callSid, url, method, status, responseType);

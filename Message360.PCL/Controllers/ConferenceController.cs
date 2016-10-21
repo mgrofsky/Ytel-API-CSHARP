@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/18/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/21/2016
  */
 using System;
 using System.Collections.Generic;
@@ -412,7 +412,7 @@ namespace message360.Controllers
                 int? page = null,
                 int? pageSize = null,
                 string friendlyName = null,
-                InterruptedCallStatusEnum? status = null,
+                InterruptedCallStatus? status = null,
                 string dateCreated = null,
                 string dateUpdated = null,
                 string responseType = "json")
@@ -437,7 +437,7 @@ namespace message360.Controllers
                 int? page = null,
                 int? pageSize = null,
                 string friendlyName = null,
-                InterruptedCallStatusEnum? status = null,
+                InterruptedCallStatus? status = null,
                 string dateCreated = null,
                 string dateUpdated = null,
                 string responseType = "json")
@@ -471,7 +471,7 @@ namespace message360.Controllers
                 { "Page", page },
                 { "PageSize", pageSize },
                 { "FriendlyName", friendlyName },
-                { "Status", (status.HasValue) ? InterruptedCallStatusEnumHelper.ToValue(status.Value) : null },
+                { "Status", (status.HasValue) ? InterruptedCallStatusHelper.ToValue(status.Value) : null },
                 { "DateCreated", dateCreated },
                 { "DateUpdated", dateUpdated }
             };

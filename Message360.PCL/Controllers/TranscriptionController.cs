@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/18/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/21/2016
  */
 using System;
 using System.Collections.Generic;
@@ -60,7 +60,7 @@ namespace message360.Controllers
         public string CreateListTranscription(
                 int? page = null,
                 int? pageSize = null,
-                StatusEnum? status = null,
+                Status? status = null,
                 string dateTranscribed = null,
                 string responseType = "json")
         {
@@ -81,7 +81,7 @@ namespace message360.Controllers
         public async Task<string> CreateListTranscriptionAsync(
                 int? page = null,
                 int? pageSize = null,
-                StatusEnum? status = null,
+                Status? status = null,
                 string dateTranscribed = null,
                 string responseType = "json")
         {
@@ -113,7 +113,7 @@ namespace message360.Controllers
             {
                 { "Page", page },
                 { "PageSize", pageSize },
-                { "Status", (status.HasValue) ? StatusEnumHelper.ToValue(status.Value) : null },
+                { "Status", (status.HasValue) ? StatusHelper.ToValue(status.Value) : null },
                 { "DateTranscribed", dateTranscribed }
             };
 

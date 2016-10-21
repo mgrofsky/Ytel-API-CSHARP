@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/18/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/21/2016
  */
 using System;
 using System.Collections.Generic;
@@ -468,17 +468,17 @@ namespace message360.Controllers
                 string phoneNumber,
                 string friendlyName = null,
                 string voiceUrl = null,
-                HttpMethodEnum? voiceMethod = null,
+                HttpMethod? voiceMethod = null,
                 string voiceFallbackUrl = null,
-                HttpMethodEnum? voiceFallbackMethod = null,
+                HttpMethod? voiceFallbackMethod = null,
                 string hangupCallback = null,
-                HttpMethodEnum? hangupCallbackMethod = null,
+                HttpMethod? hangupCallbackMethod = null,
                 string heartbeatUrl = null,
-                HttpMethodEnum? heartbeatMethod = null,
+                HttpMethod? heartbeatMethod = null,
                 string smsUrl = null,
-                HttpMethodEnum? smsMethod = null,
+                HttpMethod? smsMethod = null,
                 string smsFallbackUrl = null,
-                HttpMethodEnum? smsFallbackMethod = null,
+                HttpMethod? smsFallbackMethod = null,
                 string responseType = "json")
         {
             Task<string> t = UpdatePhoneNumberAsync(phoneNumber, friendlyName, voiceUrl, voiceMethod, voiceFallbackUrl, voiceFallbackMethod, hangupCallback, hangupCallbackMethod, heartbeatUrl, heartbeatMethod, smsUrl, smsMethod, smsFallbackUrl, smsFallbackMethod, responseType);
@@ -509,17 +509,17 @@ namespace message360.Controllers
                 string phoneNumber,
                 string friendlyName = null,
                 string voiceUrl = null,
-                HttpMethodEnum? voiceMethod = null,
+                HttpMethod? voiceMethod = null,
                 string voiceFallbackUrl = null,
-                HttpMethodEnum? voiceFallbackMethod = null,
+                HttpMethod? voiceFallbackMethod = null,
                 string hangupCallback = null,
-                HttpMethodEnum? hangupCallbackMethod = null,
+                HttpMethod? hangupCallbackMethod = null,
                 string heartbeatUrl = null,
-                HttpMethodEnum? heartbeatMethod = null,
+                HttpMethod? heartbeatMethod = null,
                 string smsUrl = null,
-                HttpMethodEnum? smsMethod = null,
+                HttpMethod? smsMethod = null,
                 string smsFallbackUrl = null,
-                HttpMethodEnum? smsFallbackMethod = null,
+                HttpMethod? smsFallbackMethod = null,
                 string responseType = "json")
         {
             //validating required parameters
@@ -555,17 +555,17 @@ namespace message360.Controllers
                 { "PhoneNumber", phoneNumber },
                 { "FriendlyName", friendlyName },
                 { "VoiceUrl", voiceUrl },
-                { "VoiceMethod", (voiceMethod.HasValue) ? HttpMethodEnumHelper.ToValue(voiceMethod.Value) : null },
+                { "VoiceMethod", (voiceMethod.HasValue) ? HttpMethodHelper.ToValue(voiceMethod.Value) : null },
                 { "VoiceFallbackUrl", voiceFallbackUrl },
-                { "VoiceFallbackMethod", (voiceFallbackMethod.HasValue) ? HttpMethodEnumHelper.ToValue(voiceFallbackMethod.Value) : null },
+                { "VoiceFallbackMethod", (voiceFallbackMethod.HasValue) ? HttpMethodHelper.ToValue(voiceFallbackMethod.Value) : null },
                 { "HangupCallback", hangupCallback },
-                { "HangupCallbackMethod", (hangupCallbackMethod.HasValue) ? HttpMethodEnumHelper.ToValue(hangupCallbackMethod.Value) : null },
+                { "HangupCallbackMethod", (hangupCallbackMethod.HasValue) ? HttpMethodHelper.ToValue(hangupCallbackMethod.Value) : null },
                 { "HeartbeatUrl", heartbeatUrl },
-                { "HeartbeatMethod", (heartbeatMethod.HasValue) ? HttpMethodEnumHelper.ToValue(heartbeatMethod.Value) : null },
+                { "HeartbeatMethod", (heartbeatMethod.HasValue) ? HttpMethodHelper.ToValue(heartbeatMethod.Value) : null },
                 { "SmsUrl", smsUrl },
-                { "SmsMethod", (smsMethod.HasValue) ? HttpMethodEnumHelper.ToValue(smsMethod.Value) : null },
+                { "SmsMethod", (smsMethod.HasValue) ? HttpMethodHelper.ToValue(smsMethod.Value) : null },
                 { "SmsFallbackUrl", smsFallbackUrl },
-                { "SmsFallbackMethod", (smsFallbackMethod.HasValue) ? HttpMethodEnumHelper.ToValue(smsFallbackMethod.Value) : null }
+                { "SmsFallbackMethod", (smsFallbackMethod.HasValue) ? HttpMethodHelper.ToValue(smsFallbackMethod.Value) : null }
             };
 
             //prepare the API call request to fetch the response
