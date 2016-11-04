@@ -66,7 +66,7 @@ namespace message360.Controllers
                 int tocountrycode,
                 string to,
                 string body,
-                HttpMethod? method = null,
+                HttpAction? method = null,
                 string messagestatuscallback = null,
                 string responseType = "json")
         {
@@ -93,7 +93,7 @@ namespace message360.Controllers
                 int tocountrycode,
                 string to,
                 string body,
-                HttpMethod? method = null,
+                HttpAction? method = null,
                 string messagestatuscallback = null,
                 string responseType = "json")
         {
@@ -138,7 +138,7 @@ namespace message360.Controllers
                 { "tocountrycode", tocountrycode },
                 { "to", to },
                 { "body", body },
-                { "method", (method.HasValue) ? HttpMethodHelper.ToValue(method.Value) : null },
+                { "method", (method.HasValue) ? HttpActionHelper.ToValue(method.Value) : null },
                 { "messagestatuscallback", messagestatuscallback }
             };
 

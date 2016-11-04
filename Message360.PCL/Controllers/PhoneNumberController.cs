@@ -468,17 +468,17 @@ namespace message360.Controllers
                 string phoneNumber,
                 string friendlyName = null,
                 string voiceUrl = null,
-                HttpMethod? voiceMethod = null,
+                HttpAction? voiceMethod = null,
                 string voiceFallbackUrl = null,
-                HttpMethod? voiceFallbackMethod = null,
+                HttpAction? voiceFallbackMethod = null,
                 string hangupCallback = null,
-                HttpMethod? hangupCallbackMethod = null,
+                HttpAction? hangupCallbackMethod = null,
                 string heartbeatUrl = null,
-                HttpMethod? heartbeatMethod = null,
+                HttpAction? heartbeatMethod = null,
                 string smsUrl = null,
-                HttpMethod? smsMethod = null,
+                HttpAction? smsMethod = null,
                 string smsFallbackUrl = null,
-                HttpMethod? smsFallbackMethod = null,
+                HttpAction? smsFallbackMethod = null,
                 string responseType = "json")
         {
             Task<string> t = UpdatePhoneNumberAsync(phoneNumber, friendlyName, voiceUrl, voiceMethod, voiceFallbackUrl, voiceFallbackMethod, hangupCallback, hangupCallbackMethod, heartbeatUrl, heartbeatMethod, smsUrl, smsMethod, smsFallbackUrl, smsFallbackMethod, responseType);
@@ -509,17 +509,17 @@ namespace message360.Controllers
                 string phoneNumber,
                 string friendlyName = null,
                 string voiceUrl = null,
-                HttpMethod? voiceMethod = null,
+                HttpAction? voiceMethod = null,
                 string voiceFallbackUrl = null,
-                HttpMethod? voiceFallbackMethod = null,
+                HttpAction? voiceFallbackMethod = null,
                 string hangupCallback = null,
-                HttpMethod? hangupCallbackMethod = null,
+                HttpAction? hangupCallbackMethod = null,
                 string heartbeatUrl = null,
-                HttpMethod? heartbeatMethod = null,
+                HttpAction? heartbeatMethod = null,
                 string smsUrl = null,
-                HttpMethod? smsMethod = null,
+                HttpAction? smsMethod = null,
                 string smsFallbackUrl = null,
-                HttpMethod? smsFallbackMethod = null,
+                HttpAction? smsFallbackMethod = null,
                 string responseType = "json")
         {
             //validating required parameters
@@ -555,17 +555,17 @@ namespace message360.Controllers
                 { "PhoneNumber", phoneNumber },
                 { "FriendlyName", friendlyName },
                 { "VoiceUrl", voiceUrl },
-                { "VoiceMethod", (voiceMethod.HasValue) ? HttpMethodHelper.ToValue(voiceMethod.Value) : null },
+                { "VoiceMethod", (voiceMethod.HasValue) ? HttpActionHelper.ToValue(voiceMethod.Value) : null },
                 { "VoiceFallbackUrl", voiceFallbackUrl },
-                { "VoiceFallbackMethod", (voiceFallbackMethod.HasValue) ? HttpMethodHelper.ToValue(voiceFallbackMethod.Value) : null },
+                { "VoiceFallbackMethod", (voiceFallbackMethod.HasValue) ? HttpActionHelper.ToValue(voiceFallbackMethod.Value) : null },
                 { "HangupCallback", hangupCallback },
-                { "HangupCallbackMethod", (hangupCallbackMethod.HasValue) ? HttpMethodHelper.ToValue(hangupCallbackMethod.Value) : null },
+                { "HangupCallbackMethod", (hangupCallbackMethod.HasValue) ? HttpActionHelper.ToValue(hangupCallbackMethod.Value) : null },
                 { "HeartbeatUrl", heartbeatUrl },
-                { "HeartbeatMethod", (heartbeatMethod.HasValue) ? HttpMethodHelper.ToValue(heartbeatMethod.Value) : null },
+                { "HeartbeatMethod", (heartbeatMethod.HasValue) ? HttpActionHelper.ToValue(heartbeatMethod.Value) : null },
                 { "SmsUrl", smsUrl },
-                { "SmsMethod", (smsMethod.HasValue) ? HttpMethodHelper.ToValue(smsMethod.Value) : null },
+                { "SmsMethod", (smsMethod.HasValue) ? HttpActionHelper.ToValue(smsMethod.Value) : null },
                 { "SmsFallbackUrl", smsFallbackUrl },
-                { "SmsFallbackMethod", (smsFallbackMethod.HasValue) ? HttpMethodHelper.ToValue(smsFallbackMethod.Value) : null }
+                { "SmsFallbackMethod", (smsFallbackMethod.HasValue) ? HttpActionHelper.ToValue(smsFallbackMethod.Value) : null }
             };
 
             //prepare the API call request to fetch the response

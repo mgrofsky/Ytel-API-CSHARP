@@ -153,11 +153,11 @@ namespace message360.Controllers
                 string toCountryCode,
                 string to,
                 string url,
-                HttpMethod? method = null,
+                HttpAction? method = null,
                 string statusCallBackUrl = null,
-                HttpMethod? statusCallBackMethod = null,
+                HttpAction? statusCallBackMethod = null,
                 string fallBackUrl = null,
-                HttpMethod? fallBackMethod = null,
+                HttpAction? fallBackMethod = null,
                 string heartBeatUrl = null,
                 bool? heartBeatMethod = null,
                 int? timeout = null,
@@ -165,7 +165,7 @@ namespace message360.Controllers
                 bool? hideCallerId = null,
                 bool? record = null,
                 string recordCallBackUrl = null,
-                HttpMethod? recordCallBackMethod = null,
+                HttpAction? recordCallBackMethod = null,
                 bool? transcribe = null,
                 string transcribeCallBackUrl = null,
                 IfMachine? ifMachine = null,
@@ -208,11 +208,11 @@ namespace message360.Controllers
                 string toCountryCode,
                 string to,
                 string url,
-                HttpMethod? method = null,
+                HttpAction? method = null,
                 string statusCallBackUrl = null,
-                HttpMethod? statusCallBackMethod = null,
+                HttpAction? statusCallBackMethod = null,
                 string fallBackUrl = null,
-                HttpMethod? fallBackMethod = null,
+                HttpAction? fallBackMethod = null,
                 string heartBeatUrl = null,
                 bool? heartBeatMethod = null,
                 int? timeout = null,
@@ -220,7 +220,7 @@ namespace message360.Controllers
                 bool? hideCallerId = null,
                 bool? record = null,
                 string recordCallBackUrl = null,
-                HttpMethod? recordCallBackMethod = null,
+                HttpAction? recordCallBackMethod = null,
                 bool? transcribe = null,
                 string transcribeCallBackUrl = null,
                 IfMachine? ifMachine = null,
@@ -258,7 +258,7 @@ namespace message360.Controllers
             //process optional query parameters
             APIHelper.AppendUrlWithQueryParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "Method", (method.HasValue) ? HttpMethodHelper.ToValue(method.Value) : null }
+                { "Method", (method.HasValue) ? HttpActionHelper.ToValue(method.Value) : null }
             });
 
 
@@ -280,9 +280,9 @@ namespace message360.Controllers
                 { "To", to },
                 { "Url", url },
                 { "StatusCallBackUrl", statusCallBackUrl },
-                { "StatusCallBackMethod", (statusCallBackMethod.HasValue) ? HttpMethodHelper.ToValue(statusCallBackMethod.Value) : null },
+                { "StatusCallBackMethod", (statusCallBackMethod.HasValue) ? HttpActionHelper.ToValue(statusCallBackMethod.Value) : null },
                 { "FallBackUrl", fallBackUrl },
-                { "FallBackMethod", (fallBackMethod.HasValue) ? HttpMethodHelper.ToValue(fallBackMethod.Value) : null },
+                { "FallBackMethod", (fallBackMethod.HasValue) ? HttpActionHelper.ToValue(fallBackMethod.Value) : null },
                 { "HeartBeatUrl", heartBeatUrl },
                 { "HeartBeatMethod", heartBeatMethod },
                 { "Timeout", timeout },
@@ -290,7 +290,7 @@ namespace message360.Controllers
                 { "HideCallerId", hideCallerId },
                 { "Record", record },
                 { "RecordCallBackUrl", recordCallBackUrl },
-                { "RecordCallBackMethod", (recordCallBackMethod.HasValue) ? HttpMethodHelper.ToValue(recordCallBackMethod.Value) : null },
+                { "RecordCallBackMethod", (recordCallBackMethod.HasValue) ? HttpActionHelper.ToValue(recordCallBackMethod.Value) : null },
                 { "Transcribe", transcribe },
                 { "TranscribeCallBackUrl", transcribeCallBackUrl },
                 { "IfMachine", (ifMachine.HasValue) ? IfMachineHelper.ToValue(ifMachine.Value) : null }
@@ -724,7 +724,7 @@ namespace message360.Controllers
         public string CreateInterruptedCall(
                 string callSid,
                 string url = null,
-                HttpMethod? method = null,
+                HttpAction? method = null,
                 InterruptedCallStatus? status = null,
                 string responseType = "json")
         {
@@ -745,7 +745,7 @@ namespace message360.Controllers
         public async Task<string> CreateInterruptedCallAsync(
                 string callSid,
                 string url = null,
-                HttpMethod? method = null,
+                HttpAction? method = null,
                 InterruptedCallStatus? status = null,
                 string responseType = "json")
         {
@@ -781,7 +781,7 @@ namespace message360.Controllers
             {
                 { "CallSid", callSid },
                 { "Url", url },
-                { "Method", (method.HasValue) ? HttpMethodHelper.ToValue(method.Value) : null },
+                { "Method", (method.HasValue) ? HttpActionHelper.ToValue(method.Value) : null },
                 { "Status", (status.HasValue) ? InterruptedCallStatusHelper.ToValue(status.Value) : null }
             };
 

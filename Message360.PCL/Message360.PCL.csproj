@@ -10,7 +10,7 @@
     <AssemblyName>Message360.PCL</AssemblyName>
     <OutputType>Library</OutputType>
     <OutputPath>bin/DEBUG/</OutputPath>
-    <ProjectGuid>{e5151a9b-f8ab-4d2e-93b4-d3098e0d940d}</ProjectGuid>
+    <ProjectGuid>{12857ef9-1a62-48bd-bd8e-682af5fbf337}</ProjectGuid>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <NuGetPackageImportStamp>ee2bb91c</NuGetPackageImportStamp>
@@ -73,7 +73,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\HttpMethod.cs" />
+    <Compile Include="Models\HttpAction.cs" />
     <Compile Include="Models\AudioDirection.cs" />
     <Compile Include="Models\IfMachine.cs" />
     <Compile Include="Models\AudioFormat.cs" />

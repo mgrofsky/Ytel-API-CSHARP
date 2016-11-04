@@ -13,33 +13,33 @@ using message360;
 namespace message360.Models
 {
     [JsonConverter(typeof(StringValuedEnumConverter))]
-    public enum HttpMethod
+    public enum HttpAction
     {
         GET, //Get type
         POST, //Post Type
     }
 
     /// <summary>
-    /// Helper for the enum type HttpMethod
+    /// Helper for the enum type HttpAction
     /// </summary>
-    public static class HttpMethodHelper
+    public static class HttpActionHelper
     {
         //string values corresponding the enum elements
         private static List<string> stringValues = new List<string> { "GET", "POST" };
 
         /// <summary>
-        /// Converts a HttpMethod value to a corresponding string value
+        /// Converts a HttpAction value to a corresponding string value
         /// </summary>
-        /// <param name="enumValue">The HttpMethod value to convert</param>
+        /// <param name="enumValue">The HttpAction value to convert</param>
         /// <returns>The representative string value</returns>
-        public static string ToValue(HttpMethod enumValue)
+        public static string ToValue(HttpAction enumValue)
         {
             switch(enumValue)
             {
                 //only valid enum elements can be used
                 //this is necessary to avoid errors
-                case HttpMethod.GET:
-                case HttpMethod.POST:
+                case HttpAction.GET:
+                case HttpAction.POST:
                     return stringValues[(int)enumValue];
 
                 //an invalid enum value was requested
@@ -49,11 +49,11 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Convert a list of HttpMethod values to a list of strings
+        /// Convert a list of HttpAction values to a list of strings
         /// </summary>
-        /// <param name="enumValues">The list of HttpMethod values to convert</param>
+        /// <param name="enumValues">The list of HttpAction values to convert</param>
         /// <returns>The list of representative string values</returns>
-        public static List<string> ToValue(List<HttpMethod> enumValues)
+        public static List<string> ToValue(List<HttpAction> enumValues)
         {
             if (null == enumValues)
                 return null;
@@ -62,17 +62,17 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Converts a string value into HttpMethod value
+        /// Converts a string value into HttpAction value
         /// </summary>
         /// <param name="value">The string value to parse</param>
-        /// <returns>The parsed HttpMethod value</returns>
-        public static HttpMethod ParseString(string value)
+        /// <returns>The parsed HttpAction value</returns>
+        public static HttpAction ParseString(string value)
         {
             int index = stringValues.IndexOf(value);
             if(index < 0)
-                throw new InvalidCastException(string.Format("Unable to cast value: {0} to type HttpMethod", value));
+                throw new InvalidCastException(string.Format("Unable to cast value: {0} to type HttpAction", value));
 
-            return (HttpMethod) index;
+            return (HttpAction) index;
         }
     }
 } 
