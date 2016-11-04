@@ -1,3 +1,4 @@
+
 namespace message360
 {
     public partial class Configuration
