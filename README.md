@@ -1,4 +1,4 @@
-#
+#Getting started
 
 ## How to Build
 
@@ -62,7 +62,7 @@ Here, you can click *Run All* to execute these test cases.
 
 ## Initialization
 
-### Authentication and Initialization
+### Authentication and 
 In order to setup authentication and initialization of the API client, you need the following information.
 
 | Parameter | Description |
@@ -168,10 +168,10 @@ Task<string> CreateListParticipant(
 
 ```csharp
 string conferenceSid = "ConferenceSid";
-int? page = 252;
-int? pagesize = 252;
-bool? muted = true;
-bool? deaf = true;
+int? page = 102;
+int? pagesize = 102;
+bool? muted = false;
+bool? deaf = false;
 string responseType = "json";
 
 string result = await conference.CreateListParticipant(conferenceSid, page, pagesize, muted, deaf, responseType);
@@ -211,9 +211,9 @@ Task<string> AddParticipant(
 ```csharp
 string conferencesid = "conferencesid";
 string participantnumber = "participantnumber";
-int tocountrycode = 252;
-bool? muted = true;
-bool? deaf = true;
+int tocountrycode = 102;
+bool? muted = false;
+bool? deaf = false;
 string responseType = "json";
 
 string result = await conference.AddParticipant(conferencesid, participantnumber, tocountrycode, muted, deaf, responseType);
@@ -281,8 +281,8 @@ Task<string> CreateListConference(
 #### Example Usage
 
 ```csharp
-int? page = 252;
-int? pageSize = 252;
+int? page = 102;
+int? pageSize = 102;
 string friendlyName = "FriendlyName";
 var status = InterruptedCallStatus?Helper.ParseString("CANCELED");
 string dateCreated = "DateCreated";
@@ -334,8 +334,8 @@ Task<string> CreateListTranscription(
 #### Example Usage
 
 ```csharp
-int? page = 252;
-int? pageSize = 252;
+int? page = 102;
+int? pageSize = 102;
 var status = Status?Helper.ParseString("INPROGRESS");
 string dateTranscribed = "DateTranscribed";
 string responseType = "json";
@@ -469,7 +469,7 @@ Task<string> CreateAvailablePhoneNumber(
 ```csharp
 string numberType = "NumberType";
 string areaCode = "AreaCode";
-int? pageSize = 252;
+int? pageSize = 102;
 string responseType = "json";
 
 string result = await phoneNumber.CreateAvailablePhoneNumber(numberType, areaCode, pageSize, responseType);
@@ -505,8 +505,8 @@ Task<string> CreateListNumber(
 #### Example Usage
 
 ```csharp
-int? page = 252;
-int? pageSize = 252;
+int? page = 102;
+int? pageSize = 102;
 string numberType = "NumberType";
 string friendlyName = "FriendlyName";
 string responseType = "json";
@@ -1188,8 +1188,8 @@ Task<string> CreateListSMS(
 #### Example Usage
 
 ```csharp
-int? page = 252;
-int? pagesize = 252;
+int? page = 102;
+int? pagesize = 102;
 string mfrom = "from";
 string to = "to";
 string datesent = "datesent";
@@ -1228,7 +1228,7 @@ Task<string> CreateListInboundSMS(
 #### Example Usage
 
 ```csharp
-int? page = 252;
+int? page = 102;
 string pagesize = "pagesize";
 string mfrom = "from";
 string to = "to";
@@ -1375,8 +1375,8 @@ Task<string> CreateListRecording(
 #### Example Usage
 
 ```csharp
-int? page = 160;
-int? pageSize = 160;
+int? page = 102;
+int? pageSize = 102;
 string dateCreated = "DateCreated";
 string callSid = "CallSid";
 string responseType = "json";
@@ -1499,14 +1499,14 @@ var statusCallBackMethod = HttpMethod?Helper.ParseString("GET");
 string fallBackUrl = "FallBackUrl";
 var fallBackMethod = HttpMethod?Helper.ParseString("GET");
 string heartBeatUrl = "HeartBeatUrl";
-bool? heartBeatMethod = true;
-int? timeout = 160;
+bool? heartBeatMethod = false;
+int? timeout = 102;
 string playDtmf = "PlayDtmf";
-bool? hideCallerId = true;
-bool? record = true;
+bool? hideCallerId = false;
+bool? record = false;
 string recordCallBackUrl = "RecordCallBackUrl";
 var recordCallBackMethod = HttpMethod?Helper.ParseString("GET");
-bool? transcribe = true;
+bool? transcribe = false;
 string transcribeCallBackUrl = "TranscribeCallBackUrl";
 var ifMachine = IfMachine?Helper.ParseString("CONTINUE");
 string responseType = "json";
@@ -1548,10 +1548,10 @@ Task<string> CreatePlayAudio(
 #### Example Usage
 
 ```csharp
-int length = 160;
+int length = 102;
 var direction = DirectionHelper.ParseString("IN");
-bool loop = true;
-bool mix = true;
+bool loop = false;
+bool mix = false;
 string callSid = "CallSid";
 string audioUrl = "AudioUrl";
 string responseType = "json";
@@ -1594,9 +1594,9 @@ Task<string> CreateRecordCall(
 
 ```csharp
 string callSid = "CallSid";
-bool record = true;
+bool record = false;
 var direction = Direction?Helper.ParseString("IN");
-int? timeLimit = 160;
+int? timeLimit = 194;
 string callBackUrl = "CallBackUrl";
 var fileformat = AudioFormat?Helper.ParseString("mp3");
 string responseType = "json";
@@ -1642,11 +1642,11 @@ Task<string> CreateVoiceEffect(
 ```csharp
 string callSid = "CallSid";
 var audioDirection = AudioDirection?Helper.ParseString("IN");
-double? pitchSemiTones = 160.881492887103;
-double? pitchOctaves = 160.881492887103;
-double? pitch = 160.881492887103;
-double? rate = 160.881492887103;
-double? tempo = 160.881492887103;
+double? pitchSemiTones = 194.112033471052;
+double? pitchOctaves = 194.112033471052;
+double? pitch = 194.112033471052;
+double? rate = 194.112033471052;
+double? tempo = 194.112033471052;
 string responseType = "json";
 
 string result = await call.CreateVoiceEffect(callSid, audioDirection, pitchSemiTones, pitchOctaves, pitch, rate, tempo, responseType);
