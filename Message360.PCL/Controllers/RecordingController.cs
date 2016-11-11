@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/04/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
  */
 using System;
 using System.Collections.Generic;
@@ -49,87 +49,13 @@ namespace message360.Controllers
         #endregion Singleton Pattern
 
         /// <summary>
-        /// Delete Recording Record
-        /// </summary>
-        /// <param name="recordingSid">Required parameter: Unique Recording Sid to be delete</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
-        /// <return>Returns the string response from the API call</return>
-        public string CreateDeleteRecording(string recordingSid, string responseType = "json")
-        {
-            Task<string> t = CreateDeleteRecordingAsync(recordingSid, responseType);
-            Task.WaitAll(t);
-            return t.Result;
-        }
-
-        /// <summary>
-        /// Delete Recording Record
-        /// </summary>
-        /// <param name="recordingSid">Required parameter: Unique Recording Sid to be delete</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
-        /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateDeleteRecordingAsync(string recordingSid, string responseType = "json")
-        {
-            //validating required parameters
-            if (null == recordingSid)
-                throw new ArgumentNullException("recordingSid", "The parameter \"recordingSid\" is a required parameter and cannot be null.");
-
-            //the base uri for api requestss
-            string _baseUri = Configuration.BaseUri;
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/recording/deleterecording.{ResponseType}");
-
-            //process optional template parameters
-            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
-            {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
-            });
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "message360-api" }
-            };
-
-            //append form/field parameters
-            var _fields = new Dictionary<string,object>()
-            {
-                { "RecordingSid", recordingSid }
-            };
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return _response.Body;
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
-
-        /// <summary>
         /// View a specific Recording
         /// </summary>
-        /// <param name="recordingSid">Required parameter: Search Recording sid</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateViewRecordingInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateViewRecording(string recordingSid, string responseType = "json")
+        public string CreateViewRecording(CreateViewRecordingInput input)
         {
-            Task<string> t = CreateViewRecordingAsync(recordingSid, responseType);
+            Task<string> t = CreateViewRecordingAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -137,14 +63,13 @@ namespace message360.Controllers
         /// <summary>
         /// View a specific Recording
         /// </summary>
-        /// <param name="recordingSid">Required parameter: Search Recording sid</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateViewRecordingInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateViewRecordingAsync(string recordingSid, string responseType = "json")
+        public async Task<string> CreateViewRecordingAsync(CreateViewRecordingInput input)
         {
             //validating required parameters
-            if (null == recordingSid)
-                throw new ArgumentNullException("recordingSid", "The parameter \"recordingSid\" is a required parameter and cannot be null.");
+            if (null == input.RecordingSid)
+                throw new ArgumentNullException("recordingSid", "The property \"RecordingSid\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -156,7 +81,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -172,7 +97,78 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "RecordingSid", recordingSid }
+                { "RecordingSid", input.RecordingSid }
+            };
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpContext _context = new HttpContext(_request,_response);
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return _response.Body;
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// Delete Recording Record
+        /// </summary>
+        /// <param name="CreateDeleteRecordingInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public string CreateDeleteRecording(CreateDeleteRecordingInput input)
+        {
+            Task<string> t = CreateDeleteRecordingAsync(input);
+            Task.WaitAll(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// Delete Recording Record
+        /// </summary>
+        /// <param name="CreateDeleteRecordingInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public async Task<string> CreateDeleteRecordingAsync(CreateDeleteRecordingInput input)
+        {
+            //validating required parameters
+            if (null == input.RecordingSid)
+                throw new ArgumentNullException("recordingSid", "The property \"RecordingSid\" in the input object cannot be null.");
+
+            //the base uri for api requestss
+            string _baseUri = Configuration.BaseUri;
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/recording/deleterecording.{ResponseType}");
+
+            //process optional template parameters
+            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
+            {
+                { "ResponseType", input.ResponseType }
+            });
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "message360-api" }
+            };
+
+            //append form/field parameters
+            var _fields = new Dictionary<string,object>()
+            {
+                { "RecordingSid", input.RecordingSid }
             };
 
             //prepare the API call request to fetch the response
@@ -197,20 +193,11 @@ namespace message360.Controllers
         /// <summary>
         /// List out Recordings
         /// </summary>
-        /// <param name="page">Optional parameter: Which page of the overall response will be returned. Zero indexed</param>
-        /// <param name="pageSize">Optional parameter: Number of individual resources listed in the response per page</param>
-        /// <param name="dateCreated">Optional parameter: Example: </param>
-        /// <param name="callSid">Optional parameter: Example: </param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateListRecordingInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateListRecording(
-                int? page = null,
-                int? pageSize = null,
-                string dateCreated = null,
-                string callSid = null,
-                string responseType = "json")
+        public string CreateListRecording(CreateListRecordingInput input)
         {
-            Task<string> t = CreateListRecordingAsync(page, pageSize, dateCreated, callSid, responseType);
+            Task<string> t = CreateListRecordingAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -218,18 +205,9 @@ namespace message360.Controllers
         /// <summary>
         /// List out Recordings
         /// </summary>
-        /// <param name="page">Optional parameter: Which page of the overall response will be returned. Zero indexed</param>
-        /// <param name="pageSize">Optional parameter: Number of individual resources listed in the response per page</param>
-        /// <param name="dateCreated">Optional parameter: Example: </param>
-        /// <param name="callSid">Optional parameter: Example: </param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateListRecordingInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateListRecordingAsync(
-                int? page = null,
-                int? pageSize = null,
-                string dateCreated = null,
-                string callSid = null,
-                string responseType = "json")
+        public async Task<string> CreateListRecordingAsync(CreateListRecordingInput input)
         {
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -241,7 +219,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -257,10 +235,10 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "Page", page },
-                { "PageSize", pageSize },
-                { "DateCreated", dateCreated },
-                { "CallSid", callSid }
+                { "Page", input.Page },
+                { "PageSize", input.PageSize },
+                { "DateCreated", input.DateCreated },
+                { "CallSid", input.CallSid }
             };
 
             //prepare the API call request to fetch the response

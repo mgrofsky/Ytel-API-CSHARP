@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/04/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
  */
 using System;
 using System.Collections.Generic;
@@ -51,26 +51,11 @@ namespace message360.Controllers
         /// <summary>
         /// Send an SMS from a message360 number
         /// </summary>
-        /// <param name="fromcountrycode">Required parameter: From Country Code</param>
-        /// <param name="mfrom">Required parameter: SMS enabled Message360 number to send this message from</param>
-        /// <param name="tocountrycode">Required parameter: To country code</param>
-        /// <param name="to">Required parameter: Number to send the SMS to</param>
-        /// <param name="body">Required parameter: Text Message To Send</param>
-        /// <param name="method">Optional parameter: Specifies the HTTP method used to request the required URL once SMS sent.</param>
-        /// <param name="messagestatuscallback">Optional parameter: URL that can be requested to receive notification when SMS has Sent. A set of default parameters will be sent here once the SMS is finished.</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateSendSMSInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateSendSMS(
-                int fromcountrycode,
-                string mfrom,
-                int tocountrycode,
-                string to,
-                string body,
-                HttpAction? method = null,
-                string messagestatuscallback = null,
-                string responseType = "json")
+        public string CreateSendSMS(CreateSendSMSInput input)
         {
-            Task<string> t = CreateSendSMSAsync(fromcountrycode, mfrom, tocountrycode, to, body, method, messagestatuscallback, responseType);
+            Task<string> t = CreateSendSMSAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -78,34 +63,19 @@ namespace message360.Controllers
         /// <summary>
         /// Send an SMS from a message360 number
         /// </summary>
-        /// <param name="fromcountrycode">Required parameter: From Country Code</param>
-        /// <param name="mfrom">Required parameter: SMS enabled Message360 number to send this message from</param>
-        /// <param name="tocountrycode">Required parameter: To country code</param>
-        /// <param name="to">Required parameter: Number to send the SMS to</param>
-        /// <param name="body">Required parameter: Text Message To Send</param>
-        /// <param name="method">Optional parameter: Specifies the HTTP method used to request the required URL once SMS sent.</param>
-        /// <param name="messagestatuscallback">Optional parameter: URL that can be requested to receive notification when SMS has Sent. A set of default parameters will be sent here once the SMS is finished.</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateSendSMSInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateSendSMSAsync(
-                int fromcountrycode,
-                string mfrom,
-                int tocountrycode,
-                string to,
-                string body,
-                HttpAction? method = null,
-                string messagestatuscallback = null,
-                string responseType = "json")
+        public async Task<string> CreateSendSMSAsync(CreateSendSMSInput input)
         {
             //validating required parameters
-            if (null == mfrom)
-                throw new ArgumentNullException("mfrom", "The parameter \"mfrom\" is a required parameter and cannot be null.");
+            if (null == input.From)
+                throw new ArgumentNullException("mfrom", "The property \"From\" in the input object cannot be null.");
 
-            if (null == to)
-                throw new ArgumentNullException("to", "The parameter \"to\" is a required parameter and cannot be null.");
+            if (null == input.To)
+                throw new ArgumentNullException("to", "The property \"To\" in the input object cannot be null.");
 
-            if (null == body)
-                throw new ArgumentNullException("body", "The parameter \"body\" is a required parameter and cannot be null.");
+            if (null == input.Body)
+                throw new ArgumentNullException("body", "The property \"Body\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -117,7 +87,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -133,13 +103,13 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "fromcountrycode", fromcountrycode },
-                { "from", mfrom },
-                { "tocountrycode", tocountrycode },
-                { "to", to },
-                { "body", body },
-                { "method", (method.HasValue) ? HttpActionHelper.ToValue(method.Value) : null },
-                { "messagestatuscallback", messagestatuscallback }
+                { "fromcountrycode", input.Fromcountrycode },
+                { "from", input.From },
+                { "tocountrycode", input.Tocountrycode },
+                { "to", input.To },
+                { "body", input.Body },
+                { "method", (input.Method.HasValue) ? HttpActionHelper.ToValue(input.Method.Value) : null },
+                { "messagestatuscallback", input.Messagestatuscallback }
             };
 
             //prepare the API call request to fetch the response
@@ -164,12 +134,11 @@ namespace message360.Controllers
         /// <summary>
         /// View Particular SMS
         /// </summary>
-        /// <param name="messagesid">Required parameter: Message sid</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateViewSMSInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateViewSMS(string messagesid, string responseType = "json")
+        public string CreateViewSMS(CreateViewSMSInput input)
         {
-            Task<string> t = CreateViewSMSAsync(messagesid, responseType);
+            Task<string> t = CreateViewSMSAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -177,14 +146,13 @@ namespace message360.Controllers
         /// <summary>
         /// View Particular SMS
         /// </summary>
-        /// <param name="messagesid">Required parameter: Message sid</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateViewSMSInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateViewSMSAsync(string messagesid, string responseType = "json")
+        public async Task<string> CreateViewSMSAsync(CreateViewSMSInput input)
         {
             //validating required parameters
-            if (null == messagesid)
-                throw new ArgumentNullException("messagesid", "The parameter \"messagesid\" is a required parameter and cannot be null.");
+            if (null == input.Messagesid)
+                throw new ArgumentNullException("messagesid", "The property \"Messagesid\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -196,7 +164,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -212,7 +180,7 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "messagesid", messagesid }
+                { "messagesid", input.Messagesid }
             };
 
             //prepare the API call request to fetch the response
@@ -237,22 +205,11 @@ namespace message360.Controllers
         /// <summary>
         /// List All SMS
         /// </summary>
-        /// <param name="page">Optional parameter: Which page of the overall response will be returned. Zero indexed</param>
-        /// <param name="pagesize">Optional parameter: Number of individual resources listed in the response per page</param>
-        /// <param name="mfrom">Optional parameter: Messages sent from this number</param>
-        /// <param name="to">Optional parameter: Messages sent to this number</param>
-        /// <param name="datesent">Optional parameter: Only list SMS messages sent in the specified date range</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateListSMSInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateListSMS(
-                int? page = null,
-                int? pagesize = null,
-                string mfrom = null,
-                string to = null,
-                string datesent = null,
-                string responseType = "json")
+        public string CreateListSMS(CreateListSMSInput input)
         {
-            Task<string> t = CreateListSMSAsync(page, pagesize, mfrom, to, datesent, responseType);
+            Task<string> t = CreateListSMSAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -260,20 +217,9 @@ namespace message360.Controllers
         /// <summary>
         /// List All SMS
         /// </summary>
-        /// <param name="page">Optional parameter: Which page of the overall response will be returned. Zero indexed</param>
-        /// <param name="pagesize">Optional parameter: Number of individual resources listed in the response per page</param>
-        /// <param name="mfrom">Optional parameter: Messages sent from this number</param>
-        /// <param name="to">Optional parameter: Messages sent to this number</param>
-        /// <param name="datesent">Optional parameter: Only list SMS messages sent in the specified date range</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateListSMSInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateListSMSAsync(
-                int? page = null,
-                int? pagesize = null,
-                string mfrom = null,
-                string to = null,
-                string datesent = null,
-                string responseType = "json")
+        public async Task<string> CreateListSMSAsync(CreateListSMSInput input)
         {
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -285,7 +231,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -301,11 +247,11 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "page", page },
-                { "pagesize", pagesize },
-                { "from", mfrom },
-                { "to", to },
-                { "datesent", datesent }
+                { "page", input.Page },
+                { "pagesize", input.Pagesize },
+                { "from", input.From },
+                { "to", input.To },
+                { "datesent", input.Datesent }
             };
 
             //prepare the API call request to fetch the response
@@ -330,20 +276,11 @@ namespace message360.Controllers
         /// <summary>
         /// List All Inbound SMS
         /// </summary>
-        /// <param name="page">Optional parameter: Which page of the overall response will be returned. Zero indexed</param>
-        /// <param name="pagesize">Optional parameter: Number of individual resources listed in the response per page</param>
-        /// <param name="mfrom">Optional parameter: From Number to Inbound SMS</param>
-        /// <param name="to">Optional parameter: To Number to get Inbound SMS</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateListInboundSMSInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateListInboundSMS(
-                int? page = null,
-                string pagesize = null,
-                string mfrom = null,
-                string to = null,
-                string responseType = "json")
+        public string CreateListInboundSMS(CreateListInboundSMSInput input)
         {
-            Task<string> t = CreateListInboundSMSAsync(page, pagesize, mfrom, to, responseType);
+            Task<string> t = CreateListInboundSMSAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -351,18 +288,9 @@ namespace message360.Controllers
         /// <summary>
         /// List All Inbound SMS
         /// </summary>
-        /// <param name="page">Optional parameter: Which page of the overall response will be returned. Zero indexed</param>
-        /// <param name="pagesize">Optional parameter: Number of individual resources listed in the response per page</param>
-        /// <param name="mfrom">Optional parameter: From Number to Inbound SMS</param>
-        /// <param name="to">Optional parameter: To Number to get Inbound SMS</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateListInboundSMSInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateListInboundSMSAsync(
-                int? page = null,
-                string pagesize = null,
-                string mfrom = null,
-                string to = null,
-                string responseType = "json")
+        public async Task<string> CreateListInboundSMSAsync(CreateListInboundSMSInput input)
         {
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -374,7 +302,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -390,10 +318,10 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "page", page },
-                { "pagesize", pagesize },
-                { "from", mfrom },
-                { "to", to }
+                { "page", input.Page },
+                { "pagesize", input.Pagesize },
+                { "from", input.From },
+                { "to", input.To }
             };
 
             //prepare the API call request to fetch the response

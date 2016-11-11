@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/04/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
  */
 using System;
 using System.Collections.Generic;
@@ -51,18 +51,11 @@ namespace message360.Controllers
         /// <summary>
         /// Available Phone Number
         /// </summary>
-        /// <param name="numberType">Required parameter: Number type either SMS,Voice or all</param>
-        /// <param name="areaCode">Required parameter: Phone Number Area Code</param>
-        /// <param name="pageSize">Optional parameter: Page Size</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateAvailablePhoneNumberInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateAvailablePhoneNumber(
-                string numberType,
-                string areaCode,
-                int? pageSize = null,
-                string responseType = "json")
+        public string CreateAvailablePhoneNumber(CreateAvailablePhoneNumberInput input)
         {
-            Task<string> t = CreateAvailablePhoneNumberAsync(numberType, areaCode, pageSize, responseType);
+            Task<string> t = CreateAvailablePhoneNumberAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -70,23 +63,16 @@ namespace message360.Controllers
         /// <summary>
         /// Available Phone Number
         /// </summary>
-        /// <param name="numberType">Required parameter: Number type either SMS,Voice or all</param>
-        /// <param name="areaCode">Required parameter: Phone Number Area Code</param>
-        /// <param name="pageSize">Optional parameter: Page Size</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateAvailablePhoneNumberInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateAvailablePhoneNumberAsync(
-                string numberType,
-                string areaCode,
-                int? pageSize = null,
-                string responseType = "json")
+        public async Task<string> CreateAvailablePhoneNumberAsync(CreateAvailablePhoneNumberInput input)
         {
             //validating required parameters
-            if (null == numberType)
-                throw new ArgumentNullException("numberType", "The parameter \"numberType\" is a required parameter and cannot be null.");
+            if (null == input.NumberType)
+                throw new ArgumentNullException("numberType", "The property \"NumberType\" in the input object cannot be null.");
 
-            if (null == areaCode)
-                throw new ArgumentNullException("areaCode", "The parameter \"areaCode\" is a required parameter and cannot be null.");
+            if (null == input.AreaCode)
+                throw new ArgumentNullException("areaCode", "The property \"AreaCode\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -98,7 +84,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -114,9 +100,9 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "NumberType", numberType },
-                { "AreaCode", areaCode },
-                { "PageSize", pageSize }
+                { "NumberType", input.NumberType },
+                { "AreaCode", input.AreaCode },
+                { "PageSize", input.PageSize }
             };
 
             //prepare the API call request to fetch the response
@@ -141,20 +127,11 @@ namespace message360.Controllers
         /// <summary>
         /// List Account's Phone number details
         /// </summary>
-        /// <param name="page">Optional parameter: Which page of the overall response will be returned. Zero indexed</param>
-        /// <param name="pageSize">Optional parameter: Number of individual resources listed in the response per page</param>
-        /// <param name="numberType">Optional parameter: Example: </param>
-        /// <param name="friendlyName">Optional parameter: Example: </param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateListNumberInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateListNumber(
-                int? page = null,
-                int? pageSize = null,
-                string numberType = null,
-                string friendlyName = null,
-                string responseType = "json")
+        public string CreateListNumber(CreateListNumberInput input)
         {
-            Task<string> t = CreateListNumberAsync(page, pageSize, numberType, friendlyName, responseType);
+            Task<string> t = CreateListNumberAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -162,18 +139,9 @@ namespace message360.Controllers
         /// <summary>
         /// List Account's Phone number details
         /// </summary>
-        /// <param name="page">Optional parameter: Which page of the overall response will be returned. Zero indexed</param>
-        /// <param name="pageSize">Optional parameter: Number of individual resources listed in the response per page</param>
-        /// <param name="numberType">Optional parameter: Example: </param>
-        /// <param name="friendlyName">Optional parameter: Example: </param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateListNumberInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateListNumberAsync(
-                int? page = null,
-                int? pageSize = null,
-                string numberType = null,
-                string friendlyName = null,
-                string responseType = "json")
+        public async Task<string> CreateListNumberAsync(CreateListNumberInput input)
         {
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -185,7 +153,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -201,156 +169,10 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "Page", page },
-                { "PageSize", pageSize },
-                { "NumberType", numberType },
-                { "FriendlyName", friendlyName }
-            };
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return _response.Body;
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
-
-        /// <summary>
-        /// Release number from account
-        /// </summary>
-        /// <param name="phoneNumber">Required parameter: Phone number to be relase</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
-        /// <return>Returns the string response from the API call</return>
-        public string CreateReleaseNumber(string phoneNumber, string responseType = "json")
-        {
-            Task<string> t = CreateReleaseNumberAsync(phoneNumber, responseType);
-            Task.WaitAll(t);
-            return t.Result;
-        }
-
-        /// <summary>
-        /// Release number from account
-        /// </summary>
-        /// <param name="phoneNumber">Required parameter: Phone number to be relase</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
-        /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateReleaseNumberAsync(string phoneNumber, string responseType = "json")
-        {
-            //validating required parameters
-            if (null == phoneNumber)
-                throw new ArgumentNullException("phoneNumber", "The parameter \"phoneNumber\" is a required parameter and cannot be null.");
-
-            //the base uri for api requestss
-            string _baseUri = Configuration.BaseUri;
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/incomingphone/releasenumber.{ResponseType}");
-
-            //process optional template parameters
-            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
-            {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
-            });
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "message360-api" }
-            };
-
-            //append form/field parameters
-            var _fields = new Dictionary<string,object>()
-            {
-                { "PhoneNumber", phoneNumber }
-            };
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return _response.Body;
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
-
-        /// <summary>
-        /// Buy Phone Number 
-        /// </summary>
-        /// <param name="phoneNumber">Required parameter: Phone number to be purchase</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
-        /// <return>Returns the string response from the API call</return>
-        public string CreateBuyNumber(string phoneNumber, string responseType = "json")
-        {
-            Task<string> t = CreateBuyNumberAsync(phoneNumber, responseType);
-            Task.WaitAll(t);
-            return t.Result;
-        }
-
-        /// <summary>
-        /// Buy Phone Number 
-        /// </summary>
-        /// <param name="phoneNumber">Required parameter: Phone number to be purchase</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
-        /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateBuyNumberAsync(string phoneNumber, string responseType = "json")
-        {
-            //validating required parameters
-            if (null == phoneNumber)
-                throw new ArgumentNullException("phoneNumber", "The parameter \"phoneNumber\" is a required parameter and cannot be null.");
-
-            //the base uri for api requestss
-            string _baseUri = Configuration.BaseUri;
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/incomingphone/buynumber.{ResponseType}");
-
-            //process optional template parameters
-            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
-            {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
-            });
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "message360-api" }
-            };
-
-            //append form/field parameters
-            var _fields = new Dictionary<string,object>()
-            {
-                { "PhoneNumber", phoneNumber }
+                { "Page", input.Page },
+                { "PageSize", input.PageSize },
+                { "NumberType", input.NumberType },
+                { "FriendlyName", input.FriendlyName }
             };
 
             //prepare the API call request to fetch the response
@@ -375,12 +197,11 @@ namespace message360.Controllers
         /// <summary>
         /// Get Phone Number Details
         /// </summary>
-        /// <param name="phoneNumber">Required parameter: Get Phone number Detail</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateViewNumberDetailsInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateViewNumberDetails(string phoneNumber, string responseType = "json")
+        public string CreateViewNumberDetails(CreateViewNumberDetailsInput input)
         {
-            Task<string> t = CreateViewNumberDetailsAsync(phoneNumber, responseType);
+            Task<string> t = CreateViewNumberDetailsAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -388,14 +209,13 @@ namespace message360.Controllers
         /// <summary>
         /// Get Phone Number Details
         /// </summary>
-        /// <param name="phoneNumber">Required parameter: Get Phone number Detail</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateViewNumberDetailsInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateViewNumberDetailsAsync(string phoneNumber, string responseType = "json")
+        public async Task<string> CreateViewNumberDetailsAsync(CreateViewNumberDetailsInput input)
         {
             //validating required parameters
-            if (null == phoneNumber)
-                throw new ArgumentNullException("phoneNumber", "The parameter \"phoneNumber\" is a required parameter and cannot be null.");
+            if (null == input.PhoneNumber)
+                throw new ArgumentNullException("phoneNumber", "The property \"PhoneNumber\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -407,7 +227,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -423,7 +243,149 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "PhoneNumber", phoneNumber }
+                { "PhoneNumber", input.PhoneNumber }
+            };
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpContext _context = new HttpContext(_request,_response);
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return _response.Body;
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// Release number from account
+        /// </summary>
+        /// <param name="CreateReleaseNumberInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public string CreateReleaseNumber(CreateReleaseNumberInput input)
+        {
+            Task<string> t = CreateReleaseNumberAsync(input);
+            Task.WaitAll(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// Release number from account
+        /// </summary>
+        /// <param name="CreateReleaseNumberInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public async Task<string> CreateReleaseNumberAsync(CreateReleaseNumberInput input)
+        {
+            //validating required parameters
+            if (null == input.PhoneNumber)
+                throw new ArgumentNullException("phoneNumber", "The property \"PhoneNumber\" in the input object cannot be null.");
+
+            //the base uri for api requestss
+            string _baseUri = Configuration.BaseUri;
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/incomingphone/releasenumber.{ResponseType}");
+
+            //process optional template parameters
+            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
+            {
+                { "ResponseType", input.ResponseType }
+            });
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "message360-api" }
+            };
+
+            //append form/field parameters
+            var _fields = new Dictionary<string,object>()
+            {
+                { "PhoneNumber", input.PhoneNumber }
+            };
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpContext _context = new HttpContext(_request,_response);
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return _response.Body;
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// Buy Phone Number 
+        /// </summary>
+        /// <param name="CreateBuyNumberInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public string CreateBuyNumber(CreateBuyNumberInput input)
+        {
+            Task<string> t = CreateBuyNumberAsync(input);
+            Task.WaitAll(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// Buy Phone Number 
+        /// </summary>
+        /// <param name="CreateBuyNumberInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public async Task<string> CreateBuyNumberAsync(CreateBuyNumberInput input)
+        {
+            //validating required parameters
+            if (null == input.PhoneNumber)
+                throw new ArgumentNullException("phoneNumber", "The property \"PhoneNumber\" in the input object cannot be null.");
+
+            //the base uri for api requestss
+            string _baseUri = Configuration.BaseUri;
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/incomingphone/buynumber.{ResponseType}");
+
+            //process optional template parameters
+            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
+            {
+                { "ResponseType", input.ResponseType }
+            });
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "message360-api" }
+            };
+
+            //append form/field parameters
+            var _fields = new Dictionary<string,object>()
+            {
+                { "PhoneNumber", input.PhoneNumber }
             };
 
             //prepare the API call request to fetch the response
@@ -448,40 +410,11 @@ namespace message360.Controllers
         /// <summary>
         /// Update Phone Number Details
         /// </summary>
-        /// <param name="phoneNumber">Required parameter: Example: </param>
-        /// <param name="friendlyName">Optional parameter: Example: </param>
-        /// <param name="voiceUrl">Optional parameter: URL requested once the call connects</param>
-        /// <param name="voiceMethod">Optional parameter: Example: </param>
-        /// <param name="voiceFallbackUrl">Optional parameter: URL requested if the voice URL is not available</param>
-        /// <param name="voiceFallbackMethod">Optional parameter: Example: </param>
-        /// <param name="hangupCallback">Optional parameter: Example: </param>
-        /// <param name="hangupCallbackMethod">Optional parameter: Example: </param>
-        /// <param name="heartbeatUrl">Optional parameter: URL requested once the call connects</param>
-        /// <param name="heartbeatMethod">Optional parameter: URL that can be requested every 60 seconds during the call to notify of elapsed time</param>
-        /// <param name="smsUrl">Optional parameter: URL requested when an SMS is received</param>
-        /// <param name="smsMethod">Optional parameter: Example: </param>
-        /// <param name="smsFallbackUrl">Optional parameter: URL requested once the call connects</param>
-        /// <param name="smsFallbackMethod">Optional parameter: URL requested if the sms URL is not available</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="UpdatePhoneNumberInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string UpdatePhoneNumber(
-                string phoneNumber,
-                string friendlyName = null,
-                string voiceUrl = null,
-                HttpAction? voiceMethod = null,
-                string voiceFallbackUrl = null,
-                HttpAction? voiceFallbackMethod = null,
-                string hangupCallback = null,
-                HttpAction? hangupCallbackMethod = null,
-                string heartbeatUrl = null,
-                HttpAction? heartbeatMethod = null,
-                string smsUrl = null,
-                HttpAction? smsMethod = null,
-                string smsFallbackUrl = null,
-                HttpAction? smsFallbackMethod = null,
-                string responseType = "json")
+        public string UpdatePhoneNumber(UpdatePhoneNumberInput input)
         {
-            Task<string> t = UpdatePhoneNumberAsync(phoneNumber, friendlyName, voiceUrl, voiceMethod, voiceFallbackUrl, voiceFallbackMethod, hangupCallback, hangupCallbackMethod, heartbeatUrl, heartbeatMethod, smsUrl, smsMethod, smsFallbackUrl, smsFallbackMethod, responseType);
+            Task<string> t = UpdatePhoneNumberAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -489,42 +422,13 @@ namespace message360.Controllers
         /// <summary>
         /// Update Phone Number Details
         /// </summary>
-        /// <param name="phoneNumber">Required parameter: Example: </param>
-        /// <param name="friendlyName">Optional parameter: Example: </param>
-        /// <param name="voiceUrl">Optional parameter: URL requested once the call connects</param>
-        /// <param name="voiceMethod">Optional parameter: Example: </param>
-        /// <param name="voiceFallbackUrl">Optional parameter: URL requested if the voice URL is not available</param>
-        /// <param name="voiceFallbackMethod">Optional parameter: Example: </param>
-        /// <param name="hangupCallback">Optional parameter: Example: </param>
-        /// <param name="hangupCallbackMethod">Optional parameter: Example: </param>
-        /// <param name="heartbeatUrl">Optional parameter: URL requested once the call connects</param>
-        /// <param name="heartbeatMethod">Optional parameter: URL that can be requested every 60 seconds during the call to notify of elapsed time</param>
-        /// <param name="smsUrl">Optional parameter: URL requested when an SMS is received</param>
-        /// <param name="smsMethod">Optional parameter: Example: </param>
-        /// <param name="smsFallbackUrl">Optional parameter: URL requested once the call connects</param>
-        /// <param name="smsFallbackMethod">Optional parameter: URL requested if the sms URL is not available</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="UpdatePhoneNumberInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> UpdatePhoneNumberAsync(
-                string phoneNumber,
-                string friendlyName = null,
-                string voiceUrl = null,
-                HttpAction? voiceMethod = null,
-                string voiceFallbackUrl = null,
-                HttpAction? voiceFallbackMethod = null,
-                string hangupCallback = null,
-                HttpAction? hangupCallbackMethod = null,
-                string heartbeatUrl = null,
-                HttpAction? heartbeatMethod = null,
-                string smsUrl = null,
-                HttpAction? smsMethod = null,
-                string smsFallbackUrl = null,
-                HttpAction? smsFallbackMethod = null,
-                string responseType = "json")
+        public async Task<string> UpdatePhoneNumberAsync(UpdatePhoneNumberInput input)
         {
             //validating required parameters
-            if (null == phoneNumber)
-                throw new ArgumentNullException("phoneNumber", "The parameter \"phoneNumber\" is a required parameter and cannot be null.");
+            if (null == input.PhoneNumber)
+                throw new ArgumentNullException("phoneNumber", "The property \"PhoneNumber\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -536,7 +440,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -552,20 +456,20 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "PhoneNumber", phoneNumber },
-                { "FriendlyName", friendlyName },
-                { "VoiceUrl", voiceUrl },
-                { "VoiceMethod", (voiceMethod.HasValue) ? HttpActionHelper.ToValue(voiceMethod.Value) : null },
-                { "VoiceFallbackUrl", voiceFallbackUrl },
-                { "VoiceFallbackMethod", (voiceFallbackMethod.HasValue) ? HttpActionHelper.ToValue(voiceFallbackMethod.Value) : null },
-                { "HangupCallback", hangupCallback },
-                { "HangupCallbackMethod", (hangupCallbackMethod.HasValue) ? HttpActionHelper.ToValue(hangupCallbackMethod.Value) : null },
-                { "HeartbeatUrl", heartbeatUrl },
-                { "HeartbeatMethod", (heartbeatMethod.HasValue) ? HttpActionHelper.ToValue(heartbeatMethod.Value) : null },
-                { "SmsUrl", smsUrl },
-                { "SmsMethod", (smsMethod.HasValue) ? HttpActionHelper.ToValue(smsMethod.Value) : null },
-                { "SmsFallbackUrl", smsFallbackUrl },
-                { "SmsFallbackMethod", (smsFallbackMethod.HasValue) ? HttpActionHelper.ToValue(smsFallbackMethod.Value) : null }
+                { "PhoneNumber", input.PhoneNumber },
+                { "FriendlyName", input.FriendlyName },
+                { "VoiceUrl", input.VoiceUrl },
+                { "VoiceMethod", (input.VoiceMethod.HasValue) ? HttpActionHelper.ToValue(input.VoiceMethod.Value) : null },
+                { "VoiceFallbackUrl", input.VoiceFallbackUrl },
+                { "VoiceFallbackMethod", (input.VoiceFallbackMethod.HasValue) ? HttpActionHelper.ToValue(input.VoiceFallbackMethod.Value) : null },
+                { "HangupCallback", input.HangupCallback },
+                { "HangupCallbackMethod", (input.HangupCallbackMethod.HasValue) ? HttpActionHelper.ToValue(input.HangupCallbackMethod.Value) : null },
+                { "HeartbeatUrl", input.HeartbeatUrl },
+                { "HeartbeatMethod", (input.HeartbeatMethod.HasValue) ? HttpActionHelper.ToValue(input.HeartbeatMethod.Value) : null },
+                { "SmsUrl", input.SmsUrl },
+                { "SmsMethod", (input.SmsMethod.HasValue) ? HttpActionHelper.ToValue(input.SmsMethod.Value) : null },
+                { "SmsFallbackUrl", input.SmsFallbackUrl },
+                { "SmsFallbackMethod", (input.SmsFallbackMethod.HasValue) ? HttpActionHelper.ToValue(input.SmsFallbackMethod.Value) : null }
             };
 
             //prepare the API call request to fetch the response

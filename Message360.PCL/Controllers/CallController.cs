@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/04/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
  */
 using System;
 using System.Collections.Generic;
@@ -51,12 +51,11 @@ namespace message360.Controllers
         /// <summary>
         /// View Call Response
         /// </summary>
-        /// <param name="callsid">Required parameter: Call Sid id for particular Call</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateViewCallInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateViewCall(string callsid, string responseType = "json")
+        public string CreateViewCall(CreateViewCallInput input)
         {
-            Task<string> t = CreateViewCallAsync(callsid, responseType);
+            Task<string> t = CreateViewCallAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -64,14 +63,13 @@ namespace message360.Controllers
         /// <summary>
         /// View Call Response
         /// </summary>
-        /// <param name="callsid">Required parameter: Call Sid id for particular Call</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateViewCallInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateViewCallAsync(string callsid, string responseType = "json")
+        public async Task<string> CreateViewCallAsync(CreateViewCallInput input)
         {
             //validating required parameters
-            if (null == callsid)
-                throw new ArgumentNullException("callsid", "The parameter \"callsid\" is a required parameter and cannot be null.");
+            if (null == input.Callsid)
+                throw new ArgumentNullException("callsid", "The property \"Callsid\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -83,7 +81,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -99,7 +97,7 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "callsid", callsid }
+                { "callsid", input.Callsid }
             };
 
             //prepare the API call request to fetch the response
@@ -124,54 +122,11 @@ namespace message360.Controllers
         /// <summary>
         /// You can experiment with initiating a call through Message360 and view the request response generated when doing so and get the response in json
         /// </summary>
-        /// <param name="fromCountryCode">Required parameter: from country code</param>
-        /// <param name="mfrom">Required parameter: This number to display on Caller ID as calling</param>
-        /// <param name="toCountryCode">Required parameter: To cuntry code number</param>
-        /// <param name="to">Required parameter: To number</param>
-        /// <param name="url">Required parameter: URL requested once the call connects</param>
-        /// <param name="method">Optional parameter: Specifies the HTTP method used to request the required URL once call connects.</param>
-        /// <param name="statusCallBackUrl">Optional parameter: specifies the HTTP methodlinkclass used to request StatusCallbackUrl.</param>
-        /// <param name="statusCallBackMethod">Optional parameter: Specifies the HTTP methodlinkclass used to request StatusCallbackUrl.</param>
-        /// <param name="fallBackUrl">Optional parameter: URL requested if the initial Url parameter fails or encounters an error</param>
-        /// <param name="fallBackMethod">Optional parameter: Specifies the HTTP method used to request the required FallbackUrl once call connects.</param>
-        /// <param name="heartBeatUrl">Optional parameter: URL that can be requested every 60 seconds during the call to notify of elapsed tim</param>
-        /// <param name="heartBeatMethod">Optional parameter: Specifies the HTTP method used to request HeartbeatUrl.</param>
-        /// <param name="timeout">Optional parameter: Time (in seconds) Message360 should wait while the call is ringing before canceling the call</param>
-        /// <param name="playDtmf">Optional parameter: DTMF Digits to play to the call once it connects. 0-9, #, or *</param>
-        /// <param name="hideCallerId">Optional parameter: Specifies if the caller id will be hidden</param>
-        /// <param name="record">Optional parameter: Specifies if the call should be recorded</param>
-        /// <param name="recordCallBackUrl">Optional parameter: Recording parameters will be sent here upon completion</param>
-        /// <param name="recordCallBackMethod">Optional parameter: Method used to request the RecordCallback URL.</param>
-        /// <param name="transcribe">Optional parameter: Specifies if the call recording should be transcribed</param>
-        /// <param name="transcribeCallBackUrl">Optional parameter: Transcription parameters will be sent here upon completion</param>
-        /// <param name="ifMachine">Optional parameter: How Message360 should handle the receiving numbers voicemail machine</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateMakeCallInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateMakeCall(
-                string fromCountryCode,
-                string mfrom,
-                string toCountryCode,
-                string to,
-                string url,
-                HttpAction? method = null,
-                string statusCallBackUrl = null,
-                HttpAction? statusCallBackMethod = null,
-                string fallBackUrl = null,
-                HttpAction? fallBackMethod = null,
-                string heartBeatUrl = null,
-                bool? heartBeatMethod = null,
-                int? timeout = null,
-                string playDtmf = null,
-                bool? hideCallerId = null,
-                bool? record = null,
-                string recordCallBackUrl = null,
-                HttpAction? recordCallBackMethod = null,
-                bool? transcribe = null,
-                string transcribeCallBackUrl = null,
-                IfMachine? ifMachine = null,
-                string responseType = "json")
+        public string CreateMakeCall(CreateMakeCallInput input)
         {
-            Task<string> t = CreateMakeCallAsync(fromCountryCode, mfrom, toCountryCode, to, url, method, statusCallBackUrl, statusCallBackMethod, fallBackUrl, fallBackMethod, heartBeatUrl, heartBeatMethod, timeout, playDtmf, hideCallerId, record, recordCallBackUrl, recordCallBackMethod, transcribe, transcribeCallBackUrl, ifMachine, responseType);
+            Task<string> t = CreateMakeCallAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -179,68 +134,25 @@ namespace message360.Controllers
         /// <summary>
         /// You can experiment with initiating a call through Message360 and view the request response generated when doing so and get the response in json
         /// </summary>
-        /// <param name="fromCountryCode">Required parameter: from country code</param>
-        /// <param name="mfrom">Required parameter: This number to display on Caller ID as calling</param>
-        /// <param name="toCountryCode">Required parameter: To cuntry code number</param>
-        /// <param name="to">Required parameter: To number</param>
-        /// <param name="url">Required parameter: URL requested once the call connects</param>
-        /// <param name="method">Optional parameter: Specifies the HTTP method used to request the required URL once call connects.</param>
-        /// <param name="statusCallBackUrl">Optional parameter: specifies the HTTP methodlinkclass used to request StatusCallbackUrl.</param>
-        /// <param name="statusCallBackMethod">Optional parameter: Specifies the HTTP methodlinkclass used to request StatusCallbackUrl.</param>
-        /// <param name="fallBackUrl">Optional parameter: URL requested if the initial Url parameter fails or encounters an error</param>
-        /// <param name="fallBackMethod">Optional parameter: Specifies the HTTP method used to request the required FallbackUrl once call connects.</param>
-        /// <param name="heartBeatUrl">Optional parameter: URL that can be requested every 60 seconds during the call to notify of elapsed tim</param>
-        /// <param name="heartBeatMethod">Optional parameter: Specifies the HTTP method used to request HeartbeatUrl.</param>
-        /// <param name="timeout">Optional parameter: Time (in seconds) Message360 should wait while the call is ringing before canceling the call</param>
-        /// <param name="playDtmf">Optional parameter: DTMF Digits to play to the call once it connects. 0-9, #, or *</param>
-        /// <param name="hideCallerId">Optional parameter: Specifies if the caller id will be hidden</param>
-        /// <param name="record">Optional parameter: Specifies if the call should be recorded</param>
-        /// <param name="recordCallBackUrl">Optional parameter: Recording parameters will be sent here upon completion</param>
-        /// <param name="recordCallBackMethod">Optional parameter: Method used to request the RecordCallback URL.</param>
-        /// <param name="transcribe">Optional parameter: Specifies if the call recording should be transcribed</param>
-        /// <param name="transcribeCallBackUrl">Optional parameter: Transcription parameters will be sent here upon completion</param>
-        /// <param name="ifMachine">Optional parameter: How Message360 should handle the receiving numbers voicemail machine</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateMakeCallInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateMakeCallAsync(
-                string fromCountryCode,
-                string mfrom,
-                string toCountryCode,
-                string to,
-                string url,
-                HttpAction? method = null,
-                string statusCallBackUrl = null,
-                HttpAction? statusCallBackMethod = null,
-                string fallBackUrl = null,
-                HttpAction? fallBackMethod = null,
-                string heartBeatUrl = null,
-                bool? heartBeatMethod = null,
-                int? timeout = null,
-                string playDtmf = null,
-                bool? hideCallerId = null,
-                bool? record = null,
-                string recordCallBackUrl = null,
-                HttpAction? recordCallBackMethod = null,
-                bool? transcribe = null,
-                string transcribeCallBackUrl = null,
-                IfMachine? ifMachine = null,
-                string responseType = "json")
+        public async Task<string> CreateMakeCallAsync(CreateMakeCallInput input)
         {
             //validating required parameters
-            if (null == fromCountryCode)
-                throw new ArgumentNullException("fromCountryCode", "The parameter \"fromCountryCode\" is a required parameter and cannot be null.");
+            if (null == input.FromCountryCode)
+                throw new ArgumentNullException("fromCountryCode", "The property \"FromCountryCode\" in the input object cannot be null.");
 
-            if (null == mfrom)
-                throw new ArgumentNullException("mfrom", "The parameter \"mfrom\" is a required parameter and cannot be null.");
+            if (null == input.From)
+                throw new ArgumentNullException("mfrom", "The property \"From\" in the input object cannot be null.");
 
-            if (null == toCountryCode)
-                throw new ArgumentNullException("toCountryCode", "The parameter \"toCountryCode\" is a required parameter and cannot be null.");
+            if (null == input.ToCountryCode)
+                throw new ArgumentNullException("toCountryCode", "The property \"ToCountryCode\" in the input object cannot be null.");
 
-            if (null == to)
-                throw new ArgumentNullException("to", "The parameter \"to\" is a required parameter and cannot be null.");
+            if (null == input.To)
+                throw new ArgumentNullException("to", "The property \"To\" in the input object cannot be null.");
 
-            if (null == url)
-                throw new ArgumentNullException("url", "The parameter \"url\" is a required parameter and cannot be null.");
+            if (null == input.Url)
+                throw new ArgumentNullException("url", "The property \"Url\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -252,13 +164,13 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
             //process optional query parameters
             APIHelper.AppendUrlWithQueryParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "Method", (method.HasValue) ? HttpActionHelper.ToValue(method.Value) : null }
+                { "Method", (input.Method.HasValue) ? HttpActionHelper.ToValue(input.Method.Value) : null }
             });
 
 
@@ -274,26 +186,26 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "FromCountryCode", fromCountryCode },
-                { "From", mfrom },
-                { "ToCountryCode", toCountryCode },
-                { "To", to },
-                { "Url", url },
-                { "StatusCallBackUrl", statusCallBackUrl },
-                { "StatusCallBackMethod", (statusCallBackMethod.HasValue) ? HttpActionHelper.ToValue(statusCallBackMethod.Value) : null },
-                { "FallBackUrl", fallBackUrl },
-                { "FallBackMethod", (fallBackMethod.HasValue) ? HttpActionHelper.ToValue(fallBackMethod.Value) : null },
-                { "HeartBeatUrl", heartBeatUrl },
-                { "HeartBeatMethod", heartBeatMethod },
-                { "Timeout", timeout },
-                { "PlayDtmf", playDtmf },
-                { "HideCallerId", hideCallerId },
-                { "Record", record },
-                { "RecordCallBackUrl", recordCallBackUrl },
-                { "RecordCallBackMethod", (recordCallBackMethod.HasValue) ? HttpActionHelper.ToValue(recordCallBackMethod.Value) : null },
-                { "Transcribe", transcribe },
-                { "TranscribeCallBackUrl", transcribeCallBackUrl },
-                { "IfMachine", (ifMachine.HasValue) ? IfMachineHelper.ToValue(ifMachine.Value) : null }
+                { "FromCountryCode", input.FromCountryCode },
+                { "From", input.From },
+                { "ToCountryCode", input.ToCountryCode },
+                { "To", input.To },
+                { "Url", input.Url },
+                { "StatusCallBackUrl", input.StatusCallBackUrl },
+                { "StatusCallBackMethod", (input.StatusCallBackMethod.HasValue) ? HttpActionHelper.ToValue(input.StatusCallBackMethod.Value) : null },
+                { "FallBackUrl", input.FallBackUrl },
+                { "FallBackMethod", (input.FallBackMethod.HasValue) ? HttpActionHelper.ToValue(input.FallBackMethod.Value) : null },
+                { "HeartBeatUrl", input.HeartBeatUrl },
+                { "HeartBeatMethod", input.HeartBeatMethod },
+                { "Timeout", input.Timeout },
+                { "PlayDtmf", input.PlayDtmf },
+                { "HideCallerId", input.HideCallerId },
+                { "Record", input.Record },
+                { "RecordCallBackUrl", input.RecordCallBackUrl },
+                { "RecordCallBackMethod", (input.RecordCallBackMethod.HasValue) ? HttpActionHelper.ToValue(input.RecordCallBackMethod.Value) : null },
+                { "Transcribe", input.Transcribe },
+                { "TranscribeCallBackUrl", input.TranscribeCallBackUrl },
+                { "IfMachine", (input.IfMachine.HasValue) ? IfMachineHelper.ToValue(input.IfMachine.Value) : null }
             };
 
             //prepare the API call request to fetch the response
@@ -318,24 +230,11 @@ namespace message360.Controllers
         /// <summary>
         /// Play Dtmf and send the Digit
         /// </summary>
-        /// <param name="length">Required parameter: Time limit in seconds for audio play back</param>
-        /// <param name="direction">Required parameter: The leg of the call audio will be played to</param>
-        /// <param name="loop">Required parameter: Repeat audio playback indefinitely</param>
-        /// <param name="mix">Required parameter: If false, all other audio will be muted</param>
-        /// <param name="callSid">Optional parameter: The unique identifier of each call resource</param>
-        /// <param name="audioUrl">Optional parameter: URL to sound that should be played. You also can add more than one audio file using semicolons e.g. http://example.com/audio1.mp3;http://example.com/audio2.wav</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreatePlayAudioInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreatePlayAudio(
-                int length,
-                Direction direction,
-                bool loop,
-                bool mix,
-                string callSid = null,
-                string audioUrl = null,
-                string responseType = "json")
+        public string CreatePlayAudio(CreatePlayAudioInput input)
         {
-            Task<string> t = CreatePlayAudioAsync(length, direction, loop, mix, callSid, audioUrl, responseType);
+            Task<string> t = CreatePlayAudioAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -343,22 +242,9 @@ namespace message360.Controllers
         /// <summary>
         /// Play Dtmf and send the Digit
         /// </summary>
-        /// <param name="length">Required parameter: Time limit in seconds for audio play back</param>
-        /// <param name="direction">Required parameter: The leg of the call audio will be played to</param>
-        /// <param name="loop">Required parameter: Repeat audio playback indefinitely</param>
-        /// <param name="mix">Required parameter: If false, all other audio will be muted</param>
-        /// <param name="callSid">Optional parameter: The unique identifier of each call resource</param>
-        /// <param name="audioUrl">Optional parameter: URL to sound that should be played. You also can add more than one audio file using semicolons e.g. http://example.com/audio1.mp3;http://example.com/audio2.wav</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreatePlayAudioInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreatePlayAudioAsync(
-                int length,
-                Direction direction,
-                bool loop,
-                bool mix,
-                string callSid = null,
-                string audioUrl = null,
-                string responseType = "json")
+        public async Task<string> CreatePlayAudioAsync(CreatePlayAudioInput input)
         {
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -370,7 +256,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -386,12 +272,12 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "Length", length },
-                { "Direction", DirectionHelper.ToValue(direction) },
-                { "Loop", loop },
-                { "Mix", mix },
-                { "CallSid", callSid },
-                { "AudioUrl", audioUrl }
+                { "Length", input.Length },
+                { "Direction", DirectionHelper.ToValue(input.Direction) },
+                { "Loop", input.Loop },
+                { "Mix", input.Mix },
+                { "CallSid", input.CallSid },
+                { "AudioUrl", input.AudioUrl }
             };
 
             //prepare the API call request to fetch the response
@@ -416,24 +302,11 @@ namespace message360.Controllers
         /// <summary>
         /// Record a Call
         /// </summary>
-        /// <param name="callSid">Required parameter: The unique identifier of each call resource</param>
-        /// <param name="record">Required parameter: Set true to initiate recording or false to terminate recording</param>
-        /// <param name="direction">Optional parameter: The leg of the call to record</param>
-        /// <param name="timeLimit">Optional parameter: Time in seconds the recording duration should not exceed</param>
-        /// <param name="callBackUrl">Optional parameter: URL consulted after the recording completes</param>
-        /// <param name="fileformat">Optional parameter: Format of the recording file. Can be .mp3 or .wav</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateRecordCallInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateRecordCall(
-                string callSid,
-                bool record,
-                Direction? direction = null,
-                int? timeLimit = null,
-                string callBackUrl = null,
-                AudioFormat? fileformat = null,
-                string responseType = "json")
+        public string CreateRecordCall(CreateRecordCallInput input)
         {
-            Task<string> t = CreateRecordCallAsync(callSid, record, direction, timeLimit, callBackUrl, fileformat, responseType);
+            Task<string> t = CreateRecordCallAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -441,26 +314,13 @@ namespace message360.Controllers
         /// <summary>
         /// Record a Call
         /// </summary>
-        /// <param name="callSid">Required parameter: The unique identifier of each call resource</param>
-        /// <param name="record">Required parameter: Set true to initiate recording or false to terminate recording</param>
-        /// <param name="direction">Optional parameter: The leg of the call to record</param>
-        /// <param name="timeLimit">Optional parameter: Time in seconds the recording duration should not exceed</param>
-        /// <param name="callBackUrl">Optional parameter: URL consulted after the recording completes</param>
-        /// <param name="fileformat">Optional parameter: Format of the recording file. Can be .mp3 or .wav</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateRecordCallInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateRecordCallAsync(
-                string callSid,
-                bool record,
-                Direction? direction = null,
-                int? timeLimit = null,
-                string callBackUrl = null,
-                AudioFormat? fileformat = null,
-                string responseType = "json")
+        public async Task<string> CreateRecordCallAsync(CreateRecordCallInput input)
         {
             //validating required parameters
-            if (null == callSid)
-                throw new ArgumentNullException("callSid", "The parameter \"callSid\" is a required parameter and cannot be null.");
+            if (null == input.CallSid)
+                throw new ArgumentNullException("callSid", "The property \"CallSid\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -472,7 +332,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -488,12 +348,12 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "CallSid", callSid },
-                { "Record", record },
-                { "Direction", (direction.HasValue) ? DirectionHelper.ToValue(direction.Value) : null },
-                { "TimeLimit", timeLimit },
-                { "CallBackUrl", callBackUrl },
-                { "Fileformat", (fileformat.HasValue) ? AudioFormatHelper.ToValue(fileformat.Value) : null }
+                { "CallSid", input.CallSid },
+                { "Record", input.Record },
+                { "Direction", (input.Direction.HasValue) ? DirectionHelper.ToValue(input.Direction.Value) : null },
+                { "TimeLimit", input.TimeLimit },
+                { "CallBackUrl", input.CallBackUrl },
+                { "Fileformat", (input.Fileformat.HasValue) ? AudioFormatHelper.ToValue(input.Fileformat.Value) : null }
             };
 
             //prepare the API call request to fetch the response
@@ -518,26 +378,11 @@ namespace message360.Controllers
         /// <summary>
         /// Voice Effect
         /// </summary>
-        /// <param name="callSid">Required parameter: Example: </param>
-        /// <param name="audioDirection">Optional parameter: Example: </param>
-        /// <param name="pitchSemiTones">Optional parameter: value between -14 and 14</param>
-        /// <param name="pitchOctaves">Optional parameter: value between -1 and 1</param>
-        /// <param name="pitch">Optional parameter: value greater than 0</param>
-        /// <param name="rate">Optional parameter: value greater than 0</param>
-        /// <param name="tempo">Optional parameter: value greater than 0</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateVoiceEffectInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateVoiceEffect(
-                string callSid,
-                AudioDirection? audioDirection = null,
-                double? pitchSemiTones = null,
-                double? pitchOctaves = null,
-                double? pitch = null,
-                double? rate = null,
-                double? tempo = null,
-                string responseType = "json")
+        public string CreateVoiceEffect(CreateVoiceEffectInput input)
         {
-            Task<string> t = CreateVoiceEffectAsync(callSid, audioDirection, pitchSemiTones, pitchOctaves, pitch, rate, tempo, responseType);
+            Task<string> t = CreateVoiceEffectAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -545,28 +390,13 @@ namespace message360.Controllers
         /// <summary>
         /// Voice Effect
         /// </summary>
-        /// <param name="callSid">Required parameter: Example: </param>
-        /// <param name="audioDirection">Optional parameter: Example: </param>
-        /// <param name="pitchSemiTones">Optional parameter: value between -14 and 14</param>
-        /// <param name="pitchOctaves">Optional parameter: value between -1 and 1</param>
-        /// <param name="pitch">Optional parameter: value greater than 0</param>
-        /// <param name="rate">Optional parameter: value greater than 0</param>
-        /// <param name="tempo">Optional parameter: value greater than 0</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateVoiceEffectInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateVoiceEffectAsync(
-                string callSid,
-                AudioDirection? audioDirection = null,
-                double? pitchSemiTones = null,
-                double? pitchOctaves = null,
-                double? pitch = null,
-                double? rate = null,
-                double? tempo = null,
-                string responseType = "json")
+        public async Task<string> CreateVoiceEffectAsync(CreateVoiceEffectInput input)
         {
             //validating required parameters
-            if (null == callSid)
-                throw new ArgumentNullException("callSid", "The parameter \"callSid\" is a required parameter and cannot be null.");
+            if (null == input.CallSid)
+                throw new ArgumentNullException("callSid", "The property \"CallSid\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -578,7 +408,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -594,13 +424,13 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "CallSid", callSid },
-                { "AudioDirection", (audioDirection.HasValue) ? AudioDirectionHelper.ToValue(audioDirection.Value) : null },
-                { "PitchSemiTones", pitchSemiTones },
-                { "PitchOctaves", pitchOctaves },
-                { "Pitch", pitch },
-                { "Rate", rate },
-                { "Tempo", tempo }
+                { "CallSid", input.CallSid },
+                { "AudioDirection", (input.AudioDirection.HasValue) ? AudioDirectionHelper.ToValue(input.AudioDirection.Value) : null },
+                { "PitchSemiTones", input.PitchSemiTones },
+                { "PitchOctaves", input.PitchOctaves },
+                { "Pitch", input.Pitch },
+                { "Rate", input.Rate },
+                { "Tempo", input.Tempo }
             };
 
             //prepare the API call request to fetch the response
@@ -625,18 +455,11 @@ namespace message360.Controllers
         /// <summary>
         /// Play Dtmf and send the Digit
         /// </summary>
-        /// <param name="callSid">Required parameter: The unique identifier of each call resource</param>
-        /// <param name="playDtmf">Required parameter: DTMF digits to play to the call. 0-9, #, *, W, or w</param>
-        /// <param name="playDtmfDirection">Optional parameter: The leg of the call DTMF digits should be sent to</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateSendDigitInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateSendDigit(
-                string callSid,
-                string playDtmf,
-                Direction? playDtmfDirection = null,
-                string responseType = "json")
+        public string CreateSendDigit(CreateSendDigitInput input)
         {
-            Task<string> t = CreateSendDigitAsync(callSid, playDtmf, playDtmfDirection, responseType);
+            Task<string> t = CreateSendDigitAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -644,23 +467,16 @@ namespace message360.Controllers
         /// <summary>
         /// Play Dtmf and send the Digit
         /// </summary>
-        /// <param name="callSid">Required parameter: The unique identifier of each call resource</param>
-        /// <param name="playDtmf">Required parameter: DTMF digits to play to the call. 0-9, #, *, W, or w</param>
-        /// <param name="playDtmfDirection">Optional parameter: The leg of the call DTMF digits should be sent to</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateSendDigitInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateSendDigitAsync(
-                string callSid,
-                string playDtmf,
-                Direction? playDtmfDirection = null,
-                string responseType = "json")
+        public async Task<string> CreateSendDigitAsync(CreateSendDigitInput input)
         {
             //validating required parameters
-            if (null == callSid)
-                throw new ArgumentNullException("callSid", "The parameter \"callSid\" is a required parameter and cannot be null.");
+            if (null == input.CallSid)
+                throw new ArgumentNullException("callSid", "The property \"CallSid\" in the input object cannot be null.");
 
-            if (null == playDtmf)
-                throw new ArgumentNullException("playDtmf", "The parameter \"playDtmf\" is a required parameter and cannot be null.");
+            if (null == input.PlayDtmf)
+                throw new ArgumentNullException("playDtmf", "The property \"PlayDtmf\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -672,7 +488,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -688,9 +504,9 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "CallSid", callSid },
-                { "PlayDtmf", playDtmf },
-                { "PlayDtmfDirection", (playDtmfDirection.HasValue) ? DirectionHelper.ToValue(playDtmfDirection.Value) : null }
+                { "CallSid", input.CallSid },
+                { "PlayDtmf", input.PlayDtmf },
+                { "PlayDtmfDirection", (input.PlayDtmfDirection.HasValue) ? DirectionHelper.ToValue(input.PlayDtmfDirection.Value) : null }
             };
 
             //prepare the API call request to fetch the response
@@ -715,20 +531,11 @@ namespace message360.Controllers
         /// <summary>
         /// Interrupt the Call by Call Sid
         /// </summary>
-        /// <param name="callSid">Required parameter: Call SId</param>
-        /// <param name="url">Optional parameter: URL the in-progress call will be redirected to</param>
-        /// <param name="method">Optional parameter: The method used to request the above Url parameter</param>
-        /// <param name="status">Optional parameter: Status to set the in-progress call to</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateInterruptedCallInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateInterruptedCall(
-                string callSid,
-                string url = null,
-                HttpAction? method = null,
-                InterruptedCallStatus? status = null,
-                string responseType = "json")
+        public string CreateInterruptedCall(CreateInterruptedCallInput input)
         {
-            Task<string> t = CreateInterruptedCallAsync(callSid, url, method, status, responseType);
+            Task<string> t = CreateInterruptedCallAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -736,22 +543,13 @@ namespace message360.Controllers
         /// <summary>
         /// Interrupt the Call by Call Sid
         /// </summary>
-        /// <param name="callSid">Required parameter: Call SId</param>
-        /// <param name="url">Optional parameter: URL the in-progress call will be redirected to</param>
-        /// <param name="method">Optional parameter: The method used to request the above Url parameter</param>
-        /// <param name="status">Optional parameter: Status to set the in-progress call to</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateInterruptedCallInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateInterruptedCallAsync(
-                string callSid,
-                string url = null,
-                HttpAction? method = null,
-                InterruptedCallStatus? status = null,
-                string responseType = "json")
+        public async Task<string> CreateInterruptedCallAsync(CreateInterruptedCallInput input)
         {
             //validating required parameters
-            if (null == callSid)
-                throw new ArgumentNullException("callSid", "The parameter \"callSid\" is a required parameter and cannot be null.");
+            if (null == input.CallSid)
+                throw new ArgumentNullException("callSid", "The property \"CallSid\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -763,7 +561,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -779,10 +577,10 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "CallSid", callSid },
-                { "Url", url },
-                { "Method", (method.HasValue) ? HttpActionHelper.ToValue(method.Value) : null },
-                { "Status", (status.HasValue) ? InterruptedCallStatusHelper.ToValue(status.Value) : null }
+                { "CallSid", input.CallSid },
+                { "Url", input.Url },
+                { "Method", (input.Method.HasValue) ? HttpActionHelper.ToValue(input.Method.Value) : null },
+                { "Status", (input.Status.HasValue) ? InterruptedCallStatusHelper.ToValue(input.Status.Value) : null }
             };
 
             //prepare the API call request to fetch the response
@@ -807,42 +605,20 @@ namespace message360.Controllers
         /// <summary>
         /// A list of calls associated with your Message360 account
         /// </summary>
-        /// <param name="page">Optional parameter: Which page of the overall response will be returned. Zero indexed</param>
-        /// <param name="pageSize">Optional parameter: Number of individual resources listed in the response per page</param>
-        /// <param name="to">Optional parameter: Only list calls to this number</param>
-        /// <param name="mfrom">Optional parameter: Only list calls from this number</param>
-        /// <param name="dateCreated">Optional parameter: Only list calls starting within the specified date range</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateListCallsInput">Object containing request parameters</param>
         /// <return>Returns the void response from the API call</return>
-        public void CreateListCalls(
-                string page = null,
-                string pageSize = null,
-                string to = null,
-                string mfrom = null,
-                string dateCreated = null,
-                string responseType = "json")
+        public void CreateListCalls(CreateListCallsInput input)
         {
-            Task t = CreateListCallsAsync(page, pageSize, to, mfrom, dateCreated, responseType);
+            Task t = CreateListCallsAsync(input);
             Task.WaitAll(t);
         }
 
         /// <summary>
         /// A list of calls associated with your Message360 account
         /// </summary>
-        /// <param name="page">Optional parameter: Which page of the overall response will be returned. Zero indexed</param>
-        /// <param name="pageSize">Optional parameter: Number of individual resources listed in the response per page</param>
-        /// <param name="to">Optional parameter: Only list calls to this number</param>
-        /// <param name="mfrom">Optional parameter: Only list calls from this number</param>
-        /// <param name="dateCreated">Optional parameter: Only list calls starting within the specified date range</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateListCallsInput">Object containing request parameters</param>
         /// <return>Returns the void response from the API call</return>
-        public async Task CreateListCallsAsync(
-                string page = null,
-                string pageSize = null,
-                string to = null,
-                string mfrom = null,
-                string dateCreated = null,
-                string responseType = "json")
+        public async Task CreateListCallsAsync(CreateListCallsInput input)
         {
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -854,7 +630,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -870,11 +646,11 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "Page", page },
-                { "PageSize", pageSize },
-                { "To", to },
-                { "From", mfrom },
-                { "DateCreated", dateCreated }
+                { "Page", input.Page },
+                { "PageSize", input.PageSize },
+                { "To", input.To },
+                { "From", input.From },
+                { "DateCreated", input.DateCreated }
             };
 
             //prepare the API call request to fetch the response
