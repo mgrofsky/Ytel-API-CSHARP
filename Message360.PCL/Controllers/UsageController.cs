@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/04/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
  */
 using System;
 using System.Collections.Generic;
@@ -51,18 +51,11 @@ namespace message360.Controllers
         /// <summary>
         /// Get all usage 
         /// </summary>
-        /// <param name="productCode">Required parameter: Product Code</param>
-        /// <param name="startDate">Required parameter: Start Usage Date</param>
-        /// <param name="endDate">Required parameter: End Usage Date</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateListUsageInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateListUsage(
-                string productCode,
-                string startDate,
-                string endDate,
-                string responseType = "json")
+        public string CreateListUsage(CreateListUsageInput input)
         {
-            Task<string> t = CreateListUsageAsync(productCode, startDate, endDate, responseType);
+            Task<string> t = CreateListUsageAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -70,26 +63,19 @@ namespace message360.Controllers
         /// <summary>
         /// Get all usage 
         /// </summary>
-        /// <param name="productCode">Required parameter: Product Code</param>
-        /// <param name="startDate">Required parameter: Start Usage Date</param>
-        /// <param name="endDate">Required parameter: End Usage Date</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateListUsageInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateListUsageAsync(
-                string productCode,
-                string startDate,
-                string endDate,
-                string responseType = "json")
+        public async Task<string> CreateListUsageAsync(CreateListUsageInput input)
         {
             //validating required parameters
-            if (null == productCode)
-                throw new ArgumentNullException("productCode", "The parameter \"productCode\" is a required parameter and cannot be null.");
+            if (null == input.ProductCode)
+                throw new ArgumentNullException("productCode", "The property \"ProductCode\" in the input object cannot be null.");
 
-            if (null == startDate)
-                throw new ArgumentNullException("startDate", "The parameter \"startDate\" is a required parameter and cannot be null.");
+            if (null == input.StartDate)
+                throw new ArgumentNullException("startDate", "The property \"StartDate\" in the input object cannot be null.");
 
-            if (null == endDate)
-                throw new ArgumentNullException("endDate", "The parameter \"endDate\" is a required parameter and cannot be null.");
+            if (null == input.EndDate)
+                throw new ArgumentNullException("endDate", "The property \"EndDate\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -101,7 +87,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -117,9 +103,9 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "ProductCode", productCode },
-                { "startDate", startDate },
-                { "endDate", endDate }
+                { "ProductCode", input.ProductCode },
+                { "startDate", input.StartDate },
+                { "endDate", input.EndDate }
             };
 
             //prepare the API call request to fetch the response

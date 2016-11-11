@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/04/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
  */
 using System;
 using System.Collections.Generic;
@@ -51,13 +51,11 @@ namespace message360.Controllers
         /// <summary>
         /// View Participant
         /// </summary>
-        /// <param name="conferenceSid">Required parameter: unique conference sid</param>
-        /// <param name="participantSid">Required parameter: Example: </param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateViewParticipantInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateViewParticipant(string conferenceSid, string participantSid, string responseType = "json")
+        public string CreateViewParticipant(CreateViewParticipantInput input)
         {
-            Task<string> t = CreateViewParticipantAsync(conferenceSid, participantSid, responseType);
+            Task<string> t = CreateViewParticipantAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -65,18 +63,16 @@ namespace message360.Controllers
         /// <summary>
         /// View Participant
         /// </summary>
-        /// <param name="conferenceSid">Required parameter: unique conference sid</param>
-        /// <param name="participantSid">Required parameter: Example: </param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateViewParticipantInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateViewParticipantAsync(string conferenceSid, string participantSid, string responseType = "json")
+        public async Task<string> CreateViewParticipantAsync(CreateViewParticipantInput input)
         {
             //validating required parameters
-            if (null == conferenceSid)
-                throw new ArgumentNullException("conferenceSid", "The parameter \"conferenceSid\" is a required parameter and cannot be null.");
+            if (null == input.ConferenceSid)
+                throw new ArgumentNullException("conferenceSid", "The property \"ConferenceSid\" in the input object cannot be null.");
 
-            if (null == participantSid)
-                throw new ArgumentNullException("participantSid", "The parameter \"participantSid\" is a required parameter and cannot be null.");
+            if (null == input.ParticipantSid)
+                throw new ArgumentNullException("participantSid", "The property \"ParticipantSid\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -88,7 +84,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -104,8 +100,8 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "ConferenceSid", conferenceSid },
-                { "ParticipantSid", participantSid }
+                { "ConferenceSid", input.ConferenceSid },
+                { "ParticipantSid", input.ParticipantSid }
             };
 
             //prepare the API call request to fetch the response
@@ -130,22 +126,11 @@ namespace message360.Controllers
         /// <summary>
         /// List Participant
         /// </summary>
-        /// <param name="conferenceSid">Required parameter: unique conference sid</param>
-        /// <param name="page">Optional parameter: page number</param>
-        /// <param name="pagesize">Optional parameter: Example: </param>
-        /// <param name="muted">Optional parameter: Example: </param>
-        /// <param name="deaf">Optional parameter: Example: </param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateListParticipantInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateListParticipant(
-                string conferenceSid,
-                int? page = null,
-                int? pagesize = null,
-                bool? muted = null,
-                bool? deaf = null,
-                string responseType = "json")
+        public string CreateListParticipant(CreateListParticipantInput input)
         {
-            Task<string> t = CreateListParticipantAsync(conferenceSid, page, pagesize, muted, deaf, responseType);
+            Task<string> t = CreateListParticipantAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -153,24 +138,13 @@ namespace message360.Controllers
         /// <summary>
         /// List Participant
         /// </summary>
-        /// <param name="conferenceSid">Required parameter: unique conference sid</param>
-        /// <param name="page">Optional parameter: page number</param>
-        /// <param name="pagesize">Optional parameter: Example: </param>
-        /// <param name="muted">Optional parameter: Example: </param>
-        /// <param name="deaf">Optional parameter: Example: </param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateListParticipantInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateListParticipantAsync(
-                string conferenceSid,
-                int? page = null,
-                int? pagesize = null,
-                bool? muted = null,
-                bool? deaf = null,
-                string responseType = "json")
+        public async Task<string> CreateListParticipantAsync(CreateListParticipantInput input)
         {
             //validating required parameters
-            if (null == conferenceSid)
-                throw new ArgumentNullException("conferenceSid", "The parameter \"conferenceSid\" is a required parameter and cannot be null.");
+            if (null == input.ConferenceSid)
+                throw new ArgumentNullException("conferenceSid", "The property \"ConferenceSid\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -182,7 +156,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -198,11 +172,11 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "ConferenceSid", conferenceSid },
-                { "Page", page },
-                { "Pagesize", pagesize },
-                { "Muted", muted },
-                { "Deaf", deaf }
+                { "ConferenceSid", input.ConferenceSid },
+                { "Page", input.Page },
+                { "Pagesize", input.Pagesize },
+                { "Muted", input.Muted },
+                { "Deaf", input.Deaf }
             };
 
             //prepare the API call request to fetch the response
@@ -227,22 +201,11 @@ namespace message360.Controllers
         /// <summary>
         /// Add Participant in conference 
         /// </summary>
-        /// <param name="conferencesid">Required parameter: Unique Conference Sid</param>
-        /// <param name="participantnumber">Required parameter: Particiant Number</param>
-        /// <param name="tocountrycode">Required parameter: Example: </param>
-        /// <param name="muted">Optional parameter: Example: </param>
-        /// <param name="deaf">Optional parameter: Example: </param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="AddParticipantInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string AddParticipant(
-                string conferencesid,
-                string participantnumber,
-                int tocountrycode,
-                bool? muted = null,
-                bool? deaf = null,
-                string responseType = "json")
+        public string AddParticipant(AddParticipantInput input)
         {
-            Task<string> t = AddParticipantAsync(conferencesid, participantnumber, tocountrycode, muted, deaf, responseType);
+            Task<string> t = AddParticipantAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -250,27 +213,16 @@ namespace message360.Controllers
         /// <summary>
         /// Add Participant in conference 
         /// </summary>
-        /// <param name="conferencesid">Required parameter: Unique Conference Sid</param>
-        /// <param name="participantnumber">Required parameter: Particiant Number</param>
-        /// <param name="tocountrycode">Required parameter: Example: </param>
-        /// <param name="muted">Optional parameter: Example: </param>
-        /// <param name="deaf">Optional parameter: Example: </param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="AddParticipantInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> AddParticipantAsync(
-                string conferencesid,
-                string participantnumber,
-                int tocountrycode,
-                bool? muted = null,
-                bool? deaf = null,
-                string responseType = "json")
+        public async Task<string> AddParticipantAsync(AddParticipantInput input)
         {
             //validating required parameters
-            if (null == conferencesid)
-                throw new ArgumentNullException("conferencesid", "The parameter \"conferencesid\" is a required parameter and cannot be null.");
+            if (null == input.Conferencesid)
+                throw new ArgumentNullException("conferencesid", "The property \"Conferencesid\" in the input object cannot be null.");
 
-            if (null == participantnumber)
-                throw new ArgumentNullException("participantnumber", "The parameter \"participantnumber\" is a required parameter and cannot be null.");
+            if (null == input.Participantnumber)
+                throw new ArgumentNullException("participantnumber", "The property \"Participantnumber\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -282,7 +234,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -298,11 +250,11 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "conferencesid", conferencesid },
-                { "participantnumber", participantnumber },
-                { "tocountrycode", tocountrycode },
-                { "muted", muted },
-                { "deaf", deaf }
+                { "conferencesid", input.Conferencesid },
+                { "participantnumber", input.Participantnumber },
+                { "tocountrycode", input.Tocountrycode },
+                { "muted", input.Muted },
+                { "deaf", input.Deaf }
             };
 
             //prepare the API call request to fetch the response
@@ -327,12 +279,11 @@ namespace message360.Controllers
         /// <summary>
         /// View Conference
         /// </summary>
-        /// <param name="conferencesid">Required parameter: The unique identifier of each conference resource</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateViewConferenceInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateViewConference(string conferencesid, string responseType = "json")
+        public string CreateViewConference(CreateViewConferenceInput input)
         {
-            Task<string> t = CreateViewConferenceAsync(conferencesid, responseType);
+            Task<string> t = CreateViewConferenceAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -340,14 +291,13 @@ namespace message360.Controllers
         /// <summary>
         /// View Conference
         /// </summary>
-        /// <param name="conferencesid">Required parameter: The unique identifier of each conference resource</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateViewConferenceInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateViewConferenceAsync(string conferencesid, string responseType = "json")
+        public async Task<string> CreateViewConferenceAsync(CreateViewConferenceInput input)
         {
             //validating required parameters
-            if (null == conferencesid)
-                throw new ArgumentNullException("conferencesid", "The parameter \"conferencesid\" is a required parameter and cannot be null.");
+            if (null == input.Conferencesid)
+                throw new ArgumentNullException("conferencesid", "The property \"Conferencesid\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -359,7 +309,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -375,7 +325,7 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "conferencesid", conferencesid }
+                { "conferencesid", input.Conferencesid }
             };
 
             //prepare the API call request to fetch the response
@@ -400,24 +350,11 @@ namespace message360.Controllers
         /// <summary>
         /// List Conference
         /// </summary>
-        /// <param name="page">Optional parameter: Which page of the overall response will be returned. Zero indexed</param>
-        /// <param name="pageSize">Optional parameter: Number of individual resources listed in the response per page</param>
-        /// <param name="friendlyName">Optional parameter: Only return conferences with the specified FriendlyName</param>
-        /// <param name="status">Optional parameter: Example: </param>
-        /// <param name="dateCreated">Optional parameter: Example: </param>
-        /// <param name="dateUpdated">Optional parameter: Example: </param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateListConferenceInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateListConference(
-                int? page = null,
-                int? pageSize = null,
-                string friendlyName = null,
-                InterruptedCallStatus? status = null,
-                string dateCreated = null,
-                string dateUpdated = null,
-                string responseType = "json")
+        public string CreateListConference(CreateListConferenceInput input)
         {
-            Task<string> t = CreateListConferenceAsync(page, pageSize, friendlyName, status, dateCreated, dateUpdated, responseType);
+            Task<string> t = CreateListConferenceAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -425,22 +362,9 @@ namespace message360.Controllers
         /// <summary>
         /// List Conference
         /// </summary>
-        /// <param name="page">Optional parameter: Which page of the overall response will be returned. Zero indexed</param>
-        /// <param name="pageSize">Optional parameter: Number of individual resources listed in the response per page</param>
-        /// <param name="friendlyName">Optional parameter: Only return conferences with the specified FriendlyName</param>
-        /// <param name="status">Optional parameter: Example: </param>
-        /// <param name="dateCreated">Optional parameter: Example: </param>
-        /// <param name="dateUpdated">Optional parameter: Example: </param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateListConferenceInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateListConferenceAsync(
-                int? page = null,
-                int? pageSize = null,
-                string friendlyName = null,
-                InterruptedCallStatus? status = null,
-                string dateCreated = null,
-                string dateUpdated = null,
-                string responseType = "json")
+        public async Task<string> CreateListConferenceAsync(CreateListConferenceInput input)
         {
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -452,7 +376,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -468,12 +392,12 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "Page", page },
-                { "PageSize", pageSize },
-                { "FriendlyName", friendlyName },
-                { "Status", (status.HasValue) ? InterruptedCallStatusHelper.ToValue(status.Value) : null },
-                { "DateCreated", dateCreated },
-                { "DateUpdated", dateUpdated }
+                { "Page", input.Page },
+                { "PageSize", input.PageSize },
+                { "FriendlyName", input.FriendlyName },
+                { "Status", (input.Status.HasValue) ? InterruptedCallStatusHelper.ToValue(input.Status.Value) : null },
+                { "DateCreated", input.DateCreated },
+                { "DateUpdated", input.DateUpdated }
             };
 
             //prepare the API call request to fetch the response

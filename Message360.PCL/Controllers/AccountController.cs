@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/04/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
  */
 using System;
 using System.Collections.Generic;
@@ -51,12 +51,11 @@ namespace message360.Controllers
         /// <summary>
         /// Display Account Description
         /// </summary>
-        /// <param name="date">Required parameter: Example: </param>
-        /// <param name="responseType">Optional parameter: Response type format xml or json</param>
+        /// <param name="CreateViewAccountInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateViewAccount(string date, string responseType = "json")
+        public string CreateViewAccount(CreateViewAccountInput input)
         {
-            Task<string> t = CreateViewAccountAsync(date, responseType);
+            Task<string> t = CreateViewAccountAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -64,14 +63,13 @@ namespace message360.Controllers
         /// <summary>
         /// Display Account Description
         /// </summary>
-        /// <param name="date">Required parameter: Example: </param>
-        /// <param name="responseType">Optional parameter: Response type format xml or json</param>
+        /// <param name="CreateViewAccountInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateViewAccountAsync(string date, string responseType = "json")
+        public async Task<string> CreateViewAccountAsync(CreateViewAccountInput input)
         {
             //validating required parameters
-            if (null == date)
-                throw new ArgumentNullException("date", "The parameter \"date\" is a required parameter and cannot be null.");
+            if (null == input.Date)
+                throw new ArgumentNullException("date", "The property \"Date\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -83,7 +81,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -99,7 +97,7 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "date", date }
+                { "date", input.Date }
             };
 
             //prepare the API call request to fetch the response

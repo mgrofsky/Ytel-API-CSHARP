@@ -90,10 +90,11 @@ Message360Client client = new Message360Client(basicAuthUserName, basicAuthPassw
 * [TranscriptionController](#transcription_controller)
 * [PhoneNumberController](#phone_number_controller)
 * [UsageController](#usage_controller)
+* [WebRTCController](#web_rtc_controller)
+* [RecordingController](#recording_controller)
 * [EmailController](#email_controller)
 * [SMSController](#sms_controller)
 * [AccountController](#account_controller)
-* [RecordingController](#recording_controller)
 * [CallController](#call_controller)
 * [CarrierController](#carrier_controller)
 
@@ -104,7 +105,7 @@ Message360Client client = new Message360Client(basicAuthUserName, basicAuthPassw
 The singleton instance of the ``` ConferenceController ``` class can be accessed from the API Client.
 
 ```csharp
-IConferenceController conference = client.Conference;
+ConferenceController conference = client.Conference;
 ```
 
 #### <a name="create_view_participant"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.ConferenceController.CreateViewParticipant") CreateViewParticipant
@@ -113,7 +114,7 @@ IConferenceController conference = client.Conference;
 
 
 ```csharp
-Task<string> CreateViewParticipant(string conferenceSid, string participantSid, string responseType = "json")
+Task<string> CreateViewParticipant(CreateViewParticipantInput input)
 ```
 
 #### Parameters
@@ -128,11 +129,19 @@ Task<string> CreateViewParticipant(string conferenceSid, string participantSid, 
 #### Example Usage
 
 ```csharp
-string conferenceSid = "ConferenceSid";
-string participantSid = "ParticipantSid";
-string responseType = "json";
+CreateViewParticipantInput collect = new CreateViewParticipantInput();
 
-string result = await conference.CreateViewParticipant(conferenceSid, participantSid, responseType);
+string conferenceSid = "ConferenceSid";
+collect.ConferenceSid = conferenceSid;
+
+string participantSid = "ParticipantSid";
+collect.ParticipantSid = participantSid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await conference.CreateViewParticipant(collect);
 
 ```
 
@@ -143,13 +152,7 @@ string result = await conference.CreateViewParticipant(conferenceSid, participan
 
 
 ```csharp
-Task<string> CreateListParticipant(
-        string conferenceSid,
-        int? page = null,
-        int? pagesize = null,
-        bool? muted = null,
-        bool? deaf = null,
-        string responseType = "json")
+Task<string> CreateListParticipant(CreateListParticipantInput input)
 ```
 
 #### Parameters
@@ -167,14 +170,28 @@ Task<string> CreateListParticipant(
 #### Example Usage
 
 ```csharp
-string conferenceSid = "ConferenceSid";
-int? page = 179;
-int? pagesize = 179;
-bool? muted = true;
-bool? deaf = true;
-string responseType = "json";
+CreateListParticipantInput collect = new CreateListParticipantInput();
 
-string result = await conference.CreateListParticipant(conferenceSid, page, pagesize, muted, deaf, responseType);
+string conferenceSid = "ConferenceSid";
+collect.ConferenceSid = conferenceSid;
+
+int? page = 142;
+collect.Page = page;
+
+int? pagesize = 142;
+collect.Pagesize = pagesize;
+
+bool? muted = true;
+collect.Muted = muted;
+
+bool? deaf = true;
+collect.Deaf = deaf;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await conference.CreateListParticipant(collect);
 
 ```
 
@@ -185,13 +202,7 @@ string result = await conference.CreateListParticipant(conferenceSid, page, page
 
 
 ```csharp
-Task<string> AddParticipant(
-        string conferencesid,
-        string participantnumber,
-        int tocountrycode,
-        bool? muted = null,
-        bool? deaf = null,
-        string responseType = "json")
+Task<string> AddParticipant(AddParticipantInput input)
 ```
 
 #### Parameters
@@ -209,14 +220,28 @@ Task<string> AddParticipant(
 #### Example Usage
 
 ```csharp
-string conferencesid = "conferencesid";
-string participantnumber = "participantnumber";
-int tocountrycode = 179;
-bool? muted = true;
-bool? deaf = true;
-string responseType = "json";
+AddParticipantInput collect = new AddParticipantInput();
 
-string result = await conference.AddParticipant(conferencesid, participantnumber, tocountrycode, muted, deaf, responseType);
+string conferencesid = "conferencesid";
+collect.Conferencesid = conferencesid;
+
+string participantnumber = "participantnumber";
+collect.Participantnumber = participantnumber;
+
+int tocountrycode = 142;
+collect.Tocountrycode = tocountrycode;
+
+bool? muted = true;
+collect.Muted = muted;
+
+bool? deaf = true;
+collect.Deaf = deaf;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await conference.AddParticipant(collect);
 
 ```
 
@@ -227,7 +252,7 @@ string result = await conference.AddParticipant(conferencesid, participantnumber
 
 
 ```csharp
-Task<string> CreateViewConference(string conferencesid, string responseType = "json")
+Task<string> CreateViewConference(CreateViewConferenceInput input)
 ```
 
 #### Parameters
@@ -241,10 +266,16 @@ Task<string> CreateViewConference(string conferencesid, string responseType = "j
 #### Example Usage
 
 ```csharp
-string conferencesid = "conferencesid";
-string responseType = "json";
+CreateViewConferenceInput collect = new CreateViewConferenceInput();
 
-string result = await conference.CreateViewConference(conferencesid, responseType);
+string conferencesid = "conferencesid";
+collect.Conferencesid = conferencesid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await conference.CreateViewConference(collect);
 
 ```
 
@@ -255,14 +286,7 @@ string result = await conference.CreateViewConference(conferencesid, responseTyp
 
 
 ```csharp
-Task<string> CreateListConference(
-        int? page = null,
-        int? pageSize = null,
-        string friendlyName = null,
-        InterruptedCallStatus? status = null,
-        string dateCreated = null,
-        string dateUpdated = null,
-        string responseType = "json")
+Task<string> CreateListConference(CreateListConferenceInput input)
 ```
 
 #### Parameters
@@ -281,15 +305,31 @@ Task<string> CreateListConference(
 #### Example Usage
 
 ```csharp
-int? page = 179;
-int? pageSize = 179;
-string friendlyName = "FriendlyName";
-var status = InterruptedCallStatus?Helper.ParseString("CANCELED");
-string dateCreated = "DateCreated";
-string dateUpdated = "DateUpdated";
-string responseType = "json";
+CreateListConferenceInput collect = new CreateListConferenceInput();
 
-string result = await conference.CreateListConference(page, pageSize, friendlyName, status, dateCreated, dateUpdated, responseType);
+int? page = 142;
+collect.Page = page;
+
+int? pageSize = 142;
+collect.PageSize = pageSize;
+
+string friendlyName = "FriendlyName";
+collect.FriendlyName = friendlyName;
+
+var status = InterruptedCallStatus?Helper.ParseString("CANCELED");
+collect.Status = status;
+
+string dateCreated = "DateCreated";
+collect.DateCreated = dateCreated;
+
+string dateUpdated = "DateUpdated";
+collect.DateUpdated = dateUpdated;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await conference.CreateListConference(collect);
 
 ```
 
@@ -303,7 +343,7 @@ string result = await conference.CreateListConference(page, pageSize, friendlyNa
 The singleton instance of the ``` TranscriptionController ``` class can be accessed from the API Client.
 
 ```csharp
-ITranscriptionController transcription = client.Transcription;
+TranscriptionController transcription = client.Transcription;
 ```
 
 #### <a name="create_list_transcription"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.TranscriptionController.CreateListTranscription") CreateListTranscription
@@ -312,12 +352,7 @@ ITranscriptionController transcription = client.Transcription;
 
 
 ```csharp
-Task<string> CreateListTranscription(
-        int? page = null,
-        int? pageSize = null,
-        Status? status = null,
-        string dateTranscribed = null,
-        string responseType = "json")
+Task<string> CreateListTranscription(CreateListTranscriptionInput input)
 ```
 
 #### Parameters
@@ -334,41 +369,25 @@ Task<string> CreateListTranscription(
 #### Example Usage
 
 ```csharp
-int? page = 179;
-int? pageSize = 179;
+CreateListTranscriptionInput collect = new CreateListTranscriptionInput();
+
+int? page = 142;
+collect.Page = page;
+
+int? pageSize = 142;
+collect.PageSize = pageSize;
+
 var status = Status?Helper.ParseString("INPROGRESS");
+collect.Status = status;
+
 string dateTranscribed = "DateTranscribed";
+collect.DateTranscribed = dateTranscribed;
+
 string responseType = "json";
-
-string result = await transcription.CreateListTranscription(page, pageSize, status, dateTranscribed, responseType);
-
-```
+collect.ResponseType = responseType;
 
 
-#### <a name="create_recording_transcription"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.TranscriptionController.CreateRecordingTranscription") CreateRecordingTranscription
-
-> Recording Transcriptions
-
-
-```csharp
-Task<string> CreateRecordingTranscription(string recordingSid, string responseType = "json")
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| recordingSid |  ``` Required ```  | Unique Recording sid |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
-
-
-#### Example Usage
-
-```csharp
-string recordingSid = "RecordingSid";
-string responseType = "json";
-
-string result = await transcription.CreateRecordingTranscription(recordingSid, responseType);
+string result = await transcription.CreateListTranscription(collect);
 
 ```
 
@@ -379,7 +398,7 @@ string result = await transcription.CreateRecordingTranscription(recordingSid, r
 
 
 ```csharp
-Task<string> CreateViewTranscription(string transcriptionSid, string responseType = "json")
+Task<string> CreateViewTranscription(CreateViewTranscriptionInput input)
 ```
 
 #### Parameters
@@ -393,10 +412,50 @@ Task<string> CreateViewTranscription(string transcriptionSid, string responseTyp
 #### Example Usage
 
 ```csharp
-string transcriptionSid = "TranscriptionSid";
-string responseType = "json";
+CreateViewTranscriptionInput collect = new CreateViewTranscriptionInput();
 
-string result = await transcription.CreateViewTranscription(transcriptionSid, responseType);
+string transcriptionSid = "TranscriptionSid";
+collect.TranscriptionSid = transcriptionSid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await transcription.CreateViewTranscription(collect);
+
+```
+
+
+#### <a name="create_recording_transcription"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.TranscriptionController.CreateRecordingTranscription") CreateRecordingTranscription
+
+> Recording Transcriptions
+
+
+```csharp
+Task<string> CreateRecordingTranscription(CreateRecordingTranscriptionInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recordingSid |  ``` Required ```  | Unique Recording sid |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateRecordingTranscriptionInput collect = new CreateRecordingTranscriptionInput();
+
+string recordingSid = "RecordingSid";
+collect.RecordingSid = recordingSid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await transcription.CreateRecordingTranscription(collect);
 
 ```
 
@@ -407,7 +466,7 @@ string result = await transcription.CreateViewTranscription(transcriptionSid, re
 
 
 ```csharp
-Task<string> CreateAudioURLTranscription(string audioUrl, string responseType = "json")
+Task<string> CreateAudioURLTranscription(CreateAudioURLTranscriptionInput input)
 ```
 
 #### Parameters
@@ -421,10 +480,16 @@ Task<string> CreateAudioURLTranscription(string audioUrl, string responseType = 
 #### Example Usage
 
 ```csharp
-string audioUrl = "AudioUrl";
-string responseType = "json";
+CreateAudioURLTranscriptionInput collect = new CreateAudioURLTranscriptionInput();
 
-string result = await transcription.CreateAudioURLTranscription(audioUrl, responseType);
+string audioUrl = "AudioUrl";
+collect.AudioUrl = audioUrl;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await transcription.CreateAudioURLTranscription(collect);
 
 ```
 
@@ -438,7 +503,7 @@ string result = await transcription.CreateAudioURLTranscription(audioUrl, respon
 The singleton instance of the ``` PhoneNumberController ``` class can be accessed from the API Client.
 
 ```csharp
-IPhoneNumberController phoneNumber = client.PhoneNumber;
+PhoneNumberController phoneNumber = client.PhoneNumber;
 ```
 
 #### <a name="create_available_phone_number"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateAvailablePhoneNumber") CreateAvailablePhoneNumber
@@ -447,11 +512,7 @@ IPhoneNumberController phoneNumber = client.PhoneNumber;
 
 
 ```csharp
-Task<string> CreateAvailablePhoneNumber(
-        string numberType,
-        string areaCode,
-        int? pageSize = null,
-        string responseType = "json")
+Task<string> CreateAvailablePhoneNumber(CreateAvailablePhoneNumberInput input)
 ```
 
 #### Parameters
@@ -467,12 +528,22 @@ Task<string> CreateAvailablePhoneNumber(
 #### Example Usage
 
 ```csharp
-string numberType = "NumberType";
-string areaCode = "AreaCode";
-int? pageSize = 179;
-string responseType = "json";
+CreateAvailablePhoneNumberInput collect = new CreateAvailablePhoneNumberInput();
 
-string result = await phoneNumber.CreateAvailablePhoneNumber(numberType, areaCode, pageSize, responseType);
+string numberType = "NumberType";
+collect.NumberType = numberType;
+
+string areaCode = "AreaCode";
+collect.AreaCode = areaCode;
+
+int? pageSize = 142;
+collect.PageSize = pageSize;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await phoneNumber.CreateAvailablePhoneNumber(collect);
 
 ```
 
@@ -483,12 +554,7 @@ string result = await phoneNumber.CreateAvailablePhoneNumber(numberType, areaCod
 
 
 ```csharp
-Task<string> CreateListNumber(
-        int? page = null,
-        int? pageSize = null,
-        string numberType = null,
-        string friendlyName = null,
-        string responseType = "json")
+Task<string> CreateListNumber(CreateListNumberInput input)
 ```
 
 #### Parameters
@@ -505,69 +571,25 @@ Task<string> CreateListNumber(
 #### Example Usage
 
 ```csharp
-int? page = 179;
-int? pageSize = 179;
+CreateListNumberInput collect = new CreateListNumberInput();
+
+int? page = 142;
+collect.Page = page;
+
+int? pageSize = 142;
+collect.PageSize = pageSize;
+
 string numberType = "NumberType";
+collect.NumberType = numberType;
+
 string friendlyName = "FriendlyName";
+collect.FriendlyName = friendlyName;
+
 string responseType = "json";
-
-string result = await phoneNumber.CreateListNumber(page, pageSize, numberType, friendlyName, responseType);
-
-```
+collect.ResponseType = responseType;
 
 
-#### <a name="create_release_number"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateReleaseNumber") CreateReleaseNumber
-
-> Release number from account
-
-
-```csharp
-Task<string> CreateReleaseNumber(string phoneNumber, string responseType = "json")
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | Phone number to be relase |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
-
-
-#### Example Usage
-
-```csharp
-string phoneNumber = "PhoneNumber";
-string responseType = "json";
-
-string result = await phoneNumber.CreateReleaseNumber(phoneNumber, responseType);
-
-```
-
-
-#### <a name="create_buy_number"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateBuyNumber") CreateBuyNumber
-
-> Buy Phone Number 
-
-
-```csharp
-Task<string> CreateBuyNumber(string phoneNumber, string responseType = "json")
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | Phone number to be purchase |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
-
-
-#### Example Usage
-
-```csharp
-string phoneNumber = "PhoneNumber";
-string responseType = "json";
-
-string result = await phoneNumber.CreateBuyNumber(phoneNumber, responseType);
+string result = await phoneNumber.CreateListNumber(collect);
 
 ```
 
@@ -578,7 +600,7 @@ string result = await phoneNumber.CreateBuyNumber(phoneNumber, responseType);
 
 
 ```csharp
-Task<string> CreateViewNumberDetails(string phoneNumber, string responseType = "json")
+Task<string> CreateViewNumberDetails(CreateViewNumberDetailsInput input)
 ```
 
 #### Parameters
@@ -592,10 +614,84 @@ Task<string> CreateViewNumberDetails(string phoneNumber, string responseType = "
 #### Example Usage
 
 ```csharp
-string phoneNumber = "PhoneNumber";
-string responseType = "json";
+CreateViewNumberDetailsInput collect = new CreateViewNumberDetailsInput();
 
-string result = await phoneNumber.CreateViewNumberDetails(phoneNumber, responseType);
+string phoneNumber = "PhoneNumber";
+collect.PhoneNumber = phoneNumber;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await phoneNumber.CreateViewNumberDetails(collect);
+
+```
+
+
+#### <a name="create_release_number"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateReleaseNumber") CreateReleaseNumber
+
+> Release number from account
+
+
+```csharp
+Task<string> CreateReleaseNumber(CreateReleaseNumberInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| phoneNumber |  ``` Required ```  | Phone number to be relase |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateReleaseNumberInput collect = new CreateReleaseNumberInput();
+
+string phoneNumber = "PhoneNumber";
+collect.PhoneNumber = phoneNumber;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await phoneNumber.CreateReleaseNumber(collect);
+
+```
+
+
+#### <a name="create_buy_number"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateBuyNumber") CreateBuyNumber
+
+> Buy Phone Number 
+
+
+```csharp
+Task<string> CreateBuyNumber(CreateBuyNumberInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| phoneNumber |  ``` Required ```  | Phone number to be purchase |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateBuyNumberInput collect = new CreateBuyNumberInput();
+
+string phoneNumber = "PhoneNumber";
+collect.PhoneNumber = phoneNumber;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await phoneNumber.CreateBuyNumber(collect);
 
 ```
 
@@ -606,22 +702,7 @@ string result = await phoneNumber.CreateViewNumberDetails(phoneNumber, responseT
 
 
 ```csharp
-Task<string> UpdatePhoneNumber(
-        string phoneNumber,
-        string friendlyName = null,
-        string voiceUrl = null,
-        HttpAction? voiceMethod = null,
-        string voiceFallbackUrl = null,
-        HttpAction? voiceFallbackMethod = null,
-        string hangupCallback = null,
-        HttpAction? hangupCallbackMethod = null,
-        string heartbeatUrl = null,
-        HttpAction? heartbeatMethod = null,
-        string smsUrl = null,
-        HttpAction? smsMethod = null,
-        string smsFallbackUrl = null,
-        HttpAction? smsFallbackMethod = null,
-        string responseType = "json")
+Task<string> UpdatePhoneNumber(UpdatePhoneNumberInput input)
 ```
 
 #### Parameters
@@ -648,23 +729,55 @@ Task<string> UpdatePhoneNumber(
 #### Example Usage
 
 ```csharp
-string phoneNumber = "PhoneNumber";
-string friendlyName = "FriendlyName";
-string voiceUrl = "VoiceUrl";
-var voiceMethod = HttpAction?Helper.ParseString("GET");
-string voiceFallbackUrl = "VoiceFallbackUrl";
-var voiceFallbackMethod = HttpAction?Helper.ParseString("GET");
-string hangupCallback = "HangupCallback";
-var hangupCallbackMethod = HttpAction?Helper.ParseString("GET");
-string heartbeatUrl = "HeartbeatUrl";
-var heartbeatMethod = HttpAction?Helper.ParseString("GET");
-string smsUrl = "SmsUrl";
-var smsMethod = HttpAction?Helper.ParseString("GET");
-string smsFallbackUrl = "SmsFallbackUrl";
-var smsFallbackMethod = HttpAction?Helper.ParseString("GET");
-string responseType = "json";
+UpdatePhoneNumberInput collect = new UpdatePhoneNumberInput();
 
-string result = await phoneNumber.UpdatePhoneNumber(phoneNumber, friendlyName, voiceUrl, voiceMethod, voiceFallbackUrl, voiceFallbackMethod, hangupCallback, hangupCallbackMethod, heartbeatUrl, heartbeatMethod, smsUrl, smsMethod, smsFallbackUrl, smsFallbackMethod, responseType);
+string phoneNumber = "PhoneNumber";
+collect.PhoneNumber = phoneNumber;
+
+string friendlyName = "FriendlyName";
+collect.FriendlyName = friendlyName;
+
+string voiceUrl = "VoiceUrl";
+collect.VoiceUrl = voiceUrl;
+
+var voiceMethod = HttpAction?Helper.ParseString("GET");
+collect.VoiceMethod = voiceMethod;
+
+string voiceFallbackUrl = "VoiceFallbackUrl";
+collect.VoiceFallbackUrl = voiceFallbackUrl;
+
+var voiceFallbackMethod = HttpAction?Helper.ParseString("GET");
+collect.VoiceFallbackMethod = voiceFallbackMethod;
+
+string hangupCallback = "HangupCallback";
+collect.HangupCallback = hangupCallback;
+
+var hangupCallbackMethod = HttpAction?Helper.ParseString("GET");
+collect.HangupCallbackMethod = hangupCallbackMethod;
+
+string heartbeatUrl = "HeartbeatUrl";
+collect.HeartbeatUrl = heartbeatUrl;
+
+var heartbeatMethod = HttpAction?Helper.ParseString("GET");
+collect.HeartbeatMethod = heartbeatMethod;
+
+string smsUrl = "SmsUrl";
+collect.SmsUrl = smsUrl;
+
+var smsMethod = HttpAction?Helper.ParseString("GET");
+collect.SmsMethod = smsMethod;
+
+string smsFallbackUrl = "SmsFallbackUrl";
+collect.SmsFallbackUrl = smsFallbackUrl;
+
+var smsFallbackMethod = HttpAction?Helper.ParseString("GET");
+collect.SmsFallbackMethod = smsFallbackMethod;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await phoneNumber.UpdatePhoneNumber(collect);
 
 ```
 
@@ -678,7 +791,7 @@ string result = await phoneNumber.UpdatePhoneNumber(phoneNumber, friendlyName, v
 The singleton instance of the ``` UsageController ``` class can be accessed from the API Client.
 
 ```csharp
-IUsageController usage = client.Usage;
+UsageController usage = client.Usage;
 ```
 
 #### <a name="create_list_usage"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.UsageController.CreateListUsage") CreateListUsage
@@ -687,11 +800,7 @@ IUsageController usage = client.Usage;
 
 
 ```csharp
-Task<string> CreateListUsage(
-        string productCode,
-        string startDate,
-        string endDate,
-        string responseType = "json")
+Task<string> CreateListUsage(CreateListUsageInput input)
 ```
 
 #### Parameters
@@ -707,12 +816,266 @@ Task<string> CreateListUsage(
 #### Example Usage
 
 ```csharp
-string productCode = "0";
-string startDate = "2016-09-06";
-string endDate = "2016-09-06";
-string responseType = "json";
+CreateListUsageInput collect = new CreateListUsageInput();
 
-string result = await usage.CreateListUsage(productCode, startDate, endDate, responseType);
+string productCode = "0";
+collect.ProductCode = productCode;
+
+string startDate = "2016-09-06";
+collect.StartDate = startDate;
+
+string endDate = "2016-09-06";
+collect.EndDate = endDate;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await usage.CreateListUsage(collect);
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+### <a name="web_rtc_controller"></a>![Class: ](http://apidocs.io/img/class.png "message360.Controllers.WebRTCController") WebRTCController
+
+#### Get singleton instance
+
+The singleton instance of the ``` WebRTCController ``` class can be accessed from the API Client.
+
+```csharp
+WebRTCController webRTC = client.WebRTC;
+```
+
+#### <a name="create_check_funds"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.WebRTCController.CreateCheckFunds") CreateCheckFunds
+
+> TODO: Add a method description
+
+
+```csharp
+Task CreateCheckFunds(CreateCheckFundsInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| accountSid |  ``` Required ```  | Your message360 Account SID |
+| authToken |  ``` Required ```  | Your message360 Token |
+
+
+#### Example Usage
+
+```csharp
+CreateCheckFundsInput collect = new CreateCheckFundsInput();
+
+string accountSid = "account_sid";
+collect.AccountSid = accountSid;
+
+string authToken = "auth_token";
+collect.AuthToken = authToken;
+
+
+await webRTC.CreateCheckFunds(collect);
+
+```
+
+
+#### <a name="create_authenticate_number"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.WebRTCController.CreateAuthenticateNumber") CreateAuthenticateNumber
+
+> Authenticate a message360 number for use
+
+
+```csharp
+Task CreateAuthenticateNumber(CreateAuthenticateNumberInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| phoneNumber |  ``` Required ```  | Phone number to authenticate for use |
+| accountSid |  ``` Required ```  | Your message360 Account SID |
+| authToken |  ``` Required ```  | Your message360 token |
+
+
+#### Example Usage
+
+```csharp
+CreateAuthenticateNumberInput collect = new CreateAuthenticateNumberInput();
+
+string phoneNumber = "phone_number";
+collect.PhoneNumber = phoneNumber;
+
+string accountSid = "account_sid";
+collect.AccountSid = accountSid;
+
+string authToken = "auth_token";
+collect.AuthToken = authToken;
+
+
+await webRTC.CreateAuthenticateNumber(collect);
+
+```
+
+
+#### <a name="create_token"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.WebRTCController.CreateToken") CreateToken
+
+> message360 webrtc
+
+
+```csharp
+Task CreateToken(CreateTokenInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| accountSid |  ``` Required ```  | Your message360 Account SID |
+| authToken |  ``` Required ```  | Your message360 Token |
+
+
+#### Example Usage
+
+```csharp
+CreateTokenInput collect = new CreateTokenInput();
+
+string accountSid = "account_sid";
+collect.AccountSid = accountSid;
+
+string authToken = "auth_token";
+collect.AuthToken = authToken;
+
+
+await webRTC.CreateToken(collect);
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+### <a name="recording_controller"></a>![Class: ](http://apidocs.io/img/class.png "message360.Controllers.RecordingController") RecordingController
+
+#### Get singleton instance
+
+The singleton instance of the ``` RecordingController ``` class can be accessed from the API Client.
+
+```csharp
+RecordingController recording = client.Recording;
+```
+
+#### <a name="create_view_recording"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.RecordingController.CreateViewRecording") CreateViewRecording
+
+> View a specific Recording
+
+
+```csharp
+Task<string> CreateViewRecording(CreateViewRecordingInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recordingSid |  ``` Required ```  | Search Recording sid |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateViewRecordingInput collect = new CreateViewRecordingInput();
+
+string recordingSid = "RecordingSid";
+collect.RecordingSid = recordingSid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await recording.CreateViewRecording(collect);
+
+```
+
+
+#### <a name="create_delete_recording"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.RecordingController.CreateDeleteRecording") CreateDeleteRecording
+
+> Delete Recording Record
+
+
+```csharp
+Task<string> CreateDeleteRecording(CreateDeleteRecordingInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recordingSid |  ``` Required ```  | Unique Recording Sid to be delete |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateDeleteRecordingInput collect = new CreateDeleteRecordingInput();
+
+string recordingSid = "RecordingSid";
+collect.RecordingSid = recordingSid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await recording.CreateDeleteRecording(collect);
+
+```
+
+
+#### <a name="create_list_recording"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.RecordingController.CreateListRecording") CreateListRecording
+
+> List out Recordings
+
+
+```csharp
+Task<string> CreateListRecording(CreateListRecordingInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
+| pageSize |  ``` Optional ```  | Number of individual resources listed in the response per page |
+| dateCreated |  ``` Optional ```  | TODO: Add a parameter description |
+| callSid |  ``` Optional ```  | TODO: Add a parameter description |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateListRecordingInput collect = new CreateListRecordingInput();
+
+int? page = 101;
+collect.Page = page;
+
+int? pageSize = 101;
+collect.PageSize = pageSize;
+
+string dateCreated = "DateCreated";
+collect.DateCreated = dateCreated;
+
+string callSid = "CallSid";
+collect.CallSid = callSid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await recording.CreateListRecording(collect);
 
 ```
 
@@ -726,8 +1089,110 @@ string result = await usage.CreateListUsage(productCode, startDate, endDate, res
 The singleton instance of the ``` EmailController ``` class can be accessed from the API Client.
 
 ```csharp
-IEmailController email = client.Email;
+EmailController email = client.Email;
 ```
+
+#### <a name="create_delete_spam"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteSpam") CreateDeleteSpam
+
+> Deletes a email address marked as spam from the spam list
+
+
+```csharp
+Task<string> CreateDeleteSpam(CreateDeleteSpamInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| email |  ``` Required ```  | Email address |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateDeleteSpamInput collect = new CreateDeleteSpamInput();
+
+string email = "email";
+collect.Email = email;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await email.CreateDeleteSpam(collect);
+
+```
+
+
+#### <a name="create_delete_block"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteBlock") CreateDeleteBlock
+
+> Deletes a blocked email
+
+
+```csharp
+Task<string> CreateDeleteBlock(CreateDeleteBlockInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| email |  ``` Required ```  | Email address to remove from block list |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateDeleteBlockInput collect = new CreateDeleteBlockInput();
+
+string email = "email";
+collect.Email = email;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await email.CreateDeleteBlock(collect);
+
+```
+
+
+#### <a name="add_unsubscribes"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.AddUnsubscribes") AddUnsubscribes
+
+> Add an email to the unsubscribe list
+
+
+```csharp
+Task<string> AddUnsubscribes(AddUnsubscribesInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| email |  ``` Required ```  | The email to add to the unsubscribe list |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
+
+
+#### Example Usage
+
+```csharp
+AddUnsubscribesInput collect = new AddUnsubscribesInput();
+
+string email = "email";
+collect.Email = email;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await email.AddUnsubscribes(collect);
+
+```
+
 
 #### <a name="create_send_email"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateSendEmail") CreateSendEmail
 
@@ -735,16 +1200,7 @@ IEmailController email = client.Email;
 
 
 ```csharp
-Task<string> CreateSendEmail(
-        string to,
-        string mfrom,
-        SendEmailAs type,
-        string subject,
-        string message,
-        string cc = null,
-        string bcc = null,
-        string attachment = null,
-        string responseType = "json")
+Task<string> CreateSendEmail(CreateSendEmailInput input)
 ```
 
 #### Parameters
@@ -765,17 +1221,37 @@ Task<string> CreateSendEmail(
 #### Example Usage
 
 ```csharp
-string to = "to";
-string mfrom = "from";
-var type = SendEmailAsHelper.ParseString("HTML");
-string subject = "subject";
-string message = "message";
-string cc = "cc";
-string bcc = "bcc";
-string attachment = "attachment";
-string responseType = "json";
+CreateSendEmailInput collect = new CreateSendEmailInput();
 
-string result = await email.CreateSendEmail(to, mfrom, type, subject, message, cc, bcc, attachment, responseType);
+string to = "to";
+collect.To = to;
+
+string mfrom = "from";
+collect.Mfrom = mfrom;
+
+var type = SendEmailAsHelper.ParseString("HTML");
+collect.Type = type;
+
+string subject = "subject";
+collect.Subject = subject;
+
+string message = "message";
+collect.Message = message;
+
+string cc = "cc";
+collect.Cc = cc;
+
+string bcc = "bcc";
+collect.Bcc = bcc;
+
+string attachment = "attachment";
+collect.Attachment = attachment;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await email.CreateSendEmail(collect);
 
 ```
 
@@ -786,7 +1262,7 @@ string result = await email.CreateSendEmail(to, mfrom, type, subject, message, c
 
 
 ```csharp
-Task<string> CreateDeleteUnsubscribes(string email, string responseType = "json")
+Task<string> CreateDeleteUnsubscribes(CreateDeleteUnsubscribesInput input)
 ```
 
 #### Parameters
@@ -800,10 +1276,16 @@ Task<string> CreateDeleteUnsubscribes(string email, string responseType = "json"
 #### Example Usage
 
 ```csharp
-string email = "email";
-string responseType = "json";
+CreateDeleteUnsubscribesInput collect = new CreateDeleteUnsubscribesInput();
 
-string result = await email.CreateDeleteUnsubscribes(email, responseType);
+string email = "email";
+collect.Email = email;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await email.CreateDeleteUnsubscribes(collect);
 
 ```
 
@@ -814,7 +1296,7 @@ string result = await email.CreateDeleteUnsubscribes(email, responseType);
 
 
 ```csharp
-Task<string> CreateListUnsubscribes(string responseType = "json", string offset = null, string limit = null)
+Task<string> CreateListUnsubscribes(CreateListUnsubscribesInput input)
 ```
 
 #### Parameters
@@ -829,95 +1311,19 @@ Task<string> CreateListUnsubscribes(string responseType = "json", string offset 
 #### Example Usage
 
 ```csharp
+CreateListUnsubscribesInput collect = new CreateListUnsubscribesInput();
+
 string responseType = "json";
+collect.ResponseType = responseType;
+
 string offset = "offset";
+collect.Offset = offset;
+
 string limit = "limit";
-
-string result = await email.CreateListUnsubscribes(responseType, offset, limit);
-
-```
+collect.Limit = limit;
 
 
-#### <a name="add_unsubscribes"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.AddUnsubscribes") AddUnsubscribes
-
-> Add an email to the unsubscribe list
-
-
-```csharp
-Task<string> AddUnsubscribes(string email, string responseType = "json")
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| email |  ``` Required ```  | The email to add to the unsubscribe list |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
-
-
-#### Example Usage
-
-```csharp
-string email = "email";
-string responseType = "json";
-
-string result = await email.AddUnsubscribes(email, responseType);
-
-```
-
-
-#### <a name="create_delete_spam"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteSpam") CreateDeleteSpam
-
-> Deletes a email address marked as spam from the spam list
-
-
-```csharp
-Task<string> CreateDeleteSpam(string email, string responseType = "json")
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| email |  ``` Required ```  | Email address |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
-
-
-#### Example Usage
-
-```csharp
-string email = "email";
-string responseType = "json";
-
-string result = await email.CreateDeleteSpam(email, responseType);
-
-```
-
-
-#### <a name="create_delete_block"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteBlock") CreateDeleteBlock
-
-> Deletes a blocked email
-
-
-```csharp
-Task<string> CreateDeleteBlock(string email, string responseType = "json")
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| email |  ``` Required ```  | Email address to remove from block list |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
-
-
-#### Example Usage
-
-```csharp
-string email = "email";
-string responseType = "json";
-
-string result = await email.CreateDeleteBlock(email, responseType);
+string result = await email.CreateListUnsubscribes(collect);
 
 ```
 
@@ -928,7 +1334,7 @@ string result = await email.CreateDeleteBlock(email, responseType);
 
 
 ```csharp
-Task<string> CreateListInvalid(string responseType = "json", string offet = null, string limit = null)
+Task<string> CreateListInvalid(CreateListInvalidInput input)
 ```
 
 #### Parameters
@@ -943,11 +1349,19 @@ Task<string> CreateListInvalid(string responseType = "json", string offet = null
 #### Example Usage
 
 ```csharp
-string responseType = "json";
-string offet = "offet";
-string limit = "limit";
+CreateListInvalidInput collect = new CreateListInvalidInput();
 
-string result = await email.CreateListInvalid(responseType, offet, limit);
+string responseType = "json";
+collect.ResponseType = responseType;
+
+string offet = "offet";
+collect.Offet = offet;
+
+string limit = "limit";
+collect.Limit = limit;
+
+
+string result = await email.CreateListInvalid(collect);
 
 ```
 
@@ -958,7 +1372,7 @@ string result = await email.CreateListInvalid(responseType, offet, limit);
 
 
 ```csharp
-Task<string> CreateDeleteBounces(string email, string responseType = "json")
+Task<string> CreateDeleteBounces(CreateDeleteBouncesInput input)
 ```
 
 #### Parameters
@@ -972,10 +1386,16 @@ Task<string> CreateDeleteBounces(string email, string responseType = "json")
 #### Example Usage
 
 ```csharp
-string email = "email";
-string responseType = "json";
+CreateDeleteBouncesInput collect = new CreateDeleteBouncesInput();
 
-string result = await email.CreateDeleteBounces(email, responseType);
+string email = "email";
+collect.Email = email;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await email.CreateDeleteBounces(collect);
 
 ```
 
@@ -986,7 +1406,7 @@ string result = await email.CreateDeleteBounces(email, responseType);
 
 
 ```csharp
-Task<string> CreateListBounces(string responseType = "json", string offset = null, string limit = null)
+Task<string> CreateListBounces(CreateListBouncesInput input)
 ```
 
 #### Parameters
@@ -1001,11 +1421,19 @@ Task<string> CreateListBounces(string responseType = "json", string offset = nul
 #### Example Usage
 
 ```csharp
-string responseType = "json";
-string offset = "offset";
-string limit = "limit";
+CreateListBouncesInput collect = new CreateListBouncesInput();
 
-string result = await email.CreateListBounces(responseType, offset, limit);
+string responseType = "json";
+collect.ResponseType = responseType;
+
+string offset = "offset";
+collect.Offset = offset;
+
+string limit = "limit";
+collect.Limit = limit;
+
+
+string result = await email.CreateListBounces(collect);
 
 ```
 
@@ -1016,7 +1444,7 @@ string result = await email.CreateListBounces(responseType, offset, limit);
 
 
 ```csharp
-Task<string> CreateListSpam(string responseType, string offset = null, string limit = null)
+Task<string> CreateListSpam(CreateListSpamInput input)
 ```
 
 #### Parameters
@@ -1031,11 +1459,19 @@ Task<string> CreateListSpam(string responseType, string offset = null, string li
 #### Example Usage
 
 ```csharp
-string responseType = "json";
-string offset = "offset";
-string limit = "limit";
+CreateListSpamInput collect = new CreateListSpamInput();
 
-string result = await email.CreateListSpam(responseType, offset, limit);
+string responseType = "json";
+collect.ResponseType = responseType;
+
+string offset = "offset";
+collect.Offset = offset;
+
+string limit = "limit";
+collect.Limit = limit;
+
+
+string result = await email.CreateListSpam(collect);
 
 ```
 
@@ -1046,7 +1482,7 @@ string result = await email.CreateListSpam(responseType, offset, limit);
 
 
 ```csharp
-Task<string> CreateListBlocks(string offset = null, string limit = null, string responseType = "json")
+Task<string> CreateListBlocks(CreateListBlocksInput input)
 ```
 
 #### Parameters
@@ -1061,11 +1497,19 @@ Task<string> CreateListBlocks(string offset = null, string limit = null, string 
 #### Example Usage
 
 ```csharp
-string offset = "offset";
-string limit = "limit";
-string responseType = "json";
+CreateListBlocksInput collect = new CreateListBlocksInput();
 
-string result = await email.CreateListBlocks(offset, limit, responseType);
+string offset = "offset";
+collect.Offset = offset;
+
+string limit = "limit";
+collect.Limit = limit;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await email.CreateListBlocks(collect);
 
 ```
 
@@ -1079,7 +1523,7 @@ string result = await email.CreateListBlocks(offset, limit, responseType);
 The singleton instance of the ``` SMSController ``` class can be accessed from the API Client.
 
 ```csharp
-ISMSController sMS = client.SMS;
+SMSController sMS = client.SMS;
 ```
 
 #### <a name="create_send_sms"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateSendSMS") CreateSendSMS
@@ -1088,15 +1532,7 @@ ISMSController sMS = client.SMS;
 
 
 ```csharp
-Task<string> CreateSendSMS(
-        int fromcountrycode,
-        string mfrom,
-        int tocountrycode,
-        string to,
-        string body,
-        HttpAction? method = null,
-        string messagestatuscallback = null,
-        string responseType = "json")
+Task<string> CreateSendSMS(CreateSendSMSInput input)
 ```
 
 #### Parameters
@@ -1116,16 +1552,34 @@ Task<string> CreateSendSMS(
 #### Example Usage
 
 ```csharp
-int fromcountrycode = 1;
-string mfrom = "from";
-int tocountrycode = 1;
-string to = "to";
-string body = "body";
-var method = HttpAction?Helper.ParseString("GET");
-string messagestatuscallback = "messagestatuscallback";
-string responseType = "json";
+CreateSendSMSInput collect = new CreateSendSMSInput();
 
-string result = await sMS.CreateSendSMS(fromcountrycode, mfrom, tocountrycode, to, body, method, messagestatuscallback, responseType);
+int fromcountrycode = 1;
+collect.Fromcountrycode = fromcountrycode;
+
+string mfrom = "from";
+collect.Mfrom = mfrom;
+
+int tocountrycode = 1;
+collect.Tocountrycode = tocountrycode;
+
+string to = "to";
+collect.To = to;
+
+string body = "body";
+collect.Body = body;
+
+var method = HttpAction?Helper.ParseString("GET");
+collect.Method = method;
+
+string messagestatuscallback = "messagestatuscallback";
+collect.Messagestatuscallback = messagestatuscallback;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await sMS.CreateSendSMS(collect);
 
 ```
 
@@ -1136,7 +1590,7 @@ string result = await sMS.CreateSendSMS(fromcountrycode, mfrom, tocountrycode, t
 
 
 ```csharp
-Task<string> CreateViewSMS(string messagesid, string responseType = "json")
+Task<string> CreateViewSMS(CreateViewSMSInput input)
 ```
 
 #### Parameters
@@ -1150,10 +1604,16 @@ Task<string> CreateViewSMS(string messagesid, string responseType = "json")
 #### Example Usage
 
 ```csharp
-string messagesid = "messagesid";
-string responseType = "json";
+CreateViewSMSInput collect = new CreateViewSMSInput();
 
-string result = await sMS.CreateViewSMS(messagesid, responseType);
+string messagesid = "messagesid";
+collect.Messagesid = messagesid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await sMS.CreateViewSMS(collect);
 
 ```
 
@@ -1164,13 +1624,7 @@ string result = await sMS.CreateViewSMS(messagesid, responseType);
 
 
 ```csharp
-Task<string> CreateListSMS(
-        int? page = null,
-        int? pagesize = null,
-        string mfrom = null,
-        string to = null,
-        string datesent = null,
-        string responseType = "json")
+Task<string> CreateListSMS(CreateListSMSInput input)
 ```
 
 #### Parameters
@@ -1188,14 +1642,28 @@ Task<string> CreateListSMS(
 #### Example Usage
 
 ```csharp
-int? page = 16;
-int? pagesize = 16;
-string mfrom = "from";
-string to = "to";
-string datesent = "datesent";
-string responseType = "json";
+CreateListSMSInput collect = new CreateListSMSInput();
 
-string result = await sMS.CreateListSMS(page, pagesize, mfrom, to, datesent, responseType);
+int? page = 101;
+collect.Page = page;
+
+int? pagesize = 101;
+collect.Pagesize = pagesize;
+
+string mfrom = "from";
+collect.Mfrom = mfrom;
+
+string to = "to";
+collect.To = to;
+
+string datesent = "datesent";
+collect.Datesent = datesent;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await sMS.CreateListSMS(collect);
 
 ```
 
@@ -1206,12 +1674,7 @@ string result = await sMS.CreateListSMS(page, pagesize, mfrom, to, datesent, res
 
 
 ```csharp
-Task<string> CreateListInboundSMS(
-        int? page = null,
-        string pagesize = null,
-        string mfrom = null,
-        string to = null,
-        string responseType = "json")
+Task<string> CreateListInboundSMS(CreateListInboundSMSInput input)
 ```
 
 #### Parameters
@@ -1228,13 +1691,25 @@ Task<string> CreateListInboundSMS(
 #### Example Usage
 
 ```csharp
-int? page = 16;
-string pagesize = "pagesize";
-string mfrom = "from";
-string to = "to";
-string responseType = "json";
+CreateListInboundSMSInput collect = new CreateListInboundSMSInput();
 
-string result = await sMS.CreateListInboundSMS(page, pagesize, mfrom, to, responseType);
+int? page = 101;
+collect.Page = page;
+
+string pagesize = "pagesize";
+collect.Pagesize = pagesize;
+
+string mfrom = "from";
+collect.Mfrom = mfrom;
+
+string to = "to";
+collect.To = to;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await sMS.CreateListInboundSMS(collect);
 
 ```
 
@@ -1248,7 +1723,7 @@ string result = await sMS.CreateListInboundSMS(page, pagesize, mfrom, to, respon
 The singleton instance of the ``` AccountController ``` class can be accessed from the API Client.
 
 ```csharp
-IAccountController account = client.Account;
+AccountController account = client.Account;
 ```
 
 #### <a name="create_view_account"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.AccountController.CreateViewAccount") CreateViewAccount
@@ -1257,7 +1732,7 @@ IAccountController account = client.Account;
 
 
 ```csharp
-Task<string> CreateViewAccount(string date, string responseType = "json")
+Task<string> CreateViewAccount(CreateViewAccountInput input)
 ```
 
 #### Parameters
@@ -1271,117 +1746,16 @@ Task<string> CreateViewAccount(string date, string responseType = "json")
 #### Example Usage
 
 ```csharp
+CreateViewAccountInput collect = new CreateViewAccountInput();
+
 string date = "date";
+collect.Date = date;
+
 string responseType = "json";
-
-string result = await account.CreateViewAccount(date, responseType);
-
-```
+collect.ResponseType = responseType;
 
 
-[Back to List of Controllers](#list_of_controllers)
-
-### <a name="recording_controller"></a>![Class: ](http://apidocs.io/img/class.png "message360.Controllers.RecordingController") RecordingController
-
-#### Get singleton instance
-
-The singleton instance of the ``` RecordingController ``` class can be accessed from the API Client.
-
-```csharp
-IRecordingController recording = client.Recording;
-```
-
-#### <a name="create_delete_recording"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.RecordingController.CreateDeleteRecording") CreateDeleteRecording
-
-> Delete Recording Record
-
-
-```csharp
-Task<string> CreateDeleteRecording(string recordingSid, string responseType = "json")
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| recordingSid |  ``` Required ```  | Unique Recording Sid to be delete |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
-
-
-#### Example Usage
-
-```csharp
-string recordingSid = "RecordingSid";
-string responseType = "json";
-
-string result = await recording.CreateDeleteRecording(recordingSid, responseType);
-
-```
-
-
-#### <a name="create_view_recording"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.RecordingController.CreateViewRecording") CreateViewRecording
-
-> View a specific Recording
-
-
-```csharp
-Task<string> CreateViewRecording(string recordingSid, string responseType = "json")
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| recordingSid |  ``` Required ```  | Search Recording sid |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
-
-
-#### Example Usage
-
-```csharp
-string recordingSid = "RecordingSid";
-string responseType = "json";
-
-string result = await recording.CreateViewRecording(recordingSid, responseType);
-
-```
-
-
-#### <a name="create_list_recording"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.RecordingController.CreateListRecording") CreateListRecording
-
-> List out Recordings
-
-
-```csharp
-Task<string> CreateListRecording(
-        int? page = null,
-        int? pageSize = null,
-        string dateCreated = null,
-        string callSid = null,
-        string responseType = "json")
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pageSize |  ``` Optional ```  | Number of individual resources listed in the response per page |
-| dateCreated |  ``` Optional ```  | TODO: Add a parameter description |
-| callSid |  ``` Optional ```  | TODO: Add a parameter description |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response format, xml or json |
-
-
-#### Example Usage
-
-```csharp
-int? page = 16;
-int? pageSize = 16;
-string dateCreated = "DateCreated";
-string callSid = "CallSid";
-string responseType = "json";
-
-string result = await recording.CreateListRecording(page, pageSize, dateCreated, callSid, responseType);
+string result = await account.CreateViewAccount(collect);
 
 ```
 
@@ -1395,7 +1769,7 @@ string result = await recording.CreateListRecording(page, pageSize, dateCreated,
 The singleton instance of the ``` CallController ``` class can be accessed from the API Client.
 
 ```csharp
-ICallController call = client.Call;
+CallController call = client.Call;
 ```
 
 #### <a name="create_view_call"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.CallController.CreateViewCall") CreateViewCall
@@ -1404,7 +1778,7 @@ ICallController call = client.Call;
 
 
 ```csharp
-Task<string> CreateViewCall(string callsid, string responseType = "json")
+Task<string> CreateViewCall(CreateViewCallInput input)
 ```
 
 #### Parameters
@@ -1418,10 +1792,16 @@ Task<string> CreateViewCall(string callsid, string responseType = "json")
 #### Example Usage
 
 ```csharp
-string callsid = "callsid";
-string responseType = "json";
+CreateViewCallInput collect = new CreateViewCallInput();
 
-string result = await call.CreateViewCall(callsid, responseType);
+string callsid = "callsid";
+collect.Callsid = callsid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await call.CreateViewCall(collect);
 
 ```
 
@@ -1432,29 +1812,7 @@ string result = await call.CreateViewCall(callsid, responseType);
 
 
 ```csharp
-Task<string> CreateMakeCall(
-        string fromCountryCode,
-        string mfrom,
-        string toCountryCode,
-        string to,
-        string url,
-        HttpAction? method = null,
-        string statusCallBackUrl = null,
-        HttpAction? statusCallBackMethod = null,
-        string fallBackUrl = null,
-        HttpAction? fallBackMethod = null,
-        string heartBeatUrl = null,
-        bool? heartBeatMethod = null,
-        int? timeout = null,
-        string playDtmf = null,
-        bool? hideCallerId = null,
-        bool? record = null,
-        string recordCallBackUrl = null,
-        HttpAction? recordCallBackMethod = null,
-        bool? transcribe = null,
-        string transcribeCallBackUrl = null,
-        IfMachine? ifMachine = null,
-        string responseType = "json")
+Task<string> CreateMakeCall(CreateMakeCallInput input)
 ```
 
 #### Parameters
@@ -1488,30 +1846,76 @@ Task<string> CreateMakeCall(
 #### Example Usage
 
 ```csharp
-string fromCountryCode = "FromCountryCode";
-string mfrom = "From";
-string toCountryCode = "ToCountryCode";
-string to = "To";
-string url = "Url";
-var method = HttpAction?Helper.ParseString("GET");
-string statusCallBackUrl = "StatusCallBackUrl";
-var statusCallBackMethod = HttpAction?Helper.ParseString("GET");
-string fallBackUrl = "FallBackUrl";
-var fallBackMethod = HttpAction?Helper.ParseString("GET");
-string heartBeatUrl = "HeartBeatUrl";
-bool? heartBeatMethod = false;
-int? timeout = 16;
-string playDtmf = "PlayDtmf";
-bool? hideCallerId = false;
-bool? record = false;
-string recordCallBackUrl = "RecordCallBackUrl";
-var recordCallBackMethod = HttpAction?Helper.ParseString("GET");
-bool? transcribe = false;
-string transcribeCallBackUrl = "TranscribeCallBackUrl";
-var ifMachine = IfMachine?Helper.ParseString("CONTINUE");
-string responseType = "json";
+CreateMakeCallInput collect = new CreateMakeCallInput();
 
-string result = await call.CreateMakeCall(fromCountryCode, mfrom, toCountryCode, to, url, method, statusCallBackUrl, statusCallBackMethod, fallBackUrl, fallBackMethod, heartBeatUrl, heartBeatMethod, timeout, playDtmf, hideCallerId, record, recordCallBackUrl, recordCallBackMethod, transcribe, transcribeCallBackUrl, ifMachine, responseType);
+string fromCountryCode = "FromCountryCode";
+collect.FromCountryCode = fromCountryCode;
+
+string mfrom = "From";
+collect.Mfrom = mfrom;
+
+string toCountryCode = "ToCountryCode";
+collect.ToCountryCode = toCountryCode;
+
+string to = "To";
+collect.To = to;
+
+string url = "Url";
+collect.Url = url;
+
+var method = HttpAction?Helper.ParseString("GET");
+collect.Method = method;
+
+string statusCallBackUrl = "StatusCallBackUrl";
+collect.StatusCallBackUrl = statusCallBackUrl;
+
+var statusCallBackMethod = HttpAction?Helper.ParseString("GET");
+collect.StatusCallBackMethod = statusCallBackMethod;
+
+string fallBackUrl = "FallBackUrl";
+collect.FallBackUrl = fallBackUrl;
+
+var fallBackMethod = HttpAction?Helper.ParseString("GET");
+collect.FallBackMethod = fallBackMethod;
+
+string heartBeatUrl = "HeartBeatUrl";
+collect.HeartBeatUrl = heartBeatUrl;
+
+bool? heartBeatMethod = false;
+collect.HeartBeatMethod = heartBeatMethod;
+
+int? timeout = 101;
+collect.Timeout = timeout;
+
+string playDtmf = "PlayDtmf";
+collect.PlayDtmf = playDtmf;
+
+bool? hideCallerId = false;
+collect.HideCallerId = hideCallerId;
+
+bool? record = false;
+collect.Record = record;
+
+string recordCallBackUrl = "RecordCallBackUrl";
+collect.RecordCallBackUrl = recordCallBackUrl;
+
+var recordCallBackMethod = HttpAction?Helper.ParseString("GET");
+collect.RecordCallBackMethod = recordCallBackMethod;
+
+bool? transcribe = false;
+collect.Transcribe = transcribe;
+
+string transcribeCallBackUrl = "TranscribeCallBackUrl";
+collect.TranscribeCallBackUrl = transcribeCallBackUrl;
+
+var ifMachine = IfMachine?Helper.ParseString("CONTINUE");
+collect.IfMachine = ifMachine;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await call.CreateMakeCall(collect);
 
 ```
 
@@ -1522,14 +1926,7 @@ string result = await call.CreateMakeCall(fromCountryCode, mfrom, toCountryCode,
 
 
 ```csharp
-Task<string> CreatePlayAudio(
-        int length,
-        Direction direction,
-        bool loop,
-        bool mix,
-        string callSid = null,
-        string audioUrl = null,
-        string responseType = "json")
+Task<string> CreatePlayAudio(CreatePlayAudioInput input)
 ```
 
 #### Parameters
@@ -1548,15 +1945,31 @@ Task<string> CreatePlayAudio(
 #### Example Usage
 
 ```csharp
-int length = 16;
-var direction = DirectionHelper.ParseString("IN");
-bool loop = false;
-bool mix = false;
-string callSid = "CallSid";
-string audioUrl = "AudioUrl";
-string responseType = "json";
+CreatePlayAudioInput collect = new CreatePlayAudioInput();
 
-string result = await call.CreatePlayAudio(length, direction, loop, mix, callSid, audioUrl, responseType);
+int length = 101;
+collect.Length = length;
+
+var direction = DirectionHelper.ParseString("IN");
+collect.Direction = direction;
+
+bool loop = false;
+collect.Loop = loop;
+
+bool mix = false;
+collect.Mix = mix;
+
+string callSid = "CallSid";
+collect.CallSid = callSid;
+
+string audioUrl = "AudioUrl";
+collect.AudioUrl = audioUrl;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await call.CreatePlayAudio(collect);
 
 ```
 
@@ -1567,14 +1980,7 @@ string result = await call.CreatePlayAudio(length, direction, loop, mix, callSid
 
 
 ```csharp
-Task<string> CreateRecordCall(
-        string callSid,
-        bool record,
-        Direction? direction = null,
-        int? timeLimit = null,
-        string callBackUrl = null,
-        AudioFormat? fileformat = null,
-        string responseType = "json")
+Task<string> CreateRecordCall(CreateRecordCallInput input)
 ```
 
 #### Parameters
@@ -1593,15 +1999,31 @@ Task<string> CreateRecordCall(
 #### Example Usage
 
 ```csharp
-string callSid = "CallSid";
-bool record = false;
-var direction = Direction?Helper.ParseString("IN");
-int? timeLimit = 16;
-string callBackUrl = "CallBackUrl";
-var fileformat = AudioFormat?Helper.ParseString("mp3");
-string responseType = "json";
+CreateRecordCallInput collect = new CreateRecordCallInput();
 
-string result = await call.CreateRecordCall(callSid, record, direction, timeLimit, callBackUrl, fileformat, responseType);
+string callSid = "CallSid";
+collect.CallSid = callSid;
+
+bool record = false;
+collect.Record = record;
+
+var direction = Direction?Helper.ParseString("IN");
+collect.Direction = direction;
+
+int? timeLimit = 101;
+collect.TimeLimit = timeLimit;
+
+string callBackUrl = "CallBackUrl";
+collect.CallBackUrl = callBackUrl;
+
+var fileformat = AudioFormat?Helper.ParseString("mp3");
+collect.Fileformat = fileformat;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await call.CreateRecordCall(collect);
 
 ```
 
@@ -1612,15 +2034,7 @@ string result = await call.CreateRecordCall(callSid, record, direction, timeLimi
 
 
 ```csharp
-Task<string> CreateVoiceEffect(
-        string callSid,
-        AudioDirection? audioDirection = null,
-        double? pitchSemiTones = null,
-        double? pitchOctaves = null,
-        double? pitch = null,
-        double? rate = null,
-        double? tempo = null,
-        string responseType = "json")
+Task<string> CreateVoiceEffect(CreateVoiceEffectInput input)
 ```
 
 #### Parameters
@@ -1640,16 +2054,34 @@ Task<string> CreateVoiceEffect(
 #### Example Usage
 
 ```csharp
-string callSid = "CallSid";
-var audioDirection = AudioDirection?Helper.ParseString("IN");
-double? pitchSemiTones = 16.1406258266143;
-double? pitchOctaves = 16.1406258266143;
-double? pitch = 16.1406258266143;
-double? rate = 16.1406258266143;
-double? tempo = 16.1406258266143;
-string responseType = "json";
+CreateVoiceEffectInput collect = new CreateVoiceEffectInput();
 
-string result = await call.CreateVoiceEffect(callSid, audioDirection, pitchSemiTones, pitchOctaves, pitch, rate, tempo, responseType);
+string callSid = "CallSid";
+collect.CallSid = callSid;
+
+var audioDirection = AudioDirection?Helper.ParseString("IN");
+collect.AudioDirection = audioDirection;
+
+double? pitchSemiTones = 101.225432011404;
+collect.PitchSemiTones = pitchSemiTones;
+
+double? pitchOctaves = 101.225432011404;
+collect.PitchOctaves = pitchOctaves;
+
+double? pitch = 101.225432011404;
+collect.Pitch = pitch;
+
+double? rate = 101.225432011404;
+collect.Rate = rate;
+
+double? tempo = 101.225432011404;
+collect.Tempo = tempo;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await call.CreateVoiceEffect(collect);
 
 ```
 
@@ -1660,11 +2092,7 @@ string result = await call.CreateVoiceEffect(callSid, audioDirection, pitchSemiT
 
 
 ```csharp
-Task<string> CreateSendDigit(
-        string callSid,
-        string playDtmf,
-        Direction? playDtmfDirection = null,
-        string responseType = "json")
+Task<string> CreateSendDigit(CreateSendDigitInput input)
 ```
 
 #### Parameters
@@ -1680,12 +2108,22 @@ Task<string> CreateSendDigit(
 #### Example Usage
 
 ```csharp
-string callSid = "CallSid";
-string playDtmf = "PlayDtmf";
-var playDtmfDirection = Direction?Helper.ParseString("IN");
-string responseType = "json";
+CreateSendDigitInput collect = new CreateSendDigitInput();
 
-string result = await call.CreateSendDigit(callSid, playDtmf, playDtmfDirection, responseType);
+string callSid = "CallSid";
+collect.CallSid = callSid;
+
+string playDtmf = "PlayDtmf";
+collect.PlayDtmf = playDtmf;
+
+var playDtmfDirection = Direction?Helper.ParseString("IN");
+collect.PlayDtmfDirection = playDtmfDirection;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await call.CreateSendDigit(collect);
 
 ```
 
@@ -1696,12 +2134,7 @@ string result = await call.CreateSendDigit(callSid, playDtmf, playDtmfDirection,
 
 
 ```csharp
-Task<string> CreateInterruptedCall(
-        string callSid,
-        string url = null,
-        HttpAction? method = null,
-        InterruptedCallStatus? status = null,
-        string responseType = "json")
+Task<string> CreateInterruptedCall(CreateInterruptedCallInput input)
 ```
 
 #### Parameters
@@ -1718,13 +2151,25 @@ Task<string> CreateInterruptedCall(
 #### Example Usage
 
 ```csharp
-string callSid = "CallSid";
-string url = "Url";
-var method = HttpAction?Helper.ParseString("GET");
-var status = InterruptedCallStatus?Helper.ParseString("CANCELED");
-string responseType = "json";
+CreateInterruptedCallInput collect = new CreateInterruptedCallInput();
 
-string result = await call.CreateInterruptedCall(callSid, url, method, status, responseType);
+string callSid = "CallSid";
+collect.CallSid = callSid;
+
+string url = "Url";
+collect.Url = url;
+
+var method = HttpAction?Helper.ParseString("GET");
+collect.Method = method;
+
+var status = InterruptedCallStatus?Helper.ParseString("CANCELED");
+collect.Status = status;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await call.CreateInterruptedCall(collect);
 
 ```
 
@@ -1735,13 +2180,7 @@ string result = await call.CreateInterruptedCall(callSid, url, method, status, r
 
 
 ```csharp
-Task CreateListCalls(
-        string page = null,
-        string pageSize = null,
-        string to = null,
-        string mfrom = null,
-        string dateCreated = null,
-        string responseType = "json")
+Task CreateListCalls(CreateListCallsInput input)
 ```
 
 #### Parameters
@@ -1759,14 +2198,28 @@ Task CreateListCalls(
 #### Example Usage
 
 ```csharp
-string page = "Page";
-string pageSize = "PageSize";
-string to = "To";
-string mfrom = "From";
-string dateCreated = "DateCreated";
-string responseType = "json";
+CreateListCallsInput collect = new CreateListCallsInput();
 
-await call.CreateListCalls(page, pageSize, to, mfrom, dateCreated, responseType);
+string page = "Page";
+collect.Page = page;
+
+string pageSize = "PageSize";
+collect.PageSize = pageSize;
+
+string to = "To";
+collect.To = to;
+
+string mfrom = "From";
+collect.Mfrom = mfrom;
+
+string dateCreated = "DateCreated";
+collect.DateCreated = dateCreated;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+await call.CreateListCalls(collect);
 
 ```
 
@@ -1780,7 +2233,7 @@ await call.CreateListCalls(page, pageSize, to, mfrom, dateCreated, responseType)
 The singleton instance of the ``` CarrierController ``` class can be accessed from the API Client.
 
 ```csharp
-ICarrierController carrier = client.Carrier;
+CarrierController carrier = client.Carrier;
 ```
 
 #### <a name="create_carrier_lookup"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.CarrierController.CreateCarrierLookup") CreateCarrierLookup
@@ -1789,7 +2242,7 @@ ICarrierController carrier = client.Carrier;
 
 
 ```csharp
-Task<string> CreateCarrierLookup(string phonenumber, string responseType = "json")
+Task<string> CreateCarrierLookup(CreateCarrierLookupInput input)
 ```
 
 #### Parameters
@@ -1803,10 +2256,16 @@ Task<string> CreateCarrierLookup(string phonenumber, string responseType = "json
 #### Example Usage
 
 ```csharp
-string phonenumber = "phonenumber";
-string responseType = "json";
+CreateCarrierLookupInput collect = new CreateCarrierLookupInput();
 
-string result = await carrier.CreateCarrierLookup(phonenumber, responseType);
+string phonenumber = "phonenumber";
+collect.Phonenumber = phonenumber;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await carrier.CreateCarrierLookup(collect);
 
 ```
 
@@ -1817,7 +2276,7 @@ string result = await carrier.CreateCarrierLookup(phonenumber, responseType);
 
 
 ```csharp
-Task<string> CreateCarrierLookupList(string page = null, string pagesize = null, string responseType = "json")
+Task<string> CreateCarrierLookupList(CreateCarrierLookupListInput input)
 ```
 
 #### Parameters
@@ -1832,11 +2291,19 @@ Task<string> CreateCarrierLookupList(string page = null, string pagesize = null,
 #### Example Usage
 
 ```csharp
-string page = "page";
-string pagesize = "pagesize";
-string responseType = "json";
+CreateCarrierLookupListInput collect = new CreateCarrierLookupListInput();
 
-string result = await carrier.CreateCarrierLookupList(page, pagesize, responseType);
+string page = "page";
+collect.Page = page;
+
+string pagesize = "pagesize";
+collect.Pagesize = pagesize;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await carrier.CreateCarrierLookupList(collect);
 
 ```
 

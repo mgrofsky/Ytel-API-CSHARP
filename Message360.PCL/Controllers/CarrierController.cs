@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/04/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
  */
 using System;
 using System.Collections.Generic;
@@ -51,12 +51,11 @@ namespace message360.Controllers
         /// <summary>
         /// Get the Carrier Lookup
         /// </summary>
-        /// <param name="phonenumber">Required parameter: The number to lookup</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateCarrierLookupInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateCarrierLookup(string phonenumber, string responseType = "json")
+        public string CreateCarrierLookup(CreateCarrierLookupInput input)
         {
-            Task<string> t = CreateCarrierLookupAsync(phonenumber, responseType);
+            Task<string> t = CreateCarrierLookupAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -64,14 +63,13 @@ namespace message360.Controllers
         /// <summary>
         /// Get the Carrier Lookup
         /// </summary>
-        /// <param name="phonenumber">Required parameter: The number to lookup</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateCarrierLookupInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateCarrierLookupAsync(string phonenumber, string responseType = "json")
+        public async Task<string> CreateCarrierLookupAsync(CreateCarrierLookupInput input)
         {
             //validating required parameters
-            if (null == phonenumber)
-                throw new ArgumentNullException("phonenumber", "The parameter \"phonenumber\" is a required parameter and cannot be null.");
+            if (null == input.Phonenumber)
+                throw new ArgumentNullException("phonenumber", "The property \"Phonenumber\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -83,7 +81,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -99,7 +97,7 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "phonenumber", phonenumber }
+                { "phonenumber", input.Phonenumber }
             };
 
             //prepare the API call request to fetch the response
@@ -124,13 +122,11 @@ namespace message360.Controllers
         /// <summary>
         /// Get the All Purchase Number's Carrier lookup
         /// </summary>
-        /// <param name="page">Optional parameter: Page Number</param>
-        /// <param name="pagesize">Optional parameter: Page Size</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateCarrierLookupListInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateCarrierLookupList(string page = null, string pagesize = null, string responseType = "json")
+        public string CreateCarrierLookupList(CreateCarrierLookupListInput input)
         {
-            Task<string> t = CreateCarrierLookupListAsync(page, pagesize, responseType);
+            Task<string> t = CreateCarrierLookupListAsync(input);
             Task.WaitAll(t);
             return t.Result;
         }
@@ -138,11 +134,9 @@ namespace message360.Controllers
         /// <summary>
         /// Get the All Purchase Number's Carrier lookup
         /// </summary>
-        /// <param name="page">Optional parameter: Page Number</param>
-        /// <param name="pagesize">Optional parameter: Page Size</param>
-        /// <param name="responseType">Optional parameter: Response format, xml or json</param>
+        /// <param name="CreateCarrierLookupListInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateCarrierLookupListAsync(string page = null, string pagesize = null, string responseType = "json")
+        public async Task<string> CreateCarrierLookupListAsync(CreateCarrierLookupListInput input)
         {
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
@@ -154,7 +148,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (null != responseType) ? responseType : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -170,8 +164,8 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "page", page },
-                { "pagesize", pagesize }
+                { "page", input.Page },
+                { "pagesize", input.Pagesize }
             };
 
             //prepare the API call request to fetch the response
