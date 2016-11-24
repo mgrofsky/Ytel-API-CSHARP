@@ -24,7 +24,7 @@ namespace message360.Models
         private string mfrom;
         private string to;
         private string datesent;
-        private ResponseType? responseType = ResponseType.JSON;
+        private string responseType = "json";
 
         /// <summary>
         /// Which page of the overall response will be returned. Zero indexed
@@ -112,10 +112,10 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Response format, xml or json
+        /// Response type format xml or json
         /// </summary>
-        [JsonProperty("ResponseType", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public ResponseType? ResponseType 
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
         { 
             get 
             {

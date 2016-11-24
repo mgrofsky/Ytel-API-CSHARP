@@ -23,7 +23,7 @@ namespace message360.Models
         private int? pageSize = 10;
         private string addressId;
         private string dateCreated;
-        private ResponseType? responseType = ResponseType.JSON;
+        private string responseType = "json";
 
         /// <summary>
         /// Return requested # of items starting the value, default=0, must be an integer
@@ -96,8 +96,8 @@ namespace message360.Models
         /// <summary>
         /// Response Type either json or xml
         /// </summary>
-        [JsonProperty("ResponseType", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public ResponseType? ResponseType 
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
         { 
             get 
             {

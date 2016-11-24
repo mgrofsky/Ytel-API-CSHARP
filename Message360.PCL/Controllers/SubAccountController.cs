@@ -49,39 +49,45 @@ namespace message360.Controllers
         #endregion Singleton Pattern
 
         /// <summary>
-        /// Delete or Merge Sub account
+        /// Create Sub account
         /// </summary>
-        /// <param name="CreateDeleteMergeSubAccountInput">Object containing request parameters</param>
+        /// <param name="CreateSubAccountInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateDeleteMergeSubAccount(CreateDeleteMergeSubAccountInput input)
+        public string CreateSubAccount(CreateSubAccountInput input)
         {
-            Task<string> t = CreateDeleteMergeSubAccountAsync(input);
+            Task<string> t = CreateSubAccountAsync(input);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
         /// <summary>
-        /// Delete or Merge Sub account
+        /// Create Sub account
         /// </summary>
-        /// <param name="CreateDeleteMergeSubAccountInput">Object containing request parameters</param>
+        /// <param name="CreateSubAccountInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateDeleteMergeSubAccountAsync(CreateDeleteMergeSubAccountInput input)
+        public async Task<string> CreateSubAccountAsync(CreateSubAccountInput input)
         {
             //validating required parameters
-            if (null == input.Subaccountsid)
-                throw new ArgumentNullException("subaccountsid", "The property \"Subaccountsid\" in the input object cannot be null.");
+            if (null == input.Firstname)
+                throw new ArgumentNullException("firstname", "The property \"Firstname\" in the input object cannot be null.");
+
+            if (null == input.Lastname)
+                throw new ArgumentNullException("lastname", "The property \"Lastname\" in the input object cannot be null.");
+
+            if (null == input.Email)
+                throw new ArgumentNullException("email", "The property \"Email\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/user/deletesubaccount.{ResponseType}");
+            _queryBuilder.Append("/user/createsubaccount.{ResponseType}");
 
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -97,8 +103,9 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "subaccountsid", input.Subaccountsid },
-                { "mergenumber", (int)(input.Mergenumber) }
+                { "firstname", input.Firstname },
+                { "lastname", input.Lastname },
+                { "email", input.Email }
             };
 
             //prepare the API call request to fetch the response
@@ -153,7 +160,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : null }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -193,45 +200,39 @@ namespace message360.Controllers
         }
 
         /// <summary>
-        /// Create Sub account
+        /// Delete or Merge Sub account
         /// </summary>
-        /// <param name="CreateSubAccountInput">Object containing request parameters</param>
+        /// <param name="CreateDeleteMergeSubAccountInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateSubAccount(CreateSubAccountInput input)
+        public string CreateDeleteMergeSubAccount(CreateDeleteMergeSubAccountInput input)
         {
-            Task<string> t = CreateSubAccountAsync(input);
+            Task<string> t = CreateDeleteMergeSubAccountAsync(input);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
         /// <summary>
-        /// Create Sub account
+        /// Delete or Merge Sub account
         /// </summary>
-        /// <param name="CreateSubAccountInput">Object containing request parameters</param>
+        /// <param name="CreateDeleteMergeSubAccountInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateSubAccountAsync(CreateSubAccountInput input)
+        public async Task<string> CreateDeleteMergeSubAccountAsync(CreateDeleteMergeSubAccountInput input)
         {
             //validating required parameters
-            if (null == input.Firstname)
-                throw new ArgumentNullException("firstname", "The property \"Firstname\" in the input object cannot be null.");
-
-            if (null == input.Lastname)
-                throw new ArgumentNullException("lastname", "The property \"Lastname\" in the input object cannot be null.");
-
-            if (null == input.Email)
-                throw new ArgumentNullException("email", "The property \"Email\" in the input object cannot be null.");
+            if (null == input.Subaccountsid)
+                throw new ArgumentNullException("subaccountsid", "The property \"Subaccountsid\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/user/createsubaccount.{ResponseType}");
+            _queryBuilder.Append("/user/deletesubaccount.{ResponseType}");
 
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -247,9 +248,8 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "firstname", input.Firstname },
-                { "lastname", input.Lastname },
-                { "email", input.Email }
+                { "subaccountsid", input.Subaccountsid },
+                { "mergenumber", (int)(input.Mergenumber) }
             };
 
             //prepare the API call request to fetch the response

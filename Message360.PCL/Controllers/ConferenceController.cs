@@ -49,23 +49,23 @@ namespace message360.Controllers
         #endregion Singleton Pattern
 
         /// <summary>
-        /// View Participant
+        /// Deaf Mute Participant
         /// </summary>
-        /// <param name="CreateViewParticipantInput">Object containing request parameters</param>
+        /// <param name="CreateDeafMuteParticipantInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateViewParticipant(CreateViewParticipantInput input)
+        public string CreateDeafMuteParticipant(CreateDeafMuteParticipantInput input)
         {
-            Task<string> t = CreateViewParticipantAsync(input);
+            Task<string> t = CreateDeafMuteParticipantAsync(input);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
         /// <summary>
-        /// View Participant
+        /// Deaf Mute Participant
         /// </summary>
-        /// <param name="CreateViewParticipantInput">Object containing request parameters</param>
+        /// <param name="CreateDeafMuteParticipantInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateViewParticipantAsync(CreateViewParticipantInput input)
+        public async Task<string> CreateDeafMuteParticipantAsync(CreateDeafMuteParticipantInput input)
         {
             //validating required parameters
             if (null == input.ConferenceSid)
@@ -79,12 +79,12 @@ namespace message360.Controllers
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/conferences/viewparticipant.{ResponseType}");
+            _queryBuilder.Append("/conferences/deafMuteParticipant.{ResponseType}");
 
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -100,8 +100,231 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "ConferenceSid", input.ConferenceSid },
-                { "ParticipantSid", input.ParticipantSid }
+                { "conferenceSid", input.ConferenceSid },
+                { "ParticipantSid", input.ParticipantSid },
+                { "Muted", input.Muted },
+                { "Deaf", input.Deaf }
+            };
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request,_response);
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return _response.Body;
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// List Conference
+        /// </summary>
+        /// <param name="CreateListConferenceInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public string CreateListConference(CreateListConferenceInput input)
+        {
+            Task<string> t = CreateListConferenceAsync(input);
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// List Conference
+        /// </summary>
+        /// <param name="CreateListConferenceInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public async Task<string> CreateListConferenceAsync(CreateListConferenceInput input)
+        {
+            //the base uri for api requestss
+            string _baseUri = Configuration.BaseUri;
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/conferences/listconference.{ResponseType}");
+
+            //process optional template parameters
+            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
+            {
+                { "ResponseType", input.ResponseType }
+            });
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "message360-api" }
+            };
+
+            //append form/field parameters
+            var _fields = new Dictionary<string,object>()
+            {
+                { "Page", input.Page },
+                { "PageSize", input.PageSize },
+                { "FriendlyName", input.FriendlyName },
+                { "Status", (input.Status.HasValue) ? InterruptedCallStatusHelper.ToValue(input.Status.Value) : null },
+                { "DateCreated", input.DateCreated },
+                { "DateUpdated", input.DateUpdated }
+            };
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request,_response);
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return _response.Body;
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// View Conference
+        /// </summary>
+        /// <param name="CreateViewConferenceInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public string CreateViewConference(CreateViewConferenceInput input)
+        {
+            Task<string> t = CreateViewConferenceAsync(input);
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// View Conference
+        /// </summary>
+        /// <param name="CreateViewConferenceInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public async Task<string> CreateViewConferenceAsync(CreateViewConferenceInput input)
+        {
+            //validating required parameters
+            if (null == input.Conferencesid)
+                throw new ArgumentNullException("conferencesid", "The property \"Conferencesid\" in the input object cannot be null.");
+
+            //the base uri for api requestss
+            string _baseUri = Configuration.BaseUri;
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/conferences/viewconference.{ResponseType}");
+
+            //process optional template parameters
+            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
+            {
+                { "ResponseType", input.ResponseType }
+            });
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "message360-api" }
+            };
+
+            //append form/field parameters
+            var _fields = new Dictionary<string,object>()
+            {
+                { "conferencesid", input.Conferencesid }
+            };
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request,_response);
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return _response.Body;
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// Add Participant in conference 
+        /// </summary>
+        /// <param name="AddParticipantInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public string AddParticipant(AddParticipantInput input)
+        {
+            Task<string> t = AddParticipantAsync(input);
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// Add Participant in conference 
+        /// </summary>
+        /// <param name="AddParticipantInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public async Task<string> AddParticipantAsync(AddParticipantInput input)
+        {
+            //validating required parameters
+            if (null == input.Conferencesid)
+                throw new ArgumentNullException("conferencesid", "The property \"Conferencesid\" in the input object cannot be null.");
+
+            if (null == input.Participantnumber)
+                throw new ArgumentNullException("participantnumber", "The property \"Participantnumber\" in the input object cannot be null.");
+
+            //the base uri for api requestss
+            string _baseUri = Configuration.BaseUri;
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/conferences/addParticipant.{ResponseType}");
+
+            //process optional template parameters
+            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
+            {
+                { "ResponseType", input.ResponseType }
+            });
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "message360-api" }
+            };
+
+            //append form/field parameters
+            var _fields = new Dictionary<string,object>()
+            {
+                { "conferencesid", input.Conferencesid },
+                { "participantnumber", input.Participantnumber },
+                { "tocountrycode", input.Tocountrycode },
+                { "muted", input.Muted },
+                { "deaf", input.Deaf }
             };
 
             //prepare the API call request to fetch the response
@@ -199,244 +422,23 @@ namespace message360.Controllers
         }
 
         /// <summary>
-        /// Add Participant in conference 
+        /// View Participant
         /// </summary>
-        /// <param name="AddParticipantInput">Object containing request parameters</param>
+        /// <param name="CreateViewParticipantInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string AddParticipant(AddParticipantInput input)
+        public string CreateViewParticipant(CreateViewParticipantInput input)
         {
-            Task<string> t = AddParticipantAsync(input);
+            Task<string> t = CreateViewParticipantAsync(input);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
         /// <summary>
-        /// Add Participant in conference 
+        /// View Participant
         /// </summary>
-        /// <param name="AddParticipantInput">Object containing request parameters</param>
+        /// <param name="CreateViewParticipantInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> AddParticipantAsync(AddParticipantInput input)
-        {
-            //validating required parameters
-            if (null == input.Conferencesid)
-                throw new ArgumentNullException("conferencesid", "The property \"Conferencesid\" in the input object cannot be null.");
-
-            if (null == input.Participantnumber)
-                throw new ArgumentNullException("participantnumber", "The property \"Participantnumber\" in the input object cannot be null.");
-
-            //the base uri for api requestss
-            string _baseUri = Configuration.BaseUri;
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/conferences/addParticipant.{ResponseType}");
-
-            //process optional template parameters
-            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
-            {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
-            });
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "message360-api" }
-            };
-
-            //append form/field parameters
-            var _fields = new Dictionary<string,object>()
-            {
-                { "conferencesid", input.Conferencesid },
-                { "participantnumber", input.Participantnumber },
-                { "tocountrycode", input.Tocountrycode },
-                { "muted", input.Muted },
-                { "deaf", input.Deaf }
-            };
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return _response.Body;
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
-
-        /// <summary>
-        /// View Conference
-        /// </summary>
-        /// <param name="CreateViewConferenceInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public string CreateViewConference(CreateViewConferenceInput input)
-        {
-            Task<string> t = CreateViewConferenceAsync(input);
-            APIHelper.RunTaskSynchronously(t);
-            return t.Result;
-        }
-
-        /// <summary>
-        /// View Conference
-        /// </summary>
-        /// <param name="CreateViewConferenceInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateViewConferenceAsync(CreateViewConferenceInput input)
-        {
-            //validating required parameters
-            if (null == input.Conferencesid)
-                throw new ArgumentNullException("conferencesid", "The property \"Conferencesid\" in the input object cannot be null.");
-
-            //the base uri for api requestss
-            string _baseUri = Configuration.BaseUri;
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/conferences/viewconference.{ResponseType}");
-
-            //process optional template parameters
-            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
-            {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
-            });
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "message360-api" }
-            };
-
-            //append form/field parameters
-            var _fields = new Dictionary<string,object>()
-            {
-                { "conferencesid", input.Conferencesid }
-            };
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return _response.Body;
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
-
-        /// <summary>
-        /// List Conference
-        /// </summary>
-        /// <param name="CreateListConferenceInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public string CreateListConference(CreateListConferenceInput input)
-        {
-            Task<string> t = CreateListConferenceAsync(input);
-            APIHelper.RunTaskSynchronously(t);
-            return t.Result;
-        }
-
-        /// <summary>
-        /// List Conference
-        /// </summary>
-        /// <param name="CreateListConferenceInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateListConferenceAsync(CreateListConferenceInput input)
-        {
-            //the base uri for api requestss
-            string _baseUri = Configuration.BaseUri;
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/conferences/listconference.{ResponseType}");
-
-            //process optional template parameters
-            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
-            {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
-            });
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "message360-api" }
-            };
-
-            //append form/field parameters
-            var _fields = new Dictionary<string,object>()
-            {
-                { "Page", input.Page },
-                { "PageSize", input.PageSize },
-                { "FriendlyName", input.FriendlyName },
-                { "Status", (input.Status.HasValue) ? InterruptedCallStatusHelper.ToValue(input.Status.Value) : null },
-                { "DateCreated", input.DateCreated },
-                { "DateUpdated", input.DateUpdated }
-            };
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return _response.Body;
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
-
-        /// <summary>
-        /// Deaf Mute Participant
-        /// </summary>
-        /// <param name="CreateDeafMuteParticipantInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public string CreateDeafMuteParticipant(CreateDeafMuteParticipantInput input)
-        {
-            Task<string> t = CreateDeafMuteParticipantAsync(input);
-            APIHelper.RunTaskSynchronously(t);
-            return t.Result;
-        }
-
-        /// <summary>
-        /// Deaf Mute Participant
-        /// </summary>
-        /// <param name="CreateDeafMuteParticipantInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateDeafMuteParticipantAsync(CreateDeafMuteParticipantInput input)
+        public async Task<string> CreateViewParticipantAsync(CreateViewParticipantInput input)
         {
             //validating required parameters
             if (null == input.ConferenceSid)
@@ -450,12 +452,12 @@ namespace message360.Controllers
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/conferences/deafMuteParticipant.{ResponseType}");
+            _queryBuilder.Append("/conferences/viewparticipant.{ResponseType}");
 
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -471,10 +473,8 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "conferenceSid", input.ConferenceSid },
-                { "ParticipantSid", input.ParticipantSid },
-                { "Muted", input.Muted },
-                { "Deaf", input.Deaf }
+                { "ConferenceSid", input.ConferenceSid },
+                { "ParticipantSid", input.ParticipantSid }
             };
 
             //prepare the API call request to fetch the response

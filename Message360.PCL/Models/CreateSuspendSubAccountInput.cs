@@ -21,7 +21,7 @@ namespace message360.Models
         // These fields hold the values for the public properties.
         private string subaccountsid;
         private ActivateStatus activate;
-        private ResponseType? responseType;
+        private string responseType;
 
         /// <summary>
         /// TODO: Write general description for this method
@@ -60,8 +60,8 @@ namespace message360.Models
         /// <summary>
         /// TODO: Write general description for this method
         /// </summary>
-        [JsonProperty("ResponseType", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public ResponseType? ResponseType 
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
         { 
             get 
             {

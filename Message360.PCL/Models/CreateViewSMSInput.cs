@@ -20,7 +20,7 @@ namespace message360.Models
     {
         // These fields hold the values for the public properties.
         private string messagesid;
-        private ResponseType? responseType = ResponseType.JSON;
+        private string responseType = "json";
 
         /// <summary>
         /// Message sid
@@ -40,10 +40,10 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Response format, xml or json
+        /// Response type format xml or json
         /// </summary>
-        [JsonProperty("ResponseType", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public ResponseType? ResponseType 
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
         { 
             get 
             {

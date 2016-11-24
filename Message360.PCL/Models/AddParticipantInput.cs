@@ -24,7 +24,7 @@ namespace message360.Models
         private int tocountrycode;
         private bool? muted;
         private bool? deaf;
-        private ResponseType? responseType = ResponseType.JSON;
+        private string responseType = "json";
 
         /// <summary>
         /// Unique Conference Sid
@@ -112,10 +112,10 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Response format, xml or json
+        /// Response type format xml or json
         /// </summary>
-        [JsonProperty("ResponseType", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public ResponseType? ResponseType 
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
         { 
             get 
             {

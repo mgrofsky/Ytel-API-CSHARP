@@ -23,7 +23,7 @@ namespace message360.Models
         private int? pageSize;
         private Status? status;
         private string dateTranscribed;
-        private ResponseType? responseType = ResponseType.JSON;
+        private string responseType = "json";
 
         /// <summary>
         /// TODO: Write general description for this method
@@ -94,10 +94,10 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Response format, xml or json
+        /// Response type format xml or json
         /// </summary>
-        [JsonProperty("ResponseType", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public ResponseType? ResponseType 
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
         { 
             get 
             {

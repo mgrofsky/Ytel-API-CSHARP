@@ -96,7 +96,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -121,218 +121,6 @@ namespace message360.Controllers
                 { "description", input.Description },
                 { "email", input.Email },
                 { "phone", input.Phone }
-            };
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return _response.Body;
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
-
-        /// <summary>
-        /// View Address Specific address Book by providing the address id
-        /// </summary>
-        /// <param name="CreateViewAddressInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public string CreateViewAddress(CreateViewAddressInput input)
-        {
-            Task<string> t = CreateViewAddressAsync(input);
-            APIHelper.RunTaskSynchronously(t);
-            return t.Result;
-        }
-
-        /// <summary>
-        /// View Address Specific address Book by providing the address id
-        /// </summary>
-        /// <param name="CreateViewAddressInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateViewAddressAsync(CreateViewAddressInput input)
-        {
-            //validating required parameters
-            if (null == input.AddressId)
-                throw new ArgumentNullException("addressId", "The property \"AddressId\" in the input object cannot be null.");
-
-            //the base uri for api requestss
-            string _baseUri = Configuration.BaseUri;
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/address/viewaddress.{ResponseType}");
-
-            //process optional template parameters
-            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
-            {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
-            });
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "message360-api" }
-            };
-
-            //append form/field parameters
-            var _fields = new Dictionary<string,object>()
-            {
-                { "addressId", input.AddressId }
-            };
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return _response.Body;
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
-
-        /// <summary>
-        /// List All Address 
-        /// </summary>
-        /// <param name="CreateListAddressInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public string CreateListAddress(CreateListAddressInput input)
-        {
-            Task<string> t = CreateListAddressAsync(input);
-            APIHelper.RunTaskSynchronously(t);
-            return t.Result;
-        }
-
-        /// <summary>
-        /// List All Address 
-        /// </summary>
-        /// <param name="CreateListAddressInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateListAddressAsync(CreateListAddressInput input)
-        {
-            //the base uri for api requestss
-            string _baseUri = Configuration.BaseUri;
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/address/listaddress.{ResponseType}");
-
-            //process optional template parameters
-            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
-            {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
-            });
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "message360-api" }
-            };
-
-            //append form/field parameters
-            var _fields = new Dictionary<string,object>()
-            {
-                { "page", input.Page },
-                { "pageSize", input.PageSize },
-                { "addressId", input.AddressId },
-                { "dateCreated", input.DateCreated }
-            };
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return _response.Body;
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
-
-        /// <summary>
-        /// Validates an address given.
-        /// </summary>
-        /// <param name="CreateVerifyAddressInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public string CreateVerifyAddress(CreateVerifyAddressInput input)
-        {
-            Task<string> t = CreateVerifyAddressAsync(input);
-            APIHelper.RunTaskSynchronously(t);
-            return t.Result;
-        }
-
-        /// <summary>
-        /// Validates an address given.
-        /// </summary>
-        /// <param name="CreateVerifyAddressInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateVerifyAddressAsync(CreateVerifyAddressInput input)
-        {
-            //validating required parameters
-            if (null == input.Addressid)
-                throw new ArgumentNullException("addressid", "The property \"Addressid\" in the input object cannot be null.");
-
-            //the base uri for api requestss
-            string _baseUri = Configuration.BaseUri;
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/address/verifyaddress.{ResponseType}");
-
-            //process optional template parameters
-            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
-            {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
-            });
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "message360-api" }
-            };
-
-            //append form/field parameters
-            var _fields = new Dictionary<string,object>()
-            {
-                { "addressid", input.Addressid }
             };
 
             //prepare the API call request to fetch the response
@@ -387,7 +175,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -404,6 +192,218 @@ namespace message360.Controllers
             var _fields = new Dictionary<string,object>()
             {
                 { "addressid", input.Addressid }
+            };
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request,_response);
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return _response.Body;
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// Validates an address given.
+        /// </summary>
+        /// <param name="CreateVerifyAddressInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public string CreateVerifyAddress(CreateVerifyAddressInput input)
+        {
+            Task<string> t = CreateVerifyAddressAsync(input);
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// Validates an address given.
+        /// </summary>
+        /// <param name="CreateVerifyAddressInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public async Task<string> CreateVerifyAddressAsync(CreateVerifyAddressInput input)
+        {
+            //validating required parameters
+            if (null == input.Addressid)
+                throw new ArgumentNullException("addressid", "The property \"Addressid\" in the input object cannot be null.");
+
+            //the base uri for api requestss
+            string _baseUri = Configuration.BaseUri;
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/address/verifyaddress.{ResponseType}");
+
+            //process optional template parameters
+            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
+            {
+                { "ResponseType", input.ResponseType }
+            });
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "message360-api" }
+            };
+
+            //append form/field parameters
+            var _fields = new Dictionary<string,object>()
+            {
+                { "addressid", input.Addressid }
+            };
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request,_response);
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return _response.Body;
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// List All Address 
+        /// </summary>
+        /// <param name="CreateListAddressInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public string CreateListAddress(CreateListAddressInput input)
+        {
+            Task<string> t = CreateListAddressAsync(input);
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// List All Address 
+        /// </summary>
+        /// <param name="CreateListAddressInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public async Task<string> CreateListAddressAsync(CreateListAddressInput input)
+        {
+            //the base uri for api requestss
+            string _baseUri = Configuration.BaseUri;
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/address/listaddress.{ResponseType}");
+
+            //process optional template parameters
+            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
+            {
+                { "ResponseType", input.ResponseType }
+            });
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "message360-api" }
+            };
+
+            //append form/field parameters
+            var _fields = new Dictionary<string,object>()
+            {
+                { "page", input.Page },
+                { "pageSize", input.PageSize },
+                { "addressId", input.AddressId },
+                { "dateCreated", input.DateCreated }
+            };
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request,_response);
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return _response.Body;
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// View Address Specific address Book by providing the address id
+        /// </summary>
+        /// <param name="CreateViewAddressInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public string CreateViewAddress(CreateViewAddressInput input)
+        {
+            Task<string> t = CreateViewAddressAsync(input);
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// View Address Specific address Book by providing the address id
+        /// </summary>
+        /// <param name="CreateViewAddressInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public async Task<string> CreateViewAddressAsync(CreateViewAddressInput input)
+        {
+            //validating required parameters
+            if (null == input.AddressId)
+                throw new ArgumentNullException("addressId", "The property \"AddressId\" in the input object cannot be null.");
+
+            //the base uri for api requestss
+            string _baseUri = Configuration.BaseUri;
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/address/viewaddress.{ResponseType}");
+
+            //process optional template parameters
+            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
+            {
+                { "ResponseType", input.ResponseType }
+            });
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "message360-api" }
+            };
+
+            //append form/field parameters
+            var _fields = new Dictionary<string,object>()
+            {
+                { "addressId", input.AddressId }
             };
 
             //prepare the API call request to fetch the response

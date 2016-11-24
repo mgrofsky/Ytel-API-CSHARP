@@ -24,61 +24,6 @@ namespace message360
         }
 
         /// <summary>
-        /// Singleton access to Transcription controller
-        /// </summary>
-        public TranscriptionController Transcription
-        {
-            get
-            {
-                return TranscriptionController.Instance;
-            }
-        }
-
-        /// <summary>
-        /// Singleton access to PhoneNumber controller
-        /// </summary>
-        public PhoneNumberController PhoneNumber
-        {
-            get
-            {
-                return PhoneNumberController.Instance;
-            }
-        }
-
-        /// <summary>
-        /// Singleton access to Usage controller
-        /// </summary>
-        public UsageController Usage
-        {
-            get
-            {
-                return UsageController.Instance;
-            }
-        }
-
-        /// <summary>
-        /// Singleton access to WebRTC controller
-        /// </summary>
-        public WebRTCController WebRTC
-        {
-            get
-            {
-                return WebRTCController.Instance;
-            }
-        }
-
-        /// <summary>
-        /// Singleton access to Recording controller
-        /// </summary>
-        public RecordingController Recording
-        {
-            get
-            {
-                return RecordingController.Instance;
-            }
-        }
-
-        /// <summary>
         /// Singleton access to Email controller
         /// </summary>
         public EmailController Email
@@ -86,6 +31,39 @@ namespace message360
             get
             {
                 return EmailController.Instance;
+            }
+        }
+
+        /// <summary>
+        /// Singleton access to NumberVerification controller
+        /// </summary>
+        public NumberVerificationController NumberVerification
+        {
+            get
+            {
+                return NumberVerificationController.Instance;
+            }
+        }
+
+        /// <summary>
+        /// Singleton access to Carrier controller
+        /// </summary>
+        public CarrierController Carrier
+        {
+            get
+            {
+                return CarrierController.Instance;
+            }
+        }
+
+        /// <summary>
+        /// Singleton access to Call controller
+        /// </summary>
+        public CallController Call
+        {
+            get
+            {
+                return CallController.Instance;
             }
         }
 
@@ -112,35 +90,13 @@ namespace message360
         }
 
         /// <summary>
-        /// Singleton access to Call controller
+        /// Singleton access to WebRTC controller
         /// </summary>
-        public CallController Call
+        public WebRTCController WebRTC
         {
             get
             {
-                return CallController.Instance;
-            }
-        }
-
-        /// <summary>
-        /// Singleton access to Carrier controller
-        /// </summary>
-        public CarrierController Carrier
-        {
-            get
-            {
-                return CarrierController.Instance;
-            }
-        }
-
-        /// <summary>
-        /// Singleton access to Address controller
-        /// </summary>
-        public AddressController Address
-        {
-            get
-            {
-                return AddressController.Instance;
+                return WebRTCController.Instance;
             }
         }
 
@@ -156,13 +112,57 @@ namespace message360
         }
 
         /// <summary>
-        /// Singleton access to NumberVerification controller
+        /// Singleton access to Address controller
         /// </summary>
-        public NumberVerificationController NumberVerification
+        public AddressController Address
         {
             get
             {
-                return NumberVerificationController.Instance;
+                return AddressController.Instance;
+            }
+        }
+
+        /// <summary>
+        /// Singleton access to PhoneNumber controller
+        /// </summary>
+        public PhoneNumberController PhoneNumber
+        {
+            get
+            {
+                return PhoneNumberController.Instance;
+            }
+        }
+
+        /// <summary>
+        /// Singleton access to Recording controller
+        /// </summary>
+        public RecordingController Recording
+        {
+            get
+            {
+                return RecordingController.Instance;
+            }
+        }
+
+        /// <summary>
+        /// Singleton access to Transcription controller
+        /// </summary>
+        public TranscriptionController Transcription
+        {
+            get
+            {
+                return TranscriptionController.Instance;
+            }
+        }
+
+        /// <summary>
+        /// Singleton access to Usage controller
+        /// </summary>
+        public UsageController Usage
+        {
+            get
+            {
+                return UsageController.Instance;
             }
         }
         /// <summary>
