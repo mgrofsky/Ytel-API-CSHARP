@@ -19,15 +19,15 @@ namespace message360.Models
     public class CreateListUnsubscribesInput : INotifyPropertyChanged 
     {
         // These fields hold the values for the public properties.
-        private ResponseType? responseType = ResponseType.JSON;
+        private string responseType = "json";
         private string offset;
         private string limit;
 
         /// <summary>
-        /// Response format, xml or json
+        /// Response type format xml or json
         /// </summary>
-        [JsonProperty("ResponseType", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public ResponseType? ResponseType 
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
         { 
             get 
             {

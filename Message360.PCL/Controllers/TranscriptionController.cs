@@ -49,109 +49,39 @@ namespace message360.Controllers
         #endregion Singleton Pattern
 
         /// <summary>
-        /// Get All transcriptions
+        /// Audio URL Transcriptions
         /// </summary>
-        /// <param name="CreateListTranscriptionInput">Object containing request parameters</param>
+        /// <param name="CreateAudioURLTranscriptionInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateListTranscription(CreateListTranscriptionInput input)
+        public string CreateAudioURLTranscription(CreateAudioURLTranscriptionInput input)
         {
-            Task<string> t = CreateListTranscriptionAsync(input);
+            Task<string> t = CreateAudioURLTranscriptionAsync(input);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
         /// <summary>
-        /// Get All transcriptions
+        /// Audio URL Transcriptions
         /// </summary>
-        /// <param name="CreateListTranscriptionInput">Object containing request parameters</param>
+        /// <param name="CreateAudioURLTranscriptionInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateListTranscriptionAsync(CreateListTranscriptionInput input)
-        {
-            //the base uri for api requestss
-            string _baseUri = Configuration.BaseUri;
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/transcriptions/listtranscription.{ResponseType}");
-
-            //process optional template parameters
-            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
-            {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
-            });
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "message360-api" }
-            };
-
-            //append form/field parameters
-            var _fields = new Dictionary<string,object>()
-            {
-                { "Page", input.Page },
-                { "PageSize", input.PageSize },
-                { "Status", (input.Status.HasValue) ? StatusHelper.ToValue(input.Status.Value) : null },
-                { "DateTranscribed", input.DateTranscribed }
-            };
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return _response.Body;
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
-
-        /// <summary>
-        /// View Specific Transcriptions
-        /// </summary>
-        /// <param name="CreateViewTranscriptionInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public string CreateViewTranscription(CreateViewTranscriptionInput input)
-        {
-            Task<string> t = CreateViewTranscriptionAsync(input);
-            APIHelper.RunTaskSynchronously(t);
-            return t.Result;
-        }
-
-        /// <summary>
-        /// View Specific Transcriptions
-        /// </summary>
-        /// <param name="CreateViewTranscriptionInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateViewTranscriptionAsync(CreateViewTranscriptionInput input)
+        public async Task<string> CreateAudioURLTranscriptionAsync(CreateAudioURLTranscriptionInput input)
         {
             //validating required parameters
-            if (null == input.TranscriptionSid)
-                throw new ArgumentNullException("transcriptionSid", "The property \"TranscriptionSid\" in the input object cannot be null.");
+            if (null == input.AudioUrl)
+                throw new ArgumentNullException("audioUrl", "The property \"AudioUrl\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/transcriptions/viewtranscription.{ResponseType}");
+            _queryBuilder.Append("/transcriptions/audiourltranscription.{ResponseType}");
 
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -167,7 +97,7 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "TranscriptionSid", input.TranscriptionSid }
+                { "AudioUrl", input.AudioUrl }
             };
 
             //prepare the API call request to fetch the response
@@ -222,7 +152,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -261,39 +191,39 @@ namespace message360.Controllers
         }
 
         /// <summary>
-        /// Audio URL Transcriptions
+        /// View Specific Transcriptions
         /// </summary>
-        /// <param name="CreateAudioURLTranscriptionInput">Object containing request parameters</param>
+        /// <param name="CreateViewTranscriptionInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateAudioURLTranscription(CreateAudioURLTranscriptionInput input)
+        public string CreateViewTranscription(CreateViewTranscriptionInput input)
         {
-            Task<string> t = CreateAudioURLTranscriptionAsync(input);
+            Task<string> t = CreateViewTranscriptionAsync(input);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
         /// <summary>
-        /// Audio URL Transcriptions
+        /// View Specific Transcriptions
         /// </summary>
-        /// <param name="CreateAudioURLTranscriptionInput">Object containing request parameters</param>
+        /// <param name="CreateViewTranscriptionInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateAudioURLTranscriptionAsync(CreateAudioURLTranscriptionInput input)
+        public async Task<string> CreateViewTranscriptionAsync(CreateViewTranscriptionInput input)
         {
             //validating required parameters
-            if (null == input.AudioUrl)
-                throw new ArgumentNullException("audioUrl", "The property \"AudioUrl\" in the input object cannot be null.");
+            if (null == input.TranscriptionSid)
+                throw new ArgumentNullException("transcriptionSid", "The property \"TranscriptionSid\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/transcriptions/audiourltranscription.{ResponseType}");
+            _queryBuilder.Append("/transcriptions/viewtranscription.{ResponseType}");
 
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -309,7 +239,77 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "AudioUrl", input.AudioUrl }
+                { "TranscriptionSid", input.TranscriptionSid }
+            };
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request,_response);
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return _response.Body;
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// Get All transcriptions
+        /// </summary>
+        /// <param name="CreateListTranscriptionInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public string CreateListTranscription(CreateListTranscriptionInput input)
+        {
+            Task<string> t = CreateListTranscriptionAsync(input);
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// Get All transcriptions
+        /// </summary>
+        /// <param name="CreateListTranscriptionInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public async Task<string> CreateListTranscriptionAsync(CreateListTranscriptionInput input)
+        {
+            //the base uri for api requestss
+            string _baseUri = Configuration.BaseUri;
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/transcriptions/listtranscription.{ResponseType}");
+
+            //process optional template parameters
+            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
+            {
+                { "ResponseType", input.ResponseType }
+            });
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "message360-api" }
+            };
+
+            //append form/field parameters
+            var _fields = new Dictionary<string,object>()
+            {
+                { "Page", input.Page },
+                { "PageSize", input.PageSize },
+                { "Status", (input.Status.HasValue) ? StatusHelper.ToValue(input.Status.Value) : null },
+                { "DateTranscribed", input.DateTranscribed }
             };
 
             //prepare the API call request to fetch the response

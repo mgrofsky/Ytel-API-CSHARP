@@ -28,7 +28,7 @@ namespace message360.Models
         private string description;
         private string email;
         private string phone;
-        private ResponseType? responseType = ResponseType.JSON;
+        private string responseType = "json";
 
         /// <summary>
         /// Name of user
@@ -186,8 +186,8 @@ namespace message360.Models
         /// <summary>
         /// Response Type Either json or xml
         /// </summary>
-        [JsonProperty("ResponseType", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public ResponseType? ResponseType 
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
         { 
             get 
             {

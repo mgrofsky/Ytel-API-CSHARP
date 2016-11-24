@@ -39,7 +39,7 @@ namespace message360.Models
         private HttpAction? recordCallBackMethod;
         private bool? transcribe;
         private string transcribeCallBackUrl;
-        private ResponseType? responseType = ResponseType.JSON;
+        private string responseType = "json";
 
         /// <summary>
         /// TODO: Write general description for this method
@@ -384,8 +384,8 @@ namespace message360.Models
         /// <summary>
         /// TODO: Write general description for this method
         /// </summary>
-        [JsonProperty("ResponseType", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public ResponseType? ResponseType 
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
         { 
             get 
             {

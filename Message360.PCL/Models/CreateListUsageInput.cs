@@ -22,7 +22,7 @@ namespace message360.Models
         private ProductCode productCode = ProductCode.ALL;
         private string startDate = "2016-09-06";
         private string endDate = "2016-09-06";
-        private ResponseType? responseType = ResponseType.JSON;
+        private string responseType = "json";
 
         /// <summary>
         /// Product Code
@@ -76,10 +76,10 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Response format, xml or json
+        /// Response type format xml or json
         /// </summary>
-        [JsonProperty("ResponseType", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public ResponseType? ResponseType 
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
         { 
             get 
             {

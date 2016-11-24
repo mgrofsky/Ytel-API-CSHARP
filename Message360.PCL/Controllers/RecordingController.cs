@@ -49,39 +49,35 @@ namespace message360.Controllers
         #endregion Singleton Pattern
 
         /// <summary>
-        /// View a specific Recording
+        /// List out Recordings
         /// </summary>
-        /// <param name="CreateViewRecordingInput">Object containing request parameters</param>
+        /// <param name="CreateListRecordingInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateViewRecording(CreateViewRecordingInput input)
+        public string CreateListRecording(CreateListRecordingInput input)
         {
-            Task<string> t = CreateViewRecordingAsync(input);
+            Task<string> t = CreateListRecordingAsync(input);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
         /// <summary>
-        /// View a specific Recording
+        /// List out Recordings
         /// </summary>
-        /// <param name="CreateViewRecordingInput">Object containing request parameters</param>
+        /// <param name="CreateListRecordingInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateViewRecordingAsync(CreateViewRecordingInput input)
+        public async Task<string> CreateListRecordingAsync(CreateListRecordingInput input)
         {
-            //validating required parameters
-            if (null == input.RecordingSid)
-                throw new ArgumentNullException("recordingSid", "The property \"RecordingSid\" in the input object cannot be null.");
-
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/recording/viewrecording.{ResponseType}");
+            _queryBuilder.Append("/recording/listrecording.{ResponseType}");
 
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -97,7 +93,10 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "RecordingSid", input.RecordingSid }
+                { "Page", input.Page },
+                { "PageSize", input.PageSize },
+                { "DateCreated", input.DateCreated },
+                { "CallSid", input.CallSid }
             };
 
             //prepare the API call request to fetch the response
@@ -152,7 +151,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -191,35 +190,39 @@ namespace message360.Controllers
         }
 
         /// <summary>
-        /// List out Recordings
+        /// View a specific Recording
         /// </summary>
-        /// <param name="CreateListRecordingInput">Object containing request parameters</param>
+        /// <param name="CreateViewRecordingInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateListRecording(CreateListRecordingInput input)
+        public string CreateViewRecording(CreateViewRecordingInput input)
         {
-            Task<string> t = CreateListRecordingAsync(input);
+            Task<string> t = CreateViewRecordingAsync(input);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
         /// <summary>
-        /// List out Recordings
+        /// View a specific Recording
         /// </summary>
-        /// <param name="CreateListRecordingInput">Object containing request parameters</param>
+        /// <param name="CreateViewRecordingInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateListRecordingAsync(CreateListRecordingInput input)
+        public async Task<string> CreateViewRecordingAsync(CreateViewRecordingInput input)
         {
+            //validating required parameters
+            if (null == input.RecordingSid)
+                throw new ArgumentNullException("recordingSid", "The property \"RecordingSid\" in the input object cannot be null.");
+
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/recording/listrecording.{ResponseType}");
+            _queryBuilder.Append("/recording/viewrecording.{ResponseType}");
 
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
+                { "ResponseType", input.ResponseType }
             });
 
 
@@ -235,10 +238,7 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "Page", input.Page },
-                { "PageSize", input.PageSize },
-                { "DateCreated", input.DateCreated },
-                { "CallSid", input.CallSid }
+                { "RecordingSid", input.RecordingSid }
             };
 
             //prepare the API call request to fetch the response
