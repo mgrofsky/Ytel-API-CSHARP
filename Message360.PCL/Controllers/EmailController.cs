@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/24/2016
  */
 using System;
 using System.Collections.Generic;
@@ -56,7 +56,7 @@ namespace message360.Controllers
         public string CreateDeleteSpam(CreateDeleteSpamInput input)
         {
             Task<string> t = CreateDeleteSpamAsync(input);
-            Task.WaitAll(t);
+            APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
@@ -81,7 +81,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", input.ResponseType }
+                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
             });
 
 
@@ -104,7 +104,7 @@ namespace message360.Controllers
             HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
@@ -127,7 +127,7 @@ namespace message360.Controllers
         public string CreateDeleteBlock(CreateDeleteBlockInput input)
         {
             Task<string> t = CreateDeleteBlockAsync(input);
-            Task.WaitAll(t);
+            APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
@@ -152,7 +152,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", input.ResponseType }
+                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
             });
 
 
@@ -175,7 +175,7 @@ namespace message360.Controllers
             HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
@@ -198,7 +198,7 @@ namespace message360.Controllers
         public string AddUnsubscribes(AddUnsubscribesInput input)
         {
             Task<string> t = AddUnsubscribesAsync(input);
-            Task.WaitAll(t);
+            APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
@@ -223,7 +223,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", input.ResponseType }
+                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
             });
 
 
@@ -246,7 +246,7 @@ namespace message360.Controllers
             HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
@@ -269,7 +269,7 @@ namespace message360.Controllers
         public string CreateSendEmail(CreateSendEmailInput input)
         {
             Task<string> t = CreateSendEmailAsync(input);
-            Task.WaitAll(t);
+            APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
@@ -303,7 +303,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", input.ResponseType }
+                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
             });
 
 
@@ -333,7 +333,7 @@ namespace message360.Controllers
             HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
@@ -356,7 +356,7 @@ namespace message360.Controllers
         public string CreateDeleteUnsubscribes(CreateDeleteUnsubscribesInput input)
         {
             Task<string> t = CreateDeleteUnsubscribesAsync(input);
-            Task.WaitAll(t);
+            APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
@@ -381,7 +381,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", input.ResponseType }
+                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
             });
 
 
@@ -404,7 +404,7 @@ namespace message360.Controllers
             HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
@@ -427,7 +427,7 @@ namespace message360.Controllers
         public string CreateListUnsubscribes(CreateListUnsubscribesInput input)
         {
             Task<string> t = CreateListUnsubscribesAsync(input);
-            Task.WaitAll(t);
+            APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
@@ -448,7 +448,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", input.ResponseType }
+                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
             });
 
 
@@ -472,7 +472,7 @@ namespace message360.Controllers
             HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
@@ -495,7 +495,7 @@ namespace message360.Controllers
         public string CreateListInvalid(CreateListInvalidInput input)
         {
             Task<string> t = CreateListInvalidAsync(input);
-            Task.WaitAll(t);
+            APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
@@ -516,7 +516,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", input.ResponseType }
+                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
             });
 
 
@@ -540,7 +540,7 @@ namespace message360.Controllers
             HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
@@ -563,7 +563,7 @@ namespace message360.Controllers
         public string CreateDeleteBounces(CreateDeleteBouncesInput input)
         {
             Task<string> t = CreateDeleteBouncesAsync(input);
-            Task.WaitAll(t);
+            APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
@@ -588,7 +588,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", input.ResponseType }
+                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
             });
 
 
@@ -611,7 +611,7 @@ namespace message360.Controllers
             HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
@@ -634,7 +634,7 @@ namespace message360.Controllers
         public string CreateListBounces(CreateListBouncesInput input)
         {
             Task<string> t = CreateListBouncesAsync(input);
-            Task.WaitAll(t);
+            APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
@@ -655,7 +655,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", input.ResponseType }
+                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
             });
 
 
@@ -679,7 +679,7 @@ namespace message360.Controllers
             HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
@@ -702,7 +702,7 @@ namespace message360.Controllers
         public string CreateListSpam(CreateListSpamInput input)
         {
             Task<string> t = CreateListSpamAsync(input);
-            Task.WaitAll(t);
+            APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
@@ -713,10 +713,6 @@ namespace message360.Controllers
         /// <return>Returns the string response from the API call</return>
         public async Task<string> CreateListSpamAsync(CreateListSpamInput input)
         {
-            //validating required parameters
-            if (null == input.ResponseType)
-                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
-
             //the base uri for api requestss
             string _baseUri = Configuration.BaseUri;
 
@@ -727,7 +723,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", input.ResponseType }
+                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
             });
 
 
@@ -751,7 +747,7 @@ namespace message360.Controllers
             HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
@@ -774,7 +770,7 @@ namespace message360.Controllers
         public string CreateListBlocks(CreateListBlocksInput input)
         {
             Task<string> t = CreateListBlocksAsync(input);
-            Task.WaitAll(t);
+            APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
@@ -795,7 +791,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", input.ResponseType }
+                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
             });
 
 
@@ -819,7 +815,78 @@ namespace message360.Controllers
             HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request,_response);
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return _response.Body;
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// This endpoint allows you to delete entries in the Invalid Emails list.
+        /// </summary>
+        /// <param name="CreateDeleteInvalidInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public string CreateDeleteInvalid(CreateDeleteInvalidInput input)
+        {
+            Task<string> t = CreateDeleteInvalidAsync(input);
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// This endpoint allows you to delete entries in the Invalid Emails list.
+        /// </summary>
+        /// <param name="CreateDeleteInvalidInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public async Task<string> CreateDeleteInvalidAsync(CreateDeleteInvalidInput input)
+        {
+            //validating required parameters
+            if (null == input.Email)
+                throw new ArgumentNullException("email", "The property \"Email\" in the input object cannot be null.");
+
+            //the base uri for api requestss
+            string _baseUri = Configuration.BaseUri;
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/email/deleteinvalidemail.{ResponseType}");
+
+            //process optional template parameters
+            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
+            {
+                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
+            });
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "message360-api" }
+            };
+
+            //append form/field parameters
+            var _fields = new Dictionary<string,object>()
+            {
+                { "email", input.Email }
+            };
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);

@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/24/2016
  */
 using System;
 using System.IO;
@@ -10,6 +10,7 @@ using message360.Http.Client;
 
 namespace message360.Exceptions
 {
+    [JsonObject]
     public class APIException : Exception
     {
         /// <summary>
@@ -48,7 +49,8 @@ namespace message360.Exceptions
                 if (!string.IsNullOrWhiteSpace(responseBody))
                 {
                     try { JsonConvert.PopulateObject(responseBody, this); }
-                    catch { } //ignoring response body from deserailization
+                    catch
+                    {} //ignoring response body from deserailization
                 }
             }
         }

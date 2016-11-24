@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/24/2016
  */
 using System;
 using message360.Controllers;
@@ -19,7 +19,7 @@ namespace message360
         {
             get
             {
-                return message360.Controllers.ConferenceController.Instance;
+                return ConferenceController.Instance;
             }
         }
 
@@ -30,7 +30,7 @@ namespace message360
         {
             get
             {
-                return message360.Controllers.TranscriptionController.Instance;
+                return TranscriptionController.Instance;
             }
         }
 
@@ -41,7 +41,7 @@ namespace message360
         {
             get
             {
-                return message360.Controllers.PhoneNumberController.Instance;
+                return PhoneNumberController.Instance;
             }
         }
 
@@ -52,7 +52,7 @@ namespace message360
         {
             get
             {
-                return message360.Controllers.UsageController.Instance;
+                return UsageController.Instance;
             }
         }
 
@@ -63,7 +63,7 @@ namespace message360
         {
             get
             {
-                return message360.Controllers.WebRTCController.Instance;
+                return WebRTCController.Instance;
             }
         }
 
@@ -74,7 +74,7 @@ namespace message360
         {
             get
             {
-                return message360.Controllers.RecordingController.Instance;
+                return RecordingController.Instance;
             }
         }
 
@@ -85,7 +85,7 @@ namespace message360
         {
             get
             {
-                return message360.Controllers.EmailController.Instance;
+                return EmailController.Instance;
             }
         }
 
@@ -96,7 +96,7 @@ namespace message360
         {
             get
             {
-                return message360.Controllers.SMSController.Instance;
+                return SMSController.Instance;
             }
         }
 
@@ -107,7 +107,7 @@ namespace message360
         {
             get
             {
-                return message360.Controllers.AccountController.Instance;
+                return AccountController.Instance;
             }
         }
 
@@ -118,7 +118,7 @@ namespace message360
         {
             get
             {
-                return message360.Controllers.CallController.Instance;
+                return CallController.Instance;
             }
         }
 
@@ -129,10 +129,42 @@ namespace message360
         {
             get
             {
-                return message360.Controllers.CarrierController.Instance;
+                return CarrierController.Instance;
             }
         }
 
+        /// <summary>
+        /// Singleton access to Address controller
+        /// </summary>
+        public AddressController Address
+        {
+            get
+            {
+                return AddressController.Instance;
+            }
+        }
+
+        /// <summary>
+        /// Singleton access to SubAccount controller
+        /// </summary>
+        public SubAccountController SubAccount
+        {
+            get
+            {
+                return SubAccountController.Instance;
+            }
+        }
+
+        /// <summary>
+        /// Singleton access to NumberVerification controller
+        /// </summary>
+        public NumberVerificationController NumberVerification
+        {
+            get
+            {
+                return NumberVerificationController.Instance;
+            }
+        }
         /// <summary>
         /// The shared http client to use for all API calls
         /// </summary>

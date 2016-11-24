@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/24/2016
  */
 using System;
 using System.Collections.Generic;
@@ -56,7 +56,7 @@ namespace message360.Controllers
         public string CreateViewRecording(CreateViewRecordingInput input)
         {
             Task<string> t = CreateViewRecordingAsync(input);
-            Task.WaitAll(t);
+            APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
@@ -81,7 +81,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", input.ResponseType }
+                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
             });
 
 
@@ -104,7 +104,7 @@ namespace message360.Controllers
             HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
@@ -127,7 +127,7 @@ namespace message360.Controllers
         public string CreateDeleteRecording(CreateDeleteRecordingInput input)
         {
             Task<string> t = CreateDeleteRecordingAsync(input);
-            Task.WaitAll(t);
+            APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
@@ -152,7 +152,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", input.ResponseType }
+                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
             });
 
 
@@ -175,7 +175,7 @@ namespace message360.Controllers
             HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
@@ -198,7 +198,7 @@ namespace message360.Controllers
         public string CreateListRecording(CreateListRecordingInput input)
         {
             Task<string> t = CreateListRecordingAsync(input);
-            Task.WaitAll(t);
+            APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
@@ -219,7 +219,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", input.ResponseType }
+                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
             });
 
 
@@ -245,7 +245,7 @@ namespace message360.Controllers
             HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);

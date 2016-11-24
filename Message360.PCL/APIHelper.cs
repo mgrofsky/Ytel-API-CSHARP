@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/24/2016
  */
 using System;
 using System.Collections;
@@ -354,6 +354,24 @@ namespace message360
             foreach (var kvp in dictionary2)
             {
                 dictionary[kvp.Key] = kvp.Value;
+            }
+        }
+        /// <summary>
+        /// Runs asynchronous tasks synchronously and throws the first caught exception
+        /// </summary>
+        /// <param name="t">The task to be run synchronously</param>
+        public static void RunTaskSynchronously(Task t)
+        {
+            try
+            {
+                Task.WaitAll(t);
+            }
+            catch (AggregateException e)
+            {
+                if (e.InnerExceptions.Count > 0)
+                    throw e.InnerExceptions[0];
+                else
+                    throw;
             }
         }
     }

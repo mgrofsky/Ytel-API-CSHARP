@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/24/2016
  */
 using System;
 using System.IO;
@@ -19,16 +19,16 @@ namespace message360.Models
     public class CreateListUsageInput : INotifyPropertyChanged 
     {
         // These fields hold the values for the public properties.
-        private string productCode = "0";
+        private ProductCode productCode = ProductCode.ALL;
         private string startDate = "2016-09-06";
         private string endDate = "2016-09-06";
-        private string responseType = "json";
+        private ResponseType? responseType = ResponseType.JSON;
 
         /// <summary>
         /// Product Code
         /// </summary>
-        [JsonProperty("ProductCode")]
-        public string ProductCode 
+        [JsonProperty("ProductCode", ItemConverterType = typeof(StringValuedEnumConverter))]
+        public ProductCode ProductCode 
         { 
             get 
             {
@@ -78,8 +78,8 @@ namespace message360.Models
         /// <summary>
         /// Response format, xml or json
         /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
+        [JsonProperty("ResponseType", ItemConverterType = typeof(StringValuedEnumConverter))]
+        public ResponseType? ResponseType 
         { 
             get 
             {

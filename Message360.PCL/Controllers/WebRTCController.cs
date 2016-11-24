@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/24/2016
  */
 using System;
 using System.Collections.Generic;
@@ -56,7 +56,7 @@ namespace message360.Controllers
         public void CreateCheckFunds(CreateCheckFundsInput input)
         {
             Task t = CreateCheckFundsAsync(input);
-            Task.WaitAll(t);
+            APIHelper.RunTaskSynchronously(t);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace message360.Controllers
             HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
@@ -116,7 +116,7 @@ namespace message360.Controllers
         public void CreateAuthenticateNumber(CreateAuthenticateNumberInput input)
         {
             Task t = CreateAuthenticateNumberAsync(input);
-            Task.WaitAll(t);
+            APIHelper.RunTaskSynchronously(t);
         }
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace message360.Controllers
             HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
@@ -180,7 +180,7 @@ namespace message360.Controllers
         public void CreateToken(CreateTokenInput input)
         {
             Task t = CreateTokenAsync(input);
-            Task.WaitAll(t);
+            APIHelper.RunTaskSynchronously(t);
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace message360.Controllers
             HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
