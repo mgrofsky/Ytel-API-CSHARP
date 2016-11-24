@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/24/2016
  */
 using System;
 using System.IO;
@@ -19,18 +19,18 @@ namespace message360.Models
     public class CreateListCallsInput : INotifyPropertyChanged 
     {
         // These fields hold the values for the public properties.
-        private string page;
-        private string pageSize;
+        private int? page;
+        private int? pageSize;
         private string to;
         private string mfrom;
         private string dateCreated;
-        private string responseType = "json";
+        private ResponseType? responseType = ResponseType.JSON;
 
         /// <summary>
         /// Which page of the overall response will be returned. Zero indexed
         /// </summary>
         [JsonProperty("Page")]
-        public string Page 
+        public int? Page 
         { 
             get 
             {
@@ -47,7 +47,7 @@ namespace message360.Models
         /// Number of individual resources listed in the response per page
         /// </summary>
         [JsonProperty("PageSize")]
-        public string PageSize 
+        public int? PageSize 
         { 
             get 
             {
@@ -114,8 +114,8 @@ namespace message360.Models
         /// <summary>
         /// Response format, xml or json
         /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
+        [JsonProperty("ResponseType", ItemConverterType = typeof(StringValuedEnumConverter))]
+        public ResponseType? ResponseType 
         { 
             get 
             {

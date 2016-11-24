@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/24/2016
  */
 using System;
 using System.Collections.Generic;
@@ -56,7 +56,7 @@ namespace message360.Controllers
         public string CreateListUsage(CreateListUsageInput input)
         {
             Task<string> t = CreateListUsageAsync(input);
-            Task.WaitAll(t);
+            APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
@@ -68,9 +68,6 @@ namespace message360.Controllers
         public async Task<string> CreateListUsageAsync(CreateListUsageInput input)
         {
             //validating required parameters
-            if (null == input.ProductCode)
-                throw new ArgumentNullException("productCode", "The property \"ProductCode\" in the input object cannot be null.");
-
             if (null == input.StartDate)
                 throw new ArgumentNullException("startDate", "The property \"StartDate\" in the input object cannot be null.");
 
@@ -87,7 +84,7 @@ namespace message360.Controllers
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "ResponseType", input.ResponseType }
+                { "ResponseType", (input.ResponseType.HasValue) ? ResponseTypeHelper.ToValue(input.ResponseType.Value) : "json" }
             });
 
 
@@ -103,7 +100,7 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "ProductCode", input.ProductCode },
+                { "ProductCode", ProductCodeHelper.ToValue(input.ProductCode) },
                 { "startDate", input.StartDate },
                 { "endDate", input.EndDate }
             };
@@ -112,7 +109,7 @@ namespace message360.Controllers
             HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request);
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);

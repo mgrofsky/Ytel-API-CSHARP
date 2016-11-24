@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/24/2016
  */
 using System;
 using System.IO;
@@ -19,15 +19,15 @@ namespace message360.Models
     public class CreateListInvalidInput : INotifyPropertyChanged 
     {
         // These fields hold the values for the public properties.
-        private string responseType = "json";
+        private ResponseType? responseType = ResponseType.JSON;
         private string offet;
         private string limit;
 
         /// <summary>
         /// Response format, xml or json
         /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
+        [JsonProperty("ResponseType", ItemConverterType = typeof(StringValuedEnumConverter))]
+        public ResponseType? ResponseType 
         { 
             get 
             {

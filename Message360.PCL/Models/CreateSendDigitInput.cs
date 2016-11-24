@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/24/2016
  */
 using System;
 using System.IO;
@@ -22,7 +22,7 @@ namespace message360.Models
         private string callSid;
         private string playDtmf;
         private Direction? playDtmfDirection;
-        private string responseType = "json";
+        private ResponseType? responseType = ResponseType.JSON;
 
         /// <summary>
         /// The unique identifier of each call resource
@@ -78,8 +78,8 @@ namespace message360.Models
         /// <summary>
         /// Response format, xml or json
         /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
+        [JsonProperty("ResponseType", ItemConverterType = typeof(StringValuedEnumConverter))]
+        public ResponseType? ResponseType 
         { 
             get 
             {
