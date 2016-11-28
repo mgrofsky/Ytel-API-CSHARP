@@ -2,7 +2,7 @@
 <!--
  - Message360.PCL
  -
- - This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/24/2016
+ - This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/28/2016
 -->
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
@@ -10,7 +10,7 @@
     <AssemblyName>Message360.PCL</AssemblyName>
     <OutputType>Library</OutputType>
     <OutputPath>bin/DEBUG/</OutputPath>
-    <ProjectGuid>{6e85bd6e-0bf8-40b6-b32c-af01a125c2f4}</ProjectGuid>
+    <ProjectGuid>{b0307cf0-bba0-4ab0-85f1-99d6341197e0}</ProjectGuid>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <NuGetPackageImportStamp>ee2bb91c</NuGetPackageImportStamp>
@@ -77,7 +77,7 @@
     <Compile Include="Models\CreateSendDigitInput.cs" />
     <Compile Include="Models\CreateListInboundSMSInput.cs" />
     <Compile Include="Models\CreateListSMSInput.cs" />
-    <Compile Include="Models\CreateListUnsubscribesInput.cs" />
+    <Compile Include="Models\CreateDeleteUnsubscribesInput.cs" />
     <Compile Include="Models\CreateAuthenticateNumberInput.cs" />
     <Compile Include="Models\CreateViewConferenceInput.cs" />
     <Compile Include="Models\AddUnsubscribesInput.cs" />
@@ -103,7 +103,7 @@
     <Compile Include="Models\CreateMakeCallInput.cs" />
     <Compile Include="Models\CreateInterruptedCallInput.cs" />
     <Compile Include="Models\CreateListCallsInput.cs" />
-    <Compile Include="Models\CreateDeleteUnsubscribesInput.cs" />
+    <Compile Include="Models\CreateListUnsubscribesInput.cs" />
     <Compile Include="Models\CreateListRecordingInput.cs" />
     <Compile Include="Models\CreateDeleteInvalidInput.cs" />
     <Compile Include="Models\CreateVerifyNumberInput.cs" />
@@ -134,17 +134,16 @@
     <Compile Include="Models\CreateVerifyAddressInput.cs" />
     <Compile Include="Models\CreateListBouncesInput.cs" />
     <Compile Include="Models\ProductCode.cs" />
-    <Compile Include="Models\ResponseType.cs" />
     <Compile Include="Models\SendEmailAs.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="Models\NumberType.cs" />
-    <Compile Include="Models\AudioFormat.cs" />
-    <Compile Include="Models\InterruptedCallStatus.cs" />
+    <Compile Include="Models\Direction.cs" />
     <Compile Include="Models\IfMachine.cs" />
+    <Compile Include="Models\AudioFormat.cs" />
     <Compile Include="Models\AudioDirection.cs" />
     <Compile Include="Models\HttpAction.cs" />
     <Compile Include="Models\ActivateStatus.cs" />
-    <Compile Include="Models\Direction.cs" />
+    <Compile Include="Models\InterruptedCallStatus.cs" />
     <Compile Include="Models\MergeNumberStatus.cs" />
     <Compile Include="Controllers\ConferenceController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
