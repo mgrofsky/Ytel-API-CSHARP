@@ -2,7 +2,7 @@
 <!--
  - Message360.PCL
  -
- - This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/28/2016
+ - This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/02/2016
 -->
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
@@ -10,7 +10,7 @@
     <AssemblyName>Message360.PCL</AssemblyName>
     <OutputType>Library</OutputType>
     <OutputPath>bin/DEBUG/</OutputPath>
-    <ProjectGuid>{b0307cf0-bba0-4ab0-85f1-99d6341197e0}</ProjectGuid>
+    <ProjectGuid>{c24dbd17-224c-4df9-985f-84683c5f467c}</ProjectGuid>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <NuGetPackageImportStamp>ee2bb91c</NuGetPackageImportStamp>
@@ -170,7 +170,10 @@
     <Compile Include="Http\Client\FileStreamInfo.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Configuration.cs" />
-    <Compile Include="APIHelper.cs" />
+    <Compile Include="Utilities\APIHelper.cs" />
+    <Compile Include="Utilities\UnixDateTimeConverter.cs" />
+    <Compile Include="Utilities\CustomDateTimeConverter.cs" />
+    <Compile Include="Utilities\ListDateTimeConverter.cs" />
     <Compile Include="Exceptions\APIException.cs" />
     <Compile Include="Models\StringValuedEnumConverter.cs" />
     <Compile Include="Message360Client.cs" />
