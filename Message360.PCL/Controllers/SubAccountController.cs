@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/02/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/08/2016
  */
 using System;
 using System.Collections.Generic;
@@ -80,7 +80,7 @@ namespace message360.Controllers
                 throw new ArgumentNullException("email", "The property \"Email\" in the input object cannot be null.");
 
             //the base uri for api requestss
-            string _baseUri = Configuration.BaseUri;
+            string _baseUri = Configuration.GetBaseURI();
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
@@ -153,7 +153,7 @@ namespace message360.Controllers
                 throw new ArgumentNullException("subaccountsid", "The property \"Subaccountsid\" in the input object cannot be null.");
 
             //the base uri for api requestss
-            string _baseUri = Configuration.BaseUri;
+            string _baseUri = Configuration.GetBaseURI();
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
@@ -225,7 +225,7 @@ namespace message360.Controllers
                 throw new ArgumentNullException("subaccountsid", "The property \"Subaccountsid\" in the input object cannot be null.");
 
             //the base uri for api requestss
-            string _baseUri = Configuration.BaseUri;
+            string _baseUri = Configuration.GetBaseURI();
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);

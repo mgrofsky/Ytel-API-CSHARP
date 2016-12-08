@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/02/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/08/2016
  */
 using System;
 using System.Collections.Generic;
@@ -77,7 +77,7 @@ namespace message360.Controllers
                 throw new ArgumentNullException("participantSid", "The property \"ParticipantSid\" in the input object cannot be null.");
 
             //the base uri for api requestss
-            string _baseUri = Configuration.BaseUri;
+            string _baseUri = Configuration.GetBaseURI();
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
@@ -147,7 +147,7 @@ namespace message360.Controllers
         public async Task<string> CreateListConferenceAsync(CreateListConferenceInput input)
         {
             //the base uri for api requestss
-            string _baseUri = Configuration.BaseUri;
+            string _baseUri = Configuration.GetBaseURI();
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
@@ -223,7 +223,7 @@ namespace message360.Controllers
                 throw new ArgumentNullException("conferencesid", "The property \"Conferencesid\" in the input object cannot be null.");
 
             //the base uri for api requestss
-            string _baseUri = Configuration.BaseUri;
+            string _baseUri = Configuration.GetBaseURI();
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
@@ -297,7 +297,7 @@ namespace message360.Controllers
                 throw new ArgumentNullException("participantnumber", "The property \"Participantnumber\" in the input object cannot be null.");
 
             //the base uri for api requestss
-            string _baseUri = Configuration.BaseUri;
+            string _baseUri = Configuration.GetBaseURI();
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
@@ -372,7 +372,7 @@ namespace message360.Controllers
                 throw new ArgumentNullException("conferenceSid", "The property \"ConferenceSid\" in the input object cannot be null.");
 
             //the base uri for api requestss
-            string _baseUri = Configuration.BaseUri;
+            string _baseUri = Configuration.GetBaseURI();
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
@@ -450,7 +450,7 @@ namespace message360.Controllers
                 throw new ArgumentNullException("participantSid", "The property \"ParticipantSid\" in the input object cannot be null.");
 
             //the base uri for api requestss
-            string _baseUri = Configuration.BaseUri;
+            string _baseUri = Configuration.GetBaseURI();
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);

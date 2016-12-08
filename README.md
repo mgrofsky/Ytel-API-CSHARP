@@ -142,10 +142,10 @@ collect.ConferenceSid = conferenceSid;
 string participantSid = "ParticipantSid";
 collect.ParticipantSid = participantSid;
 
-bool? muted = false;
+bool? muted = true;
 collect.Muted = muted;
 
-bool? deaf = false;
+bool? deaf = true;
 collect.Deaf = deaf;
 
 string responseType = "json";
@@ -184,10 +184,10 @@ Task<string> CreateListConference(CreateListConferenceInput input)
 ```csharp
 CreateListConferenceInput collect = new CreateListConferenceInput();
 
-int? page = 101;
+int? page = 195;
 collect.Page = page;
 
-int? pageSize = 101;
+int? pageSize = 195;
 collect.PageSize = pageSize;
 
 string friendlyName = "FriendlyName";
@@ -277,13 +277,13 @@ collect.Conferencesid = conferencesid;
 string participantnumber = "participantnumber";
 collect.Participantnumber = participantnumber;
 
-int tocountrycode = 101;
+int tocountrycode = 195;
 collect.Tocountrycode = tocountrycode;
 
-bool? muted = false;
+bool? muted = true;
 collect.Muted = muted;
 
-bool? deaf = false;
+bool? deaf = true;
 collect.Deaf = deaf;
 
 string responseType = "json";
@@ -324,16 +324,16 @@ CreateListParticipantInput collect = new CreateListParticipantInput();
 string conferenceSid = "ConferenceSid";
 collect.ConferenceSid = conferenceSid;
 
-int? page = 101;
+int? page = 195;
 collect.Page = page;
 
-int? pagesize = 101;
+int? pagesize = 195;
 collect.Pagesize = pagesize;
 
-bool? muted = false;
+bool? muted = true;
 collect.Muted = muted;
 
-bool? deaf = false;
+bool? deaf = true;
 collect.Deaf = deaf;
 
 string responseType = "json";
@@ -970,10 +970,10 @@ Task<string> CreateCarrierLookupList(CreateCarrierLookupListInput input)
 ```csharp
 CreateCarrierLookupListInput collect = new CreateCarrierLookupListInput();
 
-int? page = 101;
+int? page = 32;
 collect.Page = page;
 
-int? pagesize = 101;
+int? pagesize = 32;
 collect.Pagesize = pagesize;
 
 string responseType = "json";
@@ -1108,7 +1108,7 @@ collect.HeartBeatUrl = heartBeatUrl;
 var heartBeatMethod = HttpAction?Helper.ParseString("GET");
 collect.HeartBeatMethod = heartBeatMethod;
 
-int? timeout = 101;
+int? timeout = 32;
 collect.Timeout = timeout;
 
 string playDtmf = "PlayDtmf";
@@ -1175,19 +1175,19 @@ collect.CallSid = callSid;
 var audioDirection = AudioDirection?Helper.ParseString("IN");
 collect.AudioDirection = audioDirection;
 
-double? pitchSemiTones = 101.442008633838;
+double? pitchSemiTones = 32.4079550231844;
 collect.PitchSemiTones = pitchSemiTones;
 
-double? pitchOctaves = 101.442008633838;
+double? pitchOctaves = 32.4079550231844;
 collect.PitchOctaves = pitchOctaves;
 
-double? pitch = 101.442008633838;
+double? pitch = 32.4079550231844;
 collect.Pitch = pitch;
 
-double? rate = 101.442008633838;
+double? rate = 32.4079550231844;
 collect.Rate = rate;
 
-double? tempo = 101.442008633838;
+double? tempo = 32.4079550231844;
 collect.Tempo = tempo;
 
 string responseType = "json";
@@ -1235,7 +1235,7 @@ collect.Record = record;
 var direction = Direction?Helper.ParseString("IN");
 collect.Direction = direction;
 
-int? timeLimit = 101;
+int? timeLimit = 32;
 collect.TimeLimit = timeLimit;
 
 string callBackUrl = "CallBackUrl";
@@ -1286,7 +1286,7 @@ collect.CallSid = callSid;
 string audioUrl = "AudioUrl";
 collect.AudioUrl = audioUrl;
 
-int? length = 101;
+int? length = 32;
 collect.Length = length;
 
 var direction = Direction?Helper.ParseString("IN");
@@ -1333,10 +1333,10 @@ Task<string> CreateListCalls(CreateListCallsInput input)
 ```csharp
 CreateListCallsInput collect = new CreateListCallsInput();
 
-int? page = 101;
+int? page = 32;
 collect.Page = page;
 
-int? pageSize = 101;
+int? pageSize = 32;
 collect.PageSize = pageSize;
 
 string to = "To";
@@ -1523,7 +1523,7 @@ collect.HeartBeatUrl = heartBeatUrl;
 bool? heartBeatMethod = false;
 collect.HeartBeatMethod = heartBeatMethod;
 
-int? timeout = 101;
+int? timeout = 32;
 collect.Timeout = timeout;
 
 string playDtmf = "PlayDtmf";
@@ -1630,7 +1630,7 @@ Task<string> CreateListInboundSMS(CreateListInboundSMSInput input)
 ```csharp
 CreateListInboundSMSInput collect = new CreateListInboundSMSInput();
 
-int? page = 101;
+int? page = 32;
 collect.Page = page;
 
 string pagesize = "pagesize";
@@ -1677,10 +1677,10 @@ Task<string> CreateListSMS(CreateListSMSInput input)
 ```csharp
 CreateListSMSInput collect = new CreateListSMSInput();
 
-int? page = 192;
+int? page = 123;
 collect.Page = page;
 
-int? pagesize = 192;
+int? pagesize = 123;
 collect.Pagesize = pagesize;
 
 string mfrom = "from";
@@ -2504,10 +2504,10 @@ Task<string> CreateListNumber(CreateListNumberInput input)
 ```csharp
 CreateListNumberInput collect = new CreateListNumberInput();
 
-int? page = 192;
+int? page = 123;
 collect.Page = page;
 
-int? pageSize = 192;
+int? pageSize = 123;
 collect.PageSize = pageSize;
 
 var numberType = NumberType?Helper.ParseString("ALL");
@@ -2555,7 +2555,7 @@ collect.NumberType = numberType;
 string areaCode = "AreaCode";
 collect.AreaCode = areaCode;
 
-int? pageSize = 192;
+int? pageSize = 123;
 collect.PageSize = pageSize;
 
 string responseType = "json";
@@ -2604,10 +2604,10 @@ Task<string> CreateListRecording(CreateListRecordingInput input)
 ```csharp
 CreateListRecordingInput collect = new CreateListRecordingInput();
 
-int? page = 192;
+int? page = 123;
 collect.Page = page;
 
-int? pageSize = 192;
+int? pageSize = 123;
 collect.PageSize = pageSize;
 
 string dateCreated = "DateCreated";
@@ -2832,10 +2832,10 @@ Task<string> CreateListTranscription(CreateListTranscriptionInput input)
 ```csharp
 CreateListTranscriptionInput collect = new CreateListTranscriptionInput();
 
-int? page = 192;
+int? page = 123;
 collect.Page = page;
 
-int? pageSize = 192;
+int? pageSize = 123;
 collect.PageSize = pageSize;
 
 var status = Status?Helper.ParseString("INPROGRESS");
