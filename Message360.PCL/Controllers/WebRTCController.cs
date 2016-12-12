@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/08/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
  */
 using System;
 using System.Collections.Generic;
@@ -51,82 +51,23 @@ namespace message360.Controllers
         #endregion Singleton Pattern
 
         /// <summary>
-        /// message360 webrtc
+        /// TODO: type endpoint description here
         /// </summary>
-        /// <param name="CreateTokenInput">Object containing request parameters</param>
-        /// <return>Returns the void response from the API call</return>
-        public void CreateToken(CreateTokenInput input)
+        /// <param name="CreateCheckFundsInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public string CreateCheckFunds(CreateCheckFundsInput input)
         {
-            Task t = CreateTokenAsync(input);
+            Task<string> t = CreateCheckFundsAsync(input);
             APIHelper.RunTaskSynchronously(t);
-        }
-
-        /// <summary>
-        /// message360 webrtc
-        /// </summary>
-        /// <param name="CreateTokenInput">Object containing request parameters</param>
-        /// <return>Returns the void response from the API call</return>
-        public async Task CreateTokenAsync(CreateTokenInput input)
-        {
-            //validating required parameters
-            if (null == input.AccountSid)
-                throw new ArgumentNullException("accountSid", "The property \"AccountSid\" in the input object cannot be null.");
-
-            if (null == input.AuthToken)
-                throw new ArgumentNullException("authToken", "The property \"AuthToken\" in the input object cannot be null.");
-
-            //the base uri for api requestss
-            string _baseUri = Configuration.GetBaseURI();
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/webrtc/createToken.json");
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "message360-api" }
-            };
-
-            //append form/field parameters
-            var _fields = new Dictionary<string,object>()
-            {
-                { "account_sid", input.AccountSid },
-                { "auth_token", input.AuthToken }
-            };
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
+            return t.Result;
         }
 
         /// <summary>
         /// TODO: type endpoint description here
         /// </summary>
         /// <param name="CreateCheckFundsInput">Object containing request parameters</param>
-        /// <return>Returns the void response from the API call</return>
-        public void CreateCheckFunds(CreateCheckFundsInput input)
-        {
-            Task t = CreateCheckFundsAsync(input);
-            APIHelper.RunTaskSynchronously(t);
-        }
-
-        /// <summary>
-        /// TODO: type endpoint description here
-        /// </summary>
-        /// <param name="CreateCheckFundsInput">Object containing request parameters</param>
-        /// <return>Returns the void response from the API call</return>
-        public async Task CreateCheckFundsAsync(CreateCheckFundsInput input)
+        /// <return>Returns the string response from the API call</return>
+        public async Task<string> CreateCheckFundsAsync(CreateCheckFundsInput input)
         {
             //validating required parameters
             if (null == input.AccountSid)
@@ -168,25 +109,34 @@ namespace message360.Controllers
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
 
+            try
+            {
+                return _response.Body;
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
         }
 
         /// <summary>
         /// Authenticate a message360 number for use
         /// </summary>
         /// <param name="CreateAuthenticateNumberInput">Object containing request parameters</param>
-        /// <return>Returns the void response from the API call</return>
-        public void CreateAuthenticateNumber(CreateAuthenticateNumberInput input)
+        /// <return>Returns the string response from the API call</return>
+        public string CreateAuthenticateNumber(CreateAuthenticateNumberInput input)
         {
-            Task t = CreateAuthenticateNumberAsync(input);
+            Task<string> t = CreateAuthenticateNumberAsync(input);
             APIHelper.RunTaskSynchronously(t);
+            return t.Result;
         }
 
         /// <summary>
         /// Authenticate a message360 number for use
         /// </summary>
         /// <param name="CreateAuthenticateNumberInput">Object containing request parameters</param>
-        /// <return>Returns the void response from the API call</return>
-        public async Task CreateAuthenticateNumberAsync(CreateAuthenticateNumberInput input)
+        /// <return>Returns the string response from the API call</return>
+        public async Task<string> CreateAuthenticateNumberAsync(CreateAuthenticateNumberInput input)
         {
             //validating required parameters
             if (null == input.PhoneNumber)
@@ -232,6 +182,83 @@ namespace message360.Controllers
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
 
+            try
+            {
+                return _response.Body;
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// message360 webrtc
+        /// </summary>
+        /// <param name="CreateTokenInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public string CreateToken(CreateTokenInput input)
+        {
+            Task<string> t = CreateTokenAsync(input);
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// message360 webrtc
+        /// </summary>
+        /// <param name="CreateTokenInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public async Task<string> CreateTokenAsync(CreateTokenInput input)
+        {
+            //validating required parameters
+            if (null == input.AccountSid)
+                throw new ArgumentNullException("accountSid", "The property \"AccountSid\" in the input object cannot be null.");
+
+            if (null == input.AuthToken)
+                throw new ArgumentNullException("authToken", "The property \"AuthToken\" in the input object cannot be null.");
+
+            //the base uri for api requestss
+            string _baseUri = Configuration.GetBaseURI();
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/webrtc/createToken.json");
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "message360-api" }
+            };
+
+            //append form/field parameters
+            var _fields = new Dictionary<string,object>()
+            {
+                { "account_sid", input.AccountSid },
+                { "auth_token", input.AuthToken }
+            };
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request,_response);
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return _response.Body;
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
         }
 
     }

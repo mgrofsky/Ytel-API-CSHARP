@@ -2,7 +2,7 @@
 <!--
  - Message360.PCL
  -
- - This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/08/2016
+ - This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
 -->
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
@@ -10,7 +10,7 @@
     <AssemblyName>Message360.PCL</AssemblyName>
     <OutputType>Library</OutputType>
     <OutputPath>bin/DEBUG/</OutputPath>
-    <ProjectGuid>{5a51634c-8bed-41b7-9cbf-3bd8846b3284}</ProjectGuid>
+    <ProjectGuid>{dcccb331-8d15-4822-9370-ea59bf43929a}</ProjectGuid>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <NuGetPackageImportStamp>ee2bb91c</NuGetPackageImportStamp>
@@ -74,10 +74,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\CreateDeafMuteParticipantInput.cs" />
-    <Compile Include="Models\CreateSendDigitInput.cs" />
     <Compile Include="Models\CreateListInboundSMSInput.cs" />
     <Compile Include="Models\CreateListSMSInput.cs" />
-    <Compile Include="Models\CreateDeleteUnsubscribesInput.cs" />
+    <Compile Include="Models\CreateListUnsubscribesInput.cs" />
     <Compile Include="Models\CreateAuthenticateNumberInput.cs" />
     <Compile Include="Models\CreateViewConferenceInput.cs" />
     <Compile Include="Models\AddUnsubscribesInput.cs" />
@@ -101,38 +100,39 @@
     <Compile Include="Models\CreateListParticipantInput.cs" />
     <Compile Include="Models\CreateViewParticipantInput.cs" />
     <Compile Include="Models\CreateMakeCallInput.cs" />
+    <Compile Include="Models\CreateTokenInput.cs" />
+    <Compile Include="Models\CreateSendDigitInput.cs" />
     <Compile Include="Models\CreateInterruptedCallInput.cs" />
-    <Compile Include="Models\CreateListCallsInput.cs" />
-    <Compile Include="Models\CreateListUnsubscribesInput.cs" />
-    <Compile Include="Models\CreateListRecordingInput.cs" />
+    <Compile Include="Models\CreateDeleteUnsubscribesInput.cs" />
+    <Compile Include="Models\CreateCarrierLookupListInput.cs" />
     <Compile Include="Models\CreateDeleteInvalidInput.cs" />
     <Compile Include="Models\CreateVerifyNumberInput.cs" />
     <Compile Include="Models\CreateCarrierLookupInput.cs" />
     <Compile Include="Models\CreateViewCallInput.cs" />
     <Compile Include="Models\CreateViewSMSInput.cs" />
     <Compile Include="Models\CreateViewAccountInput.cs" />
-    <Compile Include="Models\CreateTokenInput.cs" />
     <Compile Include="Models\CreateCheckFundsInput.cs" />
-    <Compile Include="Models\CreateCarrierLookupListInput.cs" />
-    <Compile Include="Models\CreateSubAccountInput.cs" />
+    <Compile Include="Models\CreateGroupCallInput.cs" />
+    <Compile Include="Models\CreateListCallsInput.cs" />
     <Compile Include="Models\CreateAddressInput.cs" />
     <Compile Include="Models\CreateSuspendSubAccountInput.cs" />
     <Compile Include="Models\CreateDeleteMergeSubAccountInput.cs" />
     <Compile Include="Models\CreateListConferenceInput.cs" />
-    <Compile Include="Models\CreateGroupCallInput.cs" />
-    <Compile Include="Models\CreateVoiceEffectInput.cs" />
     <Compile Include="Models\CreateDeleteAddressInput.cs" />
+    <Compile Include="Models\CreateSubAccountInput.cs" />
+    <Compile Include="Models\CreateVerifyAddressInput.cs" />
+    <Compile Include="Models\CreateVoiceEffectInput.cs" />
+    <Compile Include="Models\CreateListInvalidInput.cs" />
     <Compile Include="Models\UpdatePhoneNumberInput.cs" />
     <Compile Include="Models\CreatePlayAudioInput.cs" />
     <Compile Include="Models\CreateDeleteBouncesInput.cs" />
-    <Compile Include="Models\CreateRecordCallInput.cs" />
-    <Compile Include="Models\CreateListInvalidInput.cs" />
+    <Compile Include="Models\CreateListRecordingInput.cs" />
+    <Compile Include="Models\CreateListBouncesInput.cs" />
     <Compile Include="Models\CreateListSpamInput.cs" />
     <Compile Include="Models\CreateListBlocksInput.cs" />
     <Compile Include="Models\CreateViewAddressInput.cs" />
     <Compile Include="Models\CreateListAddressInput.cs" />
-    <Compile Include="Models\CreateVerifyAddressInput.cs" />
-    <Compile Include="Models\CreateListBouncesInput.cs" />
+    <Compile Include="Models\CreateRecordCallInput.cs" />
     <Compile Include="Models\ProductCode.cs" />
     <Compile Include="Models\SendEmailAs.cs" />
     <Compile Include="Models\Status.cs" />
