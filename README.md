@@ -184,10 +184,10 @@ Task<string> CreateListConference(CreateListConferenceInput input)
 ```csharp
 CreateListConferenceInput collect = new CreateListConferenceInput();
 
-int? page = 195;
+int? page = 194;
 collect.Page = page;
 
-int? pageSize = 195;
+int? pageSize = 194;
 collect.PageSize = pageSize;
 
 string friendlyName = "FriendlyName";
@@ -277,7 +277,7 @@ collect.Conferencesid = conferencesid;
 string participantnumber = "participantnumber";
 collect.Participantnumber = participantnumber;
 
-int tocountrycode = 195;
+int tocountrycode = 194;
 collect.Tocountrycode = tocountrycode;
 
 bool? muted = true;
@@ -324,10 +324,10 @@ CreateListParticipantInput collect = new CreateListParticipantInput();
 string conferenceSid = "ConferenceSid";
 collect.ConferenceSid = conferenceSid;
 
-int? page = 195;
+int? page = 194;
 collect.Page = page;
 
-int? pagesize = 195;
+int? pagesize = 194;
 collect.Pagesize = pagesize;
 
 bool? muted = true;
@@ -970,10 +970,10 @@ Task<string> CreateCarrierLookupList(CreateCarrierLookupListInput input)
 ```csharp
 CreateCarrierLookupListInput collect = new CreateCarrierLookupListInput();
 
-int? page = 32;
+int? page = 194;
 collect.Page = page;
 
-int? pagesize = 32;
+int? pagesize = 194;
 collect.Pagesize = pagesize;
 
 string responseType = "json";
@@ -1108,7 +1108,7 @@ collect.HeartBeatUrl = heartBeatUrl;
 var heartBeatMethod = HttpAction?Helper.ParseString("GET");
 collect.HeartBeatMethod = heartBeatMethod;
 
-int? timeout = 32;
+int? timeout = 194;
 collect.Timeout = timeout;
 
 string playDtmf = "PlayDtmf";
@@ -1117,7 +1117,7 @@ collect.PlayDtmf = playDtmf;
 string hideCallerId = "HideCallerId";
 collect.HideCallerId = hideCallerId;
 
-bool? record = false;
+bool? record = true;
 collect.Record = record;
 
 string recordCallBackUrl = "RecordCallBackUrl";
@@ -1126,7 +1126,7 @@ collect.RecordCallBackUrl = recordCallBackUrl;
 var recordCallBackMethod = HttpAction?Helper.ParseString("GET");
 collect.RecordCallBackMethod = recordCallBackMethod;
 
-bool? transcribe = false;
+bool? transcribe = true;
 collect.Transcribe = transcribe;
 
 string transcribeCallBackUrl = "TranscribeCallBackUrl";
@@ -1175,19 +1175,19 @@ collect.CallSid = callSid;
 var audioDirection = AudioDirection?Helper.ParseString("IN");
 collect.AudioDirection = audioDirection;
 
-double? pitchSemiTones = 32.4079550231844;
+double? pitchSemiTones = 194.705926165779;
 collect.PitchSemiTones = pitchSemiTones;
 
-double? pitchOctaves = 32.4079550231844;
+double? pitchOctaves = 194.705926165779;
 collect.PitchOctaves = pitchOctaves;
 
-double? pitch = 32.4079550231844;
+double? pitch = 194.705926165779;
 collect.Pitch = pitch;
 
-double? rate = 32.4079550231844;
+double? rate = 194.705926165779;
 collect.Rate = rate;
 
-double? tempo = 32.4079550231844;
+double? tempo = 194.705926165779;
 collect.Tempo = tempo;
 
 string responseType = "json";
@@ -1229,13 +1229,13 @@ CreateRecordCallInput collect = new CreateRecordCallInput();
 string callSid = "CallSid";
 collect.CallSid = callSid;
 
-bool record = false;
+bool record = true;
 collect.Record = record;
 
 var direction = Direction?Helper.ParseString("IN");
 collect.Direction = direction;
 
-int? timeLimit = 32;
+int? timeLimit = 194;
 collect.TimeLimit = timeLimit;
 
 string callBackUrl = "CallBackUrl";
@@ -1286,7 +1286,7 @@ collect.CallSid = callSid;
 string audioUrl = "AudioUrl";
 collect.AudioUrl = audioUrl;
 
-int? length = 32;
+int? length = 31;
 collect.Length = length;
 
 var direction = Direction?Helper.ParseString("IN");
@@ -1333,10 +1333,10 @@ Task<string> CreateListCalls(CreateListCallsInput input)
 ```csharp
 CreateListCallsInput collect = new CreateListCallsInput();
 
-int? page = 32;
+int? page = 31;
 collect.Page = page;
 
-int? pageSize = 32;
+int? pageSize = 31;
 collect.PageSize = pageSize;
 
 string to = "To";
@@ -1523,7 +1523,7 @@ collect.HeartBeatUrl = heartBeatUrl;
 bool? heartBeatMethod = false;
 collect.HeartBeatMethod = heartBeatMethod;
 
-int? timeout = 32;
+int? timeout = 31;
 collect.Timeout = timeout;
 
 string playDtmf = "PlayDtmf";
@@ -1630,7 +1630,7 @@ Task<string> CreateListInboundSMS(CreateListInboundSMSInput input)
 ```csharp
 CreateListInboundSMSInput collect = new CreateListInboundSMSInput();
 
-int? page = 32;
+int? page = 31;
 collect.Page = page;
 
 string pagesize = "pagesize";
@@ -1677,10 +1677,10 @@ Task<string> CreateListSMS(CreateListSMSInput input)
 ```csharp
 CreateListSMSInput collect = new CreateListSMSInput();
 
-int? page = 123;
+int? page = 31;
 collect.Page = page;
 
-int? pagesize = 123;
+int? pagesize = 31;
 collect.Pagesize = pagesize;
 
 string mfrom = "from";
@@ -1817,47 +1817,13 @@ The singleton instance of the ``` WebRTCController ``` class can be accessed fro
 WebRTCController webRTC = client.WebRTC;
 ```
 
-#### <a name="create_token"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.WebRTCController.CreateToken") CreateToken
-
-> message360 webrtc
-
-
-```csharp
-Task CreateToken(CreateTokenInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| accountSid |  ``` Required ```  | Your message360 Account SID |
-| authToken |  ``` Required ```  | Your message360 Token |
-
-
-#### Example Usage
-
-```csharp
-CreateTokenInput collect = new CreateTokenInput();
-
-string accountSid = "account_sid";
-collect.AccountSid = accountSid;
-
-string authToken = "auth_token";
-collect.AuthToken = authToken;
-
-
-await webRTC.CreateToken(collect);
-
-```
-
-
 #### <a name="create_check_funds"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.WebRTCController.CreateCheckFunds") CreateCheckFunds
 
 > TODO: Add a method description
 
 
 ```csharp
-Task CreateCheckFunds(CreateCheckFundsInput input)
+Task<string> CreateCheckFunds(CreateCheckFundsInput input)
 ```
 
 #### Parameters
@@ -1880,7 +1846,7 @@ string authToken = "auth_token";
 collect.AuthToken = authToken;
 
 
-await webRTC.CreateCheckFunds(collect);
+string result = await webRTC.CreateCheckFunds(collect);
 
 ```
 
@@ -1891,7 +1857,7 @@ await webRTC.CreateCheckFunds(collect);
 
 
 ```csharp
-Task CreateAuthenticateNumber(CreateAuthenticateNumberInput input)
+Task<string> CreateAuthenticateNumber(CreateAuthenticateNumberInput input)
 ```
 
 #### Parameters
@@ -1918,7 +1884,41 @@ string authToken = "auth_token";
 collect.AuthToken = authToken;
 
 
-await webRTC.CreateAuthenticateNumber(collect);
+string result = await webRTC.CreateAuthenticateNumber(collect);
+
+```
+
+
+#### <a name="create_token"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.WebRTCController.CreateToken") CreateToken
+
+> message360 webrtc
+
+
+```csharp
+Task<string> CreateToken(CreateTokenInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| accountSid |  ``` Required ```  | Your message360 Account SID |
+| authToken |  ``` Required ```  | Your message360 Token |
+
+
+#### Example Usage
+
+```csharp
+CreateTokenInput collect = new CreateTokenInput();
+
+string accountSid = "account_sid";
+collect.AccountSid = accountSid;
+
+string authToken = "auth_token";
+collect.AuthToken = authToken;
+
+
+string result = await webRTC.CreateToken(collect);
 
 ```
 
@@ -2504,10 +2504,10 @@ Task<string> CreateListNumber(CreateListNumberInput input)
 ```csharp
 CreateListNumberInput collect = new CreateListNumberInput();
 
-int? page = 123;
+int? page = 31;
 collect.Page = page;
 
-int? pageSize = 123;
+int? pageSize = 31;
 collect.PageSize = pageSize;
 
 var numberType = NumberType?Helper.ParseString("ALL");
@@ -2555,7 +2555,7 @@ collect.NumberType = numberType;
 string areaCode = "AreaCode";
 collect.AreaCode = areaCode;
 
-int? pageSize = 123;
+int? pageSize = 122;
 collect.PageSize = pageSize;
 
 string responseType = "json";
@@ -2604,10 +2604,10 @@ Task<string> CreateListRecording(CreateListRecordingInput input)
 ```csharp
 CreateListRecordingInput collect = new CreateListRecordingInput();
 
-int? page = 123;
+int? page = 122;
 collect.Page = page;
 
-int? pageSize = 123;
+int? pageSize = 122;
 collect.PageSize = pageSize;
 
 string dateCreated = "DateCreated";
@@ -2832,10 +2832,10 @@ Task<string> CreateListTranscription(CreateListTranscriptionInput input)
 ```csharp
 CreateListTranscriptionInput collect = new CreateListTranscriptionInput();
 
-int? page = 123;
+int? page = 122;
 collect.Page = page;
 
-int? pageSize = 123;
+int? pageSize = 122;
 collect.PageSize = pageSize;
 
 var status = Status?Helper.ParseString("INPROGRESS");
