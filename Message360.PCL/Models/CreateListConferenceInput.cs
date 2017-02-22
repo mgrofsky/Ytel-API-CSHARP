@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using System.IO;
@@ -23,7 +23,7 @@ namespace message360.Models
         private int? page;
         private int? pageSize;
         private string friendlyName;
-        private InterruptedCallStatus? status;
+        private Models.InterruptedCallStatus? status;
         private string dateCreated;
         private string dateUpdated;
         private string responseType = "json";
@@ -83,7 +83,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("Status", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public InterruptedCallStatus? Status 
+        public Models.InterruptedCallStatus? Status 
         { 
             get 
             {

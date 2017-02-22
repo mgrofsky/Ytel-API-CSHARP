@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using System.IO;
@@ -25,11 +25,11 @@ namespace message360.Models
         private string toCountryCode;
         private string to;
         private string url;
-        private HttpAction? method;
+        private Models.HttpAction? method;
         private string statusCallBackUrl;
-        private HttpAction? statusCallBackMethod;
+        private Models.HttpAction? statusCallBackMethod;
         private string fallBackUrl;
-        private HttpAction? fallBackMethod;
+        private Models.HttpAction? fallBackMethod;
         private string heartBeatUrl;
         private bool? heartBeatMethod;
         private int? timeout;
@@ -37,10 +37,10 @@ namespace message360.Models
         private bool? hideCallerId;
         private bool? record;
         private string recordCallBackUrl;
-        private HttpAction? recordCallBackMethod;
+        private Models.HttpAction? recordCallBackMethod;
         private bool? transcribe;
         private string transcribeCallBackUrl;
-        private IfMachine? ifMachine;
+        private Models.IfMachine? ifMachine;
         private string responseType = "json";
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace message360.Models
         /// Specifies the HTTP method used to request the required URL once call connects.
         /// </summary>
         [JsonProperty("Method", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? Method 
+        public Models.HttpAction? Method 
         { 
             get 
             {
@@ -166,7 +166,7 @@ namespace message360.Models
         /// Specifies the HTTP methodlinkclass used to request StatusCallbackUrl.
         /// </summary>
         [JsonProperty("StatusCallBackMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? StatusCallBackMethod 
+        public Models.HttpAction? StatusCallBackMethod 
         { 
             get 
             {
@@ -200,7 +200,7 @@ namespace message360.Models
         /// Specifies the HTTP method used to request the required FallbackUrl once call connects.
         /// </summary>
         [JsonProperty("FallBackMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? FallBackMethod 
+        public Models.HttpAction? FallBackMethod 
         { 
             get 
             {
@@ -336,7 +336,7 @@ namespace message360.Models
         /// Method used to request the RecordCallback URL.
         /// </summary>
         [JsonProperty("RecordCallBackMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? RecordCallBackMethod 
+        public Models.HttpAction? RecordCallBackMethod 
         { 
             get 
             {
@@ -387,7 +387,7 @@ namespace message360.Models
         /// How Message360 should handle the receiving numbers voicemail machine
         /// </summary>
         [JsonProperty("IfMachine", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public IfMachine? IfMachine 
+        public Models.IfMachine? IfMachine 
         { 
             get 
             {

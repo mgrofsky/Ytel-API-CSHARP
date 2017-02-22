@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using System.IO;
@@ -17,61 +17,61 @@ using message360.Utilities;
 
 namespace message360.Models
 {
-    public class CreateAuthenticateNumberInput : INotifyPropertyChanged 
+    public class CreateDeleteSubAccountInput : INotifyPropertyChanged 
     {
         // These fields hold the values for the public properties.
-        private string phoneNumber;
-        private string accountSid;
-        private string authToken;
+        private string subAccountSID;
+        private Models.MergeNumberStatus mergeNumber = MergeNumberStatus.DELETE;
+        private string responseType = "json";
 
         /// <summary>
-        /// Phone number to authenticate for use
+        /// The SubaccountSid to be deleted
         /// </summary>
-        [JsonProperty("phone_number")]
-        public string PhoneNumber 
+        [JsonProperty("SubAccountSID")]
+        public string SubAccountSID 
         { 
             get 
             {
-                return this.phoneNumber; 
+                return this.subAccountSID; 
             } 
             set 
             {
-                this.phoneNumber = value;
-                onPropertyChanged("PhoneNumber");
+                this.subAccountSID = value;
+                onPropertyChanged("SubAccountSID");
             }
         }
 
         /// <summary>
-        /// Your message360 Account SID
+        /// 0 to delete or 1 to merge numbers to parent account.
         /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid 
+        [JsonProperty("MergeNumber")]
+        public Models.MergeNumberStatus MergeNumber 
         { 
             get 
             {
-                return this.accountSid; 
+                return this.mergeNumber; 
             } 
             set 
             {
-                this.accountSid = value;
-                onPropertyChanged("AccountSid");
+                this.mergeNumber = value;
+                onPropertyChanged("MergeNumber");
             }
         }
 
         /// <summary>
-        /// Your message360 token
+        /// Response type format xml or json
         /// </summary>
-        [JsonProperty("auth_token")]
-        public string AuthToken 
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
         { 
             get 
             {
-                return this.authToken; 
+                return this.responseType; 
             } 
             set 
             {
-                this.authToken = value;
-                onPropertyChanged("AuthToken");
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
             }
         }
 

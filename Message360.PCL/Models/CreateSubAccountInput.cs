@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using System.IO;
@@ -20,49 +20,49 @@ namespace message360.Models
     public class CreateSubAccountInput : INotifyPropertyChanged 
     {
         // These fields hold the values for the public properties.
-        private string firstname;
-        private string lastname;
+        private string firstName;
+        private string lastName;
         private string email;
         private string responseType = "json";
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// Sub account user first name
         /// </summary>
-        [JsonProperty("firstname")]
-        public string Firstname 
+        [JsonProperty("FirstName")]
+        public string FirstName 
         { 
             get 
             {
-                return this.firstname; 
+                return this.firstName; 
             } 
             set 
             {
-                this.firstname = value;
-                onPropertyChanged("Firstname");
+                this.firstName = value;
+                onPropertyChanged("FirstName");
             }
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// sub account user last name
         /// </summary>
-        [JsonProperty("lastname")]
-        public string Lastname 
+        [JsonProperty("LastName")]
+        public string LastName 
         { 
             get 
             {
-                return this.lastname; 
+                return this.lastName; 
             } 
             set 
             {
-                this.lastname = value;
-                onPropertyChanged("Lastname");
+                this.lastName = value;
+                onPropertyChanged("LastName");
             }
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// Sub account email address
         /// </summary>
-        [JsonProperty("email")]
+        [JsonProperty("Email")]
         public string Email 
         { 
             get 
@@ -77,7 +77,7 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// ResponseType Format either json or xml
+        /// Response type format xml or json
         /// </summary>
         [JsonProperty("ResponseType")]
         public string ResponseType 

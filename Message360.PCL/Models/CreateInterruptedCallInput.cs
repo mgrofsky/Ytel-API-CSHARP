@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using System.IO;
@@ -22,8 +22,8 @@ namespace message360.Models
         // These fields hold the values for the public properties.
         private string callSid;
         private string url;
-        private HttpAction? method;
-        private InterruptedCallStatus? status;
+        private Models.HttpAction? method;
+        private Models.InterruptedCallStatus? status;
         private string responseType = "json";
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace message360.Models
         /// The method used to request the above Url parameter
         /// </summary>
         [JsonProperty("Method", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? Method 
+        public Models.HttpAction? Method 
         { 
             get 
             {
@@ -81,7 +81,7 @@ namespace message360.Models
         /// Status to set the in-progress call to
         /// </summary>
         [JsonProperty("Status", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public InterruptedCallStatus? Status 
+        public Models.InterruptedCallStatus? Status 
         { 
             get 
             {

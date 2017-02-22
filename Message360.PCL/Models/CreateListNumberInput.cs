@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using System.IO;
@@ -22,7 +22,7 @@ namespace message360.Models
         // These fields hold the values for the public properties.
         private int? page;
         private int? pageSize;
-        private NumberType? numberType;
+        private Models.NumberType? numberType;
         private string friendlyName;
         private string responseType = "json";
 
@@ -64,7 +64,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("NumberType", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public NumberType? NumberType 
+        public Models.NumberType? NumberType 
         { 
             get 
             {

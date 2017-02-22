@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using System.IO;
@@ -22,7 +22,7 @@ namespace message360.Models
         // These fields hold the values for the public properties.
         private string callSid;
         private string playDtmf;
-        private Direction? playDtmfDirection;
+        private Models.Direction? playDtmfDirection;
         private string responseType = "json";
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace message360.Models
         /// The leg of the call DTMF digits should be sent to
         /// </summary>
         [JsonProperty("PlayDtmfDirection", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Direction? PlayDtmfDirection 
+        public Models.Direction? PlayDtmfDirection 
         { 
             get 
             {

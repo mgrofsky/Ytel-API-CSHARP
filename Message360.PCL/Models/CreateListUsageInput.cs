@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using System.IO;
@@ -20,7 +20,7 @@ namespace message360.Models
     public class CreateListUsageInput : INotifyPropertyChanged 
     {
         // These fields hold the values for the public properties.
-        private ProductCode productCode = ProductCode.ALL;
+        private Models.ProductCode productCode = ProductCode.ALL;
         private string startDate = "2016-09-06";
         private string endDate = "2016-09-06";
         private string responseType = "json";
@@ -29,7 +29,7 @@ namespace message360.Models
         /// Product Code
         /// </summary>
         [JsonProperty("ProductCode")]
-        public ProductCode ProductCode 
+        public Models.ProductCode ProductCode 
         { 
             get 
             {

@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using System.IO;
@@ -20,32 +20,32 @@ namespace message360.Models
     public class CreateSuspendSubAccountInput : INotifyPropertyChanged 
     {
         // These fields hold the values for the public properties.
-        private string subaccountsid;
-        private ActivateStatus activate;
+        private string subAccountSID;
+        private Models.ActivateStatus activate = ActivateStatus.DEACTIVATE;
         private string responseType;
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The SubaccountSid to be activated or suspended
         /// </summary>
-        [JsonProperty("subaccountsid")]
-        public string Subaccountsid 
+        [JsonProperty("SubAccountSID")]
+        public string SubAccountSID 
         { 
             get 
             {
-                return this.subaccountsid; 
+                return this.subAccountSID; 
             } 
             set 
             {
-                this.subaccountsid = value;
-                onPropertyChanged("Subaccountsid");
+                this.subAccountSID = value;
+                onPropertyChanged("SubAccountSID");
             }
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// 0 to suspend or 1 to activate
         /// </summary>
-        [JsonProperty("activate")]
-        public ActivateStatus Activate 
+        [JsonProperty("Activate")]
+        public Models.ActivateStatus Activate 
         { 
             get 
             {

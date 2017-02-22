@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using System.IO;
@@ -22,6 +22,8 @@ namespace message360.Models
         // These fields hold the values for the public properties.
         private string accountSid;
         private string authToken;
+        private string username;
+        private string password;
 
         /// <summary>
         /// Your message360 Account SID
@@ -54,6 +56,40 @@ namespace message360.Models
             {
                 this.authToken = value;
                 onPropertyChanged("AuthToken");
+            }
+        }
+
+        /// <summary>
+        /// WebRTC username authentication
+        /// </summary>
+        [JsonProperty("username")]
+        public string Username 
+        { 
+            get 
+            {
+                return this.username; 
+            } 
+            set 
+            {
+                this.username = value;
+                onPropertyChanged("Username");
+            }
+        }
+
+        /// <summary>
+        /// WebRTC password authentication
+        /// </summary>
+        [JsonProperty("password")]
+        public string Password 
+        { 
+            get 
+            {
+                return this.password; 
+            } 
+            set 
+            {
+                this.password = value;
+                onPropertyChanged("Password");
             }
         }
 

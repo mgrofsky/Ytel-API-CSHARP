@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using message360;
@@ -26,7 +26,8 @@ namespace message360.Controllers
                 {
                     if(null == clientInstance)
                     {
-                        clientInstance = new UnirestClient();
+                        clientInstance = new UnirestClient()
+;
                         clientInstance.setTimeout(TimeSpan.FromMilliseconds(10000));
                     }
                     return clientInstance;
@@ -52,7 +53,7 @@ namespace message360.Controllers
         /// <param name="_context">Context of the request and the recieved response</param>
         internal void ValidateResponse(HttpResponse _response, HttpContext _context)
         {
-            if ((_response.StatusCode < 200) || (_response.StatusCode > 206)) //[200,206] = HTTP OK
+            if ((_response.StatusCode < 200) || (_response.StatusCode > 208)) //[200,208] = HTTP OK
                 throw new APIException(@"HTTP Response Not OK", _context);
         }
     }

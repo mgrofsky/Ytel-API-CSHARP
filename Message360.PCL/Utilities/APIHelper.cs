@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using System.Collections;
@@ -85,6 +85,8 @@ namespace message360.Utilities
                     replaceValue = flattenCollection(pair.Value as ICollection, "{0}{1}", '/', false);
                 else if (pair.Value is DateTime)
                     replaceValue = ((DateTime)pair.Value).ToString(DateTimeFormat);
+                else if (pair.Value is DateTimeOffset)
+                    replaceValue = ((DateTimeOffset)pair.Value).ToString(DateTimeFormat);
                 else
                     replaceValue = pair.Value.ToString();
 
@@ -133,6 +135,8 @@ namespace message360.Utilities
                     paramKeyValPair = flattenCollection(pair.Value as ICollection, string.Format("{0}[]={{0}}{{1}}", pair.Key), '&', true);
                 else if (pair.Value is DateTime)
                     paramKeyValPair = string.Format("{0}={1}", Uri.EscapeDataString(pair.Key), ((DateTime)pair.Value).ToString(DateTimeFormat));
+                else if (pair.Value is DateTimeOffset)
+                    paramKeyValPair = string.Format("{0}={1}", Uri.EscapeDataString(pair.Key), ((DateTimeOffset)pair.Value).ToString(DateTimeFormat));
                 else
                     paramKeyValPair = string.Format("{0}={1}", Uri.EscapeDataString(pair.Key), Uri.EscapeDataString(pair.Value.ToString()));
 
@@ -223,6 +227,8 @@ namespace message360.Utilities
                     elemValue = string.Empty;
                 else if (element is DateTime)
                     elemValue = ((DateTime)element).ToString(DateTimeFormat);
+                else if (element is DateTimeOffset)
+                    elemValue = ((DateTimeOffset)element).ToString(DateTimeFormat);
                 else
                     elemValue = element.ToString();
 

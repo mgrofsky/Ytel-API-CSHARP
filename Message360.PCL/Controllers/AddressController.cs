@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
 using System.Collections.Generic;
@@ -114,15 +114,15 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "name", input.Name },
-                { "address", input.Address },
-                { "country", input.Country },
-                { "state", input.State },
-                { "city", input.City },
-                { "zip", input.Zip },
-                { "description", input.Description },
+                { "Name", input.Name },
+                { "Address", input.Address },
+                { "Country", input.Country },
+                { "State", input.State },
+                { "City", input.City },
+                { "Zip", input.Zip },
+                { "Description", input.Description },
                 { "email", input.Email },
-                { "phone", input.Phone }
+                { "Phone", input.Phone }
             };
 
             //prepare the API call request to fetch the response
@@ -164,8 +164,8 @@ namespace message360.Controllers
         public async Task<string> CreateDeleteAddressAsync(CreateDeleteAddressInput input)
         {
             //validating required parameters
-            if (null == input.Addressid)
-                throw new ArgumentNullException("addressid", "The property \"Addressid\" in the input object cannot be null.");
+            if (null == input.AddressSID)
+                throw new ArgumentNullException("addressSID", "The property \"AddressSID\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
@@ -193,7 +193,7 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "addressid", input.Addressid }
+                { "AddressSID", input.AddressSID }
             };
 
             //prepare the API call request to fetch the response
@@ -235,8 +235,8 @@ namespace message360.Controllers
         public async Task<string> CreateVerifyAddressAsync(CreateVerifyAddressInput input)
         {
             //validating required parameters
-            if (null == input.Addressid)
-                throw new ArgumentNullException("addressid", "The property \"Addressid\" in the input object cannot be null.");
+            if (null == input.AddressSID)
+                throw new ArgumentNullException("addressSID", "The property \"AddressSID\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
@@ -264,7 +264,7 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "addressid", input.Addressid }
+                { "AddressSID", input.AddressSID }
             };
 
             //prepare the API call request to fetch the response
@@ -331,10 +331,10 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "page", input.Page },
-                { "pageSize", input.PageSize },
-                { "addressId", input.AddressId },
-                { "dateCreated", input.DateCreated }
+                { "Page", input.Page },
+                { "PageSize", input.PageSize },
+                { "AddressSID", input.AddressSID },
+                { "DateCreated", input.DateCreated }
             };
 
             //prepare the API call request to fetch the response
@@ -376,8 +376,8 @@ namespace message360.Controllers
         public async Task<string> CreateViewAddressAsync(CreateViewAddressInput input)
         {
             //validating required parameters
-            if (null == input.AddressId)
-                throw new ArgumentNullException("addressId", "The property \"AddressId\" in the input object cannot be null.");
+            if (null == input.AddressSID)
+                throw new ArgumentNullException("addressSID", "The property \"AddressSID\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
@@ -405,7 +405,7 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new Dictionary<string,object>()
             {
-                { "addressId", input.AddressId }
+                { "AddressSID", input.AddressSID }
             };
 
             //prepare the API call request to fetch the response

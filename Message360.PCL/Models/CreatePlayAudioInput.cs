@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using System.IO;
@@ -23,7 +23,7 @@ namespace message360.Models
         private string callSid;
         private string audioUrl;
         private int? length;
-        private Direction? direction;
+        private Models.Direction? direction;
         private bool? loop;
         private bool? mix;
         private string responseType = "json";
@@ -83,7 +83,7 @@ namespace message360.Models
         /// The leg of the call audio will be played to
         /// </summary>
         [JsonProperty("Direction", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Direction? Direction 
+        public Models.Direction? Direction 
         { 
             get 
             {

@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using System.IO;
@@ -22,7 +22,7 @@ namespace message360.Models
         // These fields hold the values for the public properties.
         private string to;
         private string mfrom;
-        private SendEmailAs type = SendEmailAs.HTML;
+        private Models.SendEmailAs type = SendEmailAs.HTML;
         private string subject;
         private string message;
         private string cc;
@@ -68,7 +68,7 @@ namespace message360.Models
         /// email format type, html or text
         /// </summary>
         [JsonProperty("type", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public SendEmailAs Type 
+        public Models.SendEmailAs Type 
         { 
             get 
             {

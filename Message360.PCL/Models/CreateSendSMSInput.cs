@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using System.IO;
@@ -25,7 +25,7 @@ namespace message360.Models
         private int tocountrycode = 1;
         private string to;
         private string body;
-        private HttpAction? method;
+        private Models.HttpAction? method;
         private string messagestatuscallback;
         private string responseType = "json";
 
@@ -118,7 +118,7 @@ namespace message360.Models
         /// Specifies the HTTP method used to request the required URL once SMS sent.
         /// </summary>
         [JsonProperty("method", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? Method 
+        public Models.HttpAction? Method 
         { 
             get 
             {

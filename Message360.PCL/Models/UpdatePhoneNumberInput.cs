@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using System.IO;
@@ -23,17 +23,17 @@ namespace message360.Models
         private string phoneNumber;
         private string friendlyName;
         private string voiceUrl;
-        private HttpAction? voiceMethod;
+        private Models.HttpAction? voiceMethod;
         private string voiceFallbackUrl;
-        private HttpAction? voiceFallbackMethod;
+        private Models.HttpAction? voiceFallbackMethod;
         private string hangupCallback;
-        private HttpAction? hangupCallbackMethod;
+        private Models.HttpAction? hangupCallbackMethod;
         private string heartbeatUrl;
-        private HttpAction? heartbeatMethod;
+        private Models.HttpAction? heartbeatMethod;
         private string smsUrl;
-        private HttpAction? smsMethod;
+        private Models.HttpAction? smsMethod;
         private string smsFallbackUrl;
-        private HttpAction? smsFallbackMethod;
+        private Models.HttpAction? smsFallbackMethod;
         private string responseType = "json";
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("VoiceMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? VoiceMethod 
+        public Models.HttpAction? VoiceMethod 
         { 
             get 
             {
@@ -125,7 +125,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("VoiceFallbackMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? VoiceFallbackMethod 
+        public Models.HttpAction? VoiceFallbackMethod 
         { 
             get 
             {
@@ -159,7 +159,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("HangupCallbackMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? HangupCallbackMethod 
+        public Models.HttpAction? HangupCallbackMethod 
         { 
             get 
             {
@@ -193,7 +193,7 @@ namespace message360.Models
         /// URL that can be requested every 60 seconds during the call to notify of elapsed time
         /// </summary>
         [JsonProperty("HeartbeatMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? HeartbeatMethod 
+        public Models.HttpAction? HeartbeatMethod 
         { 
             get 
             {
@@ -227,7 +227,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("SmsMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? SmsMethod 
+        public Models.HttpAction? SmsMethod 
         { 
             get 
             {
@@ -261,7 +261,7 @@ namespace message360.Models
         /// URL requested if the sms URL is not available
         /// </summary>
         [JsonProperty("SmsFallbackMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? SmsFallbackMethod 
+        public Models.HttpAction? SmsFallbackMethod 
         { 
             get 
             {

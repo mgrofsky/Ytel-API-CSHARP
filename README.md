@@ -1,4 +1,4 @@
-#Getting started
+# Getting started
 
 ## How to Build
 
@@ -11,7 +11,7 @@ you will need internet access for build.
 1. Open the solution (Message360.sln) file.
 2. Invoke the build process using `Ctrl+Shift+B` shortcut key or using the `Build` menu as shown below.
 
-![Building SDK using Visual Studio](http://apidocs.io/illustration/cs?step=buildSDK&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
+![Building SDK using Visual Studio](https://apidocs.io/illustration/cs?step=buildSDK&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
 
 ## How to Use
 
@@ -24,34 +24,34 @@ The following section explains how to use the Message360 library in a new consol
 
 For starting a new project, right click on the current solution from the *solution explorer* and choose  ``` Add -> New Project ```.
 
-![Add a new project in the existing solution using Visual Studio](http://apidocs.io/illustration/cs?step=addProject&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
+![Add a new project in the existing solution using Visual Studio](https://apidocs.io/illustration/cs?step=addProject&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
 
 Next, choose "Console Application", provide a ``` TestConsoleProject ``` as the project name and click ``` OK ```.
 
-![Create a new console project using Visual Studio](http://apidocs.io/illustration/cs?step=createProject&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
+![Create a new console project using Visual Studio](https://apidocs.io/illustration/cs?step=createProject&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
 
 ### 2. Set as startup project
 
 The new console project is the entry point for the eventual execution. This requires us to set the ``` TestConsoleProject ``` as the start-up project. To do this, right-click on the  ``` TestConsoleProject ``` and choose  ``` Set as StartUp Project ``` form the context menu.
 
-![Set the new cosole project as the start up project](http://apidocs.io/illustration/cs?step=setStartup&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
+![Set the new cosole project as the start up project](https://apidocs.io/illustration/cs?step=setStartup&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
 
 ### 3. Add reference of the library project
 
 In order to use the Message360 library in the new project, first we must add a projet reference to the ``` TestConsoleProject ```. First, right click on the ``` References ``` node in the *solution explorer* and click ``` Add Reference... ```.
 
-![Open references of the TestConsoleProject](http://apidocs.io/illustration/cs?step=addReference&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
+![Open references of the TestConsoleProject](https://apidocs.io/illustration/cs?step=addReference&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
 
 Next, a window will be displayed where we must set the ``` checkbox ``` on ``` Message360.PCL ``` and click ``` OK ```. By doing this, we have added a reference of the ```Message360.PCL``` project into the new ``` TestConsoleProject ```.
 
-![Add a reference to the TestConsoleProject](http://apidocs.io/illustration/cs?step=createReference&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
+![Add a reference to the TestConsoleProject](https://apidocs.io/illustration/cs?step=createReference&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
 
 ### 4. Write sample code
 
 Once the ``` TestConsoleProject ``` is created, a file named ``` Program.cs ``` will be visible in the *solution explorer* with an empty ``` Main ``` method. This is the entry point for the execution of the entire solution.
 Here, you can add code to initialize the client library and acquire the instance of a *Controller* class. Sample code to initialize the client library and using controller methods is given in the subsequent sections.
 
-![Add a reference to the TestConsoleProject](http://apidocs.io/illustration/cs?step=addCode&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
+![Add a reference to the TestConsoleProject](https://apidocs.io/illustration/cs?step=addCode&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
 
 ## How to Test
 
@@ -62,7 +62,7 @@ Here, you can click *Run All* to execute these test cases.
 
 ## Initialization
 
-### Authentication and 
+### Authentication
 In order to setup authentication and initialization of the API client, you need the following information.
 
 | Parameter | Description |
@@ -92,7 +92,6 @@ Message360Client client = new Message360Client(basicAuthUserName, basicAuthPassw
 * [CarrierController](#carrier_controller)
 * [CallController](#call_controller)
 * [SMSController](#sms_controller)
-* [AccountController](#account_controller)
 * [WebRTCController](#web_rtc_controller)
 * [SubAccountController](#sub_account_controller)
 * [AddressController](#address_controller)
@@ -100,8 +99,9 @@ Message360Client client = new Message360Client(basicAuthUserName, basicAuthPassw
 * [RecordingController](#recording_controller)
 * [TranscriptionController](#transcription_controller)
 * [UsageController](#usage_controller)
+* [AccountController](#account_controller)
 
-### <a name="conference_controller"></a>![Class: ](http://apidocs.io/img/class.png "message360.Controllers.ConferenceController") ConferenceController
+### <a name="conference_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.ConferenceController") ConferenceController
 
 #### Get singleton instance
 
@@ -111,7 +111,7 @@ The singleton instance of the ``` ConferenceController ``` class can be accessed
 ConferenceController conference = client.Conference;
 ```
 
-#### <a name="create_deaf_mute_participant"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.ConferenceController.CreateDeafMuteParticipant") CreateDeafMuteParticipant
+#### <a name="create_deaf_mute_participant"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.CreateDeafMuteParticipant") CreateDeafMuteParticipant
 
 > Deaf Mute Participant
 
@@ -157,7 +157,7 @@ string result = await conference.CreateDeafMuteParticipant(collect);
 ```
 
 
-#### <a name="create_list_conference"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.ConferenceController.CreateListConference") CreateListConference
+#### <a name="create_list_conference"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.CreateListConference") CreateListConference
 
 > List Conference
 
@@ -184,16 +184,16 @@ Task<string> CreateListConference(CreateListConferenceInput input)
 ```csharp
 CreateListConferenceInput collect = new CreateListConferenceInput();
 
-int? page = 194;
+int? page = 226;
 collect.Page = page;
 
-int? pageSize = 194;
+int? pageSize = 226;
 collect.PageSize = pageSize;
 
 string friendlyName = "FriendlyName";
 collect.FriendlyName = friendlyName;
 
-var status = InterruptedCallStatus?Helper.ParseString("CANCELED");
+var status = Models.InterruptedCallStatus?Helper.ParseString("CANCELED");
 collect.Status = status;
 
 string dateCreated = "DateCreated";
@@ -211,7 +211,7 @@ string result = await conference.CreateListConference(collect);
 ```
 
 
-#### <a name="create_view_conference"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.ConferenceController.CreateViewConference") CreateViewConference
+#### <a name="create_view_conference"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.CreateViewConference") CreateViewConference
 
 > View Conference
 
@@ -245,7 +245,7 @@ string result = await conference.CreateViewConference(collect);
 ```
 
 
-#### <a name="add_participant"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.ConferenceController.AddParticipant") AddParticipant
+#### <a name="add_participant"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.AddParticipant") AddParticipant
 
 > Add Participant in conference 
 
@@ -277,7 +277,7 @@ collect.Conferencesid = conferencesid;
 string participantnumber = "participantnumber";
 collect.Participantnumber = participantnumber;
 
-int tocountrycode = 194;
+int tocountrycode = 226;
 collect.Tocountrycode = tocountrycode;
 
 bool? muted = true;
@@ -295,7 +295,7 @@ string result = await conference.AddParticipant(collect);
 ```
 
 
-#### <a name="create_list_participant"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.ConferenceController.CreateListParticipant") CreateListParticipant
+#### <a name="create_list_participant"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.CreateListParticipant") CreateListParticipant
 
 > List Participant
 
@@ -324,10 +324,10 @@ CreateListParticipantInput collect = new CreateListParticipantInput();
 string conferenceSid = "ConferenceSid";
 collect.ConferenceSid = conferenceSid;
 
-int? page = 194;
+int? page = 226;
 collect.Page = page;
 
-int? pagesize = 194;
+int? pagesize = 226;
 collect.Pagesize = pagesize;
 
 bool? muted = true;
@@ -345,7 +345,7 @@ string result = await conference.CreateListParticipant(collect);
 ```
 
 
-#### <a name="create_view_participant"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.ConferenceController.CreateViewParticipant") CreateViewParticipant
+#### <a name="create_view_participant"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.CreateViewParticipant") CreateViewParticipant
 
 > View Participant
 
@@ -385,7 +385,7 @@ string result = await conference.CreateViewParticipant(collect);
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="email_controller"></a>![Class: ](http://apidocs.io/img/class.png "message360.Controllers.EmailController") EmailController
+### <a name="email_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.EmailController") EmailController
 
 #### Get singleton instance
 
@@ -395,7 +395,7 @@ The singleton instance of the ``` EmailController ``` class can be accessed from
 EmailController email = client.Email;
 ```
 
-#### <a name="create_delete_invalid"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteInvalid") CreateDeleteInvalid
+#### <a name="create_delete_invalid"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteInvalid") CreateDeleteInvalid
 
 > This endpoint allows you to delete entries in the Invalid Emails list.
 
@@ -429,7 +429,7 @@ string result = await email.CreateDeleteInvalid(collect);
 ```
 
 
-#### <a name="create_list_blocks"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListBlocks") CreateListBlocks
+#### <a name="create_list_blocks"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListBlocks") CreateListBlocks
 
 > Outputs email addresses on your blocklist
 
@@ -467,7 +467,7 @@ string result = await email.CreateListBlocks(collect);
 ```
 
 
-#### <a name="create_list_spam"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListSpam") CreateListSpam
+#### <a name="create_list_spam"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListSpam") CreateListSpam
 
 > List out all email addresses marked as spam
 
@@ -505,7 +505,7 @@ string result = await email.CreateListSpam(collect);
 ```
 
 
-#### <a name="create_list_bounces"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListBounces") CreateListBounces
+#### <a name="create_list_bounces"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListBounces") CreateListBounces
 
 > List out all email addresses that have bounced
 
@@ -543,7 +543,7 @@ string result = await email.CreateListBounces(collect);
 ```
 
 
-#### <a name="create_delete_bounces"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteBounces") CreateDeleteBounces
+#### <a name="create_delete_bounces"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteBounces") CreateDeleteBounces
 
 > Delete an email address from the bounced address list
 
@@ -577,7 +577,7 @@ string result = await email.CreateDeleteBounces(collect);
 ```
 
 
-#### <a name="create_list_invalid"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListInvalid") CreateListInvalid
+#### <a name="create_list_invalid"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListInvalid") CreateListInvalid
 
 > List out all invalid email addresses
 
@@ -615,7 +615,7 @@ string result = await email.CreateListInvalid(collect);
 ```
 
 
-#### <a name="create_list_unsubscribes"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListUnsubscribes") CreateListUnsubscribes
+#### <a name="create_list_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListUnsubscribes") CreateListUnsubscribes
 
 > List all unsubscribed email addresses
 
@@ -653,7 +653,7 @@ string result = await email.CreateListUnsubscribes(collect);
 ```
 
 
-#### <a name="create_delete_unsubscribes"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteUnsubscribes") CreateDeleteUnsubscribes
+#### <a name="create_delete_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteUnsubscribes") CreateDeleteUnsubscribes
 
 > Delete emails from the unsubscribe list
 
@@ -687,7 +687,7 @@ string result = await email.CreateDeleteUnsubscribes(collect);
 ```
 
 
-#### <a name="add_unsubscribes"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.AddUnsubscribes") AddUnsubscribes
+#### <a name="add_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.AddUnsubscribes") AddUnsubscribes
 
 > Add an email to the unsubscribe list
 
@@ -721,7 +721,7 @@ string result = await email.AddUnsubscribes(collect);
 ```
 
 
-#### <a name="create_delete_block"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteBlock") CreateDeleteBlock
+#### <a name="create_delete_block"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteBlock") CreateDeleteBlock
 
 > Deletes a blocked email
 
@@ -755,7 +755,7 @@ string result = await email.CreateDeleteBlock(collect);
 ```
 
 
-#### <a name="create_delete_spam"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteSpam") CreateDeleteSpam
+#### <a name="create_delete_spam"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteSpam") CreateDeleteSpam
 
 > Deletes a email address marked as spam from the spam list
 
@@ -789,7 +789,7 @@ string result = await email.CreateDeleteSpam(collect);
 ```
 
 
-#### <a name="create_send_email"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateSendEmail") CreateSendEmail
+#### <a name="create_send_email"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateSendEmail") CreateSendEmail
 
 > Send out an email
 
@@ -824,7 +824,7 @@ collect.To = to;
 string mfrom = "from";
 collect.Mfrom = mfrom;
 
-var type = SendEmailAsHelper.ParseString("HTML");
+var type = Models.SendEmailAsHelper.ParseString("HTML");
 collect.Type = type;
 
 string subject = "subject";
@@ -853,7 +853,7 @@ string result = await email.CreateSendEmail(collect);
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="number_verification_controller"></a>![Class: ](http://apidocs.io/img/class.png "message360.Controllers.NumberVerificationController") NumberVerificationController
+### <a name="number_verification_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.NumberVerificationController") NumberVerificationController
 
 #### Get singleton instance
 
@@ -863,7 +863,7 @@ The singleton instance of the ``` NumberVerificationController ``` class can be 
 NumberVerificationController numberVerification = client.NumberVerification;
 ```
 
-#### <a name="create_verify_number"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.NumberVerificationController.CreateVerifyNumber") CreateVerifyNumber
+#### <a name="create_verify_number"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.NumberVerificationController.CreateVerifyNumber") CreateVerifyNumber
 
 > Number Verification
 
@@ -903,7 +903,7 @@ string result = await numberVerification.CreateVerifyNumber(collect);
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="carrier_controller"></a>![Class: ](http://apidocs.io/img/class.png "message360.Controllers.CarrierController") CarrierController
+### <a name="carrier_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.CarrierController") CarrierController
 
 #### Get singleton instance
 
@@ -913,7 +913,7 @@ The singleton instance of the ``` CarrierController ``` class can be accessed fr
 CarrierController carrier = client.Carrier;
 ```
 
-#### <a name="create_carrier_lookup"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.CarrierController.CreateCarrierLookup") CreateCarrierLookup
+#### <a name="create_carrier_lookup"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CarrierController.CreateCarrierLookup") CreateCarrierLookup
 
 > Get the Carrier Lookup
 
@@ -947,7 +947,7 @@ string result = await carrier.CreateCarrierLookup(collect);
 ```
 
 
-#### <a name="create_carrier_lookup_list"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.CarrierController.CreateCarrierLookupList") CreateCarrierLookupList
+#### <a name="create_carrier_lookup_list"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CarrierController.CreateCarrierLookupList") CreateCarrierLookupList
 
 > Get the All Purchase Number's Carrier lookup
 
@@ -970,10 +970,10 @@ Task<string> CreateCarrierLookupList(CreateCarrierLookupListInput input)
 ```csharp
 CreateCarrierLookupListInput collect = new CreateCarrierLookupListInput();
 
-int? page = 194;
+int? page = 63;
 collect.Page = page;
 
-int? pagesize = 194;
+int? pagesize = 63;
 collect.Pagesize = pagesize;
 
 string responseType = "json";
@@ -987,7 +987,7 @@ string result = await carrier.CreateCarrierLookupList(collect);
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="call_controller"></a>![Class: ](http://apidocs.io/img/class.png "message360.Controllers.CallController") CallController
+### <a name="call_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.CallController") CallController
 
 #### Get singleton instance
 
@@ -997,7 +997,7 @@ The singleton instance of the ``` CallController ``` class can be accessed from 
 CallController call = client.Call;
 ```
 
-#### <a name="create_view_call"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.CallController.CreateViewCall") CreateViewCall
+#### <a name="create_view_call"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateViewCall") CreateViewCall
 
 > View Call Response
 
@@ -1031,7 +1031,7 @@ string result = await call.CreateViewCall(collect);
 ```
 
 
-#### <a name="create_group_call"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.CallController.CreateGroupCall") CreateGroupCall
+#### <a name="create_group_call"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateGroupCall") CreateGroupCall
 
 > Group Call
 
@@ -1087,28 +1087,28 @@ collect.To = to;
 string url = "Url";
 collect.Url = url;
 
-var method = HttpAction?Helper.ParseString("GET");
+var method = Models.HttpAction?Helper.ParseString("GET");
 collect.Method = method;
 
 string statusCallBackUrl = "StatusCallBackUrl";
 collect.StatusCallBackUrl = statusCallBackUrl;
 
-var statusCallBackMethod = HttpAction?Helper.ParseString("GET");
+var statusCallBackMethod = Models.HttpAction?Helper.ParseString("GET");
 collect.StatusCallBackMethod = statusCallBackMethod;
 
 string fallBackUrl = "FallBackUrl";
 collect.FallBackUrl = fallBackUrl;
 
-var fallBackMethod = HttpAction?Helper.ParseString("GET");
+var fallBackMethod = Models.HttpAction?Helper.ParseString("GET");
 collect.FallBackMethod = fallBackMethod;
 
 string heartBeatUrl = "HeartBeatUrl";
 collect.HeartBeatUrl = heartBeatUrl;
 
-var heartBeatMethod = HttpAction?Helper.ParseString("GET");
+var heartBeatMethod = Models.HttpAction?Helper.ParseString("GET");
 collect.HeartBeatMethod = heartBeatMethod;
 
-int? timeout = 194;
+int? timeout = 63;
 collect.Timeout = timeout;
 
 string playDtmf = "PlayDtmf";
@@ -1117,16 +1117,16 @@ collect.PlayDtmf = playDtmf;
 string hideCallerId = "HideCallerId";
 collect.HideCallerId = hideCallerId;
 
-bool? record = true;
+bool? record = false;
 collect.Record = record;
 
 string recordCallBackUrl = "RecordCallBackUrl";
 collect.RecordCallBackUrl = recordCallBackUrl;
 
-var recordCallBackMethod = HttpAction?Helper.ParseString("GET");
+var recordCallBackMethod = Models.HttpAction?Helper.ParseString("GET");
 collect.RecordCallBackMethod = recordCallBackMethod;
 
-bool? transcribe = true;
+bool? transcribe = false;
 collect.Transcribe = transcribe;
 
 string transcribeCallBackUrl = "TranscribeCallBackUrl";
@@ -1141,7 +1141,7 @@ string result = await call.CreateGroupCall(collect);
 ```
 
 
-#### <a name="create_voice_effect"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.CallController.CreateVoiceEffect") CreateVoiceEffect
+#### <a name="create_voice_effect"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateVoiceEffect") CreateVoiceEffect
 
 > Voice Effect
 
@@ -1172,22 +1172,22 @@ CreateVoiceEffectInput collect = new CreateVoiceEffectInput();
 string callSid = "CallSid";
 collect.CallSid = callSid;
 
-var audioDirection = AudioDirection?Helper.ParseString("IN");
+var audioDirection = Models.AudioDirection?Helper.ParseString("IN");
 collect.AudioDirection = audioDirection;
 
-double? pitchSemiTones = 194.705926165779;
+double? pitchSemiTones = 63.2819445888893;
 collect.PitchSemiTones = pitchSemiTones;
 
-double? pitchOctaves = 194.705926165779;
+double? pitchOctaves = 63.2819445888893;
 collect.PitchOctaves = pitchOctaves;
 
-double? pitch = 194.705926165779;
+double? pitch = 63.2819445888893;
 collect.Pitch = pitch;
 
-double? rate = 194.705926165779;
+double? rate = 63.2819445888893;
 collect.Rate = rate;
 
-double? tempo = 194.705926165779;
+double? tempo = 63.2819445888893;
 collect.Tempo = tempo;
 
 string responseType = "json";
@@ -1199,7 +1199,7 @@ string result = await call.CreateVoiceEffect(collect);
 ```
 
 
-#### <a name="create_record_call"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.CallController.CreateRecordCall") CreateRecordCall
+#### <a name="create_record_call"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateRecordCall") CreateRecordCall
 
 > Record a Call
 
@@ -1229,19 +1229,19 @@ CreateRecordCallInput collect = new CreateRecordCallInput();
 string callSid = "CallSid";
 collect.CallSid = callSid;
 
-bool record = true;
+bool record = false;
 collect.Record = record;
 
-var direction = Direction?Helper.ParseString("IN");
+var direction = Models.Direction?Helper.ParseString("IN");
 collect.Direction = direction;
 
-int? timeLimit = 194;
+int? timeLimit = 63;
 collect.TimeLimit = timeLimit;
 
 string callBackUrl = "CallBackUrl";
 collect.CallBackUrl = callBackUrl;
 
-var fileformat = AudioFormat?Helper.ParseString("mp3");
+var fileformat = Models.AudioFormat?Helper.ParseString("mp3");
 collect.Fileformat = fileformat;
 
 string responseType = "json";
@@ -1253,7 +1253,7 @@ string result = await call.CreateRecordCall(collect);
 ```
 
 
-#### <a name="create_play_audio"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.CallController.CreatePlayAudio") CreatePlayAudio
+#### <a name="create_play_audio"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreatePlayAudio") CreatePlayAudio
 
 > Play Dtmf and send the Digit
 
@@ -1286,10 +1286,10 @@ collect.CallSid = callSid;
 string audioUrl = "AudioUrl";
 collect.AudioUrl = audioUrl;
 
-int? length = 31;
+int? length = 63;
 collect.Length = length;
 
-var direction = Direction?Helper.ParseString("IN");
+var direction = Models.Direction?Helper.ParseString("IN");
 collect.Direction = direction;
 
 bool? loop = false;
@@ -1307,7 +1307,7 @@ string result = await call.CreatePlayAudio(collect);
 ```
 
 
-#### <a name="create_list_calls"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.CallController.CreateListCalls") CreateListCalls
+#### <a name="create_list_calls"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateListCalls") CreateListCalls
 
 > A list of calls associated with your Message360 account
 
@@ -1333,10 +1333,10 @@ Task<string> CreateListCalls(CreateListCallsInput input)
 ```csharp
 CreateListCallsInput collect = new CreateListCallsInput();
 
-int? page = 31;
+int? page = 63;
 collect.Page = page;
 
-int? pageSize = 31;
+int? pageSize = 63;
 collect.PageSize = pageSize;
 
 string to = "To";
@@ -1357,7 +1357,7 @@ string result = await call.CreateListCalls(collect);
 ```
 
 
-#### <a name="create_interrupted_call"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.CallController.CreateInterruptedCall") CreateInterruptedCall
+#### <a name="create_interrupted_call"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateInterruptedCall") CreateInterruptedCall
 
 > Interrupt the Call by Call Sid
 
@@ -1388,10 +1388,10 @@ collect.CallSid = callSid;
 string url = "Url";
 collect.Url = url;
 
-var method = HttpAction?Helper.ParseString("GET");
+var method = Models.HttpAction?Helper.ParseString("GET");
 collect.Method = method;
 
-var status = InterruptedCallStatus?Helper.ParseString("CANCELED");
+var status = Models.InterruptedCallStatus?Helper.ParseString("CANCELED");
 collect.Status = status;
 
 string responseType = "json";
@@ -1403,7 +1403,7 @@ string result = await call.CreateInterruptedCall(collect);
 ```
 
 
-#### <a name="create_send_digit"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.CallController.CreateSendDigit") CreateSendDigit
+#### <a name="create_send_digit"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateSendDigit") CreateSendDigit
 
 > Play Dtmf and send the Digit
 
@@ -1433,7 +1433,7 @@ collect.CallSid = callSid;
 string playDtmf = "PlayDtmf";
 collect.PlayDtmf = playDtmf;
 
-var playDtmfDirection = Direction?Helper.ParseString("IN");
+var playDtmfDirection = Models.Direction?Helper.ParseString("IN");
 collect.PlayDtmfDirection = playDtmfDirection;
 
 string responseType = "json";
@@ -1445,7 +1445,7 @@ string result = await call.CreateSendDigit(collect);
 ```
 
 
-#### <a name="create_make_call"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.CallController.CreateMakeCall") CreateMakeCall
+#### <a name="create_make_call"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateMakeCall") CreateMakeCall
 
 > You can experiment with initiating a call through Message360 and view the request response generated when doing so and get the response in json
 
@@ -1502,19 +1502,19 @@ collect.To = to;
 string url = "Url";
 collect.Url = url;
 
-var method = HttpAction?Helper.ParseString("GET");
+var method = Models.HttpAction?Helper.ParseString("GET");
 collect.Method = method;
 
 string statusCallBackUrl = "StatusCallBackUrl";
 collect.StatusCallBackUrl = statusCallBackUrl;
 
-var statusCallBackMethod = HttpAction?Helper.ParseString("GET");
+var statusCallBackMethod = Models.HttpAction?Helper.ParseString("GET");
 collect.StatusCallBackMethod = statusCallBackMethod;
 
 string fallBackUrl = "FallBackUrl";
 collect.FallBackUrl = fallBackUrl;
 
-var fallBackMethod = HttpAction?Helper.ParseString("GET");
+var fallBackMethod = Models.HttpAction?Helper.ParseString("GET");
 collect.FallBackMethod = fallBackMethod;
 
 string heartBeatUrl = "HeartBeatUrl";
@@ -1523,7 +1523,7 @@ collect.HeartBeatUrl = heartBeatUrl;
 bool? heartBeatMethod = false;
 collect.HeartBeatMethod = heartBeatMethod;
 
-int? timeout = 31;
+int? timeout = 63;
 collect.Timeout = timeout;
 
 string playDtmf = "PlayDtmf";
@@ -1538,7 +1538,7 @@ collect.Record = record;
 string recordCallBackUrl = "RecordCallBackUrl";
 collect.RecordCallBackUrl = recordCallBackUrl;
 
-var recordCallBackMethod = HttpAction?Helper.ParseString("GET");
+var recordCallBackMethod = Models.HttpAction?Helper.ParseString("GET");
 collect.RecordCallBackMethod = recordCallBackMethod;
 
 bool? transcribe = false;
@@ -1547,7 +1547,7 @@ collect.Transcribe = transcribe;
 string transcribeCallBackUrl = "TranscribeCallBackUrl";
 collect.TranscribeCallBackUrl = transcribeCallBackUrl;
 
-var ifMachine = IfMachine?Helper.ParseString("CONTINUE");
+var ifMachine = Models.IfMachine?Helper.ParseString("CONTINUE");
 collect.IfMachine = ifMachine;
 
 string responseType = "json";
@@ -1561,7 +1561,7 @@ string result = await call.CreateMakeCall(collect);
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="sms_controller"></a>![Class: ](http://apidocs.io/img/class.png "message360.Controllers.SMSController") SMSController
+### <a name="sms_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.SMSController") SMSController
 
 #### Get singleton instance
 
@@ -1571,7 +1571,7 @@ The singleton instance of the ``` SMSController ``` class can be accessed from t
 SMSController sMS = client.SMS;
 ```
 
-#### <a name="create_view_sms"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateViewSMS") CreateViewSMS
+#### <a name="create_view_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateViewSMS") CreateViewSMS
 
 > View Particular SMS
 
@@ -1605,7 +1605,7 @@ string result = await sMS.CreateViewSMS(collect);
 ```
 
 
-#### <a name="create_list_inbound_sms"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateListInboundSMS") CreateListInboundSMS
+#### <a name="create_list_inbound_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateListInboundSMS") CreateListInboundSMS
 
 > List All Inbound SMS
 
@@ -1630,7 +1630,7 @@ Task<string> CreateListInboundSMS(CreateListInboundSMSInput input)
 ```csharp
 CreateListInboundSMSInput collect = new CreateListInboundSMSInput();
 
-int? page = 31;
+int? page = 63;
 collect.Page = page;
 
 string pagesize = "pagesize";
@@ -1651,7 +1651,7 @@ string result = await sMS.CreateListInboundSMS(collect);
 ```
 
 
-#### <a name="create_list_sms"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateListSMS") CreateListSMS
+#### <a name="create_list_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateListSMS") CreateListSMS
 
 > List All SMS
 
@@ -1677,10 +1677,10 @@ Task<string> CreateListSMS(CreateListSMSInput input)
 ```csharp
 CreateListSMSInput collect = new CreateListSMSInput();
 
-int? page = 31;
+int? page = 63;
 collect.Page = page;
 
-int? pagesize = 31;
+int? pagesize = 63;
 collect.Pagesize = pagesize;
 
 string mfrom = "from";
@@ -1701,7 +1701,7 @@ string result = await sMS.CreateListSMS(collect);
 ```
 
 
-#### <a name="create_send_sms"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateSendSMS") CreateSendSMS
+#### <a name="create_send_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateSendSMS") CreateSendSMS
 
 > Send an SMS from a message360 number
 
@@ -1744,7 +1744,7 @@ collect.To = to;
 string body = "body";
 collect.Body = body;
 
-var method = HttpAction?Helper.ParseString("GET");
+var method = Models.HttpAction?Helper.ParseString("GET");
 collect.Method = method;
 
 string messagestatuscallback = "messagestatuscallback";
@@ -1761,53 +1761,7 @@ string result = await sMS.CreateSendSMS(collect);
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="account_controller"></a>![Class: ](http://apidocs.io/img/class.png "message360.Controllers.AccountController") AccountController
-
-#### Get singleton instance
-
-The singleton instance of the ``` AccountController ``` class can be accessed from the API Client.
-
-```csharp
-AccountController account = client.Account;
-```
-
-#### <a name="create_view_account"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.AccountController.CreateViewAccount") CreateViewAccount
-
-> Display Account Description
-
-
-```csharp
-Task<string> CreateViewAccount(CreateViewAccountInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| date |  ``` Required ```  | TODO: Add a parameter description |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-#### Example Usage
-
-```csharp
-CreateViewAccountInput collect = new CreateViewAccountInput();
-
-string date = "date";
-collect.Date = date;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await account.CreateViewAccount(collect);
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-### <a name="web_rtc_controller"></a>![Class: ](http://apidocs.io/img/class.png "message360.Controllers.WebRTCController") WebRTCController
+### <a name="web_rtc_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.WebRTCController") WebRTCController
 
 #### Get singleton instance
 
@@ -1817,7 +1771,7 @@ The singleton instance of the ``` WebRTCController ``` class can be accessed fro
 WebRTCController webRTC = client.WebRTC;
 ```
 
-#### <a name="create_check_funds"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.WebRTCController.CreateCheckFunds") CreateCheckFunds
+#### <a name="create_check_funds"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.WebRTCController.CreateCheckFunds") CreateCheckFunds
 
 > TODO: Add a method description
 
@@ -1851,45 +1805,7 @@ string result = await webRTC.CreateCheckFunds(collect);
 ```
 
 
-#### <a name="create_authenticate_number"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.WebRTCController.CreateAuthenticateNumber") CreateAuthenticateNumber
-
-> Authenticate a message360 number for use
-
-
-```csharp
-Task<string> CreateAuthenticateNumber(CreateAuthenticateNumberInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | Phone number to authenticate for use |
-| accountSid |  ``` Required ```  | Your message360 Account SID |
-| authToken |  ``` Required ```  | Your message360 token |
-
-
-#### Example Usage
-
-```csharp
-CreateAuthenticateNumberInput collect = new CreateAuthenticateNumberInput();
-
-string phoneNumber = "phone_number";
-collect.PhoneNumber = phoneNumber;
-
-string accountSid = "account_sid";
-collect.AccountSid = accountSid;
-
-string authToken = "auth_token";
-collect.AuthToken = authToken;
-
-
-string result = await webRTC.CreateAuthenticateNumber(collect);
-
-```
-
-
-#### <a name="create_token"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.WebRTCController.CreateToken") CreateToken
+#### <a name="create_token"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.WebRTCController.CreateToken") CreateToken
 
 > message360 webrtc
 
@@ -1904,6 +1820,8 @@ Task<string> CreateToken(CreateTokenInput input)
 |-----------|------|-------------|
 | accountSid |  ``` Required ```  | Your message360 Account SID |
 | authToken |  ``` Required ```  | Your message360 Token |
+| username |  ``` Required ```  | WebRTC username authentication |
+| password |  ``` Required ```  | WebRTC password authentication |
 
 
 #### Example Usage
@@ -1917,6 +1835,12 @@ collect.AccountSid = accountSid;
 string authToken = "auth_token";
 collect.AuthToken = authToken;
 
+string username = "username";
+collect.Username = username;
+
+string password = "password";
+collect.Password = password;
+
 
 string result = await webRTC.CreateToken(collect);
 
@@ -1925,7 +1849,7 @@ string result = await webRTC.CreateToken(collect);
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="sub_account_controller"></a>![Class: ](http://apidocs.io/img/class.png "message360.Controllers.SubAccountController") SubAccountController
+### <a name="sub_account_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.SubAccountController") SubAccountController
 
 #### Get singleton instance
 
@@ -1935,9 +1859,9 @@ The singleton instance of the ``` SubAccountController ``` class can be accessed
 SubAccountController subAccount = client.SubAccount;
 ```
 
-#### <a name="create_sub_account"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.SubAccountController.CreateSubAccount") CreateSubAccount
+#### <a name="create_sub_account"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SubAccountController.CreateSubAccount") CreateSubAccount
 
-> Create Sub account
+> Create a sub user account under the parent account
 
 
 ```csharp
@@ -1948,10 +1872,10 @@ Task<string> CreateSubAccount(CreateSubAccountInput input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| firstname |  ``` Required ```  | TODO: Add a parameter description |
-| lastname |  ``` Required ```  | TODO: Add a parameter description |
-| email |  ``` Required ```  | TODO: Add a parameter description |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | ResponseType Format either json or xml |
+| firstName |  ``` Required ```  | Sub account user first name |
+| lastName |  ``` Required ```  | sub account user last name |
+| email |  ``` Required ```  | Sub account email address |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
 #### Example Usage
@@ -1959,13 +1883,13 @@ Task<string> CreateSubAccount(CreateSubAccountInput input)
 ```csharp
 CreateSubAccountInput collect = new CreateSubAccountInput();
 
-string firstname = "firstname";
-collect.Firstname = firstname;
+string firstName = "FirstName";
+collect.FirstName = firstName;
 
-string lastname = "lastname";
-collect.Lastname = lastname;
+string lastName = "LastName";
+collect.LastName = lastName;
 
-string email = "email";
+string email = "Email";
 collect.Email = email;
 
 string responseType = "json";
@@ -1977,7 +1901,7 @@ string result = await subAccount.CreateSubAccount(collect);
 ```
 
 
-#### <a name="create_suspend_sub_account"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.SubAccountController.CreateSuspendSubAccount") CreateSuspendSubAccount
+#### <a name="create_suspend_sub_account"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SubAccountController.CreateSuspendSubAccount") CreateSuspendSubAccount
 
 > Suspend or unsuspend
 
@@ -1990,8 +1914,8 @@ Task<string> CreateSuspendSubAccount(CreateSuspendSubAccountInput input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| subaccountsid |  ``` Required ```  | TODO: Add a parameter description |
-| activate |  ``` Required ```  | TODO: Add a parameter description |
+| subAccountSID |  ``` Required ```  | The SubaccountSid to be activated or suspended |
+| activate |  ``` Required ```  ``` DefaultValue ```  | 0 to suspend or 1 to activate |
 | responseType |  ``` Optional ```  | TODO: Add a parameter description |
 
 
@@ -2000,10 +1924,10 @@ Task<string> CreateSuspendSubAccount(CreateSuspendSubAccountInput input)
 ```csharp
 CreateSuspendSubAccountInput collect = new CreateSuspendSubAccountInput();
 
-string subaccountsid = "subaccountsid";
-collect.Subaccountsid = subaccountsid;
+string subAccountSID = "SubAccountSID";
+collect.SubAccountSID = subAccountSID;
 
-var activate = (ActivateStatus)1;
+var activate = (Models.ActivateStatus)0;
 collect.Activate = activate;
 
 string responseType = "ResponseType";
@@ -2015,47 +1939,47 @@ string result = await subAccount.CreateSuspendSubAccount(collect);
 ```
 
 
-#### <a name="create_delete_merge_sub_account"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.SubAccountController.CreateDeleteMergeSubAccount") CreateDeleteMergeSubAccount
+#### <a name="create_delete_sub_account"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SubAccountController.CreateDeleteSubAccount") CreateDeleteSubAccount
 
-> Delete or Merge Sub account
+> Delete sub account or merge numbers into parent
 
 
 ```csharp
-Task<string> CreateDeleteMergeSubAccount(CreateDeleteMergeSubAccountInput input)
+Task<string> CreateDeleteSubAccount(CreateDeleteSubAccountInput input)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| subaccountsid |  ``` Required ```  | TODO: Add a parameter description |
-| mergenumber |  ``` Required ```  | TODO: Add a parameter description |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format either json or xml |
+| subAccountSID |  ``` Required ```  | The SubaccountSid to be deleted |
+| mergeNumber |  ``` Required ```  ``` DefaultValue ```  | 0 to delete or 1 to merge numbers to parent account. |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
 #### Example Usage
 
 ```csharp
-CreateDeleteMergeSubAccountInput collect = new CreateDeleteMergeSubAccountInput();
+CreateDeleteSubAccountInput collect = new CreateDeleteSubAccountInput();
 
-string subaccountsid = "subaccountsid";
-collect.Subaccountsid = subaccountsid;
+string subAccountSID = "SubAccountSID";
+collect.SubAccountSID = subAccountSID;
 
-var mergenumber = (MergeNumberStatus)0;
-collect.Mergenumber = mergenumber;
+var mergeNumber = (Models.MergeNumberStatus)0;
+collect.MergeNumber = mergeNumber;
 
 string responseType = "json";
 collect.ResponseType = responseType;
 
 
-string result = await subAccount.CreateDeleteMergeSubAccount(collect);
+string result = await subAccount.CreateDeleteSubAccount(collect);
 
 ```
 
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="address_controller"></a>![Class: ](http://apidocs.io/img/class.png "message360.Controllers.AddressController") AddressController
+### <a name="address_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.AddressController") AddressController
 
 #### Get singleton instance
 
@@ -2065,7 +1989,7 @@ The singleton instance of the ``` AddressController ``` class can be accessed fr
 AddressController address = client.Address;
 ```
 
-#### <a name="create_address"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.AddressController.CreateAddress") CreateAddress
+#### <a name="create_address"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.AddressController.CreateAddress") CreateAddress
 
 > To add an address to your address book, you create a new address object. You can retrieve and delete individual addresses as well as get a list of addresses. Addresses are identified by a unique random ID.
 
@@ -2087,7 +2011,7 @@ Task<string> CreateAddress(CreateAddressInput input)
 | description |  ``` Optional ```  | Description of addresses. |
 | email |  ``` Optional ```  | Email Id of user. |
 | phone |  ``` Optional ```  | Phone number of user. |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response Type Either json or xml |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type either json or xml |
 
 
 #### Example Usage
@@ -2095,31 +2019,31 @@ Task<string> CreateAddress(CreateAddressInput input)
 ```csharp
 CreateAddressInput collect = new CreateAddressInput();
 
-string name = "name";
+string name = "Name";
 collect.Name = name;
 
-string address = "address";
+string address = "Address";
 collect.Address = address;
 
-string country = "country";
+string country = "Country";
 collect.Country = country;
 
-string state = "state";
+string state = "State";
 collect.State = state;
 
-string city = "city";
+string city = "City";
 collect.City = city;
 
-string zip = "zip";
+string zip = "Zip";
 collect.Zip = zip;
 
-string description = "description";
+string description = "Description";
 collect.Description = description;
 
 string email = "email";
 collect.Email = email;
 
-string phone = "phone";
+string phone = "Phone";
 collect.Phone = phone;
 
 string responseType = "json";
@@ -2131,7 +2055,7 @@ string result = await address.CreateAddress(collect);
 ```
 
 
-#### <a name="create_delete_address"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.AddressController.CreateDeleteAddress") CreateDeleteAddress
+#### <a name="create_delete_address"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.AddressController.CreateDeleteAddress") CreateDeleteAddress
 
 > To delete Address to your address book
 
@@ -2144,7 +2068,7 @@ Task<string> CreateDeleteAddress(CreateDeleteAddressInput input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| addressid |  ``` Required ```  | The identifier of the address to be deleted. |
+| addressSID |  ``` Required ```  | The identifier of the address to be deleted. |
 | responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type either json or xml |
 
 
@@ -2153,8 +2077,8 @@ Task<string> CreateDeleteAddress(CreateDeleteAddressInput input)
 ```csharp
 CreateDeleteAddressInput collect = new CreateDeleteAddressInput();
 
-string addressid = "addressid";
-collect.Addressid = addressid;
+string addressSID = "AddressSID";
+collect.AddressSID = addressSID;
 
 string responseType = "json";
 collect.ResponseType = responseType;
@@ -2165,7 +2089,7 @@ string result = await address.CreateDeleteAddress(collect);
 ```
 
 
-#### <a name="create_verify_address"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.AddressController.CreateVerifyAddress") CreateVerifyAddress
+#### <a name="create_verify_address"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.AddressController.CreateVerifyAddress") CreateVerifyAddress
 
 > Validates an address given.
 
@@ -2178,8 +2102,8 @@ Task<string> CreateVerifyAddress(CreateVerifyAddressInput input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| addressid |  ``` Required ```  | The identifier of the address to be verified. |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type either JSON or xml |
+| addressSID |  ``` Required ```  | The identifier of the address to be verified. |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type either json or xml |
 
 
 #### Example Usage
@@ -2187,8 +2111,8 @@ Task<string> CreateVerifyAddress(CreateVerifyAddressInput input)
 ```csharp
 CreateVerifyAddressInput collect = new CreateVerifyAddressInput();
 
-string addressid = "addressid";
-collect.Addressid = addressid;
+string addressSID = "AddressSID";
+collect.AddressSID = addressSID;
 
 string responseType = "json";
 collect.ResponseType = responseType;
@@ -2199,7 +2123,7 @@ string result = await address.CreateVerifyAddress(collect);
 ```
 
 
-#### <a name="create_list_address"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.AddressController.CreateListAddress") CreateListAddress
+#### <a name="create_list_address"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.AddressController.CreateListAddress") CreateListAddress
 
 > List All Address 
 
@@ -2213,8 +2137,8 @@ Task<string> CreateListAddress(CreateListAddressInput input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | page |  ``` Optional ```  ``` DefaultValue ```  | Return requested # of items starting the value, default=0, must be an integer |
-| pageSize |  ``` Optional ```  ``` DefaultValue ```  | How many results to return, default=10, max 100, must be an integer |
-| addressId |  ``` Optional ```  | addresses Sid |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | How many results to return, default is 10, max is 100, must be an integer |
+| addressSID |  ``` Optional ```  | addresses Sid |
 | dateCreated |  ``` Optional ```  | date created address. |
 | responseType |  ``` Optional ```  ``` DefaultValue ```  | Response Type either json or xml |
 
@@ -2230,10 +2154,10 @@ collect.Page = page;
 int? pageSize = 10;
 collect.PageSize = pageSize;
 
-string addressId = "addressId";
-collect.AddressId = addressId;
+string addressSID = "AddressSID";
+collect.AddressSID = addressSID;
 
-string dateCreated = "dateCreated";
+string dateCreated = "DateCreated";
 collect.DateCreated = dateCreated;
 
 string responseType = "json";
@@ -2245,7 +2169,7 @@ string result = await address.CreateListAddress(collect);
 ```
 
 
-#### <a name="create_view_address"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.AddressController.CreateViewAddress") CreateViewAddress
+#### <a name="create_view_address"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.AddressController.CreateViewAddress") CreateViewAddress
 
 > View Address Specific address Book by providing the address id
 
@@ -2258,7 +2182,7 @@ Task<string> CreateViewAddress(CreateViewAddressInput input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| addressId |  ``` Required ```  | The identifier of the address to be retrieved. |
+| addressSID |  ``` Required ```  | The identifier of the address to be retrieved. |
 | responseType |  ``` Optional ```  ``` DefaultValue ```  | Response Type either json or xml |
 
 
@@ -2267,8 +2191,8 @@ Task<string> CreateViewAddress(CreateViewAddressInput input)
 ```csharp
 CreateViewAddressInput collect = new CreateViewAddressInput();
 
-string addressId = "addressId";
-collect.AddressId = addressId;
+string addressSID = "AddressSID";
+collect.AddressSID = addressSID;
 
 string responseType = "json";
 collect.ResponseType = responseType;
@@ -2281,7 +2205,7 @@ string result = await address.CreateViewAddress(collect);
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="phone_number_controller"></a>![Class: ](http://apidocs.io/img/class.png "message360.Controllers.PhoneNumberController") PhoneNumberController
+### <a name="phone_number_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.PhoneNumberController") PhoneNumberController
 
 #### Get singleton instance
 
@@ -2291,7 +2215,7 @@ The singleton instance of the ``` PhoneNumberController ``` class can be accesse
 PhoneNumberController phoneNumber = client.PhoneNumber;
 ```
 
-#### <a name="update_phone_number"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.UpdatePhoneNumber") UpdatePhoneNumber
+#### <a name="update_phone_number"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.UpdatePhoneNumber") UpdatePhoneNumber
 
 > Update Phone Number Details
 
@@ -2335,37 +2259,37 @@ collect.FriendlyName = friendlyName;
 string voiceUrl = "VoiceUrl";
 collect.VoiceUrl = voiceUrl;
 
-var voiceMethod = HttpAction?Helper.ParseString("GET");
+var voiceMethod = Models.HttpAction?Helper.ParseString("GET");
 collect.VoiceMethod = voiceMethod;
 
 string voiceFallbackUrl = "VoiceFallbackUrl";
 collect.VoiceFallbackUrl = voiceFallbackUrl;
 
-var voiceFallbackMethod = HttpAction?Helper.ParseString("GET");
+var voiceFallbackMethod = Models.HttpAction?Helper.ParseString("GET");
 collect.VoiceFallbackMethod = voiceFallbackMethod;
 
 string hangupCallback = "HangupCallback";
 collect.HangupCallback = hangupCallback;
 
-var hangupCallbackMethod = HttpAction?Helper.ParseString("GET");
+var hangupCallbackMethod = Models.HttpAction?Helper.ParseString("GET");
 collect.HangupCallbackMethod = hangupCallbackMethod;
 
 string heartbeatUrl = "HeartbeatUrl";
 collect.HeartbeatUrl = heartbeatUrl;
 
-var heartbeatMethod = HttpAction?Helper.ParseString("GET");
+var heartbeatMethod = Models.HttpAction?Helper.ParseString("GET");
 collect.HeartbeatMethod = heartbeatMethod;
 
 string smsUrl = "SmsUrl";
 collect.SmsUrl = smsUrl;
 
-var smsMethod = HttpAction?Helper.ParseString("GET");
+var smsMethod = Models.HttpAction?Helper.ParseString("GET");
 collect.SmsMethod = smsMethod;
 
 string smsFallbackUrl = "SmsFallbackUrl";
 collect.SmsFallbackUrl = smsFallbackUrl;
 
-var smsFallbackMethod = HttpAction?Helper.ParseString("GET");
+var smsFallbackMethod = Models.HttpAction?Helper.ParseString("GET");
 collect.SmsFallbackMethod = smsFallbackMethod;
 
 string responseType = "json";
@@ -2377,7 +2301,7 @@ string result = await phoneNumber.UpdatePhoneNumber(collect);
 ```
 
 
-#### <a name="create_buy_number"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateBuyNumber") CreateBuyNumber
+#### <a name="create_buy_number"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateBuyNumber") CreateBuyNumber
 
 > Buy Phone Number 
 
@@ -2411,7 +2335,7 @@ string result = await phoneNumber.CreateBuyNumber(collect);
 ```
 
 
-#### <a name="create_release_number"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateReleaseNumber") CreateReleaseNumber
+#### <a name="create_release_number"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateReleaseNumber") CreateReleaseNumber
 
 > Release number from account
 
@@ -2445,7 +2369,7 @@ string result = await phoneNumber.CreateReleaseNumber(collect);
 ```
 
 
-#### <a name="create_view_number_details"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateViewNumberDetails") CreateViewNumberDetails
+#### <a name="create_view_number_details"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateViewNumberDetails") CreateViewNumberDetails
 
 > Get Phone Number Details
 
@@ -2479,7 +2403,7 @@ string result = await phoneNumber.CreateViewNumberDetails(collect);
 ```
 
 
-#### <a name="create_list_number"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateListNumber") CreateListNumber
+#### <a name="create_list_number"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateListNumber") CreateListNumber
 
 > List Account's Phone number details
 
@@ -2504,13 +2428,13 @@ Task<string> CreateListNumber(CreateListNumberInput input)
 ```csharp
 CreateListNumberInput collect = new CreateListNumberInput();
 
-int? page = 31;
+int? page = 63;
 collect.Page = page;
 
-int? pageSize = 31;
+int? pageSize = 63;
 collect.PageSize = pageSize;
 
-var numberType = NumberType?Helper.ParseString("ALL");
+var numberType = Models.NumberType?Helper.ParseString("ALL");
 collect.NumberType = numberType;
 
 string friendlyName = "FriendlyName";
@@ -2525,7 +2449,7 @@ string result = await phoneNumber.CreateListNumber(collect);
 ```
 
 
-#### <a name="create_available_phone_number"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateAvailablePhoneNumber") CreateAvailablePhoneNumber
+#### <a name="create_available_phone_number"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateAvailablePhoneNumber") CreateAvailablePhoneNumber
 
 > Available Phone Number
 
@@ -2549,13 +2473,13 @@ Task<string> CreateAvailablePhoneNumber(CreateAvailablePhoneNumberInput input)
 ```csharp
 CreateAvailablePhoneNumberInput collect = new CreateAvailablePhoneNumberInput();
 
-var numberType = NumberTypeHelper.ParseString("ALL");
+var numberType = Models.NumberTypeHelper.ParseString("ALL");
 collect.NumberType = numberType;
 
 string areaCode = "AreaCode";
 collect.AreaCode = areaCode;
 
-int? pageSize = 122;
+int? pageSize = 63;
 collect.PageSize = pageSize;
 
 string responseType = "json";
@@ -2569,7 +2493,7 @@ string result = await phoneNumber.CreateAvailablePhoneNumber(collect);
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="recording_controller"></a>![Class: ](http://apidocs.io/img/class.png "message360.Controllers.RecordingController") RecordingController
+### <a name="recording_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.RecordingController") RecordingController
 
 #### Get singleton instance
 
@@ -2579,7 +2503,7 @@ The singleton instance of the ``` RecordingController ``` class can be accessed 
 RecordingController recording = client.Recording;
 ```
 
-#### <a name="create_list_recording"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.RecordingController.CreateListRecording") CreateListRecording
+#### <a name="create_list_recording"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.RecordingController.CreateListRecording") CreateListRecording
 
 > List out Recordings
 
@@ -2604,10 +2528,10 @@ Task<string> CreateListRecording(CreateListRecordingInput input)
 ```csharp
 CreateListRecordingInput collect = new CreateListRecordingInput();
 
-int? page = 122;
+int? page = 63;
 collect.Page = page;
 
-int? pageSize = 122;
+int? pageSize = 63;
 collect.PageSize = pageSize;
 
 string dateCreated = "DateCreated";
@@ -2625,7 +2549,7 @@ string result = await recording.CreateListRecording(collect);
 ```
 
 
-#### <a name="create_delete_recording"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.RecordingController.CreateDeleteRecording") CreateDeleteRecording
+#### <a name="create_delete_recording"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.RecordingController.CreateDeleteRecording") CreateDeleteRecording
 
 > Delete Recording Record
 
@@ -2659,7 +2583,7 @@ string result = await recording.CreateDeleteRecording(collect);
 ```
 
 
-#### <a name="create_view_recording"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.RecordingController.CreateViewRecording") CreateViewRecording
+#### <a name="create_view_recording"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.RecordingController.CreateViewRecording") CreateViewRecording
 
 > View a specific Recording
 
@@ -2695,7 +2619,7 @@ string result = await recording.CreateViewRecording(collect);
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="transcription_controller"></a>![Class: ](http://apidocs.io/img/class.png "message360.Controllers.TranscriptionController") TranscriptionController
+### <a name="transcription_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.TranscriptionController") TranscriptionController
 
 #### Get singleton instance
 
@@ -2705,7 +2629,7 @@ The singleton instance of the ``` TranscriptionController ``` class can be acces
 TranscriptionController transcription = client.Transcription;
 ```
 
-#### <a name="create_audio_url_transcription"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.TranscriptionController.CreateAudioURLTranscription") CreateAudioURLTranscription
+#### <a name="create_audio_url_transcription"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.TranscriptionController.CreateAudioURLTranscription") CreateAudioURLTranscription
 
 > Audio URL Transcriptions
 
@@ -2739,7 +2663,7 @@ string result = await transcription.CreateAudioURLTranscription(collect);
 ```
 
 
-#### <a name="create_recording_transcription"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.TranscriptionController.CreateRecordingTranscription") CreateRecordingTranscription
+#### <a name="create_recording_transcription"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.TranscriptionController.CreateRecordingTranscription") CreateRecordingTranscription
 
 > Recording Transcriptions
 
@@ -2773,7 +2697,7 @@ string result = await transcription.CreateRecordingTranscription(collect);
 ```
 
 
-#### <a name="create_view_transcription"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.TranscriptionController.CreateViewTranscription") CreateViewTranscription
+#### <a name="create_view_transcription"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.TranscriptionController.CreateViewTranscription") CreateViewTranscription
 
 > View Specific Transcriptions
 
@@ -2807,7 +2731,7 @@ string result = await transcription.CreateViewTranscription(collect);
 ```
 
 
-#### <a name="create_list_transcription"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.TranscriptionController.CreateListTranscription") CreateListTranscription
+#### <a name="create_list_transcription"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.TranscriptionController.CreateListTranscription") CreateListTranscription
 
 > Get All transcriptions
 
@@ -2832,13 +2756,13 @@ Task<string> CreateListTranscription(CreateListTranscriptionInput input)
 ```csharp
 CreateListTranscriptionInput collect = new CreateListTranscriptionInput();
 
-int? page = 122;
+int? page = 21;
 collect.Page = page;
 
-int? pageSize = 122;
+int? pageSize = 21;
 collect.PageSize = pageSize;
 
-var status = Status?Helper.ParseString("INPROGRESS");
+var status = Models.Status?Helper.ParseString("INPROGRESS");
 collect.Status = status;
 
 string dateTranscribed = "DateTranscribed";
@@ -2855,7 +2779,7 @@ string result = await transcription.CreateListTranscription(collect);
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="usage_controller"></a>![Class: ](http://apidocs.io/img/class.png "message360.Controllers.UsageController") UsageController
+### <a name="usage_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.UsageController") UsageController
 
 #### Get singleton instance
 
@@ -2865,7 +2789,7 @@ The singleton instance of the ``` UsageController ``` class can be accessed from
 UsageController usage = client.Usage;
 ```
 
-#### <a name="create_list_usage"></a>![Method: ](http://apidocs.io/img/method.png "message360.Controllers.UsageController.CreateListUsage") CreateListUsage
+#### <a name="create_list_usage"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.UsageController.CreateListUsage") CreateListUsage
 
 > Get all usage 
 
@@ -2889,7 +2813,7 @@ Task<string> CreateListUsage(CreateListUsageInput input)
 ```csharp
 CreateListUsageInput collect = new CreateListUsageInput();
 
-var productCode = (ProductCode)0;
+var productCode = (Models.ProductCode)0;
 collect.ProductCode = productCode;
 
 string startDate = "2016-09-06";
@@ -2903,6 +2827,52 @@ collect.ResponseType = responseType;
 
 
 string result = await usage.CreateListUsage(collect);
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+### <a name="account_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.AccountController") AccountController
+
+#### Get singleton instance
+
+The singleton instance of the ``` AccountController ``` class can be accessed from the API Client.
+
+```csharp
+AccountController account = client.Account;
+```
+
+#### <a name="create_view_account"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.AccountController.CreateViewAccount") CreateViewAccount
+
+> Display Account Description
+
+
+```csharp
+Task<string> CreateViewAccount(CreateViewAccountInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| date |  ``` Required ```  | TODO: Add a parameter description |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateViewAccountInput collect = new CreateViewAccountInput();
+
+string date = "Date";
+collect.Date = date;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await account.CreateViewAccount(collect);
 
 ```
 

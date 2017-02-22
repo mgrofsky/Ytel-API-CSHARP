@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using System.IO;
@@ -20,28 +20,28 @@ namespace message360.Models
     public class CreateVerifyAddressInput : INotifyPropertyChanged 
     {
         // These fields hold the values for the public properties.
-        private string addressid;
+        private string addressSID;
         private string responseType = "json";
 
         /// <summary>
         /// The identifier of the address to be verified.
         /// </summary>
-        [JsonProperty("addressid")]
-        public string Addressid 
+        [JsonProperty("AddressSID")]
+        public string AddressSID 
         { 
             get 
             {
-                return this.addressid; 
+                return this.addressSID; 
             } 
             set 
             {
-                this.addressid = value;
-                onPropertyChanged("Addressid");
+                this.addressSID = value;
+                onPropertyChanged("AddressSID");
             }
         }
 
         /// <summary>
-        /// Response type either JSON or xml
+        /// Response type either json or xml
         /// </summary>
         [JsonProperty("ResponseType")]
         public string ResponseType 

@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using message360.Controllers;
@@ -79,17 +79,6 @@ namespace message360
         }
 
         /// <summary>
-        /// Singleton access to Account controller
-        /// </summary>
-        public AccountController Account
-        {
-            get
-            {
-                return AccountController.Instance;
-            }
-        }
-
-        /// <summary>
         /// Singleton access to WebRTC controller
         /// </summary>
         public WebRTCController WebRTC
@@ -163,6 +152,17 @@ namespace message360
             get
             {
                 return UsageController.Instance;
+            }
+        }
+
+        /// <summary>
+        /// Singleton access to Account controller
+        /// </summary>
+        public AccountController Account
+        {
+            get
+            {
+                return AccountController.Instance;
             }
         }
         /// <summary>

@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using System.IO;
@@ -22,14 +22,14 @@ namespace message360.Models
         // These fields hold the values for the public properties.
         private int? page = 1;
         private int? pageSize = 10;
-        private string addressId;
+        private string addressSID;
         private string dateCreated;
         private string responseType = "json";
 
         /// <summary>
         /// Return requested # of items starting the value, default=0, must be an integer
         /// </summary>
-        [JsonProperty("page")]
+        [JsonProperty("Page")]
         public int? Page 
         { 
             get 
@@ -44,9 +44,9 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// How many results to return, default=10, max 100, must be an integer
+        /// How many results to return, default is 10, max is 100, must be an integer
         /// </summary>
-        [JsonProperty("pageSize")]
+        [JsonProperty("PageSize")]
         public int? PageSize 
         { 
             get 
@@ -63,24 +63,24 @@ namespace message360.Models
         /// <summary>
         /// addresses Sid
         /// </summary>
-        [JsonProperty("addressId")]
-        public string AddressId 
+        [JsonProperty("AddressSID")]
+        public string AddressSID 
         { 
             get 
             {
-                return this.addressId; 
+                return this.addressSID; 
             } 
             set 
             {
-                this.addressId = value;
-                onPropertyChanged("AddressId");
+                this.addressSID = value;
+                onPropertyChanged("AddressSID");
             }
         }
 
         /// <summary>
         /// date created address.
         /// </summary>
-        [JsonProperty("dateCreated")]
+        [JsonProperty("DateCreated")]
         public string DateCreated 
         { 
             get 

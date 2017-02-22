@@ -32,7 +32,7 @@ namespace message360.Utilities
 
         public override bool CanConvert(Type objectType)
         {
-            if (objectType == typeof(List<DateTime>)||objectType == typeof(DateTime))
+            if (objectType == typeof(List<DateTime>)||objectType == typeof(DateTime) || objectType == typeof(List<DateTimeOffset>)||objectType == typeof(DateTimeOffset))
                 return true;
             else
                 return false;

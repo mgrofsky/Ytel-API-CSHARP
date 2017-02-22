@@ -2,7 +2,7 @@
 <!--
  - Message360.PCL
  -
- - This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ - This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
 -->
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
@@ -10,7 +10,7 @@
     <AssemblyName>Message360.PCL</AssemblyName>
     <OutputType>Library</OutputType>
     <OutputPath>bin/DEBUG/</OutputPath>
-    <ProjectGuid>{dcccb331-8d15-4822-9370-ea59bf43929a}</ProjectGuid>
+    <ProjectGuid>{2aeb03fb-46d3-40b0-92c7-57270da7c233}</ProjectGuid>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <NuGetPackageImportStamp>ee2bb91c</NuGetPackageImportStamp>
@@ -74,11 +74,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\CreateDeafMuteParticipantInput.cs" />
-    <Compile Include="Models\CreateListInboundSMSInput.cs" />
     <Compile Include="Models\CreateListSMSInput.cs" />
     <Compile Include="Models\CreateListUnsubscribesInput.cs" />
-    <Compile Include="Models\CreateAuthenticateNumberInput.cs" />
-    <Compile Include="Models\CreateViewConferenceInput.cs" />
+    <Compile Include="Models\CreateDeleteUnsubscribesInput.cs" />
     <Compile Include="Models\AddUnsubscribesInput.cs" />
     <Compile Include="Models\CreateDeleteBlockInput.cs" />
     <Compile Include="Models\CreateDeleteSpamInput.cs" />
@@ -88,8 +86,8 @@
     <Compile Include="Models\CreateDeleteRecordingInput.cs" />
     <Compile Include="Models\CreateViewRecordingInput.cs" />
     <Compile Include="Models\CreateAudioURLTranscriptionInput.cs" />
+    <Compile Include="Models\CreateListInboundSMSInput.cs" />
     <Compile Include="Models\CreateRecordingTranscriptionInput.cs" />
-    <Compile Include="Models\CreateViewTranscriptionInput.cs" />
     <Compile Include="Models\CreateListUsageInput.cs" />
     <Compile Include="Models\CreateSendSMSInput.cs" />
     <Compile Include="Models\CreateListNumberInput.cs" />
@@ -101,57 +99,57 @@
     <Compile Include="Models\CreateViewParticipantInput.cs" />
     <Compile Include="Models\CreateMakeCallInput.cs" />
     <Compile Include="Models\CreateTokenInput.cs" />
+    <Compile Include="Models\CreateViewAccountInput.cs" />
+    <Compile Include="Models\CreateViewTranscriptionInput.cs" />
     <Compile Include="Models\CreateSendDigitInput.cs" />
-    <Compile Include="Models\CreateInterruptedCallInput.cs" />
-    <Compile Include="Models\CreateDeleteUnsubscribesInput.cs" />
-    <Compile Include="Models\CreateCarrierLookupListInput.cs" />
+    <Compile Include="Models\CreateViewConferenceInput.cs" />
+    <Compile Include="Models\CreateListCallsInput.cs" />
     <Compile Include="Models\CreateDeleteInvalidInput.cs" />
     <Compile Include="Models\CreateVerifyNumberInput.cs" />
     <Compile Include="Models\CreateCarrierLookupInput.cs" />
     <Compile Include="Models\CreateViewCallInput.cs" />
     <Compile Include="Models\CreateViewSMSInput.cs" />
-    <Compile Include="Models\CreateViewAccountInput.cs" />
     <Compile Include="Models\CreateCheckFundsInput.cs" />
     <Compile Include="Models\CreateGroupCallInput.cs" />
-    <Compile Include="Models\CreateListCallsInput.cs" />
-    <Compile Include="Models\CreateAddressInput.cs" />
+    <Compile Include="Models\CreateSubAccountInput.cs" />
+    <Compile Include="Models\CreateInterruptedCallInput.cs" />
     <Compile Include="Models\CreateSuspendSubAccountInput.cs" />
-    <Compile Include="Models\CreateDeleteMergeSubAccountInput.cs" />
+    <Compile Include="Models\CreateDeleteSubAccountInput.cs" />
     <Compile Include="Models\CreateListConferenceInput.cs" />
     <Compile Include="Models\CreateDeleteAddressInput.cs" />
-    <Compile Include="Models\CreateSubAccountInput.cs" />
-    <Compile Include="Models\CreateVerifyAddressInput.cs" />
     <Compile Include="Models\CreateVoiceEffectInput.cs" />
+    <Compile Include="Models\CreateAddressInput.cs" />
+    <Compile Include="Models\CreateListAddressInput.cs" />
+    <Compile Include="Models\CreateVerifyAddressInput.cs" />
+    <Compile Include="Models\CreateListRecordingInput.cs" />
     <Compile Include="Models\CreateListInvalidInput.cs" />
     <Compile Include="Models\UpdatePhoneNumberInput.cs" />
     <Compile Include="Models\CreatePlayAudioInput.cs" />
-    <Compile Include="Models\CreateDeleteBouncesInput.cs" />
-    <Compile Include="Models\CreateListRecordingInput.cs" />
+    <Compile Include="Models\CreateCarrierLookupListInput.cs" />
+    <Compile Include="Models\CreateRecordCallInput.cs" />
     <Compile Include="Models\CreateListBouncesInput.cs" />
     <Compile Include="Models\CreateListSpamInput.cs" />
     <Compile Include="Models\CreateListBlocksInput.cs" />
     <Compile Include="Models\CreateViewAddressInput.cs" />
-    <Compile Include="Models\CreateListAddressInput.cs" />
-    <Compile Include="Models\CreateRecordCallInput.cs" />
+    <Compile Include="Models\CreateDeleteBouncesInput.cs" />
     <Compile Include="Models\ProductCode.cs" />
-    <Compile Include="Models\SendEmailAs.cs" />
-    <Compile Include="Models\Status.cs" />
-    <Compile Include="Models\NumberType.cs" />
-    <Compile Include="Models\Direction.cs" />
-    <Compile Include="Models\IfMachine.cs" />
     <Compile Include="Models\AudioFormat.cs" />
-    <Compile Include="Models\AudioDirection.cs" />
-    <Compile Include="Models\HttpAction.cs" />
-    <Compile Include="Models\ActivateStatus.cs" />
     <Compile Include="Models\InterruptedCallStatus.cs" />
+    <Compile Include="Models\Direction.cs" />
+    <Compile Include="Models\NumberType.cs" />
+    <Compile Include="Models\ActivateStatus.cs" />
+    <Compile Include="Models\SendEmailAs.cs" />
     <Compile Include="Models\MergeNumberStatus.cs" />
+    <Compile Include="Models\AudioDirection.cs" />
+    <Compile Include="Models\IfMachine.cs" />
+    <Compile Include="Models\Status.cs" />
+    <Compile Include="Models\HttpAction.cs" />
     <Compile Include="Controllers\ConferenceController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\NumberVerificationController.cs" />
     <Compile Include="Controllers\CarrierController.cs" />
     <Compile Include="Controllers\CallController.cs" />
     <Compile Include="Controllers\SMSController.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\WebRTCController.cs" />
     <Compile Include="Controllers\SubAccountController.cs" />
     <Compile Include="Controllers\AddressController.cs" />
@@ -159,6 +157,7 @@
     <Compile Include="Controllers\RecordingController.cs" />
     <Compile Include="Controllers\TranscriptionController.cs" />
     <Compile Include="Controllers\UsageController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Http\Client\IHTTPClient.cs" />
     <Compile Include="Http\Client\UnirestClient.cs" />
     <Compile Include="Http\Client\HttpEventHandlers.cs" />
@@ -173,6 +172,7 @@
     <Compile Include="Utilities\APIHelper.cs" />
     <Compile Include="Utilities\UnixDateTimeConverter.cs" />
     <Compile Include="Utilities\CustomDateTimeConverter.cs" />
+    <Compile Include="Utilities\RetryHelper.cs" />
     <Compile Include="Utilities\ListDateTimeConverter.cs" />
     <Compile Include="Exceptions\APIException.cs" />
     <Compile Include="Models\StringValuedEnumConverter.cs" />

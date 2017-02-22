@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
  */
 using System;
 using System.IO;
@@ -22,10 +22,10 @@ namespace message360.Models
         // These fields hold the values for the public properties.
         private string callSid;
         private bool record;
-        private Direction? direction;
+        private Models.Direction? direction;
         private int? timeLimit;
         private string callBackUrl;
-        private AudioFormat? fileformat;
+        private Models.AudioFormat? fileformat;
         private string responseType = "json";
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace message360.Models
         /// The leg of the call to record
         /// </summary>
         [JsonProperty("Direction", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Direction? Direction 
+        public Models.Direction? Direction 
         { 
             get 
             {
@@ -117,7 +117,7 @@ namespace message360.Models
         /// Format of the recording file. Can be .mp3 or .wav
         /// </summary>
         [JsonProperty("Fileformat", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public AudioFormat? Fileformat 
+        public Models.AudioFormat? Fileformat 
         { 
             get 
             {
