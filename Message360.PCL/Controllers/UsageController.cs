@@ -100,11 +100,11 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "ProductCode", (int)(input.ProductCode) },
-                { "startDate", input.StartDate },
-                { "endDate", input.EndDate }
+                new KeyValuePair<string, object>( "ProductCode", (int)(input.ProductCode) ),
+                new KeyValuePair<string, object>( "startDate", input.StartDate ),
+                new KeyValuePair<string, object>( "endDate", input.EndDate )
             };
 
             //prepare the API call request to fetch the response

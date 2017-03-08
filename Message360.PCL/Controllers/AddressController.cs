@@ -112,17 +112,17 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "Name", input.Name },
-                { "Address", input.Address },
-                { "Country", input.Country },
-                { "State", input.State },
-                { "City", input.City },
-                { "Zip", input.Zip },
-                { "Description", input.Description },
-                { "email", input.Email },
-                { "Phone", input.Phone }
+                new KeyValuePair<string, object>( "Name", input.Name ),
+                new KeyValuePair<string, object>( "Address", input.Address ),
+                new KeyValuePair<string, object>( "Country", input.Country ),
+                new KeyValuePair<string, object>( "State", input.State ),
+                new KeyValuePair<string, object>( "City", input.City ),
+                new KeyValuePair<string, object>( "Zip", input.Zip ),
+                new KeyValuePair<string, object>( "Description", input.Description ),
+                new KeyValuePair<string, object>( "email", input.Email ),
+                new KeyValuePair<string, object>( "Phone", input.Phone )
             };
 
             //prepare the API call request to fetch the response
@@ -191,9 +191,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "AddressSID", input.AddressSID }
+                new KeyValuePair<string, object>( "AddressSID", input.AddressSID )
             };
 
             //prepare the API call request to fetch the response
@@ -262,9 +262,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "AddressSID", input.AddressSID }
+                new KeyValuePair<string, object>( "AddressSID", input.AddressSID )
             };
 
             //prepare the API call request to fetch the response
@@ -329,12 +329,12 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "Page", input.Page },
-                { "PageSize", input.PageSize },
-                { "AddressSID", input.AddressSID },
-                { "DateCreated", input.DateCreated }
+                new KeyValuePair<string, object>( "Page", input.Page ),
+                new KeyValuePair<string, object>( "PageSize", input.PageSize ),
+                new KeyValuePair<string, object>( "AddressSID", input.AddressSID ),
+                new KeyValuePair<string, object>( "DateCreated", input.DateCreated )
             };
 
             //prepare the API call request to fetch the response
@@ -403,9 +403,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "AddressSID", input.AddressSID }
+                new KeyValuePair<string, object>( "AddressSID", input.AddressSID )
             };
 
             //prepare the API call request to fetch the response

@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
 using System.IO;
@@ -17,7 +17,7 @@ using message360.Utilities;
 
 namespace message360.Models
 {
-    public class CreateListInvalidInput : INotifyPropertyChanged 
+    public class CreateListInvalidInput : BaseModel 
     {
         // These fields hold the values for the public properties.
         private string responseType = "json";
@@ -72,23 +72,6 @@ namespace message360.Models
             {
                 this.limit = value;
                 onPropertyChanged("Limit");
-            }
-        }
-
-        /// <summary>
-        /// Property changed event for observer pattern
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Raises event when a property is changed
-        /// </summary>
-        /// <param name="propertyName">Name of the changed property</param>
-        protected void onPropertyChanged(String propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }

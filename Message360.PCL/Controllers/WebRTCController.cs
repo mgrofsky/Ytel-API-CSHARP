@@ -94,10 +94,10 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "account_sid", input.AccountSid },
-                { "auth_token", input.AuthToken }
+                new KeyValuePair<string, object>( "account_sid", input.AccountSid ),
+                new KeyValuePair<string, object>( "auth_token", input.AuthToken )
             };
 
             //prepare the API call request to fetch the response
@@ -169,12 +169,12 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "account_sid", input.AccountSid },
-                { "auth_token", input.AuthToken },
-                { "username", input.Username },
-                { "password", input.Password }
+                new KeyValuePair<string, object>( "account_sid", input.AccountSid ),
+                new KeyValuePair<string, object>( "auth_token", input.AuthToken ),
+                new KeyValuePair<string, object>( "username", input.Username ),
+                new KeyValuePair<string, object>( "password", input.Password )
             };
 
             //prepare the API call request to fetch the response

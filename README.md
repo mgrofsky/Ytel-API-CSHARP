@@ -86,20 +86,301 @@ Message360Client client = new Message360Client(basicAuthUserName, basicAuthPassw
 
 ### <a name="list_of_controllers"></a>List of Controllers
 
+* [ShortCodeController](#short_code_controller)
 * [ConferenceController](#conference_controller)
 * [EmailController](#email_controller)
 * [NumberVerificationController](#number_verification_controller)
 * [CarrierController](#carrier_controller)
 * [CallController](#call_controller)
-* [SMSController](#sms_controller)
 * [WebRTCController](#web_rtc_controller)
 * [SubAccountController](#sub_account_controller)
 * [AddressController](#address_controller)
 * [PhoneNumberController](#phone_number_controller)
 * [RecordingController](#recording_controller)
+* [SMSController](#sms_controller)
 * [TranscriptionController](#transcription_controller)
 * [UsageController](#usage_controller)
 * [AccountController](#account_controller)
+
+### <a name="short_code_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.ShortCodeController") ShortCodeController
+
+#### Get singleton instance
+
+The singleton instance of the ``` ShortCodeController ``` class can be accessed from the API Client.
+
+```csharp
+ShortCodeController shortCode = client.ShortCode;
+```
+
+#### <a name="create_view_template"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ShortCodeController.CreateViewTemplate") CreateViewTemplate
+
+> View a Shared ShortCode Template
+
+
+```csharp
+Task<string> CreateViewTemplate(CreateViewTemplateInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| templateid |  ``` Required ```  | The unique identifier for a template object |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateViewTemplateInput collect = new CreateViewTemplateInput();
+
+Guid templateid = Guid.NewGuid();
+collect.Templateid = templateid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await shortCode.CreateViewTemplate(collect);
+
+```
+
+
+#### <a name="create_send_short_code"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ShortCodeController.CreateSendShortCode") CreateSendShortCode
+
+> Send an SMS from a message360 ShortCode
+
+
+```csharp
+Task<string> CreateSendShortCode(CreateSendShortCodeInput input, Dictionary<string, object> fieldParameters = null)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| shortcode |  ``` Required ```  | The Short Code number that is the sender of this message |
+| tocountrycode |  ``` Required ```  ``` DefaultValue ```  | The country code for sending this message |
+| to |  ``` Required ```  | A valid 10-digit number that should receive the message+ |
+| templateid |  ``` Required ```  | The unique identifier for the template used for the message |
+| method |  ``` Optional ```  ``` DefaultValue ```  | Specifies the HTTP method used to request the required URL once the Short Code message is sent. |
+| messageStatusCallback |  ``` Optional ```  | URL that can be requested to receive notification when Short Code message was sent. |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+| fieldParameters | ``` Optional ``` | Additional optional form parameters are supported by this method |
+
+
+#### Example Usage
+
+```csharp
+CreateSendShortCodeInput collect = new CreateSendShortCodeInput();
+
+string shortcode = "shortcode";
+collect.Shortcode = shortcode;
+
+string tocountrycode = "1";
+collect.Tocountrycode = tocountrycode;
+
+string to = "to";
+collect.To = to;
+
+Guid templateid = Guid.NewGuid();
+collect.Templateid = templateid;
+
+string method = "GET";
+collect.Method = method;
+
+string messageStatusCallback = "MessageStatusCallback";
+collect.MessageStatusCallback = messageStatusCallback;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+// key-value map for optional form parameters
+var formParams = new Dictionary<string, object>();
+
+
+string result = await shortCode.CreateSendShortCode(collect, formParams, );
+
+```
+
+
+#### <a name="create_list_inbound_short_code"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ShortCodeController.CreateListInboundShortCode") CreateListInboundShortCode
+
+> List All Inbound ShortCode
+
+
+```csharp
+Task<string> CreateListInboundShortCode(CreateListInboundShortCodeInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| mfrom |  ``` Optional ```  | From Number to Inbound ShortCode |
+| shortcode |  ``` Optional ```  | Only list messages sent to this Short Code |
+| dateReceived |  ``` Optional ```  | Only list messages sent with the specified date |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateListInboundShortCodeInput collect = new CreateListInboundShortCodeInput();
+
+int? page = 212;
+collect.Page = page;
+
+int? pagesize = 10;
+collect.Pagesize = pagesize;
+
+string mfrom = "from";
+collect.Mfrom = mfrom;
+
+string shortcode = "Shortcode";
+collect.Shortcode = shortcode;
+
+string dateReceived = "DateReceived";
+collect.DateReceived = dateReceived;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await shortCode.CreateListInboundShortCode(collect);
+
+```
+
+
+#### <a name="create_list_short_code"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ShortCodeController.CreateListShortCode") CreateListShortCode
+
+> List ShortCode Messages
+
+
+```csharp
+Task<string> CreateListShortCode(CreateListShortCodeInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| mfrom |  ``` Optional ```  | Messages sent from this number |
+| to |  ``` Optional ```  | Messages sent to this number |
+| datesent |  ``` Optional ```  | Only list SMS messages sent in the specified date range |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateListShortCodeInput collect = new CreateListShortCodeInput();
+
+int? page = 212;
+collect.Page = page;
+
+int? pagesize = 10;
+collect.Pagesize = pagesize;
+
+string mfrom = "from";
+collect.Mfrom = mfrom;
+
+string to = "to";
+collect.To = to;
+
+string datesent = "datesent";
+collect.Datesent = datesent;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await shortCode.CreateListShortCode(collect);
+
+```
+
+
+#### <a name="create_list_templates"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ShortCodeController.CreateListTemplates") CreateListTemplates
+
+> List Shortcode Templates by Type
+
+
+```csharp
+Task<string> CreateListTemplates(CreateListTemplatesInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| type |  ``` Optional ```  ``` DefaultValue ```  | The type (category) of template Valid values: marketing, authorization |
+| page |  ``` Optional ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | The count of objects to return per page. |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateListTemplatesInput collect = new CreateListTemplatesInput();
+
+string type = "authorization";
+collect.Type = type;
+
+int? page = 212;
+collect.Page = page;
+
+int? pagesize = 10;
+collect.Pagesize = pagesize;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await shortCode.CreateListTemplates(collect);
+
+```
+
+
+#### <a name="create_view_short_code"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ShortCodeController.CreateViewShortCode") CreateViewShortCode
+
+> View a ShortCode Message
+
+
+```csharp
+Task<string> CreateViewShortCode(CreateViewShortCodeInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| messagesid |  ``` Required ```  | Message sid |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateViewShortCodeInput collect = new CreateViewShortCodeInput();
+
+string messagesid = "messagesid";
+collect.Messagesid = messagesid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await shortCode.CreateViewShortCode(collect);
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
 
 ### <a name="conference_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.ConferenceController") ConferenceController
 
@@ -184,10 +465,10 @@ Task<string> CreateListConference(CreateListConferenceInput input)
 ```csharp
 CreateListConferenceInput collect = new CreateListConferenceInput();
 
-int? page = 226;
+int? page = 212;
 collect.Page = page;
 
-int? pageSize = 226;
+int? pageSize = 212;
 collect.PageSize = pageSize;
 
 string friendlyName = "FriendlyName";
@@ -277,7 +558,7 @@ collect.Conferencesid = conferencesid;
 string participantnumber = "participantnumber";
 collect.Participantnumber = participantnumber;
 
-int tocountrycode = 226;
+int tocountrycode = 212;
 collect.Tocountrycode = tocountrycode;
 
 bool? muted = true;
@@ -324,10 +605,10 @@ CreateListParticipantInput collect = new CreateListParticipantInput();
 string conferenceSid = "ConferenceSid";
 collect.ConferenceSid = conferenceSid;
 
-int? page = 226;
+int? page = 212;
 collect.Page = page;
 
-int? pagesize = 226;
+int? pagesize = 212;
 collect.Pagesize = pagesize;
 
 bool? muted = true;
@@ -970,10 +1251,10 @@ Task<string> CreateCarrierLookupList(CreateCarrierLookupListInput input)
 ```csharp
 CreateCarrierLookupListInput collect = new CreateCarrierLookupListInput();
 
-int? page = 63;
+int? page = 212;
 collect.Page = page;
 
-int? pagesize = 63;
+int? pagesize = 212;
 collect.Pagesize = pagesize;
 
 string responseType = "json";
@@ -1108,7 +1389,7 @@ collect.HeartBeatUrl = heartBeatUrl;
 var heartBeatMethod = Models.HttpAction?Helper.ParseString("GET");
 collect.HeartBeatMethod = heartBeatMethod;
 
-int? timeout = 63;
+int? timeout = 212;
 collect.Timeout = timeout;
 
 string playDtmf = "PlayDtmf";
@@ -1117,7 +1398,7 @@ collect.PlayDtmf = playDtmf;
 string hideCallerId = "HideCallerId";
 collect.HideCallerId = hideCallerId;
 
-bool? record = false;
+bool? record = true;
 collect.Record = record;
 
 string recordCallBackUrl = "RecordCallBackUrl";
@@ -1126,7 +1407,7 @@ collect.RecordCallBackUrl = recordCallBackUrl;
 var recordCallBackMethod = Models.HttpAction?Helper.ParseString("GET");
 collect.RecordCallBackMethod = recordCallBackMethod;
 
-bool? transcribe = false;
+bool? transcribe = true;
 collect.Transcribe = transcribe;
 
 string transcribeCallBackUrl = "TranscribeCallBackUrl";
@@ -1175,19 +1456,19 @@ collect.CallSid = callSid;
 var audioDirection = Models.AudioDirection?Helper.ParseString("IN");
 collect.AudioDirection = audioDirection;
 
-double? pitchSemiTones = 63.2819445888893;
+double? pitchSemiTones = 212.438373857848;
 collect.PitchSemiTones = pitchSemiTones;
 
-double? pitchOctaves = 63.2819445888893;
+double? pitchOctaves = 212.438373857848;
 collect.PitchOctaves = pitchOctaves;
 
-double? pitch = 63.2819445888893;
+double? pitch = 212.438373857848;
 collect.Pitch = pitch;
 
-double? rate = 63.2819445888893;
+double? rate = 212.438373857848;
 collect.Rate = rate;
 
-double? tempo = 63.2819445888893;
+double? tempo = 212.438373857848;
 collect.Tempo = tempo;
 
 string responseType = "json";
@@ -1229,13 +1510,13 @@ CreateRecordCallInput collect = new CreateRecordCallInput();
 string callSid = "CallSid";
 collect.CallSid = callSid;
 
-bool record = false;
+bool record = true;
 collect.Record = record;
 
 var direction = Models.Direction?Helper.ParseString("IN");
 collect.Direction = direction;
 
-int? timeLimit = 63;
+int? timeLimit = 212;
 collect.TimeLimit = timeLimit;
 
 string callBackUrl = "CallBackUrl";
@@ -1286,16 +1567,16 @@ collect.CallSid = callSid;
 string audioUrl = "AudioUrl";
 collect.AudioUrl = audioUrl;
 
-int? length = 63;
+int? length = 212;
 collect.Length = length;
 
 var direction = Models.Direction?Helper.ParseString("IN");
 collect.Direction = direction;
 
-bool? loop = false;
+bool? loop = true;
 collect.Loop = loop;
 
-bool? mix = false;
+bool? mix = true;
 collect.Mix = mix;
 
 string responseType = "json";
@@ -1303,56 +1584,6 @@ collect.ResponseType = responseType;
 
 
 string result = await call.CreatePlayAudio(collect);
-
-```
-
-
-#### <a name="create_list_calls"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateListCalls") CreateListCalls
-
-> A list of calls associated with your Message360 account
-
-
-```csharp
-Task<string> CreateListCalls(CreateListCallsInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pageSize |  ``` Optional ```  | Number of individual resources listed in the response per page |
-| to |  ``` Optional ```  | Only list calls to this number |
-| mfrom |  ``` Optional ```  | Only list calls from this number |
-| dateCreated |  ``` Optional ```  | Only list calls starting within the specified date range |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-#### Example Usage
-
-```csharp
-CreateListCallsInput collect = new CreateListCallsInput();
-
-int? page = 63;
-collect.Page = page;
-
-int? pageSize = 63;
-collect.PageSize = pageSize;
-
-string to = "To";
-collect.To = to;
-
-string mfrom = "From";
-collect.Mfrom = mfrom;
-
-string dateCreated = "DateCreated";
-collect.DateCreated = dateCreated;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await call.CreateListCalls(collect);
 
 ```
 
@@ -1520,19 +1751,19 @@ collect.FallBackMethod = fallBackMethod;
 string heartBeatUrl = "HeartBeatUrl";
 collect.HeartBeatUrl = heartBeatUrl;
 
-bool? heartBeatMethod = false;
+bool? heartBeatMethod = true;
 collect.HeartBeatMethod = heartBeatMethod;
 
-int? timeout = 63;
+int? timeout = 212;
 collect.Timeout = timeout;
 
 string playDtmf = "PlayDtmf";
 collect.PlayDtmf = playDtmf;
 
-bool? hideCallerId = false;
+bool? hideCallerId = true;
 collect.HideCallerId = hideCallerId;
 
-bool? record = false;
+bool? record = true;
 collect.Record = record;
 
 string recordCallBackUrl = "RecordCallBackUrl";
@@ -1541,7 +1772,7 @@ collect.RecordCallBackUrl = recordCallBackUrl;
 var recordCallBackMethod = Models.HttpAction?Helper.ParseString("GET");
 collect.RecordCallBackMethod = recordCallBackMethod;
 
-bool? transcribe = false;
+bool? transcribe = true;
 collect.Transcribe = transcribe;
 
 string transcribeCallBackUrl = "TranscribeCallBackUrl";
@@ -1559,59 +1790,13 @@ string result = await call.CreateMakeCall(collect);
 ```
 
 
-[Back to List of Controllers](#list_of_controllers)
+#### <a name="create_list_calls"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateListCalls") CreateListCalls
 
-### <a name="sms_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.SMSController") SMSController
-
-#### Get singleton instance
-
-The singleton instance of the ``` SMSController ``` class can be accessed from the API Client.
-
-```csharp
-SMSController sMS = client.SMS;
-```
-
-#### <a name="create_view_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateViewSMS") CreateViewSMS
-
-> View Particular SMS
+> A list of calls associated with your Message360 account
 
 
 ```csharp
-Task<string> CreateViewSMS(CreateViewSMSInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| messagesid |  ``` Required ```  | Message sid |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-#### Example Usage
-
-```csharp
-CreateViewSMSInput collect = new CreateViewSMSInput();
-
-string messagesid = "messagesid";
-collect.Messagesid = messagesid;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await sMS.CreateViewSMS(collect);
-
-```
-
-
-#### <a name="create_list_inbound_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateListInboundSMS") CreateListInboundSMS
-
-> List All Inbound SMS
-
-
-```csharp
-Task<string> CreateListInboundSMS(CreateListInboundSMSInput input)
+Task<string> CreateListCalls(CreateListCallsInput input)
 ```
 
 #### Parameters
@@ -1619,142 +1804,38 @@ Task<string> CreateListInboundSMS(CreateListInboundSMSInput input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pagesize |  ``` Optional ```  | Number of individual resources listed in the response per page |
-| mfrom |  ``` Optional ```  | From Number to Inbound SMS |
-| to |  ``` Optional ```  | To Number to get Inbound SMS |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| to |  ``` Optional ```  | Only list calls to this number |
+| mfrom |  ``` Optional ```  | Only list calls from this number |
+| dateCreated |  ``` Optional ```  | Only list calls starting within the specified date range |
 | responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
 #### Example Usage
 
 ```csharp
-CreateListInboundSMSInput collect = new CreateListInboundSMSInput();
+CreateListCallsInput collect = new CreateListCallsInput();
 
-int? page = 63;
+int? page = 212;
 collect.Page = page;
 
-string pagesize = "pagesize";
-collect.Pagesize = pagesize;
+int? pageSize = 10;
+collect.PageSize = pageSize;
 
-string mfrom = "from";
+string to = "To";
+collect.To = to;
+
+string mfrom = "From";
 collect.Mfrom = mfrom;
 
-string to = "to";
-collect.To = to;
+string dateCreated = "DateCreated";
+collect.DateCreated = dateCreated;
 
 string responseType = "json";
 collect.ResponseType = responseType;
 
 
-string result = await sMS.CreateListInboundSMS(collect);
-
-```
-
-
-#### <a name="create_list_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateListSMS") CreateListSMS
-
-> List All SMS
-
-
-```csharp
-Task<string> CreateListSMS(CreateListSMSInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pagesize |  ``` Optional ```  | Number of individual resources listed in the response per page |
-| mfrom |  ``` Optional ```  | Messages sent from this number |
-| to |  ``` Optional ```  | Messages sent to this number |
-| datesent |  ``` Optional ```  | Only list SMS messages sent in the specified date range |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-#### Example Usage
-
-```csharp
-CreateListSMSInput collect = new CreateListSMSInput();
-
-int? page = 63;
-collect.Page = page;
-
-int? pagesize = 63;
-collect.Pagesize = pagesize;
-
-string mfrom = "from";
-collect.Mfrom = mfrom;
-
-string to = "to";
-collect.To = to;
-
-string datesent = "datesent";
-collect.Datesent = datesent;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await sMS.CreateListSMS(collect);
-
-```
-
-
-#### <a name="create_send_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateSendSMS") CreateSendSMS
-
-> Send an SMS from a message360 number
-
-
-```csharp
-Task<string> CreateSendSMS(CreateSendSMSInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| fromcountrycode |  ``` Required ```  ``` DefaultValue ```  | From Country Code |
-| mfrom |  ``` Required ```  | SMS enabled Message360 number to send this message from |
-| tocountrycode |  ``` Required ```  ``` DefaultValue ```  | To country code |
-| to |  ``` Required ```  | Number to send the SMS to |
-| body |  ``` Required ```  | Text Message To Send |
-| method |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once SMS sent. |
-| messagestatuscallback |  ``` Optional ```  | URL that can be requested to receive notification when SMS has Sent. A set of default parameters will be sent here once the SMS is finished. |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-#### Example Usage
-
-```csharp
-CreateSendSMSInput collect = new CreateSendSMSInput();
-
-int fromcountrycode = 1;
-collect.Fromcountrycode = fromcountrycode;
-
-string mfrom = "from";
-collect.Mfrom = mfrom;
-
-int tocountrycode = 1;
-collect.Tocountrycode = tocountrycode;
-
-string to = "to";
-collect.To = to;
-
-string body = "body";
-collect.Body = body;
-
-var method = Models.HttpAction?Helper.ParseString("GET");
-collect.Method = method;
-
-string messagestatuscallback = "messagestatuscallback";
-collect.Messagestatuscallback = messagestatuscallback;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await sMS.CreateSendSMS(collect);
+string result = await call.CreateListCalls(collect);
 
 ```
 
@@ -2417,7 +2498,7 @@ Task<string> CreateListNumber(CreateListNumberInput input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pageSize |  ``` Optional ```  | Number of individual resources listed in the response per page |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
 | numberType |  ``` Optional ```  | TODO: Add a parameter description |
 | friendlyName |  ``` Optional ```  | TODO: Add a parameter description |
 | responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
@@ -2428,10 +2509,10 @@ Task<string> CreateListNumber(CreateListNumberInput input)
 ```csharp
 CreateListNumberInput collect = new CreateListNumberInput();
 
-int? page = 63;
+int? page = 170;
 collect.Page = page;
 
-int? pageSize = 63;
+int? pageSize = 10;
 collect.PageSize = pageSize;
 
 var numberType = Models.NumberType?Helper.ParseString("ALL");
@@ -2464,7 +2545,7 @@ Task<string> CreateAvailablePhoneNumber(CreateAvailablePhoneNumberInput input)
 |-----------|------|-------------|
 | numberType |  ``` Required ```  | Number type either SMS,Voice or all |
 | areaCode |  ``` Required ```  | Phone Number Area Code |
-| pageSize |  ``` Optional ```  | Page Size |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Page Size |
 | responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -2479,7 +2560,7 @@ collect.NumberType = numberType;
 string areaCode = "AreaCode";
 collect.AreaCode = areaCode;
 
-int? pageSize = 63;
+int? pageSize = 10;
 collect.PageSize = pageSize;
 
 string responseType = "json";
@@ -2528,10 +2609,10 @@ Task<string> CreateListRecording(CreateListRecordingInput input)
 ```csharp
 CreateListRecordingInput collect = new CreateListRecordingInput();
 
-int? page = 63;
+int? page = 170;
 collect.Page = page;
 
-int? pageSize = 63;
+int? pageSize = 170;
 collect.PageSize = pageSize;
 
 string dateCreated = "DateCreated";
@@ -2613,6 +2694,206 @@ collect.ResponseType = responseType;
 
 
 string result = await recording.CreateViewRecording(collect);
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+### <a name="sms_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.SMSController") SMSController
+
+#### Get singleton instance
+
+The singleton instance of the ``` SMSController ``` class can be accessed from the API Client.
+
+```csharp
+SMSController sMS = client.SMS;
+```
+
+#### <a name="create_list_inbound_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateListInboundSMS") CreateListInboundSMS
+
+> List All Inbound SMS
+
+
+```csharp
+Task<string> CreateListInboundSMS(CreateListInboundSMSInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
+| pagesize |  ``` Optional ```  | Number of individual resources listed in the response per page |
+| mfrom |  ``` Optional ```  | From Number to Inbound SMS |
+| to |  ``` Optional ```  | To Number to get Inbound SMS |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateListInboundSMSInput collect = new CreateListInboundSMSInput();
+
+int? page = 170;
+collect.Page = page;
+
+string pagesize = "pagesize";
+collect.Pagesize = pagesize;
+
+string mfrom = "from";
+collect.Mfrom = mfrom;
+
+string to = "to";
+collect.To = to;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await sMS.CreateListInboundSMS(collect);
+
+```
+
+
+#### <a name="create_list_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateListSMS") CreateListSMS
+
+> List All SMS
+
+
+```csharp
+Task<string> CreateListSMS(CreateListSMSInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
+| pagesize |  ``` Optional ```  | Number of individual resources listed in the response per page |
+| mfrom |  ``` Optional ```  | Messages sent from this number |
+| to |  ``` Optional ```  | Messages sent to this number |
+| datesent |  ``` Optional ```  | Only list SMS messages sent in the specified date range |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateListSMSInput collect = new CreateListSMSInput();
+
+int? page = 170;
+collect.Page = page;
+
+int? pagesize = 170;
+collect.Pagesize = pagesize;
+
+string mfrom = "from";
+collect.Mfrom = mfrom;
+
+string to = "to";
+collect.To = to;
+
+string datesent = "datesent";
+collect.Datesent = datesent;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await sMS.CreateListSMS(collect);
+
+```
+
+
+#### <a name="create_send_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateSendSMS") CreateSendSMS
+
+> Send an SMS from a message360 number
+
+
+```csharp
+Task<string> CreateSendSMS(CreateSendSMSInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| fromcountrycode |  ``` Required ```  ``` DefaultValue ```  | From Country Code |
+| mfrom |  ``` Required ```  | SMS enabled Message360 number to send this message from |
+| tocountrycode |  ``` Required ```  ``` DefaultValue ```  | To country code |
+| to |  ``` Required ```  | Number to send the SMS to |
+| body |  ``` Required ```  | Text Message To Send |
+| method |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once SMS sent. |
+| messagestatuscallback |  ``` Optional ```  | URL that can be requested to receive notification when SMS has Sent. A set of default parameters will be sent here once the SMS is finished. |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateSendSMSInput collect = new CreateSendSMSInput();
+
+int fromcountrycode = 1;
+collect.Fromcountrycode = fromcountrycode;
+
+string mfrom = "from";
+collect.Mfrom = mfrom;
+
+int tocountrycode = 1;
+collect.Tocountrycode = tocountrycode;
+
+string to = "to";
+collect.To = to;
+
+string body = "body";
+collect.Body = body;
+
+var method = Models.HttpAction?Helper.ParseString("GET");
+collect.Method = method;
+
+string messagestatuscallback = "messagestatuscallback";
+collect.Messagestatuscallback = messagestatuscallback;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await sMS.CreateSendSMS(collect);
+
+```
+
+
+#### <a name="create_view_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateViewSMS") CreateViewSMS
+
+> View a Particular SMS
+
+
+```csharp
+Task<string> CreateViewSMS(CreateViewSMSInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| messagesid |  ``` Required ```  | Message sid |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateViewSMSInput collect = new CreateViewSMSInput();
+
+string messagesid = "messagesid";
+collect.Messagesid = messagesid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await sMS.CreateViewSMS(collect);
 
 ```
 
@@ -2756,10 +3037,10 @@ Task<string> CreateListTranscription(CreateListTranscriptionInput input)
 ```csharp
 CreateListTranscriptionInput collect = new CreateListTranscriptionInput();
 
-int? page = 21;
+int? page = 170;
 collect.Page = page;
 
-int? pageSize = 21;
+int? pageSize = 170;
 collect.PageSize = pageSize;
 
 var status = Models.Status?Helper.ParseString("INPROGRESS");

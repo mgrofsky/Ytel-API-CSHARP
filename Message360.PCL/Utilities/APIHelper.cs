@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
 using System.Collections;
@@ -82,7 +82,7 @@ namespace message360.Utilities
                 if (null == pair.Value)
                     replaceValue = "";
                 else if (pair.Value is ICollection)
-                    replaceValue = flattenCollection(pair.Value as ICollection, "{0}{1}", '/', false);
+                    replaceValue = flattenCollection(pair.Value as ICollection, ArrayDeserialization.None, '/', false);
                 else if (pair.Value is DateTime)
                     replaceValue = ((DateTime)pair.Value).ToString(DateTimeFormat);
                 else if (pair.Value is DateTimeOffset)
@@ -103,7 +103,7 @@ namespace message360.Utilities
         /// <param name="queryUrl">The query url string to append the parameters</param>
         /// <param name="parameters">The parameters to append</param>
         public static void AppendUrlWithQueryParameters
-            (StringBuilder queryBuilder, IEnumerable<KeyValuePair<string, object>> parameters)
+            (StringBuilder queryBuilder, IEnumerable<KeyValuePair<string, object>> parameters, ArrayDeserialization arrayDeserializationFormat = ArrayDeserialization.UnIndexed, char separator = '&')
         {
             //perform parameter validation
             if (null == queryBuilder)
@@ -132,7 +132,7 @@ namespace message360.Utilities
 
                 //load element value as string
                 if (pair.Value is ICollection)
-                    paramKeyValPair = flattenCollection(pair.Value as ICollection, string.Format("{0}[]={{0}}{{1}}", pair.Key), '&', true);
+                    paramKeyValPair = flattenCollection(pair.Value as ICollection, arrayDeserializationFormat, separator, true, pair.Key);
                 else if (pair.Value is DateTime)
                     paramKeyValPair = string.Format("{0}={1}", Uri.EscapeDataString(pair.Key), ((DateTime)pair.Value).ToString(DateTimeFormat));
                 else if (pair.Value is DateTimeOffset)
@@ -213,31 +213,31 @@ namespace message360.Utilities
         /// <param name="fmt">Format string to use for array flattening</param>
         /// <param name="separator">Separator to use for string concat</param>
         /// <returns>Representative string made up of array elements</returns>
-        private static string flattenCollection(ICollection array, string fmt, char separator, bool urlEncode)
+        private static string flattenCollection(ICollection array, ArrayDeserialization fmt, char separator,
+            bool urlEncode, string key = "")
         {
             StringBuilder builder = new StringBuilder();
 
-            //append all elements in the array into a string
-            foreach (object element in array)
+            string format = string.Empty;
+            if (fmt == ArrayDeserialization.UnIndexed)
+                format = $"{key}[]={{0}}{{1}}";
+            else if (fmt == ArrayDeserialization.Indexed)
+                format = $"{key}[{{2}}]={{0}}{{1}}";
+            else if (fmt == ArrayDeserialization.Plain)
+                format = $"{key}={{0}}{{1}}";
+            else if (fmt == ArrayDeserialization.Csv || fmt == ArrayDeserialization.Psv ||
+                     fmt == ArrayDeserialization.Tsv)
             {
-                string elemValue = null;
-
-                //replace null values with empty string to maintain index order
-                if (null == element)
-                    elemValue = string.Empty;
-                else if (element is DateTime)
-                    elemValue = ((DateTime)element).ToString(DateTimeFormat);
-                else if (element is DateTimeOffset)
-                    elemValue = ((DateTimeOffset)element).ToString(DateTimeFormat);
-                else
-                    elemValue = element.ToString();
-
-                if (urlEncode)
-                    elemValue = Uri.EscapeDataString(elemValue);
-
-                builder.AppendFormat(fmt, elemValue, separator);
+                builder.Append($"{key}=");
+                format = "{0}{1}";
             }
+            else
+                format = "{0}{1}";
 
+            //append all elements in the array into a string
+            int index = 0;
+            foreach (object element in array)
+                builder.AppendFormat(format, getElementValue(element, urlEncode), separator, index++);
             //remove the last separator, if appended
             if ((builder.Length > 1) && (builder[builder.Length - 1] == separator))
                 builder.Length -= 1;
@@ -245,17 +245,29 @@ namespace message360.Utilities
             return builder.ToString();
         }
 
-        /// <summary>
-        /// Prepares the object as form fields using the provided name.
-        /// </summary>
-        /// <param name="name">root name for the variable</param>
-        /// <param name="value">form field value</param>
-        /// <param name="keys">Contains a flattend and form friendly values</param>
-        /// <returns>Contains a flattend and form friendly values</returns>
-        public static Dictionary<string, object> PrepareFormFieldsFromObject(
-            string name, object value, Dictionary<string, object> keys = null,PropertyInfo propInfo = null)
+        private static string getElementValue(object element, bool urlEncode)
         {
-            keys = keys ?? new Dictionary<string, object>();
+            string elemValue = null;
+
+            //replace null values with empty string to maintain index order
+            if (null == element)
+                elemValue = string.Empty;
+            else if (element is DateTime)
+                elemValue = ((DateTime) element).ToString(DateTimeFormat);
+            else if (element is DateTimeOffset)
+                elemValue = ((DateTimeOffset) element).ToString(DateTimeFormat);
+            else
+                elemValue = element.ToString();
+
+            if (urlEncode)
+                elemValue = Uri.EscapeDataString(elemValue);
+            return elemValue;
+        }
+
+        public static List<KeyValuePair<string, object>> PrepareFormFieldsFromObject(
+            string name, object value, List<KeyValuePair<string, object>> keys = null, PropertyInfo propInfo = null, ArrayDeserialization arrayDeserializationFormat = ArrayDeserialization.UnIndexed)
+        {
+            keys = keys ?? new List<KeyValuePair<string, object>>();
 
             if (value == null)
             {
@@ -263,36 +275,40 @@ namespace message360.Utilities
             }
             else if (value is Stream)
             {
-                keys[name] = value;
+                keys.Add(new KeyValuePair<string, object>(name,value));
                 return keys;
             }
             else if (value is JObject)
             {
-                var valueAccept = (value as Newtonsoft.Json.Linq.JObject);
+                var valueAccept = (value as JObject);
                 foreach (var property in valueAccept.Properties())
                 {
                     string pKey = property.Name;
                     object pValue = property.Value;
                     var fullSubName = name + '[' + pKey + ']';
-                    PrepareFormFieldsFromObject(fullSubName, pValue, keys,propInfo);
+                    PrepareFormFieldsFromObject(fullSubName, pValue, keys, propInfo,arrayDeserializationFormat);
                 }
             }
             else if (value is IList)
             {
                 int i = 0;
-                var enumerator = ((IEnumerable)value).GetEnumerator();
+                var enumerator = ((IEnumerable) value).GetEnumerator();
                 while (enumerator.MoveNext())
                 {
                     var subValue = enumerator.Current;
                     if (subValue == null) continue;
                     var fullSubName = name + '[' + i + ']';
-                    PrepareFormFieldsFromObject(fullSubName, subValue, keys,propInfo);
+                    if (arrayDeserializationFormat == ArrayDeserialization.UnIndexed)
+                        fullSubName = name + "[]";
+                    else if (arrayDeserializationFormat == ArrayDeserialization.Plain)
+                        fullSubName = name;
+                    PrepareFormFieldsFromObject(fullSubName, subValue, keys, propInfo,arrayDeserializationFormat);
                     i++;
                 }
             }
             else if (value is JToken)
             {
-                keys[name] = value.ToString();
+                keys.Add(new KeyValuePair<string, object>(name, value.ToString()));
             }
             else if (value is Enum)
             {
@@ -303,27 +319,27 @@ namespace message360.Utilities
 #endif
                 string enumTypeName = value.GetType().FullName;
                 Type enumHelperType = thisAssembly.GetType(string.Format("{0}Helper", enumTypeName));
-                object enumValue = (int)value;
+                object enumValue = (int) value;
 
                 if (enumHelperType != null)
                 {
                     //this enum has an associated helper, use that to load the value
-                    MethodInfo enumHelperMethod = enumHelperType.GetMethod("ToValue", new[] { value.GetType() });
+                    MethodInfo enumHelperMethod = enumHelperType.GetMethod("ToValue", new[] {value.GetType()});
                     if (enumHelperMethod != null)
-                        enumValue = enumHelperMethod.Invoke(null, new object[] { value });
+                        enumValue = enumHelperMethod.Invoke(null, new object[] {value});
                 }
 
-                keys[name] = enumValue;
+                keys.Add(new KeyValuePair<string, object>(name, enumValue));
             }
             else if (value is IDictionary)
             {
-                var obj = (IDictionary)value;
+                var obj = (IDictionary) value;
                 foreach (var sName in obj.Keys)
                 {
                     var subName = sName.ToString();
                     var subValue = obj[subName];
                     string fullSubName = string.IsNullOrWhiteSpace(name) ? subName : name + '[' + subName + ']';
-                    PrepareFormFieldsFromObject(fullSubName, subValue, keys,propInfo);
+                    PrepareFormFieldsFromObject(fullSubName, subValue, keys, propInfo,arrayDeserializationFormat);
                 }
             }
             else if (!(value.GetType().Namespace.StartsWith("System")))
@@ -336,31 +352,35 @@ namespace message360.Utilities
                 {
                     pInfo = enumerator.Current as PropertyInfo;
 
-                    var jsonProperty = (JsonPropertyAttribute)pInfo.GetCustomAttributes(t, true).FirstOrDefault();
+                    var jsonProperty = (JsonPropertyAttribute) pInfo.GetCustomAttributes(t, true).FirstOrDefault();
                     var subName = (jsonProperty != null) ? jsonProperty.PropertyName : pInfo.Name;
                     string fullSubName = string.IsNullOrWhiteSpace(name) ? subName : name + '[' + subName + ']';
                     var subValue = pInfo.GetValue(value, null);
-                    PrepareFormFieldsFromObject(fullSubName, subValue, keys,pInfo);
+                    PrepareFormFieldsFromObject(fullSubName, subValue, keys, pInfo,arrayDeserializationFormat);
                 }
             }
             else if (value is DateTime)
             {
                 string convertedValue = null;
-                var pInfo =propInfo?.GetCustomAttributes(true);
+                var pInfo = propInfo?.GetCustomAttributes(true);
                 if (pInfo != null)
                 {
                     foreach (object attr in pInfo)
                     {
                         JsonConverterAttribute converterAttr = attr as JsonConverterAttribute;
                         if (converterAttr != null)
-                            convertedValue = JsonSerialize(value, (JsonConverter)Activator.CreateInstance(converterAttr.ConverterType, converterAttr.ConverterParameters)).Replace("\"","");
+                            convertedValue =
+                                JsonSerialize(value,
+                                    (JsonConverter)
+                                        Activator.CreateInstance(converterAttr.ConverterType,
+                                            converterAttr.ConverterParameters)).Replace("\"", "");
                     }
                 }
-                keys[name] = (convertedValue)??((DateTime)value).ToString(DateTimeFormat);
+                keys.Add(new KeyValuePair<string, object>(name, (convertedValue) ?? ((DateTime)value).ToString(DateTimeFormat))); 
             }
             else
             {
-                keys[name] = value;
+                keys.Add(new KeyValuePair<string, object>(name,value));
             }
             return keys;
         }
@@ -377,6 +397,7 @@ namespace message360.Utilities
                 dictionary[kvp.Key] = kvp.Value;
             }
         }
+
         /// <summary>
         /// Runs asynchronous tasks synchronously and throws the first caught exception
         /// </summary>

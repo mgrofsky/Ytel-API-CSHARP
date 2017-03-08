@@ -17,98 +17,98 @@ using message360.Utilities;
 
 namespace message360.Models
 {
-    public class AddParticipantInput : BaseModel 
+    public class CreateListInboundShortCodeInput : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private string conferencesid;
-        private string participantnumber;
-        private int tocountrycode;
-        private bool? muted;
-        private bool? deaf;
+        private int? page;
+        private int? pagesize = 10;
+        private string mfrom;
+        private string shortcode;
+        private string dateReceived;
         private string responseType = "json";
 
         /// <summary>
-        /// Unique Conference Sid
+        /// Which page of the overall response will be returned. Zero indexed
         /// </summary>
-        [JsonProperty("conferencesid")]
-        public string Conferencesid 
+        [JsonProperty("page")]
+        public int? Page 
         { 
             get 
             {
-                return this.conferencesid; 
+                return this.page; 
             } 
             set 
             {
-                this.conferencesid = value;
-                onPropertyChanged("Conferencesid");
+                this.page = value;
+                onPropertyChanged("Page");
             }
         }
 
         /// <summary>
-        /// Particiant Number
+        /// Number of individual resources listed in the response per page
         /// </summary>
-        [JsonProperty("participantnumber")]
-        public string Participantnumber 
+        [JsonProperty("pagesize")]
+        public int? Pagesize 
         { 
             get 
             {
-                return this.participantnumber; 
+                return this.pagesize; 
             } 
             set 
             {
-                this.participantnumber = value;
-                onPropertyChanged("Participantnumber");
+                this.pagesize = value;
+                onPropertyChanged("Pagesize");
             }
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// From Number to Inbound ShortCode
         /// </summary>
-        [JsonProperty("tocountrycode")]
-        public int Tocountrycode 
+        [JsonProperty("from")]
+        public string From 
         { 
             get 
             {
-                return this.tocountrycode; 
+                return this.mfrom; 
             } 
             set 
             {
-                this.tocountrycode = value;
-                onPropertyChanged("Tocountrycode");
+                this.mfrom = value;
+                onPropertyChanged("From");
             }
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// Only list messages sent to this Short Code
         /// </summary>
-        [JsonProperty("muted")]
-        public bool? Muted 
+        [JsonProperty("Shortcode")]
+        public string Shortcode 
         { 
             get 
             {
-                return this.muted; 
+                return this.shortcode; 
             } 
             set 
             {
-                this.muted = value;
-                onPropertyChanged("Muted");
+                this.shortcode = value;
+                onPropertyChanged("Shortcode");
             }
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// Only list messages sent with the specified date
         /// </summary>
-        [JsonProperty("deaf")]
-        public bool? Deaf 
+        [JsonProperty("DateReceived")]
+        public string DateReceived 
         { 
             get 
             {
-                return this.deaf; 
+                return this.dateReceived; 
             } 
             set 
             {
-                this.deaf = value;
-                onPropertyChanged("Deaf");
+                this.dateReceived = value;
+                onPropertyChanged("DateReceived");
             }
         }
 

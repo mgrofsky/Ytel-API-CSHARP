@@ -17,80 +17,62 @@ using message360.Utilities;
 
 namespace message360.Models
 {
-    public class CreateInterruptedCallInput : BaseModel 
+    public class CreateListTemplatesInput : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private string callSid;
-        private string url;
-        private Models.HttpAction? method;
-        private Models.InterruptedCallStatus? status;
+        private string type = "authorization";
+        private int? page;
+        private int? pagesize = 10;
         private string responseType = "json";
 
         /// <summary>
-        /// Call SId
+        /// The type (category) of template Valid values: marketing, authorization
         /// </summary>
-        [JsonProperty("CallSid")]
-        public string CallSid 
+        [JsonProperty("type")]
+        public string Type 
         { 
             get 
             {
-                return this.callSid; 
+                return this.type; 
             } 
             set 
             {
-                this.callSid = value;
-                onPropertyChanged("CallSid");
+                this.type = value;
+                onPropertyChanged("Type");
             }
         }
 
         /// <summary>
-        /// URL the in-progress call will be redirected to
+        /// The page count to retrieve from the total results in the collection. Page indexing starts at 1.
         /// </summary>
-        [JsonProperty("Url")]
-        public string Url 
+        [JsonProperty("page")]
+        public int? Page 
         { 
             get 
             {
-                return this.url; 
+                return this.page; 
             } 
             set 
             {
-                this.url = value;
-                onPropertyChanged("Url");
+                this.page = value;
+                onPropertyChanged("Page");
             }
         }
 
         /// <summary>
-        /// The method used to request the above Url parameter
+        /// The count of objects to return per page.
         /// </summary>
-        [JsonProperty("Method", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.HttpAction? Method 
+        [JsonProperty("pagesize")]
+        public int? Pagesize 
         { 
             get 
             {
-                return this.method; 
+                return this.pagesize; 
             } 
             set 
             {
-                this.method = value;
-                onPropertyChanged("Method");
-            }
-        }
-
-        /// <summary>
-        /// Status to set the in-progress call to
-        /// </summary>
-        [JsonProperty("Status", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.InterruptedCallStatus? Status 
-        { 
-            get 
-            {
-                return this.status; 
-            } 
-            set 
-            {
-                this.status = value;
-                onPropertyChanged("Status");
+                this.pagesize = value;
+                onPropertyChanged("Pagesize");
             }
         }
 

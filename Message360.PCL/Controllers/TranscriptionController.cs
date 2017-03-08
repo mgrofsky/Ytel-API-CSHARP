@@ -97,9 +97,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "AudioUrl", input.AudioUrl }
+                new KeyValuePair<string, object>( "AudioUrl", input.AudioUrl )
             };
 
             //prepare the API call request to fetch the response
@@ -168,9 +168,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "RecordingSid", input.RecordingSid }
+                new KeyValuePair<string, object>( "RecordingSid", input.RecordingSid )
             };
 
             //prepare the API call request to fetch the response
@@ -239,9 +239,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "TranscriptionSid", input.TranscriptionSid }
+                new KeyValuePair<string, object>( "TranscriptionSid", input.TranscriptionSid )
             };
 
             //prepare the API call request to fetch the response
@@ -306,12 +306,12 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "Page", input.Page },
-                { "PageSize", input.PageSize },
-                { "Status", (input.Status.HasValue) ? StatusHelper.ToValue(input.Status.Value) : null },
-                { "DateTranscribed", input.DateTranscribed }
+                new KeyValuePair<string, object>( "Page", input.Page ),
+                new KeyValuePair<string, object>( "PageSize", input.PageSize ),
+                new KeyValuePair<string, object>( "Status", (input.Status.HasValue) ? StatusHelper.ToValue(input.Status.Value) : null ),
+                new KeyValuePair<string, object>( "DateTranscribed", input.DateTranscribed )
             };
 
             //prepare the API call request to fetch the response

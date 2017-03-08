@@ -103,11 +103,11 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "FirstName", input.FirstName },
-                { "LastName", input.LastName },
-                { "Email", input.Email }
+                new KeyValuePair<string, object>( "FirstName", input.FirstName ),
+                new KeyValuePair<string, object>( "LastName", input.LastName ),
+                new KeyValuePair<string, object>( "Email", input.Email )
             };
 
             //prepare the API call request to fetch the response
@@ -176,10 +176,10 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "SubAccountSID", input.SubAccountSID },
-                { "Activate", (int)(input.Activate) }
+                new KeyValuePair<string, object>( "SubAccountSID", input.SubAccountSID ),
+                new KeyValuePair<string, object>( "Activate", (int)(input.Activate) )
             };
 
             //prepare the API call request to fetch the response
@@ -248,10 +248,10 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "SubAccountSID", input.SubAccountSID },
-                { "MergeNumber", (int)(input.MergeNumber) }
+                new KeyValuePair<string, object>( "SubAccountSID", input.SubAccountSID ),
+                new KeyValuePair<string, object>( "MergeNumber", (int)(input.MergeNumber) )
             };
 
             //prepare the API call request to fetch the response

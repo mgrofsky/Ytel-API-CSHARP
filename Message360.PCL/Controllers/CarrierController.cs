@@ -97,9 +97,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "phonenumber", input.Phonenumber }
+                new KeyValuePair<string, object>( "phonenumber", input.Phonenumber )
             };
 
             //prepare the API call request to fetch the response
@@ -164,10 +164,10 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "page", input.Page },
-                { "pagesize", input.Pagesize }
+                new KeyValuePair<string, object>( "page", input.Page ),
+                new KeyValuePair<string, object>( "pagesize", input.Pagesize )
             };
 
             //prepare the API call request to fetch the response

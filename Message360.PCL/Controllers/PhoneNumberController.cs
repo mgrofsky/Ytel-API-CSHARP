@@ -97,22 +97,22 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "PhoneNumber", input.PhoneNumber },
-                { "FriendlyName", input.FriendlyName },
-                { "VoiceUrl", input.VoiceUrl },
-                { "VoiceMethod", (input.VoiceMethod.HasValue) ? HttpActionHelper.ToValue(input.VoiceMethod.Value) : null },
-                { "VoiceFallbackUrl", input.VoiceFallbackUrl },
-                { "VoiceFallbackMethod", (input.VoiceFallbackMethod.HasValue) ? HttpActionHelper.ToValue(input.VoiceFallbackMethod.Value) : null },
-                { "HangupCallback", input.HangupCallback },
-                { "HangupCallbackMethod", (input.HangupCallbackMethod.HasValue) ? HttpActionHelper.ToValue(input.HangupCallbackMethod.Value) : null },
-                { "HeartbeatUrl", input.HeartbeatUrl },
-                { "HeartbeatMethod", (input.HeartbeatMethod.HasValue) ? HttpActionHelper.ToValue(input.HeartbeatMethod.Value) : null },
-                { "SmsUrl", input.SmsUrl },
-                { "SmsMethod", (input.SmsMethod.HasValue) ? HttpActionHelper.ToValue(input.SmsMethod.Value) : null },
-                { "SmsFallbackUrl", input.SmsFallbackUrl },
-                { "SmsFallbackMethod", (input.SmsFallbackMethod.HasValue) ? HttpActionHelper.ToValue(input.SmsFallbackMethod.Value) : null }
+                new KeyValuePair<string, object>( "PhoneNumber", input.PhoneNumber ),
+                new KeyValuePair<string, object>( "FriendlyName", input.FriendlyName ),
+                new KeyValuePair<string, object>( "VoiceUrl", input.VoiceUrl ),
+                new KeyValuePair<string, object>( "VoiceMethod", (input.VoiceMethod.HasValue) ? HttpActionHelper.ToValue(input.VoiceMethod.Value) : null ),
+                new KeyValuePair<string, object>( "VoiceFallbackUrl", input.VoiceFallbackUrl ),
+                new KeyValuePair<string, object>( "VoiceFallbackMethod", (input.VoiceFallbackMethod.HasValue) ? HttpActionHelper.ToValue(input.VoiceFallbackMethod.Value) : null ),
+                new KeyValuePair<string, object>( "HangupCallback", input.HangupCallback ),
+                new KeyValuePair<string, object>( "HangupCallbackMethod", (input.HangupCallbackMethod.HasValue) ? HttpActionHelper.ToValue(input.HangupCallbackMethod.Value) : null ),
+                new KeyValuePair<string, object>( "HeartbeatUrl", input.HeartbeatUrl ),
+                new KeyValuePair<string, object>( "HeartbeatMethod", (input.HeartbeatMethod.HasValue) ? HttpActionHelper.ToValue(input.HeartbeatMethod.Value) : null ),
+                new KeyValuePair<string, object>( "SmsUrl", input.SmsUrl ),
+                new KeyValuePair<string, object>( "SmsMethod", (input.SmsMethod.HasValue) ? HttpActionHelper.ToValue(input.SmsMethod.Value) : null ),
+                new KeyValuePair<string, object>( "SmsFallbackUrl", input.SmsFallbackUrl ),
+                new KeyValuePair<string, object>( "SmsFallbackMethod", (input.SmsFallbackMethod.HasValue) ? HttpActionHelper.ToValue(input.SmsFallbackMethod.Value) : null )
             };
 
             //prepare the API call request to fetch the response
@@ -181,9 +181,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "PhoneNumber", input.PhoneNumber }
+                new KeyValuePair<string, object>( "PhoneNumber", input.PhoneNumber )
             };
 
             //prepare the API call request to fetch the response
@@ -252,9 +252,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "PhoneNumber", input.PhoneNumber }
+                new KeyValuePair<string, object>( "PhoneNumber", input.PhoneNumber )
             };
 
             //prepare the API call request to fetch the response
@@ -323,9 +323,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "PhoneNumber", input.PhoneNumber }
+                new KeyValuePair<string, object>( "PhoneNumber", input.PhoneNumber )
             };
 
             //prepare the API call request to fetch the response
@@ -390,12 +390,12 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "Page", input.Page },
-                { "PageSize", input.PageSize },
-                { "NumberType", (input.NumberType.HasValue) ? NumberTypeHelper.ToValue(input.NumberType.Value) : null },
-                { "FriendlyName", input.FriendlyName }
+                new KeyValuePair<string, object>( "Page", input.Page ),
+                new KeyValuePair<string, object>( "PageSize", input.PageSize ),
+                new KeyValuePair<string, object>( "NumberType", (input.NumberType.HasValue) ? NumberTypeHelper.ToValue(input.NumberType.Value) : null ),
+                new KeyValuePair<string, object>( "FriendlyName", input.FriendlyName )
             };
 
             //prepare the API call request to fetch the response
@@ -464,11 +464,11 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "NumberType", NumberTypeHelper.ToValue(input.NumberType) },
-                { "AreaCode", input.AreaCode },
-                { "PageSize", input.PageSize }
+                new KeyValuePair<string, object>( "NumberType", NumberTypeHelper.ToValue(input.NumberType) ),
+                new KeyValuePair<string, object>( "AreaCode", input.AreaCode ),
+                new KeyValuePair<string, object>( "PageSize", input.PageSize )
             };
 
             //prepare the API call request to fetch the response

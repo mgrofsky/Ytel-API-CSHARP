@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 02/22/2017
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
 using message360.Controllers;
@@ -11,6 +11,17 @@ namespace message360
 {
     public partial class Message360Client
     {
+
+        /// <summary>
+        /// Singleton access to ShortCode controller
+        /// </summary>
+        public ShortCodeController ShortCode
+        {
+            get
+            {
+                return ShortCodeController.Instance;
+            }
+        }
 
         /// <summary>
         /// Singleton access to Conference controller
@@ -68,17 +79,6 @@ namespace message360
         }
 
         /// <summary>
-        /// Singleton access to SMS controller
-        /// </summary>
-        public SMSController SMS
-        {
-            get
-            {
-                return SMSController.Instance;
-            }
-        }
-
-        /// <summary>
         /// Singleton access to WebRTC controller
         /// </summary>
         public WebRTCController WebRTC
@@ -130,6 +130,17 @@ namespace message360
             get
             {
                 return RecordingController.Instance;
+            }
+        }
+
+        /// <summary>
+        /// Singleton access to SMS controller
+        /// </summary>
+        public SMSController SMS
+        {
+            get
+            {
+                return SMSController.Instance;
             }
         }
 

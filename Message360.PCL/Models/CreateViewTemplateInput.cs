@@ -17,26 +17,26 @@ using message360.Utilities;
 
 namespace message360.Models
 {
-    public class CreateBuyNumberInput : BaseModel 
+    public class CreateViewTemplateInput : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private string phoneNumber;
+        private Guid templateid;
         private string responseType = "json";
 
         /// <summary>
-        /// Phone number to be purchase
+        /// The unique identifier for a template object
         /// </summary>
-        [JsonProperty("PhoneNumber")]
-        public string PhoneNumber 
+        [JsonProperty("templateid")]
+        public Guid Templateid 
         { 
             get 
             {
-                return this.phoneNumber; 
+                return this.templateid; 
             } 
             set 
             {
-                this.phoneNumber = value;
-                onPropertyChanged("PhoneNumber");
+                this.templateid = value;
+                onPropertyChanged("Templateid");
             }
         }
 

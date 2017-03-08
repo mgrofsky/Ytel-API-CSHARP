@@ -22,18 +22,18 @@ using message360.Models;
 
 namespace message360.Controllers
 {
-    public partial class ConferenceController: BaseController
+    public partial class ShortCodeController: BaseController
     {
         #region Singleton Pattern
 
         //private static variables for the singleton pattern
         private static object syncObject = new object();
-        private static ConferenceController instance = null;
+        private static ShortCodeController instance = null;
 
         /// <summary>
         /// Singleton pattern implementation
         /// </summary>
-        internal static ConferenceController Instance
+        internal static ShortCodeController Instance
         {
             get
             {
@@ -41,7 +41,7 @@ namespace message360.Controllers
                 {
                     if (null == instance)
                     {
-                        instance = new ConferenceController();
+                        instance = new ShortCodeController();
                     }
                 }
                 return instance;
@@ -51,37 +51,34 @@ namespace message360.Controllers
         #endregion Singleton Pattern
 
         /// <summary>
-        /// Deaf Mute Participant
+        /// View a Shared ShortCode Template
         /// </summary>
-        /// <param name="CreateDeafMuteParticipantInput">Object containing request parameters</param>
+        /// <param name="CreateViewTemplateInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateDeafMuteParticipant(CreateDeafMuteParticipantInput input)
+        public string CreateViewTemplate(CreateViewTemplateInput input)
         {
-            Task<string> t = CreateDeafMuteParticipantAsync(input);
+            Task<string> t = CreateViewTemplateAsync(input);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
         /// <summary>
-        /// Deaf Mute Participant
+        /// View a Shared ShortCode Template
         /// </summary>
-        /// <param name="CreateDeafMuteParticipantInput">Object containing request parameters</param>
+        /// <param name="CreateViewTemplateInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateDeafMuteParticipantAsync(CreateDeafMuteParticipantInput input)
+        public async Task<string> CreateViewTemplateAsync(CreateViewTemplateInput input)
         {
             //validating required parameters
-            if (null == input.ConferenceSid)
-                throw new ArgumentNullException("conferenceSid", "The property \"ConferenceSid\" in the input object cannot be null.");
-
-            if (null == input.ParticipantSid)
-                throw new ArgumentNullException("participantSid", "The property \"ParticipantSid\" in the input object cannot be null.");
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/conferences/deafMuteParticipant.{ResponseType}");
+            _queryBuilder.Append("/template/view.{ResponseType}");
 
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
@@ -102,10 +99,7 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new List<KeyValuePair<string, Object>>()
             {
-                new KeyValuePair<string, object>( "conferenceSid", input.ConferenceSid ),
-                new KeyValuePair<string, object>( "ParticipantSid", input.ParticipantSid ),
-                new KeyValuePair<string, object>( "Muted", input.Muted ),
-                new KeyValuePair<string, object>( "Deaf", input.Deaf )
+                new KeyValuePair<string, object>( "templateid", input.Templateid )
             };
 
             //prepare the API call request to fetch the response
@@ -128,106 +122,42 @@ namespace message360.Controllers
         }
 
         /// <summary>
-        /// List Conference
+        /// Send an SMS from a message360 ShortCode
         /// </summary>
-        /// <param name="CreateListConferenceInput">Object containing request parameters</param>
+        /// <param name="CreateSendShortCodeInput">Object containing request parameters</param>
+        /// <param name="fieldParameters">Additional optional form parameters are supported by this endpoint</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateListConference(CreateListConferenceInput input)
+        public string CreateSendShortCode(CreateSendShortCodeInput input, Dictionary<string, object> fieldParameters = null)
         {
-            Task<string> t = CreateListConferenceAsync(input);
+            Task<string> t = CreateSendShortCodeAsync(input, fieldParameters);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
         /// <summary>
-        /// List Conference
+        /// Send an SMS from a message360 ShortCode
         /// </summary>
-        /// <param name="CreateListConferenceInput">Object containing request parameters</param>
+        /// <param name="CreateSendShortCodeInput">Object containing request parameters</param>
+        /// <param name="fieldParameters">Additional optional form parameters are supported by this endpoint</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateListConferenceAsync(CreateListConferenceInput input)
-        {
-            //the base uri for api requestss
-            string _baseUri = Configuration.GetBaseURI();
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/conferences/listconference.{ResponseType}");
-
-            //process optional template parameters
-            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
-            {
-                { "ResponseType", input.ResponseType }
-            });
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "message360-api" }
-            };
-
-            //append form/field parameters
-            var _fields = new List<KeyValuePair<string, Object>>()
-            {
-                new KeyValuePair<string, object>( "Page", input.Page ),
-                new KeyValuePair<string, object>( "PageSize", input.PageSize ),
-                new KeyValuePair<string, object>( "FriendlyName", input.FriendlyName ),
-                new KeyValuePair<string, object>( "Status", (input.Status.HasValue) ? InterruptedCallStatusHelper.ToValue(input.Status.Value) : null ),
-                new KeyValuePair<string, object>( "DateCreated", input.DateCreated ),
-                new KeyValuePair<string, object>( "DateUpdated", input.DateUpdated )
-            };
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return _response.Body;
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
-
-        /// <summary>
-        /// View Conference
-        /// </summary>
-        /// <param name="CreateViewConferenceInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public string CreateViewConference(CreateViewConferenceInput input)
-        {
-            Task<string> t = CreateViewConferenceAsync(input);
-            APIHelper.RunTaskSynchronously(t);
-            return t.Result;
-        }
-
-        /// <summary>
-        /// View Conference
-        /// </summary>
-        /// <param name="CreateViewConferenceInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateViewConferenceAsync(CreateViewConferenceInput input)
+        public async Task<string> CreateSendShortCodeAsync(CreateSendShortCodeInput input, Dictionary<string, object> fieldParameters = null)
         {
             //validating required parameters
-            if (null == input.Conferencesid)
-                throw new ArgumentNullException("conferencesid", "The property \"Conferencesid\" in the input object cannot be null.");
+            if (null == input.Shortcode)
+                throw new ArgumentNullException("shortcode", "The property \"Shortcode\" in the input object cannot be null.");
+
+            if (null == input.Tocountrycode)
+                throw new ArgumentNullException("tocountrycode", "The property \"Tocountrycode\" in the input object cannot be null.");
+
+            if (null == input.To)
+                throw new ArgumentNullException("to", "The property \"To\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/conferences/viewconference.{ResponseType}");
+            _queryBuilder.Append("/shortcode/sendsms.{ResponseType}");
 
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
@@ -248,85 +178,90 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new List<KeyValuePair<string, Object>>()
             {
-                new KeyValuePair<string, object>( "conferencesid", input.Conferencesid )
-            };
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return _response.Body;
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
-
-        /// <summary>
-        /// Add Participant in conference 
-        /// </summary>
-        /// <param name="AddParticipantInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public string AddParticipant(AddParticipantInput input)
-        {
-            Task<string> t = AddParticipantAsync(input);
-            APIHelper.RunTaskSynchronously(t);
-            return t.Result;
-        }
-
-        /// <summary>
-        /// Add Participant in conference 
-        /// </summary>
-        /// <param name="AddParticipantInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public async Task<string> AddParticipantAsync(AddParticipantInput input)
-        {
-            //validating required parameters
-            if (null == input.Conferencesid)
-                throw new ArgumentNullException("conferencesid", "The property \"Conferencesid\" in the input object cannot be null.");
-
-            if (null == input.Participantnumber)
-                throw new ArgumentNullException("participantnumber", "The property \"Participantnumber\" in the input object cannot be null.");
-
-            //the base uri for api requestss
-            string _baseUri = Configuration.GetBaseURI();
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/conferences/addParticipant.{ResponseType}");
-
-            //process optional template parameters
-            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
-            {
-                { "ResponseType", input.ResponseType }
-            });
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "message360-api" }
-            };
-
-            //append form/field parameters
-            var _fields = new List<KeyValuePair<string, Object>>()
-            {
-                new KeyValuePair<string, object>( "conferencesid", input.Conferencesid ),
-                new KeyValuePair<string, object>( "participantnumber", input.Participantnumber ),
+                new KeyValuePair<string, object>( "shortcode", input.Shortcode ),
                 new KeyValuePair<string, object>( "tocountrycode", input.Tocountrycode ),
-                new KeyValuePair<string, object>( "muted", input.Muted ),
-                new KeyValuePair<string, object>( "deaf", input.Deaf )
+                new KeyValuePair<string, object>( "to", input.To ),
+                new KeyValuePair<string, object>( "templateid", input.Templateid ),
+                new KeyValuePair<string, object>( "Method", input.Method ),
+                new KeyValuePair<string, object>( "MessageStatusCallback", input.MessageStatusCallback )
+            };
+            //optional form parameters
+            _fields.AddRange(APIHelper.PrepareFormFieldsFromObject("",fieldParameters, arrayDeserializationFormat: ArrayDeserializationFormat));
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request,_response);
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return _response.Body;
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// List All Inbound ShortCode
+        /// </summary>
+        /// <param name="CreateListInboundShortCodeInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public string CreateListInboundShortCode(CreateListInboundShortCodeInput input)
+        {
+            Task<string> t = CreateListInboundShortCodeAsync(input);
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// List All Inbound ShortCode
+        /// </summary>
+        /// <param name="CreateListInboundShortCodeInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public async Task<string> CreateListInboundShortCodeAsync(CreateListInboundShortCodeInput input)
+        {
+            //the base uri for api requestss
+            string _baseUri = Configuration.GetBaseURI();
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/shortcode/getinboundsms.{ResponseType}");
+
+            //process optional template parameters
+            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
+            {
+                { "ResponseType", input.ResponseType }
+            });
+
+            //process optional query parameters
+            APIHelper.AppendUrlWithQueryParameters(_queryBuilder, new Dictionary<string, object>()
+            {
+                { "DateReceived", input.DateReceived }
+            },ArrayDeserializationFormat,ParameterSeparator);
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "message360-api" }
+            };
+
+            //append form/field parameters
+            var _fields = new List<KeyValuePair<string, Object>>()
+            {
+                new KeyValuePair<string, object>( "page", input.Page ),
+                new KeyValuePair<string, object>( "pagesize", input.Pagesize ),
+                new KeyValuePair<string, object>( "from", input.From ),
+                new KeyValuePair<string, object>( "Shortcode", input.Shortcode )
             };
 
             //prepare the API call request to fetch the response
@@ -349,34 +284,30 @@ namespace message360.Controllers
         }
 
         /// <summary>
-        /// List Participant
+        /// List ShortCode Messages
         /// </summary>
-        /// <param name="CreateListParticipantInput">Object containing request parameters</param>
+        /// <param name="CreateListShortCodeInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateListParticipant(CreateListParticipantInput input)
+        public string CreateListShortCode(CreateListShortCodeInput input)
         {
-            Task<string> t = CreateListParticipantAsync(input);
+            Task<string> t = CreateListShortCodeAsync(input);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
         /// <summary>
-        /// List Participant
+        /// List ShortCode Messages
         /// </summary>
-        /// <param name="CreateListParticipantInput">Object containing request parameters</param>
+        /// <param name="CreateListShortCodeInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateListParticipantAsync(CreateListParticipantInput input)
+        public async Task<string> CreateListShortCodeAsync(CreateListShortCodeInput input)
         {
-            //validating required parameters
-            if (null == input.ConferenceSid)
-                throw new ArgumentNullException("conferenceSid", "The property \"ConferenceSid\" in the input object cannot be null.");
-
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/conferences/listparticipant.{ResponseType}");
+            _queryBuilder.Append("/shortcode/listsms.{ResponseType}");
 
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
@@ -397,11 +328,11 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new List<KeyValuePair<string, Object>>()
             {
-                new KeyValuePair<string, object>( "ConferenceSid", input.ConferenceSid ),
-                new KeyValuePair<string, object>( "Page", input.Page ),
-                new KeyValuePair<string, object>( "Pagesize", input.Pagesize ),
-                new KeyValuePair<string, object>( "Muted", input.Muted ),
-                new KeyValuePair<string, object>( "Deaf", input.Deaf )
+                new KeyValuePair<string, object>( "page", input.Page ),
+                new KeyValuePair<string, object>( "pagesize", input.Pagesize ),
+                new KeyValuePair<string, object>( "from", input.From ),
+                new KeyValuePair<string, object>( "to", input.To ),
+                new KeyValuePair<string, object>( "datesent", input.Datesent )
             };
 
             //prepare the API call request to fetch the response
@@ -424,37 +355,30 @@ namespace message360.Controllers
         }
 
         /// <summary>
-        /// View Participant
+        /// List Shortcode Templates by Type
         /// </summary>
-        /// <param name="CreateViewParticipantInput">Object containing request parameters</param>
+        /// <param name="CreateListTemplatesInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateViewParticipant(CreateViewParticipantInput input)
+        public string CreateListTemplates(CreateListTemplatesInput input)
         {
-            Task<string> t = CreateViewParticipantAsync(input);
+            Task<string> t = CreateListTemplatesAsync(input);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
         /// <summary>
-        /// View Participant
+        /// List Shortcode Templates by Type
         /// </summary>
-        /// <param name="CreateViewParticipantInput">Object containing request parameters</param>
+        /// <param name="CreateListTemplatesInput">Object containing request parameters</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateViewParticipantAsync(CreateViewParticipantInput input)
+        public async Task<string> CreateListTemplatesAsync(CreateListTemplatesInput input)
         {
-            //validating required parameters
-            if (null == input.ConferenceSid)
-                throw new ArgumentNullException("conferenceSid", "The property \"ConferenceSid\" in the input object cannot be null.");
-
-            if (null == input.ParticipantSid)
-                throw new ArgumentNullException("participantSid", "The property \"ParticipantSid\" in the input object cannot be null.");
-
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/conferences/viewparticipant.{ResponseType}");
+            _queryBuilder.Append("/template/lists.{ResponseType}");
 
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
@@ -475,8 +399,80 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new List<KeyValuePair<string, Object>>()
             {
-                new KeyValuePair<string, object>( "ConferenceSid", input.ConferenceSid ),
-                new KeyValuePair<string, object>( "ParticipantSid", input.ParticipantSid )
+                new KeyValuePair<string, object>( "type", input.Type ),
+                new KeyValuePair<string, object>( "page", input.Page ),
+                new KeyValuePair<string, object>( "pagesize", input.Pagesize )
+            };
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request,_response);
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return _response.Body;
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// View a ShortCode Message
+        /// </summary>
+        /// <param name="CreateViewShortCodeInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public string CreateViewShortCode(CreateViewShortCodeInput input)
+        {
+            Task<string> t = CreateViewShortCodeAsync(input);
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// View a ShortCode Message
+        /// </summary>
+        /// <param name="CreateViewShortCodeInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public async Task<string> CreateViewShortCodeAsync(CreateViewShortCodeInput input)
+        {
+            //validating required parameters
+            if (null == input.Messagesid)
+                throw new ArgumentNullException("messagesid", "The property \"Messagesid\" in the input object cannot be null.");
+
+            //the base uri for api requestss
+            string _baseUri = Configuration.GetBaseURI();
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/shortcode/viewsms.{ResponseType}");
+
+            //process optional template parameters
+            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
+            {
+                { "ResponseType", input.ResponseType }
+            });
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "message360-api" }
+            };
+
+            //append form/field parameters
+            var _fields = new List<KeyValuePair<string, Object>>()
+            {
+                new KeyValuePair<string, object>( "messagesid", input.Messagesid )
             };
 
             //prepare the API call request to fetch the response
