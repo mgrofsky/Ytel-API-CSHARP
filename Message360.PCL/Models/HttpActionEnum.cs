@@ -8,39 +8,38 @@ using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
 
 namespace message360.Models
 {
     [JsonConverter(typeof(StringValuedEnumConverter))]
-    public enum HttpAction
+    public enum HttpActionEnum
     {
         GET, //Get type
         POST, //Post Type
     }
 
     /// <summary>
-    /// Helper for the enum type HttpAction
+    /// Helper for the enum type HttpActionEnum
     /// </summary>
-    public static class HttpActionHelper
+    public static class HttpActionEnumHelper
     {
         //string values corresponding the enum elements
         private static List<string> stringValues = new List<string> { "GET", "POST" };
 
         /// <summary>
-        /// Converts a HttpAction value to a corresponding string value
+        /// Converts a HttpActionEnum value to a corresponding string value
         /// </summary>
-        /// <param name="enumValue">The HttpAction value to convert</param>
+        /// <param name="enumValue">The HttpActionEnum value to convert</param>
         /// <returns>The representative string value</returns>
-        public static string ToValue(HttpAction enumValue)
+        public static string ToValue(HttpActionEnum enumValue)
         {
             switch(enumValue)
             {
                 //only valid enum elements can be used
                 //this is necessary to avoid errors
-                case HttpAction.GET:
-                case HttpAction.POST:
+                case HttpActionEnum.GET:
+                case HttpActionEnum.POST:
                     return stringValues[(int)enumValue];
 
                 //an invalid enum value was requested
@@ -50,11 +49,11 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Convert a list of HttpAction values to a list of strings
+        /// Convert a list of HttpActionEnum values to a list of strings
         /// </summary>
-        /// <param name="enumValues">The list of HttpAction values to convert</param>
+        /// <param name="enumValues">The list of HttpActionEnum values to convert</param>
         /// <returns>The list of representative string values</returns>
-        public static List<string> ToValue(List<HttpAction> enumValues)
+        public static List<string> ToValue(List<HttpActionEnum> enumValues)
         {
             if (null == enumValues)
                 return null;
@@ -63,17 +62,17 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Converts a string value into HttpAction value
+        /// Converts a string value into HttpActionEnum value
         /// </summary>
         /// <param name="value">The string value to parse</param>
-        /// <returns>The parsed HttpAction value</returns>
-        public static HttpAction ParseString(string value)
+        /// <returns>The parsed HttpActionEnum value</returns>
+        public static HttpActionEnum ParseString(string value)
         {
             int index = stringValues.IndexOf(value);
             if(index < 0)
-                throw new InvalidCastException(string.Format("Unable to cast value: {0} to type HttpAction", value));
+                throw new InvalidCastException(string.Format("Unable to cast value: {0} to type HttpActionEnum", value));
 
-            return (HttpAction) index;
+            return (HttpActionEnum) index;
         }
     }
 } 

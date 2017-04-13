@@ -12,8 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
@@ -23,7 +23,7 @@ namespace message360.Models
         private string callSid;
         private string audioUrl;
         private int? length;
-        private Models.Direction? direction;
+        private Models.DirectionEnum? direction;
         private bool? loop;
         private bool? mix;
         private string responseType = "json";
@@ -83,7 +83,7 @@ namespace message360.Models
         /// The leg of the call audio will be played to
         /// </summary>
         [JsonProperty("Direction", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.Direction? Direction 
+        public Models.DirectionEnum? Direction 
         { 
             get 
             {

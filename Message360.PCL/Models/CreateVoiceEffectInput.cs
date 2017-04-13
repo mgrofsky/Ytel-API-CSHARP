@@ -12,8 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
@@ -21,7 +21,7 @@ namespace message360.Models
     {
         // These fields hold the values for the public properties.
         private string callSid;
-        private Models.AudioDirection? audioDirection;
+        private Models.AudioDirectionEnum? audioDirection;
         private double? pitchSemiTones;
         private double? pitchOctaves;
         private double? pitch;
@@ -50,7 +50,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("AudioDirection", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.AudioDirection? AudioDirection 
+        public Models.AudioDirectionEnum? AudioDirection 
         { 
             get 
             {

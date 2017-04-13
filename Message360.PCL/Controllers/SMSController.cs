@@ -12,12 +12,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
-using message360.Http.Request;
-using message360.Http.Response;
-using message360.Http.Client;
-using message360.Exceptions;
+using APIMATIC.SDK.Common;
+using APIMATIC.SDK.Http.Request;
+using APIMATIC.SDK.Http.Response;
+using APIMATIC.SDK.Http.Client;
 using message360.Models;
 
 namespace message360.Controllers
@@ -251,7 +249,7 @@ namespace message360.Controllers
                 new KeyValuePair<string, object>( "tocountrycode", input.Tocountrycode ),
                 new KeyValuePair<string, object>( "to", input.To ),
                 new KeyValuePair<string, object>( "body", input.Body ),
-                new KeyValuePair<string, object>( "method", (input.Method.HasValue) ? HttpActionHelper.ToValue(input.Method.Value) : null ),
+                new KeyValuePair<string, object>( "method", (input.Method.HasValue) ? HttpActionEnumHelper.ToValue(input.Method.Value) : null ),
                 new KeyValuePair<string, object>( "messagestatuscallback", input.Messagestatuscallback )
             };
 

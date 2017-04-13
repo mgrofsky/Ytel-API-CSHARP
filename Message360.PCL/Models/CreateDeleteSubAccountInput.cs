@@ -12,8 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
@@ -21,7 +21,7 @@ namespace message360.Models
     {
         // These fields hold the values for the public properties.
         private string subAccountSID;
-        private Models.MergeNumberStatus mergeNumber = MergeNumberStatus.DELETE;
+        private Models.MergeNumberStatusEnum mergeNumber = MergeNumberStatusEnum.DELETE;
         private string responseType = "json";
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace message360.Models
         /// 0 to delete or 1 to merge numbers to parent account.
         /// </summary>
         [JsonProperty("MergeNumber")]
-        public Models.MergeNumberStatus MergeNumber 
+        public Models.MergeNumberStatusEnum MergeNumber 
         { 
             get 
             {

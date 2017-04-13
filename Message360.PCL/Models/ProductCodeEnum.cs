@@ -6,12 +6,11 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
 
 namespace message360.Models
 {
-    public enum ProductCode
+    public enum ProductCodeEnum
     {
         ALL = 0, //TODO: Write general description for this method
         OUTBOUND_CALL = 1, //TODO: Write general description for this method
@@ -30,16 +29,16 @@ namespace message360.Models
     }
 
     /// <summary>
-    /// Helper for the enum type ProductCode
+    /// Helper for the enum type ProductCodeEnum
     /// </summary>
-    public static class ProductCodeHelper
+    public static class ProductCodeEnumHelper
     {
         /// <summary>
-        /// Convert a list of ProductCode values to a list of integers
+        /// Convert a list of ProductCodeEnum values to a list of integers
         /// </summary>
-        /// <param name="enumValues">The list of ProductCode values to convert</param>
+        /// <param name="enumValues">The list of ProductCodeEnum values to convert</param>
         /// <returns>The list of representative integer values</returns>
-        public static List<int> ToValue(List<ProductCode> enumValues)
+        public static List<int> ToValue(List<ProductCodeEnum> enumValues)
         {
             if (null == enumValues)
                 return null;

@@ -12,8 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
@@ -22,7 +22,7 @@ namespace message360.Models
         // These fields hold the values for the public properties.
         private int? page;
         private int? pageSize;
-        private Models.Status? status;
+        private Models.StatusEnum? status;
         private string dateTranscribed;
         private string responseType = "json";
 
@@ -64,7 +64,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("Status", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.Status? Status 
+        public Models.StatusEnum? Status 
         { 
             get 
             {

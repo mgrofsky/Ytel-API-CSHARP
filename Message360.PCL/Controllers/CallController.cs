@@ -12,12 +12,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
-using message360.Http.Request;
-using message360.Http.Response;
-using message360.Http.Client;
-using message360.Exceptions;
+using APIMATIC.SDK.Common;
+using APIMATIC.SDK.Http.Request;
+using APIMATIC.SDK.Http.Response;
+using APIMATIC.SDK.Http.Client;
 using message360.Models;
 
 namespace message360.Controllers
@@ -187,19 +185,19 @@ namespace message360.Controllers
                 new KeyValuePair<string, object>( "ToCountryCode", input.ToCountryCode ),
                 new KeyValuePair<string, object>( "To", input.To ),
                 new KeyValuePair<string, object>( "Url", input.Url ),
-                new KeyValuePair<string, object>( "Method", (input.Method.HasValue) ? HttpActionHelper.ToValue(input.Method.Value) : null ),
+                new KeyValuePair<string, object>( "Method", (input.Method.HasValue) ? HttpActionEnumHelper.ToValue(input.Method.Value) : null ),
                 new KeyValuePair<string, object>( "StatusCallBackUrl", input.StatusCallBackUrl ),
-                new KeyValuePair<string, object>( "StatusCallBackMethod", (input.StatusCallBackMethod.HasValue) ? HttpActionHelper.ToValue(input.StatusCallBackMethod.Value) : null ),
+                new KeyValuePair<string, object>( "StatusCallBackMethod", (input.StatusCallBackMethod.HasValue) ? HttpActionEnumHelper.ToValue(input.StatusCallBackMethod.Value) : null ),
                 new KeyValuePair<string, object>( "FallBackUrl", input.FallBackUrl ),
-                new KeyValuePair<string, object>( "FallBackMethod", (input.FallBackMethod.HasValue) ? HttpActionHelper.ToValue(input.FallBackMethod.Value) : null ),
+                new KeyValuePair<string, object>( "FallBackMethod", (input.FallBackMethod.HasValue) ? HttpActionEnumHelper.ToValue(input.FallBackMethod.Value) : null ),
                 new KeyValuePair<string, object>( "HeartBeatUrl", input.HeartBeatUrl ),
-                new KeyValuePair<string, object>( "HeartBeatMethod", (input.HeartBeatMethod.HasValue) ? HttpActionHelper.ToValue(input.HeartBeatMethod.Value) : null ),
+                new KeyValuePair<string, object>( "HeartBeatMethod", (input.HeartBeatMethod.HasValue) ? HttpActionEnumHelper.ToValue(input.HeartBeatMethod.Value) : null ),
                 new KeyValuePair<string, object>( "Timeout", input.Timeout ),
                 new KeyValuePair<string, object>( "PlayDtmf", input.PlayDtmf ),
                 new KeyValuePair<string, object>( "HideCallerId", input.HideCallerId ),
                 new KeyValuePair<string, object>( "Record", input.Record ),
                 new KeyValuePair<string, object>( "RecordCallBackUrl", input.RecordCallBackUrl ),
-                new KeyValuePair<string, object>( "RecordCallBackMethod", (input.RecordCallBackMethod.HasValue) ? HttpActionHelper.ToValue(input.RecordCallBackMethod.Value) : null ),
+                new KeyValuePair<string, object>( "RecordCallBackMethod", (input.RecordCallBackMethod.HasValue) ? HttpActionEnumHelper.ToValue(input.RecordCallBackMethod.Value) : null ),
                 new KeyValuePair<string, object>( "Transcribe", input.Transcribe ),
                 new KeyValuePair<string, object>( "TranscribeCallBackUrl", input.TranscribeCallBackUrl )
             };
@@ -273,7 +271,7 @@ namespace message360.Controllers
             var _fields = new List<KeyValuePair<string, Object>>()
             {
                 new KeyValuePair<string, object>( "CallSid", input.CallSid ),
-                new KeyValuePair<string, object>( "AudioDirection", (input.AudioDirection.HasValue) ? AudioDirectionHelper.ToValue(input.AudioDirection.Value) : null ),
+                new KeyValuePair<string, object>( "AudioDirection", (input.AudioDirection.HasValue) ? AudioDirectionEnumHelper.ToValue(input.AudioDirection.Value) : null ),
                 new KeyValuePair<string, object>( "PitchSemiTones", input.PitchSemiTones ),
                 new KeyValuePair<string, object>( "PitchOctaves", input.PitchOctaves ),
                 new KeyValuePair<string, object>( "Pitch", input.Pitch ),
@@ -351,10 +349,10 @@ namespace message360.Controllers
             {
                 new KeyValuePair<string, object>( "CallSid", input.CallSid ),
                 new KeyValuePair<string, object>( "Record", input.Record ),
-                new KeyValuePair<string, object>( "Direction", (input.Direction.HasValue) ? DirectionHelper.ToValue(input.Direction.Value) : null ),
+                new KeyValuePair<string, object>( "Direction", (input.Direction.HasValue) ? DirectionEnumHelper.ToValue(input.Direction.Value) : null ),
                 new KeyValuePair<string, object>( "TimeLimit", input.TimeLimit ),
                 new KeyValuePair<string, object>( "CallBackUrl", input.CallBackUrl ),
-                new KeyValuePair<string, object>( "Fileformat", (input.Fileformat.HasValue) ? AudioFormatHelper.ToValue(input.Fileformat.Value) : null )
+                new KeyValuePair<string, object>( "Fileformat", (input.Fileformat.HasValue) ? AudioFormatEnumHelper.ToValue(input.Fileformat.Value) : null )
             };
 
             //prepare the API call request to fetch the response
@@ -431,7 +429,7 @@ namespace message360.Controllers
                 new KeyValuePair<string, object>( "CallSid", input.CallSid ),
                 new KeyValuePair<string, object>( "AudioUrl", input.AudioUrl ),
                 new KeyValuePair<string, object>( "Length", input.Length ),
-                new KeyValuePair<string, object>( "Direction", (input.Direction.HasValue) ? DirectionHelper.ToValue(input.Direction.Value) : null ),
+                new KeyValuePair<string, object>( "Direction", (input.Direction.HasValue) ? DirectionEnumHelper.ToValue(input.Direction.Value) : null ),
                 new KeyValuePair<string, object>( "Loop", input.Loop ),
                 new KeyValuePair<string, object>( "Mix", input.Mix )
             };
@@ -506,8 +504,8 @@ namespace message360.Controllers
             {
                 new KeyValuePair<string, object>( "CallSid", input.CallSid ),
                 new KeyValuePair<string, object>( "Url", input.Url ),
-                new KeyValuePair<string, object>( "Method", (input.Method.HasValue) ? HttpActionHelper.ToValue(input.Method.Value) : null ),
-                new KeyValuePair<string, object>( "Status", (input.Status.HasValue) ? InterruptedCallStatusHelper.ToValue(input.Status.Value) : null )
+                new KeyValuePair<string, object>( "Method", (input.Method.HasValue) ? HttpActionEnumHelper.ToValue(input.Method.Value) : null ),
+                new KeyValuePair<string, object>( "Status", (input.Status.HasValue) ? InterruptedCallStatusEnumHelper.ToValue(input.Status.Value) : null )
             };
 
             //prepare the API call request to fetch the response
@@ -583,7 +581,7 @@ namespace message360.Controllers
             {
                 new KeyValuePair<string, object>( "CallSid", input.CallSid ),
                 new KeyValuePair<string, object>( "PlayDtmf", input.PlayDtmf ),
-                new KeyValuePair<string, object>( "PlayDtmfDirection", (input.PlayDtmfDirection.HasValue) ? DirectionHelper.ToValue(input.PlayDtmfDirection.Value) : null )
+                new KeyValuePair<string, object>( "PlayDtmfDirection", (input.PlayDtmfDirection.HasValue) ? DirectionEnumHelper.ToValue(input.PlayDtmfDirection.Value) : null )
             };
 
             //prepare the API call request to fetch the response
@@ -656,7 +654,7 @@ namespace message360.Controllers
             //process optional query parameters
             APIHelper.AppendUrlWithQueryParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "Method", (input.Method.HasValue) ? HttpActionHelper.ToValue(input.Method.Value) : null }
+                { "Method", (input.Method.HasValue) ? HttpActionEnumHelper.ToValue(input.Method.Value) : null }
             },ArrayDeserializationFormat,ParameterSeparator);
 
 
@@ -678,9 +676,9 @@ namespace message360.Controllers
                 new KeyValuePair<string, object>( "To", input.To ),
                 new KeyValuePair<string, object>( "Url", input.Url ),
                 new KeyValuePair<string, object>( "StatusCallBackUrl", input.StatusCallBackUrl ),
-                new KeyValuePair<string, object>( "StatusCallBackMethod", (input.StatusCallBackMethod.HasValue) ? HttpActionHelper.ToValue(input.StatusCallBackMethod.Value) : null ),
+                new KeyValuePair<string, object>( "StatusCallBackMethod", (input.StatusCallBackMethod.HasValue) ? HttpActionEnumHelper.ToValue(input.StatusCallBackMethod.Value) : null ),
                 new KeyValuePair<string, object>( "FallBackUrl", input.FallBackUrl ),
-                new KeyValuePair<string, object>( "FallBackMethod", (input.FallBackMethod.HasValue) ? HttpActionHelper.ToValue(input.FallBackMethod.Value) : null ),
+                new KeyValuePair<string, object>( "FallBackMethod", (input.FallBackMethod.HasValue) ? HttpActionEnumHelper.ToValue(input.FallBackMethod.Value) : null ),
                 new KeyValuePair<string, object>( "HeartBeatUrl", input.HeartBeatUrl ),
                 new KeyValuePair<string, object>( "HeartBeatMethod", input.HeartBeatMethod ),
                 new KeyValuePair<string, object>( "Timeout", input.Timeout ),
@@ -688,10 +686,10 @@ namespace message360.Controllers
                 new KeyValuePair<string, object>( "HideCallerId", input.HideCallerId ),
                 new KeyValuePair<string, object>( "Record", input.Record ),
                 new KeyValuePair<string, object>( "RecordCallBackUrl", input.RecordCallBackUrl ),
-                new KeyValuePair<string, object>( "RecordCallBackMethod", (input.RecordCallBackMethod.HasValue) ? HttpActionHelper.ToValue(input.RecordCallBackMethod.Value) : null ),
+                new KeyValuePair<string, object>( "RecordCallBackMethod", (input.RecordCallBackMethod.HasValue) ? HttpActionEnumHelper.ToValue(input.RecordCallBackMethod.Value) : null ),
                 new KeyValuePair<string, object>( "Transcribe", input.Transcribe ),
                 new KeyValuePair<string, object>( "TranscribeCallBackUrl", input.TranscribeCallBackUrl ),
-                new KeyValuePair<string, object>( "IfMachine", (input.IfMachine.HasValue) ? IfMachineHelper.ToValue(input.IfMachine.Value) : null )
+                new KeyValuePair<string, object>( "IfMachine", (input.IfMachine.HasValue) ? IfMachineEnumHelper.ToValue(input.IfMachine.Value) : null )
             };
 
             //prepare the API call request to fetch the response
@@ -763,6 +761,99 @@ namespace message360.Controllers
                 new KeyValuePair<string, object>( "To", input.To ),
                 new KeyValuePair<string, object>( "From", input.From ),
                 new KeyValuePair<string, object>( "DateCreated", input.DateCreated )
+            };
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request,_response);
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return _response.Body;
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// API endpoint used to send a Ringless Voicemail
+        /// </summary>
+        /// <param name="CreateSendRinglessVMInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public string CreateSendRinglessVM(CreateSendRinglessVMInput input)
+        {
+            Task<string> t = CreateSendRinglessVMAsync(input);
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// API endpoint used to send a Ringless Voicemail
+        /// </summary>
+        /// <param name="CreateSendRinglessVMInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public async Task<string> CreateSendRinglessVMAsync(CreateSendRinglessVMInput input)
+        {
+            //validating required parameters
+            if (null == input.FromCountryCode)
+                throw new ArgumentNullException("fromCountryCode", "The property \"FromCountryCode\" in the input object cannot be null.");
+
+            if (null == input.From)
+                throw new ArgumentNullException("mfrom", "The property \"From\" in the input object cannot be null.");
+
+            if (null == input.ToCountryCode)
+                throw new ArgumentNullException("toCountryCode", "The property \"ToCountryCode\" in the input object cannot be null.");
+
+            if (null == input.To)
+                throw new ArgumentNullException("to", "The property \"To\" in the input object cannot be null.");
+
+            if (null == input.VoiceMailURL)
+                throw new ArgumentNullException("voiceMailURL", "The property \"VoiceMailURL\" in the input object cannot be null.");
+
+            if (null == input.Method)
+                throw new ArgumentNullException("method", "The property \"Method\" in the input object cannot be null.");
+
+            //the base uri for api requestss
+            string _baseUri = Configuration.GetBaseURI();
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/calls/makeringlessvoicemailcall.{ResponseType}");
+
+            //process optional template parameters
+            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
+            {
+                { "ResponseType", input.ResponseType }
+            });
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "message360-api" }
+            };
+
+            //append form/field parameters
+            var _fields = new List<KeyValuePair<string, Object>>()
+            {
+                new KeyValuePair<string, object>( "FromCountryCode", input.FromCountryCode ),
+                new KeyValuePair<string, object>( "From", input.From ),
+                new KeyValuePair<string, object>( "ToCountryCode", input.ToCountryCode ),
+                new KeyValuePair<string, object>( "To", input.To ),
+                new KeyValuePair<string, object>( "VoiceMailURL", input.VoiceMailURL ),
+                new KeyValuePair<string, object>( "Method", input.Method ),
+                new KeyValuePair<string, object>( "StatusCallBackUrl", input.StatusCallBackUrl ),
+                new KeyValuePair<string, object>( "StatsCallBackMethod", input.StatsCallBackMethod )
             };
 
             //prepare the API call request to fetch the response

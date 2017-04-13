@@ -4,11 +4,9 @@
  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
-using message360;
-using message360.Utilities;
-using message360.Http.Client;
-using message360.Http.Response;
-using message360.Exceptions;
+using APIMATIC.SDK.Common;
+using APIMATIC.SDK.Http.Client;
+using APIMATIC.SDK.Http.Response;
 
 namespace message360.Controllers
 {

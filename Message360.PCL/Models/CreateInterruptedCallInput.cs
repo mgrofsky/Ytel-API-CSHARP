@@ -12,8 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
@@ -22,8 +22,8 @@ namespace message360.Models
         // These fields hold the values for the public properties.
         private string callSid;
         private string url;
-        private Models.HttpAction? method;
-        private Models.InterruptedCallStatus? status;
+        private Models.HttpActionEnum? method;
+        private Models.InterruptedCallStatusEnum? status;
         private string responseType = "json";
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace message360.Models
         /// The method used to request the above Url parameter
         /// </summary>
         [JsonProperty("Method", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.HttpAction? Method 
+        public Models.HttpActionEnum? Method 
         { 
             get 
             {
@@ -81,7 +81,7 @@ namespace message360.Models
         /// Status to set the in-progress call to
         /// </summary>
         [JsonProperty("Status", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.InterruptedCallStatus? Status 
+        public Models.InterruptedCallStatusEnum? Status 
         { 
             get 
             {

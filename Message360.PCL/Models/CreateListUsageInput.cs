@@ -12,15 +12,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
     public class CreateListUsageInput : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private Models.ProductCode productCode = ProductCode.ALL;
+        private Models.ProductCodeEnum productCode = ProductCodeEnum.ALL;
         private string startDate = "2016-09-06";
         private string endDate = "2016-09-06";
         private string responseType = "json";
@@ -29,7 +29,7 @@ namespace message360.Models
         /// Product Code
         /// </summary>
         [JsonProperty("ProductCode")]
-        public Models.ProductCode ProductCode 
+        public Models.ProductCodeEnum ProductCode 
         { 
             get 
             {

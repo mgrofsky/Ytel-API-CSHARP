@@ -12,8 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
@@ -21,7 +21,7 @@ namespace message360.Models
     {
         // These fields hold the values for the public properties.
         private string subAccountSID;
-        private Models.ActivateStatus activate = ActivateStatus.DEACTIVATE;
+        private Models.ActivateStatusEnum activate = ActivateStatusEnum.DEACTIVATE;
         private string responseType;
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace message360.Models
         /// 0 to suspend or 1 to activate
         /// </summary>
         [JsonProperty("Activate")]
-        public Models.ActivateStatus Activate 
+        public Models.ActivateStatusEnum Activate 
         { 
             get 
             {

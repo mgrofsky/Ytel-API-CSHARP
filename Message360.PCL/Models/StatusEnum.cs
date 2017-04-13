@@ -8,39 +8,40 @@ using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
 
 namespace message360.Models
 {
     [JsonConverter(typeof(StringValuedEnumConverter))]
-    public enum IfMachine
+    public enum StatusEnum
     {
-        CONTINUE, //TODO: Write general description for this method
-        HANGUP, //TODO: Write general description for this method
+        INPROGRESS, //TODO: Write general description for this method
+        SUCCESS, //TODO: Write general description for this method
+        FAILURE, //TODO: Write general description for this method
     }
 
     /// <summary>
-    /// Helper for the enum type IfMachine
+    /// Helper for the enum type StatusEnum
     /// </summary>
-    public static class IfMachineHelper
+    public static class StatusEnumHelper
     {
         //string values corresponding the enum elements
-        private static List<string> stringValues = new List<string> { "continue", "hangup" };
+        private static List<string> stringValues = new List<string> { "inprogress", "success", "failure" };
 
         /// <summary>
-        /// Converts a IfMachine value to a corresponding string value
+        /// Converts a StatusEnum value to a corresponding string value
         /// </summary>
-        /// <param name="enumValue">The IfMachine value to convert</param>
+        /// <param name="enumValue">The StatusEnum value to convert</param>
         /// <returns>The representative string value</returns>
-        public static string ToValue(IfMachine enumValue)
+        public static string ToValue(StatusEnum enumValue)
         {
             switch(enumValue)
             {
                 //only valid enum elements can be used
                 //this is necessary to avoid errors
-                case IfMachine.CONTINUE:
-                case IfMachine.HANGUP:
+                case StatusEnum.INPROGRESS:
+                case StatusEnum.SUCCESS:
+                case StatusEnum.FAILURE:
                     return stringValues[(int)enumValue];
 
                 //an invalid enum value was requested
@@ -50,11 +51,11 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Convert a list of IfMachine values to a list of strings
+        /// Convert a list of StatusEnum values to a list of strings
         /// </summary>
-        /// <param name="enumValues">The list of IfMachine values to convert</param>
+        /// <param name="enumValues">The list of StatusEnum values to convert</param>
         /// <returns>The list of representative string values</returns>
-        public static List<string> ToValue(List<IfMachine> enumValues)
+        public static List<string> ToValue(List<StatusEnum> enumValues)
         {
             if (null == enumValues)
                 return null;
@@ -63,17 +64,17 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Converts a string value into IfMachine value
+        /// Converts a string value into StatusEnum value
         /// </summary>
         /// <param name="value">The string value to parse</param>
-        /// <returns>The parsed IfMachine value</returns>
-        public static IfMachine ParseString(string value)
+        /// <returns>The parsed StatusEnum value</returns>
+        public static StatusEnum ParseString(string value)
         {
             int index = stringValues.IndexOf(value);
             if(index < 0)
-                throw new InvalidCastException(string.Format("Unable to cast value: {0} to type IfMachine", value));
+                throw new InvalidCastException(string.Format("Unable to cast value: {0} to type StatusEnum", value));
 
-            return (IfMachine) index;
+            return (StatusEnum) index;
         }
     }
 } 

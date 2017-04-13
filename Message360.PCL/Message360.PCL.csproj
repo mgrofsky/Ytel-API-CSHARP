@@ -10,7 +10,7 @@
     <AssemblyName>Message360.PCL</AssemblyName>
     <OutputType>Library</OutputType>
     <OutputPath>bin/DEBUG/</OutputPath>
-    <ProjectGuid>{61667e5a-2dd5-4c73-92ff-d3b5215c7a5c}</ProjectGuid>
+    <ProjectGuid>{62603bc1-0bda-4994-9771-bed069c8b247}</ProjectGuid>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <NuGetPackageImportStamp>ee2bb91c</NuGetPackageImportStamp>
@@ -41,6 +41,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+  
+    <Reference Include="APIMATIC.SDK.Common">
+      <HintPath>..\packages\APIMATIC.SDK.Common.1.0.1.62\lib\portable-net40+sl5+wp80+win8+wpa81\APIMATIC.SDK.Common.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net40+sl4+win8+wp71+wpa81\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>
@@ -69,7 +73,7 @@
       <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8+wp8+wpa81\System.Threading.Tasks.dll</HintPath>
     </Reference>
     <Reference Include="unirest-net">
-      <HintPath>..\packages\Unirest-APIMATIC.1.0.1.26\lib\portable-net40+sl5+wp80+win8+wpa81\unirest-net.dll</HintPath>
+      <HintPath>..\packages\Unirest-APIMATIC.1.0.1.27\lib\portable-net40+sl5+wp80+win8+wpa81\unirest-net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -88,8 +92,8 @@
     <Compile Include="Models\CreateSendSMSInput.cs" />
     <Compile Include="Models\CreateListNumberInput.cs" />
     <Compile Include="Models\CreateAvailablePhoneNumberInput.cs" />
+    <Compile Include="Models\CreateViewConferenceInput.cs" />
     <Compile Include="Models\CreateListTranscriptionInput.cs" />
-    <Compile Include="Models\AddParticipantInput.cs" />
     <Compile Include="Models\CreateSendEmailInput.cs" />
     <Compile Include="Models\CreateListParticipantInput.cs" />
     <Compile Include="Models\CreateViewParticipantInput.cs" />
@@ -103,7 +107,8 @@
     <Compile Include="Models\CreateViewShortCodeInput.cs" />
     <Compile Include="Models\CreateViewSMSInput.cs" />
     <Compile Include="Models\CreateListCallsInput.cs" />
-    <Compile Include="Models\CreateViewConferenceInput.cs" />
+    <Compile Include="Models\CreateSendRinglessVMInput.cs" />
+    <Compile Include="Models\AddParticipantInput.cs" />
     <Compile Include="Models\CreateDeleteUnsubscribesInput.cs" />
     <Compile Include="Models\CreateBuyNumberInput.cs" />
     <Compile Include="Models\CreateListSMSInput.cs" />
@@ -138,18 +143,18 @@
     <Compile Include="Models\CreateListSpamInput.cs" />
     <Compile Include="Models\CreateListBlocksInput.cs" />
     <Compile Include="Models\UpdatePhoneNumberInput.cs" />
-    <Compile Include="Models\ProductCode.cs" />
-    <Compile Include="Models\AudioFormat.cs" />
-    <Compile Include="Models\InterruptedCallStatus.cs" />
-    <Compile Include="Models\Direction.cs" />
-    <Compile Include="Models\NumberType.cs" />
-    <Compile Include="Models\ActivateStatus.cs" />
-    <Compile Include="Models\SendEmailAs.cs" />
-    <Compile Include="Models\MergeNumberStatus.cs" />
-    <Compile Include="Models\AudioDirection.cs" />
-    <Compile Include="Models\IfMachine.cs" />
-    <Compile Include="Models\Status.cs" />
-    <Compile Include="Models\HttpAction.cs" />
+    <Compile Include="Models\ProductCodeEnum.cs" />
+    <Compile Include="Models\AudioFormatEnum.cs" />
+    <Compile Include="Models\InterruptedCallStatusEnum.cs" />
+    <Compile Include="Models\DirectionEnum.cs" />
+    <Compile Include="Models\NumberTypeEnum.cs" />
+    <Compile Include="Models\ActivateStatusEnum.cs" />
+    <Compile Include="Models\SendEmailAsEnum.cs" />
+    <Compile Include="Models\MergeNumberStatusEnum.cs" />
+    <Compile Include="Models\AudioDirectionEnum.cs" />
+    <Compile Include="Models\IfMachineEnum.cs" />
+    <Compile Include="Models\StatusEnum.cs" />
+    <Compile Include="Models\HttpActionEnum.cs" />
     <Compile Include="Controllers\ShortCodeController.cs" />
     <Compile Include="Controllers\ConferenceController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
@@ -165,26 +170,9 @@
     <Compile Include="Controllers\TranscriptionController.cs" />
     <Compile Include="Controllers\UsageController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Http\Client\IHTTPClient.cs" />
-    <Compile Include="Http\Client\UnirestClient.cs" />
-    <Compile Include="Http\Client\HttpEventHandlers.cs" />
-    <Compile Include="Http\Client\HttpContext.cs" />
-    <Compile Include="Http\Request\HttpRequest.cs" />
-    <Compile Include="Http\Request\HttpMethod.cs" />
-    <Compile Include="Http\Response\HttpResponse.cs" />
-    <Compile Include="Http\Response\HttpStringResponse.cs" />
-    <Compile Include="Http\Client\FileStreamInfo.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Configuration.cs" />
-    <Compile Include="Utilities\APIHelper.cs" />
-    <Compile Include="Utilities\ArrayDeserialization.cs" />
-    <Compile Include="Utilities\UnixDateTimeConverter.cs" />
-    <Compile Include="Utilities\CustomDateTimeConverter.cs" />
-    <Compile Include="Utilities\RetryHelper.cs" />
-    <Compile Include="Utilities\ListDateTimeConverter.cs" />
-    <Compile Include="Exceptions\APIException.cs" />
-    <Compile Include="Models\StringValuedEnumConverter.cs" />
     <Compile Include="Message360Client.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config" />

@@ -12,8 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
@@ -22,7 +22,7 @@ namespace message360.Models
         // These fields hold the values for the public properties.
         private string callSid;
         private string playDtmf;
-        private Models.Direction? playDtmfDirection;
+        private Models.DirectionEnum? playDtmfDirection;
         private string responseType = "json";
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace message360.Models
         /// The leg of the call DTMF digits should be sent to
         /// </summary>
         [JsonProperty("PlayDtmfDirection", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.Direction? PlayDtmfDirection 
+        public Models.DirectionEnum? PlayDtmfDirection 
         { 
             get 
             {

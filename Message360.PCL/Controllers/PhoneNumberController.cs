@@ -12,12 +12,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
-using message360.Http.Request;
-using message360.Http.Response;
-using message360.Http.Client;
-using message360.Exceptions;
+using APIMATIC.SDK.Common;
+using APIMATIC.SDK.Http.Request;
+using APIMATIC.SDK.Http.Response;
+using APIMATIC.SDK.Http.Client;
 using message360.Models;
 
 namespace message360.Controllers
@@ -102,17 +100,17 @@ namespace message360.Controllers
                 new KeyValuePair<string, object>( "PhoneNumber", input.PhoneNumber ),
                 new KeyValuePair<string, object>( "FriendlyName", input.FriendlyName ),
                 new KeyValuePair<string, object>( "VoiceUrl", input.VoiceUrl ),
-                new KeyValuePair<string, object>( "VoiceMethod", (input.VoiceMethod.HasValue) ? HttpActionHelper.ToValue(input.VoiceMethod.Value) : null ),
+                new KeyValuePair<string, object>( "VoiceMethod", (input.VoiceMethod.HasValue) ? HttpActionEnumHelper.ToValue(input.VoiceMethod.Value) : null ),
                 new KeyValuePair<string, object>( "VoiceFallbackUrl", input.VoiceFallbackUrl ),
-                new KeyValuePair<string, object>( "VoiceFallbackMethod", (input.VoiceFallbackMethod.HasValue) ? HttpActionHelper.ToValue(input.VoiceFallbackMethod.Value) : null ),
+                new KeyValuePair<string, object>( "VoiceFallbackMethod", (input.VoiceFallbackMethod.HasValue) ? HttpActionEnumHelper.ToValue(input.VoiceFallbackMethod.Value) : null ),
                 new KeyValuePair<string, object>( "HangupCallback", input.HangupCallback ),
-                new KeyValuePair<string, object>( "HangupCallbackMethod", (input.HangupCallbackMethod.HasValue) ? HttpActionHelper.ToValue(input.HangupCallbackMethod.Value) : null ),
+                new KeyValuePair<string, object>( "HangupCallbackMethod", (input.HangupCallbackMethod.HasValue) ? HttpActionEnumHelper.ToValue(input.HangupCallbackMethod.Value) : null ),
                 new KeyValuePair<string, object>( "HeartbeatUrl", input.HeartbeatUrl ),
-                new KeyValuePair<string, object>( "HeartbeatMethod", (input.HeartbeatMethod.HasValue) ? HttpActionHelper.ToValue(input.HeartbeatMethod.Value) : null ),
+                new KeyValuePair<string, object>( "HeartbeatMethod", (input.HeartbeatMethod.HasValue) ? HttpActionEnumHelper.ToValue(input.HeartbeatMethod.Value) : null ),
                 new KeyValuePair<string, object>( "SmsUrl", input.SmsUrl ),
-                new KeyValuePair<string, object>( "SmsMethod", (input.SmsMethod.HasValue) ? HttpActionHelper.ToValue(input.SmsMethod.Value) : null ),
+                new KeyValuePair<string, object>( "SmsMethod", (input.SmsMethod.HasValue) ? HttpActionEnumHelper.ToValue(input.SmsMethod.Value) : null ),
                 new KeyValuePair<string, object>( "SmsFallbackUrl", input.SmsFallbackUrl ),
-                new KeyValuePair<string, object>( "SmsFallbackMethod", (input.SmsFallbackMethod.HasValue) ? HttpActionHelper.ToValue(input.SmsFallbackMethod.Value) : null )
+                new KeyValuePair<string, object>( "SmsFallbackMethod", (input.SmsFallbackMethod.HasValue) ? HttpActionEnumHelper.ToValue(input.SmsFallbackMethod.Value) : null )
             };
 
             //prepare the API call request to fetch the response
@@ -394,7 +392,7 @@ namespace message360.Controllers
             {
                 new KeyValuePair<string, object>( "Page", input.Page ),
                 new KeyValuePair<string, object>( "PageSize", input.PageSize ),
-                new KeyValuePair<string, object>( "NumberType", (input.NumberType.HasValue) ? NumberTypeHelper.ToValue(input.NumberType.Value) : null ),
+                new KeyValuePair<string, object>( "NumberType", (input.NumberType.HasValue) ? NumberTypeEnumHelper.ToValue(input.NumberType.Value) : null ),
                 new KeyValuePair<string, object>( "FriendlyName", input.FriendlyName )
             };
 
@@ -466,7 +464,7 @@ namespace message360.Controllers
             //append form/field parameters
             var _fields = new List<KeyValuePair<string, Object>>()
             {
-                new KeyValuePair<string, object>( "NumberType", NumberTypeHelper.ToValue(input.NumberType) ),
+                new KeyValuePair<string, object>( "NumberType", NumberTypeEnumHelper.ToValue(input.NumberType) ),
                 new KeyValuePair<string, object>( "AreaCode", input.AreaCode ),
                 new KeyValuePair<string, object>( "PageSize", input.PageSize )
             };

@@ -8,41 +8,38 @@ using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
 
 namespace message360.Models
 {
     [JsonConverter(typeof(StringValuedEnumConverter))]
-    public enum NumberType
+    public enum AudioFormatEnum
     {
-        ALL, //Get all phone Number type
-        VOICE, //Get only voice number type
-        SMS, //Get Only SMs number type
+        MP3, //mp3 file
+        WAV, //wav file
     }
 
     /// <summary>
-    /// Helper for the enum type NumberType
+    /// Helper for the enum type AudioFormatEnum
     /// </summary>
-    public static class NumberTypeHelper
+    public static class AudioFormatEnumHelper
     {
         //string values corresponding the enum elements
-        private static List<string> stringValues = new List<string> { "all", "voice", "sms" };
+        private static List<string> stringValues = new List<string> { "mp3", "wav" };
 
         /// <summary>
-        /// Converts a NumberType value to a corresponding string value
+        /// Converts a AudioFormatEnum value to a corresponding string value
         /// </summary>
-        /// <param name="enumValue">The NumberType value to convert</param>
+        /// <param name="enumValue">The AudioFormatEnum value to convert</param>
         /// <returns>The representative string value</returns>
-        public static string ToValue(NumberType enumValue)
+        public static string ToValue(AudioFormatEnum enumValue)
         {
             switch(enumValue)
             {
                 //only valid enum elements can be used
                 //this is necessary to avoid errors
-                case NumberType.ALL:
-                case NumberType.VOICE:
-                case NumberType.SMS:
+                case AudioFormatEnum.MP3:
+                case AudioFormatEnum.WAV:
                     return stringValues[(int)enumValue];
 
                 //an invalid enum value was requested
@@ -52,11 +49,11 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Convert a list of NumberType values to a list of strings
+        /// Convert a list of AudioFormatEnum values to a list of strings
         /// </summary>
-        /// <param name="enumValues">The list of NumberType values to convert</param>
+        /// <param name="enumValues">The list of AudioFormatEnum values to convert</param>
         /// <returns>The list of representative string values</returns>
-        public static List<string> ToValue(List<NumberType> enumValues)
+        public static List<string> ToValue(List<AudioFormatEnum> enumValues)
         {
             if (null == enumValues)
                 return null;
@@ -65,17 +62,17 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Converts a string value into NumberType value
+        /// Converts a string value into AudioFormatEnum value
         /// </summary>
         /// <param name="value">The string value to parse</param>
-        /// <returns>The parsed NumberType value</returns>
-        public static NumberType ParseString(string value)
+        /// <returns>The parsed AudioFormatEnum value</returns>
+        public static AudioFormatEnum ParseString(string value)
         {
             int index = stringValues.IndexOf(value);
             if(index < 0)
-                throw new InvalidCastException(string.Format("Unable to cast value: {0} to type NumberType", value));
+                throw new InvalidCastException(string.Format("Unable to cast value: {0} to type AudioFormatEnum", value));
 
-            return (NumberType) index;
+            return (AudioFormatEnum) index;
         }
     }
 } 

@@ -12,8 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
@@ -22,10 +22,10 @@ namespace message360.Models
         // These fields hold the values for the public properties.
         private string callSid;
         private bool record;
-        private Models.Direction? direction;
+        private Models.DirectionEnum? direction;
         private int? timeLimit;
         private string callBackUrl;
-        private Models.AudioFormat? fileformat;
+        private Models.AudioFormatEnum? fileformat;
         private string responseType = "json";
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace message360.Models
         /// The leg of the call to record
         /// </summary>
         [JsonProperty("Direction", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.Direction? Direction 
+        public Models.DirectionEnum? Direction 
         { 
             get 
             {
@@ -117,7 +117,7 @@ namespace message360.Models
         /// Format of the recording file. Can be .mp3 or .wav
         /// </summary>
         [JsonProperty("Fileformat", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.AudioFormat? Fileformat 
+        public Models.AudioFormatEnum? Fileformat 
         { 
             get 
             {

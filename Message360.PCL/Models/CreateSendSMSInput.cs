@@ -12,8 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
@@ -25,7 +25,7 @@ namespace message360.Models
         private int tocountrycode = 1;
         private string to;
         private string body;
-        private Models.HttpAction? method;
+        private Models.HttpActionEnum? method;
         private string messagestatuscallback;
         private string responseType = "json";
 
@@ -118,7 +118,7 @@ namespace message360.Models
         /// Specifies the HTTP method used to request the required URL once SMS sent.
         /// </summary>
         [JsonProperty("method", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.HttpAction? Method 
+        public Models.HttpActionEnum? Method 
         { 
             get 
             {

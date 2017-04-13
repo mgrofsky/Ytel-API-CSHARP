@@ -230,7 +230,7 @@ Task<string> CreateListInboundShortCode(CreateListInboundShortCodeInput input)
 ```csharp
 CreateListInboundShortCodeInput collect = new CreateListInboundShortCodeInput();
 
-int? page = 212;
+int? page = 121;
 collect.Page = page;
 
 int? pagesize = 10;
@@ -280,7 +280,7 @@ Task<string> CreateListShortCode(CreateListShortCodeInput input)
 ```csharp
 CreateListShortCodeInput collect = new CreateListShortCodeInput();
 
-int? page = 212;
+int? page = 121;
 collect.Page = page;
 
 int? pagesize = 10;
@@ -331,7 +331,7 @@ CreateListTemplatesInput collect = new CreateListTemplatesInput();
 string type = "authorization";
 collect.Type = type;
 
-int? page = 212;
+int? page = 121;
 collect.Page = page;
 
 int? pagesize = 10;
@@ -423,10 +423,10 @@ collect.ConferenceSid = conferenceSid;
 string participantSid = "ParticipantSid";
 collect.ParticipantSid = participantSid;
 
-bool? muted = true;
+bool? muted = false;
 collect.Muted = muted;
 
-bool? deaf = true;
+bool? deaf = false;
 collect.Deaf = deaf;
 
 string responseType = "json";
@@ -465,16 +465,16 @@ Task<string> CreateListConference(CreateListConferenceInput input)
 ```csharp
 CreateListConferenceInput collect = new CreateListConferenceInput();
 
-int? page = 212;
+int? page = 121;
 collect.Page = page;
 
-int? pageSize = 212;
+int? pageSize = 121;
 collect.PageSize = pageSize;
 
 string friendlyName = "FriendlyName";
 collect.FriendlyName = friendlyName;
 
-var status = Models.InterruptedCallStatus?Helper.ParseString("CANCELED");
+var status = Models.InterruptedCallStatusEnum?Helper.ParseString("CANCELED");
 collect.Status = status;
 
 string dateCreated = "DateCreated";
@@ -558,13 +558,13 @@ collect.Conferencesid = conferencesid;
 string participantnumber = "participantnumber";
 collect.Participantnumber = participantnumber;
 
-int tocountrycode = 212;
+int tocountrycode = 121;
 collect.Tocountrycode = tocountrycode;
 
-bool? muted = true;
+bool? muted = false;
 collect.Muted = muted;
 
-bool? deaf = true;
+bool? deaf = false;
 collect.Deaf = deaf;
 
 string responseType = "json";
@@ -605,16 +605,16 @@ CreateListParticipantInput collect = new CreateListParticipantInput();
 string conferenceSid = "ConferenceSid";
 collect.ConferenceSid = conferenceSid;
 
-int? page = 212;
+int? page = 121;
 collect.Page = page;
 
-int? pagesize = 212;
+int? pagesize = 121;
 collect.Pagesize = pagesize;
 
-bool? muted = true;
+bool? muted = false;
 collect.Muted = muted;
 
-bool? deaf = true;
+bool? deaf = false;
 collect.Deaf = deaf;
 
 string responseType = "json";
@@ -1105,7 +1105,7 @@ collect.To = to;
 string mfrom = "from";
 collect.Mfrom = mfrom;
 
-var type = Models.SendEmailAsHelper.ParseString("HTML");
+var type = Models.SendEmailAsEnumHelper.ParseString("HTML");
 collect.Type = type;
 
 string subject = "subject";
@@ -1251,10 +1251,10 @@ Task<string> CreateCarrierLookupList(CreateCarrierLookupListInput input)
 ```csharp
 CreateCarrierLookupListInput collect = new CreateCarrierLookupListInput();
 
-int? page = 212;
+int? page = 121;
 collect.Page = page;
 
-int? pagesize = 212;
+int? pagesize = 121;
 collect.Pagesize = pagesize;
 
 string responseType = "json";
@@ -1368,28 +1368,28 @@ collect.To = to;
 string url = "Url";
 collect.Url = url;
 
-var method = Models.HttpAction?Helper.ParseString("GET");
+var method = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.Method = method;
 
 string statusCallBackUrl = "StatusCallBackUrl";
 collect.StatusCallBackUrl = statusCallBackUrl;
 
-var statusCallBackMethod = Models.HttpAction?Helper.ParseString("GET");
+var statusCallBackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.StatusCallBackMethod = statusCallBackMethod;
 
 string fallBackUrl = "FallBackUrl";
 collect.FallBackUrl = fallBackUrl;
 
-var fallBackMethod = Models.HttpAction?Helper.ParseString("GET");
+var fallBackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.FallBackMethod = fallBackMethod;
 
 string heartBeatUrl = "HeartBeatUrl";
 collect.HeartBeatUrl = heartBeatUrl;
 
-var heartBeatMethod = Models.HttpAction?Helper.ParseString("GET");
+var heartBeatMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.HeartBeatMethod = heartBeatMethod;
 
-int? timeout = 212;
+int? timeout = 121;
 collect.Timeout = timeout;
 
 string playDtmf = "PlayDtmf";
@@ -1398,16 +1398,16 @@ collect.PlayDtmf = playDtmf;
 string hideCallerId = "HideCallerId";
 collect.HideCallerId = hideCallerId;
 
-bool? record = true;
+bool? record = false;
 collect.Record = record;
 
 string recordCallBackUrl = "RecordCallBackUrl";
 collect.RecordCallBackUrl = recordCallBackUrl;
 
-var recordCallBackMethod = Models.HttpAction?Helper.ParseString("GET");
+var recordCallBackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.RecordCallBackMethod = recordCallBackMethod;
 
-bool? transcribe = true;
+bool? transcribe = false;
 collect.Transcribe = transcribe;
 
 string transcribeCallBackUrl = "TranscribeCallBackUrl";
@@ -1453,22 +1453,22 @@ CreateVoiceEffectInput collect = new CreateVoiceEffectInput();
 string callSid = "CallSid";
 collect.CallSid = callSid;
 
-var audioDirection = Models.AudioDirection?Helper.ParseString("IN");
+var audioDirection = Models.AudioDirectionEnum?Helper.ParseString("IN");
 collect.AudioDirection = audioDirection;
 
-double? pitchSemiTones = 212.438373857848;
+double? pitchSemiTones = 121.430345045603;
 collect.PitchSemiTones = pitchSemiTones;
 
-double? pitchOctaves = 212.438373857848;
+double? pitchOctaves = 121.430345045603;
 collect.PitchOctaves = pitchOctaves;
 
-double? pitch = 212.438373857848;
+double? pitch = 121.430345045603;
 collect.Pitch = pitch;
 
-double? rate = 212.438373857848;
+double? rate = 121.430345045603;
 collect.Rate = rate;
 
-double? tempo = 212.438373857848;
+double? tempo = 121.430345045603;
 collect.Tempo = tempo;
 
 string responseType = "json";
@@ -1510,19 +1510,19 @@ CreateRecordCallInput collect = new CreateRecordCallInput();
 string callSid = "CallSid";
 collect.CallSid = callSid;
 
-bool record = true;
+bool record = false;
 collect.Record = record;
 
-var direction = Models.Direction?Helper.ParseString("IN");
+var direction = Models.DirectionEnum?Helper.ParseString("IN");
 collect.Direction = direction;
 
-int? timeLimit = 212;
+int? timeLimit = 121;
 collect.TimeLimit = timeLimit;
 
 string callBackUrl = "CallBackUrl";
 collect.CallBackUrl = callBackUrl;
 
-var fileformat = Models.AudioFormat?Helper.ParseString("mp3");
+var fileformat = Models.AudioFormatEnum?Helper.ParseString("mp3");
 collect.Fileformat = fileformat;
 
 string responseType = "json";
@@ -1567,16 +1567,16 @@ collect.CallSid = callSid;
 string audioUrl = "AudioUrl";
 collect.AudioUrl = audioUrl;
 
-int? length = 212;
+int? length = 121;
 collect.Length = length;
 
-var direction = Models.Direction?Helper.ParseString("IN");
+var direction = Models.DirectionEnum?Helper.ParseString("IN");
 collect.Direction = direction;
 
-bool? loop = true;
+bool? loop = false;
 collect.Loop = loop;
 
-bool? mix = true;
+bool? mix = false;
 collect.Mix = mix;
 
 string responseType = "json";
@@ -1619,10 +1619,10 @@ collect.CallSid = callSid;
 string url = "Url";
 collect.Url = url;
 
-var method = Models.HttpAction?Helper.ParseString("GET");
+var method = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.Method = method;
 
-var status = Models.InterruptedCallStatus?Helper.ParseString("CANCELED");
+var status = Models.InterruptedCallStatusEnum?Helper.ParseString("CANCELED");
 collect.Status = status;
 
 string responseType = "json";
@@ -1664,7 +1664,7 @@ collect.CallSid = callSid;
 string playDtmf = "PlayDtmf";
 collect.PlayDtmf = playDtmf;
 
-var playDtmfDirection = Models.Direction?Helper.ParseString("IN");
+var playDtmfDirection = Models.DirectionEnum?Helper.ParseString("IN");
 collect.PlayDtmfDirection = playDtmfDirection;
 
 string responseType = "json";
@@ -1733,52 +1733,52 @@ collect.To = to;
 string url = "Url";
 collect.Url = url;
 
-var method = Models.HttpAction?Helper.ParseString("GET");
+var method = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.Method = method;
 
 string statusCallBackUrl = "StatusCallBackUrl";
 collect.StatusCallBackUrl = statusCallBackUrl;
 
-var statusCallBackMethod = Models.HttpAction?Helper.ParseString("GET");
+var statusCallBackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.StatusCallBackMethod = statusCallBackMethod;
 
 string fallBackUrl = "FallBackUrl";
 collect.FallBackUrl = fallBackUrl;
 
-var fallBackMethod = Models.HttpAction?Helper.ParseString("GET");
+var fallBackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.FallBackMethod = fallBackMethod;
 
 string heartBeatUrl = "HeartBeatUrl";
 collect.HeartBeatUrl = heartBeatUrl;
 
-bool? heartBeatMethod = true;
+bool? heartBeatMethod = false;
 collect.HeartBeatMethod = heartBeatMethod;
 
-int? timeout = 212;
+int? timeout = 121;
 collect.Timeout = timeout;
 
 string playDtmf = "PlayDtmf";
 collect.PlayDtmf = playDtmf;
 
-bool? hideCallerId = true;
+bool? hideCallerId = false;
 collect.HideCallerId = hideCallerId;
 
-bool? record = true;
+bool? record = false;
 collect.Record = record;
 
 string recordCallBackUrl = "RecordCallBackUrl";
 collect.RecordCallBackUrl = recordCallBackUrl;
 
-var recordCallBackMethod = Models.HttpAction?Helper.ParseString("GET");
+var recordCallBackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.RecordCallBackMethod = recordCallBackMethod;
 
-bool? transcribe = true;
+bool? transcribe = false;
 collect.Transcribe = transcribe;
 
 string transcribeCallBackUrl = "TranscribeCallBackUrl";
 collect.TranscribeCallBackUrl = transcribeCallBackUrl;
 
-var ifMachine = Models.IfMachine?Helper.ParseString("CONTINUE");
+var ifMachine = Models.IfMachineEnum?Helper.ParseString("CONTINUE");
 collect.IfMachine = ifMachine;
 
 string responseType = "json";
@@ -1816,7 +1816,7 @@ Task<string> CreateListCalls(CreateListCallsInput input)
 ```csharp
 CreateListCallsInput collect = new CreateListCallsInput();
 
-int? page = 212;
+int? page = 121;
 collect.Page = page;
 
 int? pageSize = 10;
@@ -1836,6 +1836,68 @@ collect.ResponseType = responseType;
 
 
 string result = await call.CreateListCalls(collect);
+
+```
+
+
+#### <a name="create_send_ringless_vm"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateSendRinglessVM") CreateSendRinglessVM
+
+> API endpoint used to send a Ringless Voicemail
+
+
+```csharp
+Task<string> CreateSendRinglessVM(CreateSendRinglessVMInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| fromCountryCode |  ``` Required ```  | From country code |
+| mfrom |  ``` Required ```  | This number to display on Caller ID as calling |
+| toCountryCode |  ``` Required ```  | To country code |
+| to |  ``` Required ```  | To number |
+| voiceMailURL |  ``` Required ```  | URL to an audio file |
+| method |  ``` Required ```  ``` DefaultValue ```  | Not currently used in this version |
+| statusCallBackUrl |  ``` Optional ```  | URL to post the status of the Ringless request |
+| statsCallBackMethod |  ``` Optional ```  | POST or GET |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateSendRinglessVMInput collect = new CreateSendRinglessVMInput();
+
+string fromCountryCode = "FromCountryCode";
+collect.FromCountryCode = fromCountryCode;
+
+string mfrom = "From";
+collect.Mfrom = mfrom;
+
+string toCountryCode = "ToCountryCode";
+collect.ToCountryCode = toCountryCode;
+
+string to = "To";
+collect.To = to;
+
+string voiceMailURL = "VoiceMailURL";
+collect.VoiceMailURL = voiceMailURL;
+
+string method = "GET";
+collect.Method = method;
+
+string statusCallBackUrl = "StatusCallBackUrl";
+collect.StatusCallBackUrl = statusCallBackUrl;
+
+string statsCallBackMethod = "StatsCallBackMethod";
+collect.StatsCallBackMethod = statsCallBackMethod;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await call.CreateSendRinglessVM(collect);
 
 ```
 
@@ -2008,7 +2070,7 @@ CreateSuspendSubAccountInput collect = new CreateSuspendSubAccountInput();
 string subAccountSID = "SubAccountSID";
 collect.SubAccountSID = subAccountSID;
 
-var activate = (Models.ActivateStatus)0;
+var activate = (Models.ActivateStatusEnum)0;
 collect.Activate = activate;
 
 string responseType = "ResponseType";
@@ -2046,7 +2108,7 @@ CreateDeleteSubAccountInput collect = new CreateDeleteSubAccountInput();
 string subAccountSID = "SubAccountSID";
 collect.SubAccountSID = subAccountSID;
 
-var mergeNumber = (Models.MergeNumberStatus)0;
+var mergeNumber = (Models.MergeNumberStatusEnum)0;
 collect.MergeNumber = mergeNumber;
 
 string responseType = "json";
@@ -2340,37 +2402,37 @@ collect.FriendlyName = friendlyName;
 string voiceUrl = "VoiceUrl";
 collect.VoiceUrl = voiceUrl;
 
-var voiceMethod = Models.HttpAction?Helper.ParseString("GET");
+var voiceMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.VoiceMethod = voiceMethod;
 
 string voiceFallbackUrl = "VoiceFallbackUrl";
 collect.VoiceFallbackUrl = voiceFallbackUrl;
 
-var voiceFallbackMethod = Models.HttpAction?Helper.ParseString("GET");
+var voiceFallbackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.VoiceFallbackMethod = voiceFallbackMethod;
 
 string hangupCallback = "HangupCallback";
 collect.HangupCallback = hangupCallback;
 
-var hangupCallbackMethod = Models.HttpAction?Helper.ParseString("GET");
+var hangupCallbackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.HangupCallbackMethod = hangupCallbackMethod;
 
 string heartbeatUrl = "HeartbeatUrl";
 collect.HeartbeatUrl = heartbeatUrl;
 
-var heartbeatMethod = Models.HttpAction?Helper.ParseString("GET");
+var heartbeatMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.HeartbeatMethod = heartbeatMethod;
 
 string smsUrl = "SmsUrl";
 collect.SmsUrl = smsUrl;
 
-var smsMethod = Models.HttpAction?Helper.ParseString("GET");
+var smsMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.SmsMethod = smsMethod;
 
 string smsFallbackUrl = "SmsFallbackUrl";
 collect.SmsFallbackUrl = smsFallbackUrl;
 
-var smsFallbackMethod = Models.HttpAction?Helper.ParseString("GET");
+var smsFallbackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.SmsFallbackMethod = smsFallbackMethod;
 
 string responseType = "json";
@@ -2509,13 +2571,13 @@ Task<string> CreateListNumber(CreateListNumberInput input)
 ```csharp
 CreateListNumberInput collect = new CreateListNumberInput();
 
-int? page = 170;
+int? page = 79;
 collect.Page = page;
 
 int? pageSize = 10;
 collect.PageSize = pageSize;
 
-var numberType = Models.NumberType?Helper.ParseString("ALL");
+var numberType = Models.NumberTypeEnum?Helper.ParseString("ALL");
 collect.NumberType = numberType;
 
 string friendlyName = "FriendlyName";
@@ -2554,7 +2616,7 @@ Task<string> CreateAvailablePhoneNumber(CreateAvailablePhoneNumberInput input)
 ```csharp
 CreateAvailablePhoneNumberInput collect = new CreateAvailablePhoneNumberInput();
 
-var numberType = Models.NumberTypeHelper.ParseString("ALL");
+var numberType = Models.NumberTypeEnumHelper.ParseString("ALL");
 collect.NumberType = numberType;
 
 string areaCode = "AreaCode";
@@ -2609,10 +2671,10 @@ Task<string> CreateListRecording(CreateListRecordingInput input)
 ```csharp
 CreateListRecordingInput collect = new CreateListRecordingInput();
 
-int? page = 170;
+int? page = 79;
 collect.Page = page;
 
-int? pageSize = 170;
+int? pageSize = 79;
 collect.PageSize = pageSize;
 
 string dateCreated = "DateCreated";
@@ -2735,7 +2797,7 @@ Task<string> CreateListInboundSMS(CreateListInboundSMSInput input)
 ```csharp
 CreateListInboundSMSInput collect = new CreateListInboundSMSInput();
 
-int? page = 170;
+int? page = 79;
 collect.Page = page;
 
 string pagesize = "pagesize";
@@ -2782,10 +2844,10 @@ Task<string> CreateListSMS(CreateListSMSInput input)
 ```csharp
 CreateListSMSInput collect = new CreateListSMSInput();
 
-int? page = 170;
+int? page = 79;
 collect.Page = page;
 
-int? pagesize = 170;
+int? pagesize = 79;
 collect.Pagesize = pagesize;
 
 string mfrom = "from";
@@ -2849,7 +2911,7 @@ collect.To = to;
 string body = "body";
 collect.Body = body;
 
-var method = Models.HttpAction?Helper.ParseString("GET");
+var method = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.Method = method;
 
 string messagestatuscallback = "messagestatuscallback";
@@ -3037,13 +3099,13 @@ Task<string> CreateListTranscription(CreateListTranscriptionInput input)
 ```csharp
 CreateListTranscriptionInput collect = new CreateListTranscriptionInput();
 
-int? page = 170;
+int? page = 79;
 collect.Page = page;
 
-int? pageSize = 170;
+int? pageSize = 79;
 collect.PageSize = pageSize;
 
-var status = Models.Status?Helper.ParseString("INPROGRESS");
+var status = Models.StatusEnum?Helper.ParseString("INPROGRESS");
 collect.Status = status;
 
 string dateTranscribed = "DateTranscribed";
@@ -3094,7 +3156,7 @@ Task<string> CreateListUsage(CreateListUsageInput input)
 ```csharp
 CreateListUsageInput collect = new CreateListUsageInput();
 
-var productCode = (Models.ProductCode)0;
+var productCode = (Models.ProductCodeEnum)0;
 collect.ProductCode = productCode;
 
 string startDate = "2016-09-06";

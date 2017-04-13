@@ -5,7 +5,7 @@
  */
 using System;
 using message360.Controllers;
-using message360.Http.Client;
+using APIMATIC.SDK.Http.Client;
 
 namespace message360
 {

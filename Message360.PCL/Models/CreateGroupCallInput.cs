@@ -12,8 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
@@ -25,19 +25,19 @@ namespace message360.Models
         private string toCountryCode = "1";
         private string to;
         private string url;
-        private Models.HttpAction? method;
+        private Models.HttpActionEnum? method;
         private string statusCallBackUrl;
-        private Models.HttpAction? statusCallBackMethod;
+        private Models.HttpActionEnum? statusCallBackMethod;
         private string fallBackUrl;
-        private Models.HttpAction? fallBackMethod;
+        private Models.HttpActionEnum? fallBackMethod;
         private string heartBeatUrl;
-        private Models.HttpAction? heartBeatMethod;
+        private Models.HttpActionEnum? heartBeatMethod;
         private int? timeout;
         private string playDtmf;
         private string hideCallerId;
         private bool? record;
         private string recordCallBackUrl;
-        private Models.HttpAction? recordCallBackMethod;
+        private Models.HttpActionEnum? recordCallBackMethod;
         private bool? transcribe;
         private string transcribeCallBackUrl;
         private string responseType = "json";
@@ -131,7 +131,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("Method", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.HttpAction? Method 
+        public Models.HttpActionEnum? Method 
         { 
             get 
             {
@@ -165,7 +165,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("StatusCallBackMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.HttpAction? StatusCallBackMethod 
+        public Models.HttpActionEnum? StatusCallBackMethod 
         { 
             get 
             {
@@ -199,7 +199,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("FallBackMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.HttpAction? FallBackMethod 
+        public Models.HttpActionEnum? FallBackMethod 
         { 
             get 
             {
@@ -233,7 +233,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("HeartBeatMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.HttpAction? HeartBeatMethod 
+        public Models.HttpActionEnum? HeartBeatMethod 
         { 
             get 
             {
@@ -335,7 +335,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("RecordCallBackMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.HttpAction? RecordCallBackMethod 
+        public Models.HttpActionEnum? RecordCallBackMethod 
         { 
             get 
             {

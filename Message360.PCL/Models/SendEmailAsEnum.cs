@@ -8,39 +8,38 @@ using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
 
 namespace message360.Models
 {
     [JsonConverter(typeof(StringValuedEnumConverter))]
-    public enum AudioDirection
+    public enum SendEmailAsEnum
     {
-        IN, //TODO: Write general description for this method
-        OUT, //TODO: Write general description for this method
+        TEXT, //Email send as text format
+        HTML, //Email send as HTML format
     }
 
     /// <summary>
-    /// Helper for the enum type AudioDirection
+    /// Helper for the enum type SendEmailAsEnum
     /// </summary>
-    public static class AudioDirectionHelper
+    public static class SendEmailAsEnumHelper
     {
         //string values corresponding the enum elements
-        private static List<string> stringValues = new List<string> { "in", "out" };
+        private static List<string> stringValues = new List<string> { "text", "html" };
 
         /// <summary>
-        /// Converts a AudioDirection value to a corresponding string value
+        /// Converts a SendEmailAsEnum value to a corresponding string value
         /// </summary>
-        /// <param name="enumValue">The AudioDirection value to convert</param>
+        /// <param name="enumValue">The SendEmailAsEnum value to convert</param>
         /// <returns>The representative string value</returns>
-        public static string ToValue(AudioDirection enumValue)
+        public static string ToValue(SendEmailAsEnum enumValue)
         {
             switch(enumValue)
             {
                 //only valid enum elements can be used
                 //this is necessary to avoid errors
-                case AudioDirection.IN:
-                case AudioDirection.OUT:
+                case SendEmailAsEnum.TEXT:
+                case SendEmailAsEnum.HTML:
                     return stringValues[(int)enumValue];
 
                 //an invalid enum value was requested
@@ -50,11 +49,11 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Convert a list of AudioDirection values to a list of strings
+        /// Convert a list of SendEmailAsEnum values to a list of strings
         /// </summary>
-        /// <param name="enumValues">The list of AudioDirection values to convert</param>
+        /// <param name="enumValues">The list of SendEmailAsEnum values to convert</param>
         /// <returns>The list of representative string values</returns>
-        public static List<string> ToValue(List<AudioDirection> enumValues)
+        public static List<string> ToValue(List<SendEmailAsEnum> enumValues)
         {
             if (null == enumValues)
                 return null;
@@ -63,17 +62,17 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Converts a string value into AudioDirection value
+        /// Converts a string value into SendEmailAsEnum value
         /// </summary>
         /// <param name="value">The string value to parse</param>
-        /// <returns>The parsed AudioDirection value</returns>
-        public static AudioDirection ParseString(string value)
+        /// <returns>The parsed SendEmailAsEnum value</returns>
+        public static SendEmailAsEnum ParseString(string value)
         {
             int index = stringValues.IndexOf(value);
             if(index < 0)
-                throw new InvalidCastException(string.Format("Unable to cast value: {0} to type AudioDirection", value));
+                throw new InvalidCastException(string.Format("Unable to cast value: {0} to type SendEmailAsEnum", value));
 
-            return (AudioDirection) index;
+            return (SendEmailAsEnum) index;
         }
     }
 } 

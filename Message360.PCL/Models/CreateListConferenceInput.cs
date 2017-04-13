@@ -12,8 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
@@ -23,7 +23,7 @@ namespace message360.Models
         private int? page;
         private int? pageSize;
         private string friendlyName;
-        private Models.InterruptedCallStatus? status;
+        private Models.InterruptedCallStatusEnum? status;
         private string dateCreated;
         private string dateUpdated;
         private string responseType = "json";
@@ -83,7 +83,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("Status", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.InterruptedCallStatus? Status 
+        public Models.InterruptedCallStatusEnum? Status 
         { 
             get 
             {
