@@ -17,62 +17,62 @@ using APIMATIC.SDK.Common;
 
 namespace message360.Models
 {
-    public class CreateSendDigitInput : BaseModel 
+    public class CreateListTemplatesInput : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private string callSid;
-        private string playDtmf;
-        private Models.DirectionEnum? playDtmfDirection;
+        private string type = "authorization";
+        private int? page;
+        private int? pagesize = 10;
         private string responseType = "json";
 
         /// <summary>
-        /// The unique identifier of each call resource
+        /// The type (category) of template Valid values: marketing, authorization
         /// </summary>
-        [JsonProperty("CallSid")]
-        public string CallSid 
+        [JsonProperty("type")]
+        public string Type 
         { 
             get 
             {
-                return this.callSid; 
+                return this.type; 
             } 
             set 
             {
-                this.callSid = value;
-                onPropertyChanged("CallSid");
+                this.type = value;
+                onPropertyChanged("Type");
             }
         }
 
         /// <summary>
-        /// DTMF digits to play to the call. 0-9, #, *, W, or w
+        /// The page count to retrieve from the total results in the collection. Page indexing starts at 1.
         /// </summary>
-        [JsonProperty("PlayDtmf")]
-        public string PlayDtmf 
+        [JsonProperty("page")]
+        public int? Page 
         { 
             get 
             {
-                return this.playDtmf; 
+                return this.page; 
             } 
             set 
             {
-                this.playDtmf = value;
-                onPropertyChanged("PlayDtmf");
+                this.page = value;
+                onPropertyChanged("Page");
             }
         }
 
         /// <summary>
-        /// The leg of the call DTMF digits should be sent to
+        /// The count of objects to return per page.
         /// </summary>
-        [JsonProperty("PlayDtmfDirection", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.DirectionEnum? PlayDtmfDirection 
+        [JsonProperty("pagesize")]
+        public int? Pagesize 
         { 
             get 
             {
-                return this.playDtmfDirection; 
+                return this.pagesize; 
             } 
             set 
             {
-                this.playDtmfDirection = value;
-                onPropertyChanged("PlayDtmfDirection");
+                this.pagesize = value;
+                onPropertyChanged("Pagesize");
             }
         }
 

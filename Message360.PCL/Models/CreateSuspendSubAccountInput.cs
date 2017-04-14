@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
 using System.IO;
@@ -12,40 +12,40 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
-    public class CreateSuspendSubAccountInput : INotifyPropertyChanged 
+    public class CreateSuspendSubAccountInput : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private string subaccountsid;
-        private ActivateStatus activate;
+        private string subAccountSID;
+        private Models.ActivateStatusEnum activate = ActivateStatusEnum.DEACTIVATE;
         private string responseType;
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The SubaccountSid to be activated or suspended
         /// </summary>
-        [JsonProperty("subaccountsid")]
-        public string Subaccountsid 
+        [JsonProperty("SubAccountSID")]
+        public string SubAccountSID 
         { 
             get 
             {
-                return this.subaccountsid; 
+                return this.subAccountSID; 
             } 
             set 
             {
-                this.subaccountsid = value;
-                onPropertyChanged("Subaccountsid");
+                this.subAccountSID = value;
+                onPropertyChanged("SubAccountSID");
             }
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// 0 to suspend or 1 to activate
         /// </summary>
-        [JsonProperty("activate")]
-        public ActivateStatus Activate 
+        [JsonProperty("Activate")]
+        public Models.ActivateStatusEnum Activate 
         { 
             get 
             {
@@ -72,23 +72,6 @@ namespace message360.Models
             {
                 this.responseType = value;
                 onPropertyChanged("ResponseType");
-            }
-        }
-
-        /// <summary>
-        /// Property changed event for observer pattern
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Raises event when a property is changed
-        /// </summary>
-        /// <param name="propertyName">Name of the changed property</param>
-        protected void onPropertyChanged(String propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }

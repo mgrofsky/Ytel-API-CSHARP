@@ -17,15 +17,18 @@ using APIMATIC.SDK.Common;
 
 namespace message360.Models
 {
-    public class CreateCarrierLookupListInput : BaseModel 
+    public class CreateListShortCodeInput : BaseModel 
     {
         // These fields hold the values for the public properties.
         private int? page;
-        private int? pagesize;
+        private int? pagesize = 10;
+        private string mfrom;
+        private string to;
+        private string datesent;
         private string responseType = "json";
 
         /// <summary>
-        /// Page Number
+        /// Which page of the overall response will be returned. Zero indexed
         /// </summary>
         [JsonProperty("page")]
         public int? Page 
@@ -42,7 +45,7 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Page Size
+        /// Number of individual resources listed in the response per page
         /// </summary>
         [JsonProperty("pagesize")]
         public int? Pagesize 
@@ -55,6 +58,57 @@ namespace message360.Models
             {
                 this.pagesize = value;
                 onPropertyChanged("Pagesize");
+            }
+        }
+
+        /// <summary>
+        /// Messages sent from this number
+        /// </summary>
+        [JsonProperty("from")]
+        public string From 
+        { 
+            get 
+            {
+                return this.mfrom; 
+            } 
+            set 
+            {
+                this.mfrom = value;
+                onPropertyChanged("From");
+            }
+        }
+
+        /// <summary>
+        /// Messages sent to this number
+        /// </summary>
+        [JsonProperty("to")]
+        public string To 
+        { 
+            get 
+            {
+                return this.to; 
+            } 
+            set 
+            {
+                this.to = value;
+                onPropertyChanged("To");
+            }
+        }
+
+        /// <summary>
+        /// Only list SMS messages sent in the specified date range
+        /// </summary>
+        [JsonProperty("datesent")]
+        public string Datesent 
+        { 
+            get 
+            {
+                return this.datesent; 
+            } 
+            set 
+            {
+                this.datesent = value;
+                onPropertyChanged("Datesent");
             }
         }
 

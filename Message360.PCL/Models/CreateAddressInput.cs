@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
 using System.IO;
@@ -12,12 +12,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
-    public class CreateAddressInput : INotifyPropertyChanged 
+    public class CreateAddressInput : BaseModel 
     {
         // These fields hold the values for the public properties.
         private string name;
@@ -34,7 +34,7 @@ namespace message360.Models
         /// <summary>
         /// Name of user
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("Name")]
         public string Name 
         { 
             get 
@@ -51,7 +51,7 @@ namespace message360.Models
         /// <summary>
         /// Address of user.
         /// </summary>
-        [JsonProperty("address")]
+        [JsonProperty("Address")]
         public string Address 
         { 
             get 
@@ -68,7 +68,7 @@ namespace message360.Models
         /// <summary>
         /// Must be a 2 letter country short-name code (ISO 3166)
         /// </summary>
-        [JsonProperty("country")]
+        [JsonProperty("Country")]
         public string Country 
         { 
             get 
@@ -85,7 +85,7 @@ namespace message360.Models
         /// <summary>
         /// Must be a 2 letter State eg. CA for US. For Some Countries it can be greater than 2 letters.
         /// </summary>
-        [JsonProperty("state")]
+        [JsonProperty("State")]
         public string State 
         { 
             get 
@@ -102,7 +102,7 @@ namespace message360.Models
         /// <summary>
         /// City Name.
         /// </summary>
-        [JsonProperty("city")]
+        [JsonProperty("City")]
         public string City 
         { 
             get 
@@ -119,7 +119,7 @@ namespace message360.Models
         /// <summary>
         /// Zip code of city.
         /// </summary>
-        [JsonProperty("zip")]
+        [JsonProperty("Zip")]
         public string Zip 
         { 
             get 
@@ -136,7 +136,7 @@ namespace message360.Models
         /// <summary>
         /// Description of addresses.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonProperty("Description")]
         public string Description 
         { 
             get 
@@ -170,7 +170,7 @@ namespace message360.Models
         /// <summary>
         /// Phone number of user.
         /// </summary>
-        [JsonProperty("phone")]
+        [JsonProperty("Phone")]
         public string Phone 
         { 
             get 
@@ -185,7 +185,7 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Response Type Either json or xml
+        /// Response type either json or xml
         /// </summary>
         [JsonProperty("ResponseType")]
         public string ResponseType 
@@ -198,23 +198,6 @@ namespace message360.Models
             {
                 this.responseType = value;
                 onPropertyChanged("ResponseType");
-            }
-        }
-
-        /// <summary>
-        /// Property changed event for observer pattern
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Raises event when a property is changed
-        /// </summary>
-        /// <param name="propertyName">Name of the changed property</param>
-        protected void onPropertyChanged(String propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }

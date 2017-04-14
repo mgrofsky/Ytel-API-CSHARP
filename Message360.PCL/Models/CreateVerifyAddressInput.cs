@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
 using System.IO;
@@ -12,36 +12,36 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
-    public class CreateVerifyAddressInput : INotifyPropertyChanged 
+    public class CreateVerifyAddressInput : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private string addressid;
+        private string addressSID;
         private string responseType = "json";
 
         /// <summary>
         /// The identifier of the address to be verified.
         /// </summary>
-        [JsonProperty("addressid")]
-        public string Addressid 
+        [JsonProperty("AddressSID")]
+        public string AddressSID 
         { 
             get 
             {
-                return this.addressid; 
+                return this.addressSID; 
             } 
             set 
             {
-                this.addressid = value;
-                onPropertyChanged("Addressid");
+                this.addressSID = value;
+                onPropertyChanged("AddressSID");
             }
         }
 
         /// <summary>
-        /// Response type either JSON or xml
+        /// Response type either json or xml
         /// </summary>
         [JsonProperty("ResponseType")]
         public string ResponseType 
@@ -54,23 +54,6 @@ namespace message360.Models
             {
                 this.responseType = value;
                 onPropertyChanged("ResponseType");
-            }
-        }
-
-        /// <summary>
-        /// Property changed event for observer pattern
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Raises event when a property is changed
-        /// </summary>
-        /// <param name="propertyName">Name of the changed property</param>
-        protected void onPropertyChanged(String propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }

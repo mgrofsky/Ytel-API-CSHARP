@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
 using System.IO;
@@ -12,18 +12,18 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
-    public class CreateInterruptedCallInput : INotifyPropertyChanged 
+    public class CreateInterruptedCallInput : BaseModel 
     {
         // These fields hold the values for the public properties.
         private string callSid;
         private string url;
-        private HttpAction? method;
-        private InterruptedCallStatus? status;
+        private Models.HttpActionEnum? method;
+        private Models.InterruptedCallStatusEnum? status;
         private string responseType = "json";
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace message360.Models
         /// The method used to request the above Url parameter
         /// </summary>
         [JsonProperty("Method", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? Method 
+        public Models.HttpActionEnum? Method 
         { 
             get 
             {
@@ -81,7 +81,7 @@ namespace message360.Models
         /// Status to set the in-progress call to
         /// </summary>
         [JsonProperty("Status", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public InterruptedCallStatus? Status 
+        public Models.InterruptedCallStatusEnum? Status 
         { 
             get 
             {
@@ -108,23 +108,6 @@ namespace message360.Models
             {
                 this.responseType = value;
                 onPropertyChanged("ResponseType");
-            }
-        }
-
-        /// <summary>
-        /// Property changed event for observer pattern
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Raises event when a property is changed
-        /// </summary>
-        /// <param name="propertyName">Name of the changed property</param>
-        protected void onPropertyChanged(String propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }

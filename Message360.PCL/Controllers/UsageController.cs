@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
 using System.Collections.Generic;
@@ -12,12 +12,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
-using message360.Http.Request;
-using message360.Http.Response;
-using message360.Http.Client;
-using message360.Exceptions;
+using APIMATIC.SDK.Common;
+using APIMATIC.SDK.Http.Request;
+using APIMATIC.SDK.Http.Response;
+using APIMATIC.SDK.Http.Client;
 using message360.Models;
 
 namespace message360.Controllers
@@ -100,11 +98,11 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "ProductCode", (int)(input.ProductCode) },
-                { "startDate", input.StartDate },
-                { "endDate", input.EndDate }
+                new KeyValuePair<string, object>( "ProductCode", (int)(input.ProductCode) ),
+                new KeyValuePair<string, object>( "startDate", input.StartDate ),
+                new KeyValuePair<string, object>( "endDate", input.EndDate )
             };
 
             //prepare the API call request to fetch the response

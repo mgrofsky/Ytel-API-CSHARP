@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
 using System.Collections.Generic;
@@ -12,12 +12,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
-using message360.Http.Request;
-using message360.Http.Response;
-using message360.Http.Client;
-using message360.Exceptions;
+using APIMATIC.SDK.Common;
+using APIMATIC.SDK.Http.Request;
+using APIMATIC.SDK.Http.Response;
+using APIMATIC.SDK.Http.Client;
 using message360.Models;
 
 namespace message360.Controllers
@@ -97,9 +95,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "email", input.Email }
+                new KeyValuePair<string, object>( "email", input.Email )
             };
 
             //prepare the API call request to fetch the response
@@ -164,10 +162,10 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "offset", input.Offset },
-                { "limit", input.Limit }
+                new KeyValuePair<string, object>( "offset", input.Offset ),
+                new KeyValuePair<string, object>( "limit", input.Limit )
             };
 
             //prepare the API call request to fetch the response
@@ -232,10 +230,10 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "offset", input.Offset },
-                { "limit", input.Limit }
+                new KeyValuePair<string, object>( "offset", input.Offset ),
+                new KeyValuePair<string, object>( "limit", input.Limit )
             };
 
             //prepare the API call request to fetch the response
@@ -300,10 +298,10 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "offset", input.Offset },
-                { "limit", input.Limit }
+                new KeyValuePair<string, object>( "offset", input.Offset ),
+                new KeyValuePair<string, object>( "limit", input.Limit )
             };
 
             //prepare the API call request to fetch the response
@@ -372,9 +370,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "email", input.Email }
+                new KeyValuePair<string, object>( "email", input.Email )
             };
 
             //prepare the API call request to fetch the response
@@ -439,10 +437,10 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "offet", input.Offet },
-                { "limit", input.Limit }
+                new KeyValuePair<string, object>( "offet", input.Offet ),
+                new KeyValuePair<string, object>( "limit", input.Limit )
             };
 
             //prepare the API call request to fetch the response
@@ -507,10 +505,10 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "offset", input.Offset },
-                { "limit", input.Limit }
+                new KeyValuePair<string, object>( "offset", input.Offset ),
+                new KeyValuePair<string, object>( "limit", input.Limit )
             };
 
             //prepare the API call request to fetch the response
@@ -579,9 +577,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "email", input.Email }
+                new KeyValuePair<string, object>( "email", input.Email )
             };
 
             //prepare the API call request to fetch the response
@@ -650,9 +648,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "email", input.Email }
+                new KeyValuePair<string, object>( "email", input.Email )
             };
 
             //prepare the API call request to fetch the response
@@ -721,9 +719,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "email", input.Email }
+                new KeyValuePair<string, object>( "email", input.Email )
             };
 
             //prepare the API call request to fetch the response
@@ -792,9 +790,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "email", input.Email }
+                new KeyValuePair<string, object>( "email", input.Email )
             };
 
             //prepare the API call request to fetch the response
@@ -872,16 +870,16 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "to", input.To },
-                { "from", input.From },
-                { "type", SendEmailAsHelper.ToValue(input.Type) },
-                { "subject", input.Subject },
-                { "message", input.Message },
-                { "cc", input.Cc },
-                { "bcc", input.Bcc },
-                { "attachment", input.Attachment }
+                new KeyValuePair<string, object>( "to", input.To ),
+                new KeyValuePair<string, object>( "from", input.From ),
+                new KeyValuePair<string, object>( "type", SendEmailAsEnumHelper.ToValue(input.Type) ),
+                new KeyValuePair<string, object>( "subject", input.Subject ),
+                new KeyValuePair<string, object>( "message", input.Message ),
+                new KeyValuePair<string, object>( "cc", input.Cc ),
+                new KeyValuePair<string, object>( "bcc", input.Bcc ),
+                new KeyValuePair<string, object>( "attachment", input.Attachment )
             };
 
             //prepare the API call request to fetch the response

@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
 using System.IO;
@@ -12,12 +12,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
-    public class CreateGroupCallInput : INotifyPropertyChanged 
+    public class CreateGroupCallInput : BaseModel 
     {
         // These fields hold the values for the public properties.
         private string fromCountryCode = "1";
@@ -25,19 +25,19 @@ namespace message360.Models
         private string toCountryCode = "1";
         private string to;
         private string url;
-        private HttpAction? method;
+        private Models.HttpActionEnum? method;
         private string statusCallBackUrl;
-        private HttpAction? statusCallBackMethod;
+        private Models.HttpActionEnum? statusCallBackMethod;
         private string fallBackUrl;
-        private HttpAction? fallBackMethod;
+        private Models.HttpActionEnum? fallBackMethod;
         private string heartBeatUrl;
-        private HttpAction? heartBeatMethod;
+        private Models.HttpActionEnum? heartBeatMethod;
         private int? timeout;
         private string playDtmf;
         private string hideCallerId;
         private bool? record;
         private string recordCallBackUrl;
-        private HttpAction? recordCallBackMethod;
+        private Models.HttpActionEnum? recordCallBackMethod;
         private bool? transcribe;
         private string transcribeCallBackUrl;
         private string responseType = "json";
@@ -131,7 +131,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("Method", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? Method 
+        public Models.HttpActionEnum? Method 
         { 
             get 
             {
@@ -165,7 +165,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("StatusCallBackMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? StatusCallBackMethod 
+        public Models.HttpActionEnum? StatusCallBackMethod 
         { 
             get 
             {
@@ -199,7 +199,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("FallBackMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? FallBackMethod 
+        public Models.HttpActionEnum? FallBackMethod 
         { 
             get 
             {
@@ -233,7 +233,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("HeartBeatMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? HeartBeatMethod 
+        public Models.HttpActionEnum? HeartBeatMethod 
         { 
             get 
             {
@@ -335,7 +335,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("RecordCallBackMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? RecordCallBackMethod 
+        public Models.HttpActionEnum? RecordCallBackMethod 
         { 
             get 
             {
@@ -396,23 +396,6 @@ namespace message360.Models
             {
                 this.responseType = value;
                 onPropertyChanged("ResponseType");
-            }
-        }
-
-        /// <summary>
-        /// Property changed event for observer pattern
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Raises event when a property is changed
-        /// </summary>
-        /// <param name="propertyName">Name of the changed property</param>
-        protected void onPropertyChanged(String propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }

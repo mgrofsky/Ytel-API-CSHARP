@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
 using System.IO;
@@ -12,28 +12,28 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
-    public class UpdatePhoneNumberInput : INotifyPropertyChanged 
+    public class UpdatePhoneNumberInput : BaseModel 
     {
         // These fields hold the values for the public properties.
         private string phoneNumber;
         private string friendlyName;
         private string voiceUrl;
-        private HttpAction? voiceMethod;
+        private Models.HttpActionEnum? voiceMethod;
         private string voiceFallbackUrl;
-        private HttpAction? voiceFallbackMethod;
+        private Models.HttpActionEnum? voiceFallbackMethod;
         private string hangupCallback;
-        private HttpAction? hangupCallbackMethod;
+        private Models.HttpActionEnum? hangupCallbackMethod;
         private string heartbeatUrl;
-        private HttpAction? heartbeatMethod;
+        private Models.HttpActionEnum? heartbeatMethod;
         private string smsUrl;
-        private HttpAction? smsMethod;
+        private Models.HttpActionEnum? smsMethod;
         private string smsFallbackUrl;
-        private HttpAction? smsFallbackMethod;
+        private Models.HttpActionEnum? smsFallbackMethod;
         private string responseType = "json";
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("VoiceMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? VoiceMethod 
+        public Models.HttpActionEnum? VoiceMethod 
         { 
             get 
             {
@@ -125,7 +125,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("VoiceFallbackMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? VoiceFallbackMethod 
+        public Models.HttpActionEnum? VoiceFallbackMethod 
         { 
             get 
             {
@@ -159,7 +159,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("HangupCallbackMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? HangupCallbackMethod 
+        public Models.HttpActionEnum? HangupCallbackMethod 
         { 
             get 
             {
@@ -193,7 +193,7 @@ namespace message360.Models
         /// URL that can be requested every 60 seconds during the call to notify of elapsed time
         /// </summary>
         [JsonProperty("HeartbeatMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? HeartbeatMethod 
+        public Models.HttpActionEnum? HeartbeatMethod 
         { 
             get 
             {
@@ -227,7 +227,7 @@ namespace message360.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("SmsMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? SmsMethod 
+        public Models.HttpActionEnum? SmsMethod 
         { 
             get 
             {
@@ -261,7 +261,7 @@ namespace message360.Models
         /// URL requested if the sms URL is not available
         /// </summary>
         [JsonProperty("SmsFallbackMethod", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public HttpAction? SmsFallbackMethod 
+        public Models.HttpActionEnum? SmsFallbackMethod 
         { 
             get 
             {
@@ -288,23 +288,6 @@ namespace message360.Models
             {
                 this.responseType = value;
                 onPropertyChanged("ResponseType");
-            }
-        }
-
-        /// <summary>
-        /// Property changed event for observer pattern
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Raises event when a property is changed
-        /// </summary>
-        /// <param name="propertyName">Name of the changed property</param>
-        protected void onPropertyChanged(String propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }

@@ -17,40 +17,40 @@ using APIMATIC.SDK.Common;
 
 namespace message360.Models
 {
-    public class CreateSendEmailInput : BaseModel 
+    public class CreateSendRinglessVMInput : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private string to;
+        private string fromCountryCode;
         private string mfrom;
-        private Models.SendEmailAsEnum type = SendEmailAsEnum.HTML;
-        private string subject;
-        private string message;
-        private string cc;
-        private string bcc;
-        private string attachment;
+        private string toCountryCode;
+        private string to;
+        private string voiceMailURL;
+        private string method = "GET";
+        private string statusCallBackUrl;
+        private string statsCallBackMethod;
         private string responseType = "json";
 
         /// <summary>
-        /// The to email address
+        /// From country code
         /// </summary>
-        [JsonProperty("to")]
-        public string To 
+        [JsonProperty("FromCountryCode")]
+        public string FromCountryCode 
         { 
             get 
             {
-                return this.to; 
+                return this.fromCountryCode; 
             } 
             set 
             {
-                this.to = value;
-                onPropertyChanged("To");
+                this.fromCountryCode = value;
+                onPropertyChanged("FromCountryCode");
             }
         }
 
         /// <summary>
-        /// The from email address
+        /// This number to display on Caller ID as calling
         /// </summary>
-        [JsonProperty("from")]
+        [JsonProperty("From")]
         public string From 
         { 
             get 
@@ -65,104 +65,104 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// email format type, html or text
+        /// To country code
         /// </summary>
-        [JsonProperty("type", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.SendEmailAsEnum Type 
+        [JsonProperty("ToCountryCode")]
+        public string ToCountryCode 
         { 
             get 
             {
-                return this.type; 
+                return this.toCountryCode; 
             } 
             set 
             {
-                this.type = value;
-                onPropertyChanged("Type");
+                this.toCountryCode = value;
+                onPropertyChanged("ToCountryCode");
             }
         }
 
         /// <summary>
-        /// Email subject
+        /// To number
         /// </summary>
-        [JsonProperty("subject")]
-        public string Subject 
+        [JsonProperty("To")]
+        public string To 
         { 
             get 
             {
-                return this.subject; 
+                return this.to; 
             } 
             set 
             {
-                this.subject = value;
-                onPropertyChanged("Subject");
+                this.to = value;
+                onPropertyChanged("To");
             }
         }
 
         /// <summary>
-        /// The body of the email message
+        /// URL to an audio file
         /// </summary>
-        [JsonProperty("message")]
-        public string Message 
+        [JsonProperty("VoiceMailURL")]
+        public string VoiceMailURL 
         { 
             get 
             {
-                return this.message; 
+                return this.voiceMailURL; 
             } 
             set 
             {
-                this.message = value;
-                onPropertyChanged("Message");
+                this.voiceMailURL = value;
+                onPropertyChanged("VoiceMailURL");
             }
         }
 
         /// <summary>
-        /// CC Email address
+        /// Not currently used in this version
         /// </summary>
-        [JsonProperty("cc")]
-        public string Cc 
+        [JsonProperty("Method")]
+        public string Method 
         { 
             get 
             {
-                return this.cc; 
+                return this.method; 
             } 
             set 
             {
-                this.cc = value;
-                onPropertyChanged("Cc");
+                this.method = value;
+                onPropertyChanged("Method");
             }
         }
 
         /// <summary>
-        /// BCC Email address
+        /// URL to post the status of the Ringless request
         /// </summary>
-        [JsonProperty("bcc")]
-        public string Bcc 
+        [JsonProperty("StatusCallBackUrl")]
+        public string StatusCallBackUrl 
         { 
             get 
             {
-                return this.bcc; 
+                return this.statusCallBackUrl; 
             } 
             set 
             {
-                this.bcc = value;
-                onPropertyChanged("Bcc");
+                this.statusCallBackUrl = value;
+                onPropertyChanged("StatusCallBackUrl");
             }
         }
 
         /// <summary>
-        /// File to be attached.File must be less than 7MB.
+        /// POST or GET
         /// </summary>
-        [JsonProperty("attachment")]
-        public string Attachment 
+        [JsonProperty("StatsCallBackMethod")]
+        public string StatsCallBackMethod 
         { 
             get 
             {
-                return this.attachment; 
+                return this.statsCallBackMethod; 
             } 
             set 
             {
-                this.attachment = value;
-                onPropertyChanged("Attachment");
+                this.statsCallBackMethod = value;
+                onPropertyChanged("StatsCallBackMethod");
             }
         }
 

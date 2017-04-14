@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
 using System.Collections.Generic;
@@ -12,12 +12,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
-using message360.Http.Request;
-using message360.Http.Response;
-using message360.Http.Client;
-using message360.Exceptions;
+using APIMATIC.SDK.Common;
+using APIMATIC.SDK.Http.Request;
+using APIMATIC.SDK.Http.Response;
+using APIMATIC.SDK.Http.Client;
 using message360.Models;
 
 namespace message360.Controllers
@@ -112,17 +110,17 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "name", input.Name },
-                { "address", input.Address },
-                { "country", input.Country },
-                { "state", input.State },
-                { "city", input.City },
-                { "zip", input.Zip },
-                { "description", input.Description },
-                { "email", input.Email },
-                { "phone", input.Phone }
+                new KeyValuePair<string, object>( "Name", input.Name ),
+                new KeyValuePair<string, object>( "Address", input.Address ),
+                new KeyValuePair<string, object>( "Country", input.Country ),
+                new KeyValuePair<string, object>( "State", input.State ),
+                new KeyValuePair<string, object>( "City", input.City ),
+                new KeyValuePair<string, object>( "Zip", input.Zip ),
+                new KeyValuePair<string, object>( "Description", input.Description ),
+                new KeyValuePair<string, object>( "email", input.Email ),
+                new KeyValuePair<string, object>( "Phone", input.Phone )
             };
 
             //prepare the API call request to fetch the response
@@ -164,8 +162,8 @@ namespace message360.Controllers
         public async Task<string> CreateDeleteAddressAsync(CreateDeleteAddressInput input)
         {
             //validating required parameters
-            if (null == input.Addressid)
-                throw new ArgumentNullException("addressid", "The property \"Addressid\" in the input object cannot be null.");
+            if (null == input.AddressSID)
+                throw new ArgumentNullException("addressSID", "The property \"AddressSID\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
@@ -191,9 +189,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "addressid", input.Addressid }
+                new KeyValuePair<string, object>( "AddressSID", input.AddressSID )
             };
 
             //prepare the API call request to fetch the response
@@ -235,8 +233,8 @@ namespace message360.Controllers
         public async Task<string> CreateVerifyAddressAsync(CreateVerifyAddressInput input)
         {
             //validating required parameters
-            if (null == input.Addressid)
-                throw new ArgumentNullException("addressid", "The property \"Addressid\" in the input object cannot be null.");
+            if (null == input.AddressSID)
+                throw new ArgumentNullException("addressSID", "The property \"AddressSID\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
@@ -262,9 +260,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "addressid", input.Addressid }
+                new KeyValuePair<string, object>( "AddressSID", input.AddressSID )
             };
 
             //prepare the API call request to fetch the response
@@ -329,12 +327,12 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "page", input.Page },
-                { "pageSize", input.PageSize },
-                { "addressId", input.AddressId },
-                { "dateCreated", input.DateCreated }
+                new KeyValuePair<string, object>( "Page", input.Page ),
+                new KeyValuePair<string, object>( "PageSize", input.PageSize ),
+                new KeyValuePair<string, object>( "AddressSID", input.AddressSID ),
+                new KeyValuePair<string, object>( "DateCreated", input.DateCreated )
             };
 
             //prepare the API call request to fetch the response
@@ -376,8 +374,8 @@ namespace message360.Controllers
         public async Task<string> CreateViewAddressAsync(CreateViewAddressInput input)
         {
             //validating required parameters
-            if (null == input.AddressId)
-                throw new ArgumentNullException("addressId", "The property \"AddressId\" in the input object cannot be null.");
+            if (null == input.AddressSID)
+                throw new ArgumentNullException("addressSID", "The property \"AddressSID\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
@@ -403,9 +401,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "addressId", input.AddressId }
+                new KeyValuePair<string, object>( "AddressSID", input.AddressSID )
             };
 
             //prepare the API call request to fetch the response

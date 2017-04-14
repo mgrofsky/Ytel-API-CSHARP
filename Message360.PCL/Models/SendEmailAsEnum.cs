@@ -1,46 +1,45 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
 
 namespace message360.Models
 {
     [JsonConverter(typeof(StringValuedEnumConverter))]
-    public enum IfMachine
+    public enum SendEmailAsEnum
     {
-        CONTINUE, //TODO: Write general description for this method
-        HANGUP, //TODO: Write general description for this method
+        TEXT, //Email send as text format
+        HTML, //Email send as HTML format
     }
 
     /// <summary>
-    /// Helper for the enum type IfMachine
+    /// Helper for the enum type SendEmailAsEnum
     /// </summary>
-    public static class IfMachineHelper
+    public static class SendEmailAsEnumHelper
     {
         //string values corresponding the enum elements
-        private static List<string> stringValues = new List<string> { "continue", "hangup" };
+        private static List<string> stringValues = new List<string> { "text", "html" };
 
         /// <summary>
-        /// Converts a IfMachine value to a corresponding string value
+        /// Converts a SendEmailAsEnum value to a corresponding string value
         /// </summary>
-        /// <param name="enumValue">The IfMachine value to convert</param>
+        /// <param name="enumValue">The SendEmailAsEnum value to convert</param>
         /// <returns>The representative string value</returns>
-        public static string ToValue(IfMachine enumValue)
+        public static string ToValue(SendEmailAsEnum enumValue)
         {
             switch(enumValue)
             {
                 //only valid enum elements can be used
                 //this is necessary to avoid errors
-                case IfMachine.CONTINUE:
-                case IfMachine.HANGUP:
+                case SendEmailAsEnum.TEXT:
+                case SendEmailAsEnum.HTML:
                     return stringValues[(int)enumValue];
 
                 //an invalid enum value was requested
@@ -50,11 +49,11 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Convert a list of IfMachine values to a list of strings
+        /// Convert a list of SendEmailAsEnum values to a list of strings
         /// </summary>
-        /// <param name="enumValues">The list of IfMachine values to convert</param>
+        /// <param name="enumValues">The list of SendEmailAsEnum values to convert</param>
         /// <returns>The list of representative string values</returns>
-        public static List<string> ToValue(List<IfMachine> enumValues)
+        public static List<string> ToValue(List<SendEmailAsEnum> enumValues)
         {
             if (null == enumValues)
                 return null;
@@ -63,17 +62,17 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Converts a string value into IfMachine value
+        /// Converts a string value into SendEmailAsEnum value
         /// </summary>
         /// <param name="value">The string value to parse</param>
-        /// <returns>The parsed IfMachine value</returns>
-        public static IfMachine ParseString(string value)
+        /// <returns>The parsed SendEmailAsEnum value</returns>
+        public static SendEmailAsEnum ParseString(string value)
         {
             int index = stringValues.IndexOf(value);
             if(index < 0)
-                throw new InvalidCastException(string.Format("Unable to cast value: {0} to type IfMachine", value));
+                throw new InvalidCastException(string.Format("Unable to cast value: {0} to type SendEmailAsEnum", value));
 
-            return (IfMachine) index;
+            return (SendEmailAsEnum) index;
         }
     }
 } 

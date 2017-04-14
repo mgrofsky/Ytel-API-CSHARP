@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Text;
 using message360.Models;
+using APIMATIC.SDK.Common;
 
 namespace message360
 {
@@ -38,7 +39,7 @@ namespace message360
                 { 
                     Environments.PRODUCTION,new Dictionary<Servers, string>
                     {
-                        { Servers.DEFAULT,"https://api.message360.com/api/v2" },
+                        { Servers.DEFAULT,"https://api.message360.com/api/v3" },
                     }
                 },
                 { 
@@ -50,7 +51,7 @@ namespace message360
                 { 
                     Environments.DEVELOPMENT,new Dictionary<Servers, string>
                     {
-                        { Servers.DEFAULT,"https://api-dev.message360.com/api/v2" },
+                        { Servers.DEFAULT,"https://lara-dev.message360.com/api/v2" },
                     }
                 },
             };

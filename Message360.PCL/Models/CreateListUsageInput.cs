@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
 using System.IO;
@@ -12,15 +12,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
-    public class CreateListUsageInput : INotifyPropertyChanged 
+    public class CreateListUsageInput : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private ProductCode productCode = ProductCode.ALL;
+        private Models.ProductCodeEnum productCode = ProductCodeEnum.ALL;
         private string startDate = "2016-09-06";
         private string endDate = "2016-09-06";
         private string responseType = "json";
@@ -29,7 +29,7 @@ namespace message360.Models
         /// Product Code
         /// </summary>
         [JsonProperty("ProductCode")]
-        public ProductCode ProductCode 
+        public Models.ProductCodeEnum ProductCode 
         { 
             get 
             {
@@ -90,23 +90,6 @@ namespace message360.Models
             {
                 this.responseType = value;
                 onPropertyChanged("ResponseType");
-            }
-        }
-
-        /// <summary>
-        /// Property changed event for observer pattern
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Raises event when a property is changed
-        /// </summary>
-        /// <param name="propertyName">Name of the changed property</param>
-        protected void onPropertyChanged(String propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }

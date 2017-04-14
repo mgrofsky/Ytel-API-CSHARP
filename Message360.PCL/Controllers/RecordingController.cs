@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
 using System.Collections.Generic;
@@ -12,12 +12,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
-using message360.Http.Request;
-using message360.Http.Response;
-using message360.Http.Client;
-using message360.Exceptions;
+using APIMATIC.SDK.Common;
+using APIMATIC.SDK.Http.Request;
+using APIMATIC.SDK.Http.Response;
+using APIMATIC.SDK.Http.Client;
 using message360.Models;
 
 namespace message360.Controllers
@@ -93,12 +91,12 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "Page", input.Page },
-                { "PageSize", input.PageSize },
-                { "DateCreated", input.DateCreated },
-                { "CallSid", input.CallSid }
+                new KeyValuePair<string, object>( "Page", input.Page ),
+                new KeyValuePair<string, object>( "PageSize", input.PageSize ),
+                new KeyValuePair<string, object>( "DateCreated", input.DateCreated ),
+                new KeyValuePair<string, object>( "CallSid", input.CallSid )
             };
 
             //prepare the API call request to fetch the response
@@ -167,9 +165,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "RecordingSid", input.RecordingSid }
+                new KeyValuePair<string, object>( "RecordingSid", input.RecordingSid )
             };
 
             //prepare the API call request to fetch the response
@@ -238,9 +236,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "RecordingSid", input.RecordingSid }
+                new KeyValuePair<string, object>( "RecordingSid", input.RecordingSid )
             };
 
             //prepare the API call request to fetch the response

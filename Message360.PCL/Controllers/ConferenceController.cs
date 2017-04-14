@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
 using System.Collections.Generic;
@@ -12,12 +12,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
-using message360.Http.Request;
-using message360.Http.Response;
-using message360.Http.Client;
-using message360.Exceptions;
+using APIMATIC.SDK.Common;
+using APIMATIC.SDK.Http.Request;
+using APIMATIC.SDK.Http.Response;
+using APIMATIC.SDK.Http.Client;
 using message360.Models;
 
 namespace message360.Controllers
@@ -100,12 +98,12 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "conferenceSid", input.ConferenceSid },
-                { "ParticipantSid", input.ParticipantSid },
-                { "Muted", input.Muted },
-                { "Deaf", input.Deaf }
+                new KeyValuePair<string, object>( "conferenceSid", input.ConferenceSid ),
+                new KeyValuePair<string, object>( "ParticipantSid", input.ParticipantSid ),
+                new KeyValuePair<string, object>( "Muted", input.Muted ),
+                new KeyValuePair<string, object>( "Deaf", input.Deaf )
             };
 
             //prepare the API call request to fetch the response
@@ -170,14 +168,14 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "Page", input.Page },
-                { "PageSize", input.PageSize },
-                { "FriendlyName", input.FriendlyName },
-                { "Status", (input.Status.HasValue) ? InterruptedCallStatusHelper.ToValue(input.Status.Value) : null },
-                { "DateCreated", input.DateCreated },
-                { "DateUpdated", input.DateUpdated }
+                new KeyValuePair<string, object>( "Page", input.Page ),
+                new KeyValuePair<string, object>( "PageSize", input.PageSize ),
+                new KeyValuePair<string, object>( "FriendlyName", input.FriendlyName ),
+                new KeyValuePair<string, object>( "Status", (input.Status.HasValue) ? InterruptedCallStatusEnumHelper.ToValue(input.Status.Value) : null ),
+                new KeyValuePair<string, object>( "DateCreated", input.DateCreated ),
+                new KeyValuePair<string, object>( "DateUpdated", input.DateUpdated )
             };
 
             //prepare the API call request to fetch the response
@@ -246,9 +244,9 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "conferencesid", input.Conferencesid }
+                new KeyValuePair<string, object>( "conferencesid", input.Conferencesid )
             };
 
             //prepare the API call request to fetch the response
@@ -320,13 +318,13 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "conferencesid", input.Conferencesid },
-                { "participantnumber", input.Participantnumber },
-                { "tocountrycode", input.Tocountrycode },
-                { "muted", input.Muted },
-                { "deaf", input.Deaf }
+                new KeyValuePair<string, object>( "conferencesid", input.Conferencesid ),
+                new KeyValuePair<string, object>( "participantnumber", input.Participantnumber ),
+                new KeyValuePair<string, object>( "tocountrycode", input.Tocountrycode ),
+                new KeyValuePair<string, object>( "muted", input.Muted ),
+                new KeyValuePair<string, object>( "deaf", input.Deaf )
             };
 
             //prepare the API call request to fetch the response
@@ -395,13 +393,13 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "ConferenceSid", input.ConferenceSid },
-                { "Page", input.Page },
-                { "Pagesize", input.Pagesize },
-                { "Muted", input.Muted },
-                { "Deaf", input.Deaf }
+                new KeyValuePair<string, object>( "ConferenceSid", input.ConferenceSid ),
+                new KeyValuePair<string, object>( "Page", input.Page ),
+                new KeyValuePair<string, object>( "Pagesize", input.Pagesize ),
+                new KeyValuePair<string, object>( "Muted", input.Muted ),
+                new KeyValuePair<string, object>( "Deaf", input.Deaf )
             };
 
             //prepare the API call request to fetch the response
@@ -473,10 +471,10 @@ namespace message360.Controllers
             };
 
             //append form/field parameters
-            var _fields = new Dictionary<string,object>()
+            var _fields = new List<KeyValuePair<string, Object>>()
             {
-                { "ConferenceSid", input.ConferenceSid },
-                { "ParticipantSid", input.ParticipantSid }
+                new KeyValuePair<string, object>( "ConferenceSid", input.ConferenceSid ),
+                new KeyValuePair<string, object>( "ParticipantSid", input.ParticipantSid )
             };
 
             //prepare the API call request to fetch the response

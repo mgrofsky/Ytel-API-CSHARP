@@ -17,26 +17,26 @@ using APIMATIC.SDK.Common;
 
 namespace message360.Models
 {
-    public class CreateDeleteUnsubscribesInput : BaseModel 
+    public class CreateViewShortCodeInput : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private string email;
+        private string messagesid;
         private string responseType = "json";
 
         /// <summary>
-        /// The email to remove from the unsubscribe list
+        /// Message sid
         /// </summary>
-        [JsonProperty("email")]
-        public string Email 
+        [JsonProperty("messagesid")]
+        public string Messagesid 
         { 
             get 
             {
-                return this.email; 
+                return this.messagesid; 
             } 
             set 
             {
-                this.email = value;
-                onPropertyChanged("Email");
+                this.messagesid = value;
+                onPropertyChanged("Messagesid");
             }
         }
 

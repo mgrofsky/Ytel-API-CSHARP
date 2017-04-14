@@ -1,16 +1,27 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
 using message360.Controllers;
-using message360.Http.Client;
+using APIMATIC.SDK.Http.Client;
 
 namespace message360
 {
     public partial class Message360Client
     {
+
+        /// <summary>
+        /// Singleton access to ShortCode controller
+        /// </summary>
+        public ShortCodeController ShortCode
+        {
+            get
+            {
+                return ShortCodeController.Instance;
+            }
+        }
 
         /// <summary>
         /// Singleton access to Conference controller
@@ -64,28 +75,6 @@ namespace message360
             get
             {
                 return CallController.Instance;
-            }
-        }
-
-        /// <summary>
-        /// Singleton access to SMS controller
-        /// </summary>
-        public SMSController SMS
-        {
-            get
-            {
-                return SMSController.Instance;
-            }
-        }
-
-        /// <summary>
-        /// Singleton access to Account controller
-        /// </summary>
-        public AccountController Account
-        {
-            get
-            {
-                return AccountController.Instance;
             }
         }
 
@@ -145,6 +134,17 @@ namespace message360
         }
 
         /// <summary>
+        /// Singleton access to SMS controller
+        /// </summary>
+        public SMSController SMS
+        {
+            get
+            {
+                return SMSController.Instance;
+            }
+        }
+
+        /// <summary>
         /// Singleton access to Transcription controller
         /// </summary>
         public TranscriptionController Transcription
@@ -163,6 +163,17 @@ namespace message360
             get
             {
                 return UsageController.Instance;
+            }
+        }
+
+        /// <summary>
+        /// Singleton access to Account controller
+        /// </summary>
+        public AccountController Account
+        {
+            get
+            {
+                return AccountController.Instance;
             }
         }
         /// <summary>

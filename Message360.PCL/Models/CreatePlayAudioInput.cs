@@ -1,7 +1,7 @@
 /*
  * Message360.PCL
  *
- * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+ * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
  */
 using System;
 using System.IO;
@@ -12,18 +12,18 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using message360;
-using message360.Utilities;
+using APIMATIC.SDK.Common;
+
 
 namespace message360.Models
 {
-    public class CreatePlayAudioInput : INotifyPropertyChanged 
+    public class CreatePlayAudioInput : BaseModel 
     {
         // These fields hold the values for the public properties.
         private string callSid;
         private string audioUrl;
         private int? length;
-        private Direction? direction;
+        private Models.DirectionEnum? direction;
         private bool? loop;
         private bool? mix;
         private string responseType = "json";
@@ -83,7 +83,7 @@ namespace message360.Models
         /// The leg of the call audio will be played to
         /// </summary>
         [JsonProperty("Direction", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Direction? Direction 
+        public Models.DirectionEnum? Direction 
         { 
             get 
             {
@@ -144,23 +144,6 @@ namespace message360.Models
             {
                 this.responseType = value;
                 onPropertyChanged("ResponseType");
-            }
-        }
-
-        /// <summary>
-        /// Property changed event for observer pattern
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Raises event when a property is changed
-        /// </summary>
-        /// <param name="propertyName">Name of the changed property</param>
-        protected void onPropertyChanged(String propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }

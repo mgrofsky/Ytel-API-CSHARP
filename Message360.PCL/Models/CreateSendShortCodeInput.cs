@@ -17,57 +17,39 @@ using APIMATIC.SDK.Common;
 
 namespace message360.Models
 {
-    public class CreateSendSMSInput : BaseModel 
+    public class CreateSendShortCodeInput : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private int fromcountrycode = 1;
-        private string mfrom;
-        private int tocountrycode = 1;
+        private string shortcode;
+        private string tocountrycode = "1";
         private string to;
-        private string body;
-        private Models.HttpActionEnum? method;
-        private string messagestatuscallback;
+        private Guid templateid;
+        private string method = "GET";
+        private string messageStatusCallback;
         private string responseType = "json";
 
         /// <summary>
-        /// From Country Code
+        /// The Short Code number that is the sender of this message
         /// </summary>
-        [JsonProperty("fromcountrycode")]
-        public int Fromcountrycode 
+        [JsonProperty("shortcode")]
+        public string Shortcode 
         { 
             get 
             {
-                return this.fromcountrycode; 
+                return this.shortcode; 
             } 
             set 
             {
-                this.fromcountrycode = value;
-                onPropertyChanged("Fromcountrycode");
+                this.shortcode = value;
+                onPropertyChanged("Shortcode");
             }
         }
 
         /// <summary>
-        /// SMS enabled Message360 number to send this message from
-        /// </summary>
-        [JsonProperty("from")]
-        public string From 
-        { 
-            get 
-            {
-                return this.mfrom; 
-            } 
-            set 
-            {
-                this.mfrom = value;
-                onPropertyChanged("From");
-            }
-        }
-
-        /// <summary>
-        /// To country code
+        /// The country code for sending this message
         /// </summary>
         [JsonProperty("tocountrycode")]
-        public int Tocountrycode 
+        public string Tocountrycode 
         { 
             get 
             {
@@ -81,7 +63,7 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Number to send the SMS to
+        /// A valid 10-digit number that should receive the message+
         /// </summary>
         [JsonProperty("to")]
         public string To 
@@ -98,27 +80,27 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Text Message To Send
+        /// The unique identifier for the template used for the message
         /// </summary>
-        [JsonProperty("body")]
-        public string Body 
+        [JsonProperty("templateid")]
+        public Guid Templateid 
         { 
             get 
             {
-                return this.body; 
+                return this.templateid; 
             } 
             set 
             {
-                this.body = value;
-                onPropertyChanged("Body");
+                this.templateid = value;
+                onPropertyChanged("Templateid");
             }
         }
 
         /// <summary>
-        /// Specifies the HTTP method used to request the required URL once SMS sent.
+        /// Specifies the HTTP method used to request the required URL once the Short Code message is sent.
         /// </summary>
-        [JsonProperty("method", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.HttpActionEnum? Method 
+        [JsonProperty("Method")]
+        public string Method 
         { 
             get 
             {
@@ -132,19 +114,19 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// URL that can be requested to receive notification when SMS has Sent. A set of default parameters will be sent here once the SMS is finished.
+        /// URL that can be requested to receive notification when Short Code message was sent.
         /// </summary>
-        [JsonProperty("messagestatuscallback")]
-        public string Messagestatuscallback 
+        [JsonProperty("MessageStatusCallback")]
+        public string MessageStatusCallback 
         { 
             get 
             {
-                return this.messagestatuscallback; 
+                return this.messageStatusCallback; 
             } 
             set 
             {
-                this.messagestatuscallback = value;
-                onPropertyChanged("Messagestatuscallback");
+                this.messageStatusCallback = value;
+                onPropertyChanged("MessageStatusCallback");
             }
         }
 

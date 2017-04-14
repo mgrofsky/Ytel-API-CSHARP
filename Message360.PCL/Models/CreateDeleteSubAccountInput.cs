@@ -17,12 +17,46 @@ using APIMATIC.SDK.Common;
 
 namespace message360.Models
 {
-    public class CreateListUnsubscribesInput : BaseModel 
+    public class CreateDeleteSubAccountInput : BaseModel 
     {
         // These fields hold the values for the public properties.
+        private string subAccountSID;
+        private Models.MergeNumberStatusEnum mergeNumber = MergeNumberStatusEnum.DELETE;
         private string responseType = "json";
-        private string offset;
-        private string limit;
+
+        /// <summary>
+        /// The SubaccountSid to be deleted
+        /// </summary>
+        [JsonProperty("SubAccountSID")]
+        public string SubAccountSID 
+        { 
+            get 
+            {
+                return this.subAccountSID; 
+            } 
+            set 
+            {
+                this.subAccountSID = value;
+                onPropertyChanged("SubAccountSID");
+            }
+        }
+
+        /// <summary>
+        /// 0 to delete or 1 to merge numbers to parent account.
+        /// </summary>
+        [JsonProperty("MergeNumber")]
+        public Models.MergeNumberStatusEnum MergeNumber 
+        { 
+            get 
+            {
+                return this.mergeNumber; 
+            } 
+            set 
+            {
+                this.mergeNumber = value;
+                onPropertyChanged("MergeNumber");
+            }
+        }
 
         /// <summary>
         /// Response type format xml or json
@@ -38,40 +72,6 @@ namespace message360.Models
             {
                 this.responseType = value;
                 onPropertyChanged("ResponseType");
-            }
-        }
-
-        /// <summary>
-        /// Starting record of the list
-        /// </summary>
-        [JsonProperty("offset")]
-        public string Offset 
-        { 
-            get 
-            {
-                return this.offset; 
-            } 
-            set 
-            {
-                this.offset = value;
-                onPropertyChanged("Offset");
-            }
-        }
-
-        /// <summary>
-        /// Maximum number of records to be returned
-        /// </summary>
-        [JsonProperty("limit")]
-        public string Limit 
-        { 
-            get 
-            {
-                return this.limit; 
-            } 
-            set 
-            {
-                this.limit = value;
-                onPropertyChanged("Limit");
             }
         }
     }
