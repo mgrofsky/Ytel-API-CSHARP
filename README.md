@@ -233,7 +233,7 @@ CreateListInboundShortCodeInput collect = new CreateListInboundShortCodeInput();
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? page = 95;
+int? page = 3;
 collect.Page = page;
 
 int? pagesize = 10;
@@ -283,7 +283,7 @@ CreateListShortCodeInput collect = new CreateListShortCodeInput();
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? page = 95;
+int? page = 3;
 collect.Page = page;
 
 int? pagesize = 10;
@@ -334,7 +334,7 @@ collect.ResponseType = responseType;
 string type = "authorization";
 collect.Type = type;
 
-int? page = 95;
+int? page = 3;
 collect.Page = page;
 
 int? pagesize = 10;
@@ -468,10 +468,10 @@ CreateListConferenceInput collect = new CreateListConferenceInput();
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? page = 95;
+int? page = 3;
 collect.Page = page;
 
-int? pageSize = 95;
+int? pageSize = 3;
 collect.PageSize = pageSize;
 
 string friendlyName = "FriendlyName";
@@ -558,7 +558,7 @@ collect.Conferencesid = conferencesid;
 string participantnumber = "participantnumber";
 collect.Participantnumber = participantnumber;
 
-int tocountrycode = 95;
+int tocountrycode = 3;
 collect.Tocountrycode = tocountrycode;
 
 string responseType = "json";
@@ -608,10 +608,10 @@ collect.ConferenceSid = conferenceSid;
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? page = 95;
+int? page = 3;
 collect.Page = page;
 
-int? pagesize = 95;
+int? pagesize = 3;
 collect.Pagesize = pagesize;
 
 bool? muted = false;
@@ -894,7 +894,7 @@ collect.HeartBeatUrl = heartBeatUrl;
 var heartBeatMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.HeartBeatMethod = heartBeatMethod;
 
-int? timeout = 95;
+int? timeout = 3;
 collect.Timeout = timeout;
 
 string playDtmf = "PlayDtmf";
@@ -961,19 +961,19 @@ collect.ResponseType = responseType;
 var audioDirection = Models.AudioDirectionEnum?Helper.ParseString("IN");
 collect.AudioDirection = audioDirection;
 
-double? pitchSemiTones = 95.3313404020534;
+double? pitchSemiTones = 3.86420395638058;
 collect.PitchSemiTones = pitchSemiTones;
 
-double? pitchOctaves = 95.3313404020534;
+double? pitchOctaves = 3.86420395638058;
 collect.PitchOctaves = pitchOctaves;
 
-double? pitch = 95.3313404020534;
+double? pitch = 3.86420395638058;
 collect.Pitch = pitch;
 
-double? rate = 95.3313404020534;
+double? rate = 3.86420395638058;
 collect.Rate = rate;
 
-double? tempo = 95.3313404020534;
+double? tempo = 3.86420395638058;
 collect.Tempo = tempo;
 
 
@@ -1021,7 +1021,7 @@ collect.ResponseType = responseType;
 var direction = Models.DirectionEnum?Helper.ParseString("IN");
 collect.Direction = direction;
 
-int? timeLimit = 95;
+int? timeLimit = 3;
 collect.TimeLimit = timeLimit;
 
 string callBackUrl = "CallBackUrl";
@@ -1072,7 +1072,7 @@ collect.AudioUrl = audioUrl;
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? length = 95;
+int? length = 3;
 collect.Length = length;
 
 var direction = Models.DirectionEnum?Helper.ParseString("IN");
@@ -1259,7 +1259,7 @@ collect.HeartBeatUrl = heartBeatUrl;
 bool? heartBeatMethod = false;
 collect.HeartBeatMethod = heartBeatMethod;
 
-int? timeout = 95;
+int? timeout = 3;
 collect.Timeout = timeout;
 
 string playDtmf = "PlayDtmf";
@@ -1321,7 +1321,7 @@ CreateListCallsInput collect = new CreateListCallsInput();
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? page = 95;
+int? page = 3;
 collect.Page = page;
 
 int? pageSize = 10;
@@ -2303,10 +2303,10 @@ CreateListSMSInput collect = new CreateListSMSInput();
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? page = 145;
+int? page = 217;
 collect.Page = page;
 
-int? pagesize = 145;
+int? pagesize = 217;
 collect.Pagesize = pagesize;
 
 string mfrom = "from";
@@ -2352,7 +2352,7 @@ CreateListInboundSMSInput collect = new CreateListInboundSMSInput();
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? page = 145;
+int? page = 217;
 collect.Page = page;
 
 string pagesize = "pagesize";
@@ -2502,10 +2502,10 @@ CreateListRecordingInput collect = new CreateListRecordingInput();
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? page = 145;
+int? page = 217;
 collect.Page = page;
 
-int? pageSize = 145;
+int? pageSize = 217;
 collect.PageSize = pageSize;
 
 string dateCreated = "DateCreated";
@@ -2626,10 +2626,10 @@ CreateCarrierLookupListInput collect = new CreateCarrierLookupListInput();
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? page = 145;
+int? page = 217;
 collect.Page = page;
 
-int? pagesize = 145;
+int? pagesize = 217;
 collect.Pagesize = pagesize;
 
 
@@ -2814,7 +2814,7 @@ CreateListNumberInput collect = new CreateListNumberInput();
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? page = 145;
+int? page = 217;
 collect.Page = page;
 
 int? pageSize = 10;
@@ -3102,10 +3102,10 @@ CreateListTranscriptionInput collect = new CreateListTranscriptionInput();
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? page = 145;
+int? page = 217;
 collect.Page = page;
 
-int? pageSize = 145;
+int? pageSize = 217;
 collect.PageSize = pageSize;
 
 var status = Models.StatusEnum?Helper.ParseString("INPROGRESS");
