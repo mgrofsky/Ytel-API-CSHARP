@@ -26,9 +26,9 @@ namespace message360.Models
         private string to;
         private string voiceMailURL;
         private string method = "GET";
+        private string responseType = "json";
         private string statusCallBackUrl;
         private string statsCallBackMethod;
-        private string responseType = "json";
 
         /// <summary>
         /// From country code
@@ -133,6 +133,23 @@ namespace message360.Models
         }
 
         /// <summary>
+        /// Response type format xml or json
+        /// </summary>
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
+        { 
+            get 
+            {
+                return this.responseType; 
+            } 
+            set 
+            {
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
+            }
+        }
+
+        /// <summary>
         /// URL to post the status of the Ringless request
         /// </summary>
         [JsonProperty("StatusCallBackUrl")]
@@ -163,23 +180,6 @@ namespace message360.Models
             {
                 this.statsCallBackMethod = value;
                 onPropertyChanged("StatsCallBackMethod");
-            }
-        }
-
-        /// <summary>
-        /// Response type format xml or json
-        /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
-        { 
-            get 
-            {
-                return this.responseType; 
-            } 
-            set 
-            {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
             }
         }
     }

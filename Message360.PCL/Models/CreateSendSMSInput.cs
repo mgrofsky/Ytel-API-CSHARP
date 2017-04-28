@@ -25,9 +25,9 @@ namespace message360.Models
         private int tocountrycode = 1;
         private string to;
         private string body;
+        private string responseType = "json";
         private Models.HttpActionEnum? method;
         private string messagestatuscallback;
-        private string responseType = "json";
 
         /// <summary>
         /// From Country Code
@@ -115,6 +115,23 @@ namespace message360.Models
         }
 
         /// <summary>
+        /// Response type format xml or json
+        /// </summary>
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
+        { 
+            get 
+            {
+                return this.responseType; 
+            } 
+            set 
+            {
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
+            }
+        }
+
+        /// <summary>
         /// Specifies the HTTP method used to request the required URL once SMS sent.
         /// </summary>
         [JsonProperty("method", ItemConverterType = typeof(StringValuedEnumConverter))]
@@ -145,23 +162,6 @@ namespace message360.Models
             {
                 this.messagestatuscallback = value;
                 onPropertyChanged("Messagestatuscallback");
-            }
-        }
-
-        /// <summary>
-        /// Response type format xml or json
-        /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
-        { 
-            get 
-            {
-                return this.responseType; 
-            } 
-            set 
-            {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
             }
         }
     }

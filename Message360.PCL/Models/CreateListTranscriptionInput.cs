@@ -20,11 +20,28 @@ namespace message360.Models
     public class CreateListTranscriptionInput : BaseModel 
     {
         // These fields hold the values for the public properties.
+        private string responseType = "json";
         private int? page;
         private int? pageSize;
         private Models.StatusEnum? status;
         private string dateTranscribed;
-        private string responseType = "json";
+
+        /// <summary>
+        /// Response type format xml or json
+        /// </summary>
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
+        { 
+            get 
+            {
+                return this.responseType; 
+            } 
+            set 
+            {
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
+            }
+        }
 
         /// <summary>
         /// TODO: Write general description for this method
@@ -91,23 +108,6 @@ namespace message360.Models
             {
                 this.dateTranscribed = value;
                 onPropertyChanged("DateTranscribed");
-            }
-        }
-
-        /// <summary>
-        /// Response type format xml or json
-        /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
-        { 
-            get 
-            {
-                return this.responseType; 
-            } 
-            set 
-            {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
             }
         }
     }

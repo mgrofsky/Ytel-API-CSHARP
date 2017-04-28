@@ -20,11 +20,28 @@ namespace message360.Models
     public class CreateListInboundSMSInput : BaseModel 
     {
         // These fields hold the values for the public properties.
+        private string responseType = "json";
         private int? page;
         private string pagesize;
         private string mfrom;
         private string to;
-        private string responseType = "json";
+
+        /// <summary>
+        /// Response type format xml or json
+        /// </summary>
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
+        { 
+            get 
+            {
+                return this.responseType; 
+            } 
+            set 
+            {
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
+            }
+        }
 
         /// <summary>
         /// Which page of the overall response will be returned. Zero indexed
@@ -91,23 +108,6 @@ namespace message360.Models
             {
                 this.to = value;
                 onPropertyChanged("To");
-            }
-        }
-
-        /// <summary>
-        /// Response type format xml or json
-        /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
-        { 
-            get 
-            {
-                return this.responseType; 
-            } 
-            set 
-            {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
             }
         }
     }

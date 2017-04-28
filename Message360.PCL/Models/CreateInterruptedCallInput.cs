@@ -21,10 +21,10 @@ namespace message360.Models
     {
         // These fields hold the values for the public properties.
         private string callSid;
+        private string responseType = "json";
         private string url;
         private Models.HttpActionEnum? method;
         private Models.InterruptedCallStatusEnum? status;
-        private string responseType = "json";
 
         /// <summary>
         /// Call SId
@@ -40,6 +40,23 @@ namespace message360.Models
             {
                 this.callSid = value;
                 onPropertyChanged("CallSid");
+            }
+        }
+
+        /// <summary>
+        /// Response type format xml or json
+        /// </summary>
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
+        { 
+            get 
+            {
+                return this.responseType; 
+            } 
+            set 
+            {
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
             }
         }
 
@@ -91,23 +108,6 @@ namespace message360.Models
             {
                 this.status = value;
                 onPropertyChanged("Status");
-            }
-        }
-
-        /// <summary>
-        /// Response type format xml or json
-        /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
-        { 
-            get 
-            {
-                return this.responseType; 
-            } 
-            set 
-            {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
             }
         }
     }

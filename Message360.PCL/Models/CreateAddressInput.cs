@@ -26,10 +26,10 @@ namespace message360.Models
         private string state;
         private string city;
         private string zip;
+        private string responseType = "json";
         private string description;
         private string email;
         private string phone;
-        private string responseType = "json";
 
         /// <summary>
         /// Name of user
@@ -134,6 +134,23 @@ namespace message360.Models
         }
 
         /// <summary>
+        /// Response type either json or xml
+        /// </summary>
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
+        { 
+            get 
+            {
+                return this.responseType; 
+            } 
+            set 
+            {
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
+            }
+        }
+
+        /// <summary>
         /// Description of addresses.
         /// </summary>
         [JsonProperty("Description")]
@@ -181,23 +198,6 @@ namespace message360.Models
             {
                 this.phone = value;
                 onPropertyChanged("Phone");
-            }
-        }
-
-        /// <summary>
-        /// Response type either json or xml
-        /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
-        { 
-            get 
-            {
-                return this.responseType; 
-            } 
-            set 
-            {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
             }
         }
     }

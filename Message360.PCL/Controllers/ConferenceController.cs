@@ -74,6 +74,9 @@ namespace message360.Controllers
             if (null == input.ParticipantSid)
                 throw new ArgumentNullException("participantSid", "The property \"ParticipantSid\" in the input object cannot be null.");
 
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
+
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
 
@@ -144,6 +147,10 @@ namespace message360.Controllers
         /// <return>Returns the string response from the API call</return>
         public async Task<string> CreateListConferenceAsync(CreateListConferenceInput input)
         {
+            //validating required parameters
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
+
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
 
@@ -220,6 +227,9 @@ namespace message360.Controllers
             if (null == input.Conferencesid)
                 throw new ArgumentNullException("conferencesid", "The property \"Conferencesid\" in the input object cannot be null.");
 
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
+
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
 
@@ -293,6 +303,9 @@ namespace message360.Controllers
 
             if (null == input.Participantnumber)
                 throw new ArgumentNullException("participantnumber", "The property \"Participantnumber\" in the input object cannot be null.");
+
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
@@ -368,6 +381,9 @@ namespace message360.Controllers
             //validating required parameters
             if (null == input.ConferenceSid)
                 throw new ArgumentNullException("conferenceSid", "The property \"ConferenceSid\" in the input object cannot be null.");
+
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
@@ -446,6 +462,9 @@ namespace message360.Controllers
 
             if (null == input.ParticipantSid)
                 throw new ArgumentNullException("participantSid", "The property \"ParticipantSid\" in the input object cannot be null.");
+
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();

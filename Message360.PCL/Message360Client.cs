@@ -35,17 +35,6 @@ namespace message360
         }
 
         /// <summary>
-        /// Singleton access to Email controller
-        /// </summary>
-        public EmailController Email
-        {
-            get
-            {
-                return EmailController.Instance;
-            }
-        }
-
-        /// <summary>
         /// Singleton access to NumberVerification controller
         /// </summary>
         public NumberVerificationController NumberVerification
@@ -57,13 +46,13 @@ namespace message360
         }
 
         /// <summary>
-        /// Singleton access to Carrier controller
+        /// Singleton access to WebRTC controller
         /// </summary>
-        public CarrierController Carrier
+        public WebRTCController WebRTC
         {
             get
             {
-                return CarrierController.Instance;
+                return WebRTCController.Instance;
             }
         }
 
@@ -75,17 +64,6 @@ namespace message360
             get
             {
                 return CallController.Instance;
-            }
-        }
-
-        /// <summary>
-        /// Singleton access to WebRTC controller
-        /// </summary>
-        public WebRTCController WebRTC
-        {
-            get
-            {
-                return WebRTCController.Instance;
             }
         }
 
@@ -112,13 +90,24 @@ namespace message360
         }
 
         /// <summary>
-        /// Singleton access to PhoneNumber controller
+        /// Singleton access to Email controller
         /// </summary>
-        public PhoneNumberController PhoneNumber
+        public EmailController Email
         {
             get
             {
-                return PhoneNumberController.Instance;
+                return EmailController.Instance;
+            }
+        }
+
+        /// <summary>
+        /// Singleton access to SMS controller
+        /// </summary>
+        public SMSController SMS
+        {
+            get
+            {
+                return SMSController.Instance;
             }
         }
 
@@ -134,13 +123,24 @@ namespace message360
         }
 
         /// <summary>
-        /// Singleton access to SMS controller
+        /// Singleton access to Carrier controller
         /// </summary>
-        public SMSController SMS
+        public CarrierController Carrier
         {
             get
             {
-                return SMSController.Instance;
+                return CarrierController.Instance;
+            }
+        }
+
+        /// <summary>
+        /// Singleton access to PhoneNumber controller
+        /// </summary>
+        public PhoneNumberController PhoneNumber
+        {
+            get
+            {
+                return PhoneNumberController.Instance;
             }
         }
 

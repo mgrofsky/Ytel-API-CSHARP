@@ -23,9 +23,9 @@ namespace message360.Models
         private string conferencesid;
         private string participantnumber;
         private int tocountrycode;
+        private string responseType = "json";
         private bool? muted;
         private bool? deaf;
-        private string responseType = "json";
 
         /// <summary>
         /// Unique Conference Sid
@@ -79,6 +79,23 @@ namespace message360.Models
         }
 
         /// <summary>
+        /// Response type format xml or json
+        /// </summary>
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
+        { 
+            get 
+            {
+                return this.responseType; 
+            } 
+            set 
+            {
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
+            }
+        }
+
+        /// <summary>
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("muted")]
@@ -109,23 +126,6 @@ namespace message360.Models
             {
                 this.deaf = value;
                 onPropertyChanged("Deaf");
-            }
-        }
-
-        /// <summary>
-        /// Response type format xml or json
-        /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
-        { 
-            get 
-            {
-                return this.responseType; 
-            } 
-            set 
-            {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
             }
         }
     }

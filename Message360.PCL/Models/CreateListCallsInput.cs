@@ -20,12 +20,29 @@ namespace message360.Models
     public class CreateListCallsInput : BaseModel 
     {
         // These fields hold the values for the public properties.
+        private string responseType = "json";
         private int? page;
         private int? pageSize = 10;
         private string to;
         private string mfrom;
         private string dateCreated;
-        private string responseType = "json";
+
+        /// <summary>
+        /// Response type format xml or json
+        /// </summary>
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
+        { 
+            get 
+            {
+                return this.responseType; 
+            } 
+            set 
+            {
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
+            }
+        }
 
         /// <summary>
         /// Which page of the overall response will be returned. Zero indexed
@@ -109,23 +126,6 @@ namespace message360.Models
             {
                 this.dateCreated = value;
                 onPropertyChanged("DateCreated");
-            }
-        }
-
-        /// <summary>
-        /// Response type format xml or json
-        /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
-        { 
-            get 
-            {
-                return this.responseType; 
-            } 
-            set 
-            {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
             }
         }
     }

@@ -21,13 +21,13 @@ namespace message360.Models
     {
         // These fields hold the values for the public properties.
         private string callSid;
+        private string responseType = "json";
         private Models.AudioDirectionEnum? audioDirection;
         private double? pitchSemiTones;
         private double? pitchOctaves;
         private double? pitch;
         private double? rate;
         private double? tempo;
-        private string responseType = "json";
 
         /// <summary>
         /// TODO: Write general description for this method
@@ -43,6 +43,23 @@ namespace message360.Models
             {
                 this.callSid = value;
                 onPropertyChanged("CallSid");
+            }
+        }
+
+        /// <summary>
+        /// Response type format xml or json
+        /// </summary>
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
+        { 
+            get 
+            {
+                return this.responseType; 
+            } 
+            set 
+            {
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
             }
         }
 
@@ -145,23 +162,6 @@ namespace message360.Models
             {
                 this.tempo = value;
                 onPropertyChanged("Tempo");
-            }
-        }
-
-        /// <summary>
-        /// Response type format xml or json
-        /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
-        { 
-            get 
-            {
-                return this.responseType; 
-            } 
-            set 
-            {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
             }
         }
     }

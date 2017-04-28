@@ -25,6 +25,7 @@ namespace message360.Models
         private string toCountryCode;
         private string to;
         private string url;
+        private string responseType = "json";
         private Models.HttpActionEnum? method;
         private string statusCallBackUrl;
         private Models.HttpActionEnum? statusCallBackMethod;
@@ -41,7 +42,6 @@ namespace message360.Models
         private bool? transcribe;
         private string transcribeCallBackUrl;
         private Models.IfMachineEnum? ifMachine;
-        private string responseType = "json";
 
         /// <summary>
         /// from country code
@@ -125,6 +125,23 @@ namespace message360.Models
             {
                 this.url = value;
                 onPropertyChanged("Url");
+            }
+        }
+
+        /// <summary>
+        /// Response type format xml or json
+        /// </summary>
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
+        { 
+            get 
+            {
+                return this.responseType; 
+            } 
+            set 
+            {
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
             }
         }
 
@@ -397,23 +414,6 @@ namespace message360.Models
             {
                 this.ifMachine = value;
                 onPropertyChanged("IfMachine");
-            }
-        }
-
-        /// <summary>
-        /// Response type format xml or json
-        /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
-        { 
-            get 
-            {
-                return this.responseType; 
-            } 
-            set 
-            {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
             }
         }
     }

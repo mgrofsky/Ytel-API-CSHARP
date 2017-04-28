@@ -25,10 +25,10 @@ namespace message360.Models
         private Models.SendEmailAsEnum type = SendEmailAsEnum.HTML;
         private string subject;
         private string message;
+        private string responseType = "json";
         private string cc;
         private string bcc;
         private string attachment;
-        private string responseType = "json";
 
         /// <summary>
         /// The to email address
@@ -116,6 +116,23 @@ namespace message360.Models
         }
 
         /// <summary>
+        /// Response type format xml or json
+        /// </summary>
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
+        { 
+            get 
+            {
+                return this.responseType; 
+            } 
+            set 
+            {
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
+            }
+        }
+
+        /// <summary>
         /// CC Email address
         /// </summary>
         [JsonProperty("cc")]
@@ -163,23 +180,6 @@ namespace message360.Models
             {
                 this.attachment = value;
                 onPropertyChanged("Attachment");
-            }
-        }
-
-        /// <summary>
-        /// Response type format xml or json
-        /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
-        { 
-            get 
-            {
-                return this.responseType; 
-            } 
-            set 
-            {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
             }
         }
     }
