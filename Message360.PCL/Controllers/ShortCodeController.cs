@@ -123,11 +123,10 @@ namespace message360.Controllers
         /// Send an SMS from a message360 ShortCode
         /// </summary>
         /// <param name="CreateSendShortCodeInput">Object containing request parameters</param>
-        /// <param name="fieldParameters">Additional optional form parameters are supported by this endpoint</param>
         /// <return>Returns the string response from the API call</return>
-        public string CreateSendShortCode(CreateSendShortCodeInput input, Dictionary<string, object> fieldParameters = null)
+        public string CreateSendShortCode(CreateSendShortCodeInput input)
         {
-            Task<string> t = CreateSendShortCodeAsync(input, fieldParameters);
+            Task<string> t = CreateSendShortCodeAsync(input);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
@@ -136,9 +135,8 @@ namespace message360.Controllers
         /// Send an SMS from a message360 ShortCode
         /// </summary>
         /// <param name="CreateSendShortCodeInput">Object containing request parameters</param>
-        /// <param name="fieldParameters">Additional optional form parameters are supported by this endpoint</param>
         /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateSendShortCodeAsync(CreateSendShortCodeInput input, Dictionary<string, object> fieldParameters = null)
+        public async Task<string> CreateSendShortCodeAsync(CreateSendShortCodeInput input)
         {
             //validating required parameters
             if (null == input.Shortcode)
@@ -149,6 +147,12 @@ namespace message360.Controllers
 
             if (null == input.To)
                 throw new ArgumentNullException("to", "The property \"To\" in the input object cannot be null.");
+
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
+
+            if (null == input.Data)
+                throw new ArgumentNullException("data", "The property \"Data\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
@@ -180,11 +184,10 @@ namespace message360.Controllers
                 new KeyValuePair<string, object>( "tocountrycode", input.Tocountrycode ),
                 new KeyValuePair<string, object>( "to", input.To ),
                 new KeyValuePair<string, object>( "templateid", input.Templateid ),
+                new KeyValuePair<string, object>( "data", input.Data ),
                 new KeyValuePair<string, object>( "Method", input.Method ),
                 new KeyValuePair<string, object>( "MessageStatusCallback", input.MessageStatusCallback )
             };
-            //optional form parameters
-            _fields.AddRange(APIHelper.PrepareFormFieldsFromObject("",fieldParameters, arrayDeserializationFormat: ArrayDeserializationFormat));
 
             //prepare the API call request to fetch the response
             HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
@@ -224,6 +227,10 @@ namespace message360.Controllers
         /// <return>Returns the string response from the API call</return>
         public async Task<string> CreateListInboundShortCodeAsync(CreateListInboundShortCodeInput input)
         {
+            //validating required parameters
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
+
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
 
@@ -300,6 +307,10 @@ namespace message360.Controllers
         /// <return>Returns the string response from the API call</return>
         public async Task<string> CreateListShortCodeAsync(CreateListShortCodeInput input)
         {
+            //validating required parameters
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
+
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
 
@@ -371,6 +382,10 @@ namespace message360.Controllers
         /// <return>Returns the string response from the API call</return>
         public async Task<string> CreateListTemplatesAsync(CreateListTemplatesInput input)
         {
+            //validating required parameters
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
+
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
 
@@ -443,6 +458,9 @@ namespace message360.Controllers
             //validating required parameters
             if (null == input.Messagesid)
                 throw new ArgumentNullException("messagesid", "The property \"Messagesid\" in the input object cannot be null.");
+
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();

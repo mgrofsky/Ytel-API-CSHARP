@@ -22,8 +22,8 @@ namespace message360.Models
         // These fields hold the values for the public properties.
         private string callSid;
         private string playDtmf;
-        private Models.DirectionEnum? playDtmfDirection;
         private string responseType = "json";
+        private Models.DirectionEnum? playDtmfDirection;
 
         /// <summary>
         /// The unique identifier of each call resource
@@ -60,23 +60,6 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// The leg of the call DTMF digits should be sent to
-        /// </summary>
-        [JsonProperty("PlayDtmfDirection", ItemConverterType = typeof(StringValuedEnumConverter))]
-        public Models.DirectionEnum? PlayDtmfDirection 
-        { 
-            get 
-            {
-                return this.playDtmfDirection; 
-            } 
-            set 
-            {
-                this.playDtmfDirection = value;
-                onPropertyChanged("PlayDtmfDirection");
-            }
-        }
-
-        /// <summary>
         /// Response type format xml or json
         /// </summary>
         [JsonProperty("ResponseType")]
@@ -90,6 +73,23 @@ namespace message360.Models
             {
                 this.responseType = value;
                 onPropertyChanged("ResponseType");
+            }
+        }
+
+        /// <summary>
+        /// The leg of the call DTMF digits should be sent to
+        /// </summary>
+        [JsonProperty("PlayDtmfDirection", ItemConverterType = typeof(StringValuedEnumConverter))]
+        public Models.DirectionEnum? PlayDtmfDirection 
+        { 
+            get 
+            {
+                return this.playDtmfDirection; 
+            } 
+            set 
+            {
+                this.playDtmfDirection = value;
+                onPropertyChanged("PlayDtmfDirection");
             }
         }
     }

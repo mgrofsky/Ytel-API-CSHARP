@@ -20,9 +20,26 @@ namespace message360.Models
     public class CreateListBlocksInput : BaseModel 
     {
         // These fields hold the values for the public properties.
+        private string responseType = "json";
         private string offset;
         private string limit;
-        private string responseType = "json";
+
+        /// <summary>
+        /// Response type format xml or json
+        /// </summary>
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
+        { 
+            get 
+            {
+                return this.responseType; 
+            } 
+            set 
+            {
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
+            }
+        }
 
         /// <summary>
         /// Where to start in the output list
@@ -55,23 +72,6 @@ namespace message360.Models
             {
                 this.limit = value;
                 onPropertyChanged("Limit");
-            }
-        }
-
-        /// <summary>
-        /// Response type format xml or json
-        /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
-        { 
-            get 
-            {
-                return this.responseType; 
-            } 
-            set 
-            {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
             }
         }
     }

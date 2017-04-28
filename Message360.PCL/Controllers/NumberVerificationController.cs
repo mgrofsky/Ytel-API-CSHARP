@@ -74,6 +74,9 @@ namespace message360.Controllers
             if (null == input.Type)
                 throw new ArgumentNullException("type", "The property \"Type\" in the input object cannot be null.");
 
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
+
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
 

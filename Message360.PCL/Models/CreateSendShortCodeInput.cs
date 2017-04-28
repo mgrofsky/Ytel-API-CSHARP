@@ -24,9 +24,10 @@ namespace message360.Models
         private string tocountrycode = "1";
         private string to;
         private Guid templateid;
+        private string responseType = "json";
+        private string data;
         private string method = "GET";
         private string messageStatusCallback;
-        private string responseType = "json";
 
         /// <summary>
         /// The Short Code number that is the sender of this message
@@ -97,6 +98,40 @@ namespace message360.Models
         }
 
         /// <summary>
+        /// Response type format xml or json
+        /// </summary>
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
+        { 
+            get 
+            {
+                return this.responseType; 
+            } 
+            set 
+            {
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
+            }
+        }
+
+        /// <summary>
+        /// format of your data, example: {companyname}:test,{otpcode}:1234
+        /// </summary>
+        [JsonProperty("data")]
+        public string Data 
+        { 
+            get 
+            {
+                return this.data; 
+            } 
+            set 
+            {
+                this.data = value;
+                onPropertyChanged("Data");
+            }
+        }
+
+        /// <summary>
         /// Specifies the HTTP method used to request the required URL once the Short Code message is sent.
         /// </summary>
         [JsonProperty("Method")]
@@ -127,23 +162,6 @@ namespace message360.Models
             {
                 this.messageStatusCallback = value;
                 onPropertyChanged("MessageStatusCallback");
-            }
-        }
-
-        /// <summary>
-        /// Response type format xml or json
-        /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
-        { 
-            get 
-            {
-                return this.responseType; 
-            } 
-            set 
-            {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
             }
         }
     }

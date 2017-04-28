@@ -20,11 +20,28 @@ namespace message360.Models
     public class CreateListAddressInput : BaseModel 
     {
         // These fields hold the values for the public properties.
+        private string responseType = "json";
         private int? page = 1;
         private int? pageSize = 10;
         private string addressSID;
         private string dateCreated;
-        private string responseType = "json";
+
+        /// <summary>
+        /// Response Type either json or xml
+        /// </summary>
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
+        { 
+            get 
+            {
+                return this.responseType; 
+            } 
+            set 
+            {
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
+            }
+        }
 
         /// <summary>
         /// Return requested # of items starting the value, default=0, must be an integer
@@ -91,23 +108,6 @@ namespace message360.Models
             {
                 this.dateCreated = value;
                 onPropertyChanged("DateCreated");
-            }
-        }
-
-        /// <summary>
-        /// Response Type either json or xml
-        /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
-        { 
-            get 
-            {
-                return this.responseType; 
-            } 
-            set 
-            {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
             }
         }
     }

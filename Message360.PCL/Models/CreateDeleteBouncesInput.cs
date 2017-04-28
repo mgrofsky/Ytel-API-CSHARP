@@ -20,25 +20,8 @@ namespace message360.Models
     public class CreateDeleteBouncesInput : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private string email;
         private string responseType = "json";
-
-        /// <summary>
-        /// The email address to remove from the bounce list
-        /// </summary>
-        [JsonProperty("email")]
-        public string Email 
-        { 
-            get 
-            {
-                return this.email; 
-            } 
-            set 
-            {
-                this.email = value;
-                onPropertyChanged("Email");
-            }
-        }
+        private string email;
 
         /// <summary>
         /// Response type format xml or json
@@ -54,6 +37,23 @@ namespace message360.Models
             {
                 this.responseType = value;
                 onPropertyChanged("ResponseType");
+            }
+        }
+
+        /// <summary>
+        /// The email address to remove from the bounce list
+        /// </summary>
+        [JsonProperty("email")]
+        public string Email 
+        { 
+            get 
+            {
+                return this.email; 
+            } 
+            set 
+            {
+                this.email = value;
+                onPropertyChanged("Email");
             }
         }
     }

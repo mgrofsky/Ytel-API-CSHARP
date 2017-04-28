@@ -21,11 +21,11 @@ namespace message360.Models
     {
         // These fields hold the values for the public properties.
         private string conferenceSid;
+        private string responseType = "json";
         private int? page;
         private int? pagesize;
         private bool? muted;
         private bool? deaf;
-        private string responseType = "json";
 
         /// <summary>
         /// unique conference sid
@@ -41,6 +41,23 @@ namespace message360.Models
             {
                 this.conferenceSid = value;
                 onPropertyChanged("ConferenceSid");
+            }
+        }
+
+        /// <summary>
+        /// Response format, xml or json
+        /// </summary>
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
+        { 
+            get 
+            {
+                return this.responseType; 
+            } 
+            set 
+            {
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
             }
         }
 
@@ -109,23 +126,6 @@ namespace message360.Models
             {
                 this.deaf = value;
                 onPropertyChanged("Deaf");
-            }
-        }
-
-        /// <summary>
-        /// Response format, xml or json
-        /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
-        { 
-            get 
-            {
-                return this.responseType; 
-            } 
-            set 
-            {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
             }
         }
     }

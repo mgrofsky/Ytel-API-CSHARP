@@ -25,6 +25,7 @@ namespace message360.Models
         private string toCountryCode = "1";
         private string to;
         private string url;
+        private string responseType = "json";
         private Models.HttpActionEnum? method;
         private string statusCallBackUrl;
         private Models.HttpActionEnum? statusCallBackMethod;
@@ -40,7 +41,6 @@ namespace message360.Models
         private Models.HttpActionEnum? recordCallBackMethod;
         private bool? transcribe;
         private string transcribeCallBackUrl;
-        private string responseType = "json";
 
         /// <summary>
         /// TODO: Write general description for this method
@@ -124,6 +124,23 @@ namespace message360.Models
             {
                 this.url = value;
                 onPropertyChanged("Url");
+            }
+        }
+
+        /// <summary>
+        /// TODO: Write general description for this method
+        /// </summary>
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
+        { 
+            get 
+            {
+                return this.responseType; 
+            } 
+            set 
+            {
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
             }
         }
 
@@ -379,23 +396,6 @@ namespace message360.Models
             {
                 this.transcribeCallBackUrl = value;
                 onPropertyChanged("TranscribeCallBackUrl");
-            }
-        }
-
-        /// <summary>
-        /// TODO: Write general description for this method
-        /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
-        { 
-            get 
-            {
-                return this.responseType; 
-            } 
-            set 
-            {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
             }
         }
     }

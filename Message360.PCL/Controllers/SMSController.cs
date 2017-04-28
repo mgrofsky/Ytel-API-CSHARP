@@ -49,76 +49,6 @@ namespace message360.Controllers
         #endregion Singleton Pattern
 
         /// <summary>
-        /// List All Inbound SMS
-        /// </summary>
-        /// <param name="CreateListInboundSMSInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public string CreateListInboundSMS(CreateListInboundSMSInput input)
-        {
-            Task<string> t = CreateListInboundSMSAsync(input);
-            APIHelper.RunTaskSynchronously(t);
-            return t.Result;
-        }
-
-        /// <summary>
-        /// List All Inbound SMS
-        /// </summary>
-        /// <param name="CreateListInboundSMSInput">Object containing request parameters</param>
-        /// <return>Returns the string response from the API call</return>
-        public async Task<string> CreateListInboundSMSAsync(CreateListInboundSMSInput input)
-        {
-            //the base uri for api requestss
-            string _baseUri = Configuration.GetBaseURI();
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/sms/getInboundsms.{ResponseType}");
-
-            //process optional template parameters
-            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
-            {
-                { "ResponseType", input.ResponseType }
-            });
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "message360-api" }
-            };
-
-            //append form/field parameters
-            var _fields = new List<KeyValuePair<string, Object>>()
-            {
-                new KeyValuePair<string, object>( "page", input.Page ),
-                new KeyValuePair<string, object>( "pagesize", input.Pagesize ),
-                new KeyValuePair<string, object>( "from", input.From ),
-                new KeyValuePair<string, object>( "to", input.To )
-            };
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return _response.Body;
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
-
-        /// <summary>
         /// List All SMS
         /// </summary>
         /// <param name="CreateListSMSInput">Object containing request parameters</param>
@@ -137,6 +67,10 @@ namespace message360.Controllers
         /// <return>Returns the string response from the API call</return>
         public async Task<string> CreateListSMSAsync(CreateListSMSInput input)
         {
+            //validating required parameters
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
+
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
 
@@ -190,6 +124,80 @@ namespace message360.Controllers
         }
 
         /// <summary>
+        /// List All Inbound SMS
+        /// </summary>
+        /// <param name="CreateListInboundSMSInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public string CreateListInboundSMS(CreateListInboundSMSInput input)
+        {
+            Task<string> t = CreateListInboundSMSAsync(input);
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// List All Inbound SMS
+        /// </summary>
+        /// <param name="CreateListInboundSMSInput">Object containing request parameters</param>
+        /// <return>Returns the string response from the API call</return>
+        public async Task<string> CreateListInboundSMSAsync(CreateListInboundSMSInput input)
+        {
+            //validating required parameters
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
+
+            //the base uri for api requestss
+            string _baseUri = Configuration.GetBaseURI();
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/sms/getInboundsms.{ResponseType}");
+
+            //process optional template parameters
+            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
+            {
+                { "ResponseType", input.ResponseType }
+            });
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "message360-api" }
+            };
+
+            //append form/field parameters
+            var _fields = new List<KeyValuePair<string, Object>>()
+            {
+                new KeyValuePair<string, object>( "page", input.Page ),
+                new KeyValuePair<string, object>( "pagesize", input.Pagesize ),
+                new KeyValuePair<string, object>( "from", input.From ),
+                new KeyValuePair<string, object>( "to", input.To )
+            };
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.Post(_queryUrl, _headers, _fields, Configuration.BasicAuthUserName, Configuration.BasicAuthPassword);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request,_response);
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return _response.Body;
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
         /// Send an SMS from a message360 number
         /// </summary>
         /// <param name="CreateSendSMSInput">Object containing request parameters</param>
@@ -217,6 +225,9 @@ namespace message360.Controllers
 
             if (null == input.Body)
                 throw new ArgumentNullException("body", "The property \"Body\" in the input object cannot be null.");
+
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
@@ -294,6 +305,9 @@ namespace message360.Controllers
             //validating required parameters
             if (null == input.Messagesid)
                 throw new ArgumentNullException("messagesid", "The property \"Messagesid\" in the input object cannot be null.");
+
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();

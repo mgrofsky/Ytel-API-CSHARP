@@ -17,61 +17,61 @@ using APIMATIC.SDK.Common;
 
 namespace message360.Models
 {
-    public class CreateCarrierLookupListInput : BaseModel 
+    public class Message360Model : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private string responseType = "json";
-        private int? page;
-        private int? pagesize;
+        private int responseStatus;
+        private int messageCount;
+        private Models.MessageModel message;
 
         /// <summary>
-        /// Response type format xml or json
+        /// TODO: Write general description for this method
         /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
+        [JsonProperty("ResponseStatus")]
+        public int ResponseStatus 
         { 
             get 
             {
-                return this.responseType; 
+                return this.responseStatus; 
             } 
             set 
             {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
+                this.responseStatus = value;
+                onPropertyChanged("ResponseStatus");
             }
         }
 
         /// <summary>
-        /// Page Number
+        /// TODO: Write general description for this method
         /// </summary>
-        [JsonProperty("page")]
-        public int? Page 
+        [JsonProperty("MessageCount")]
+        public int MessageCount 
         { 
             get 
             {
-                return this.page; 
+                return this.messageCount; 
             } 
             set 
             {
-                this.page = value;
-                onPropertyChanged("Page");
+                this.messageCount = value;
+                onPropertyChanged("MessageCount");
             }
         }
 
         /// <summary>
-        /// Page Size
+        /// TODO: Write general description for this method
         /// </summary>
-        [JsonProperty("pagesize")]
-        public int? Pagesize 
+        [JsonProperty("Message")]
+        public Models.MessageModel Message 
         { 
             get 
             {
-                return this.pagesize; 
+                return this.message; 
             } 
             set 
             {
-                this.pagesize = value;
-                onPropertyChanged("Pagesize");
+                this.message = value;
+                onPropertyChanged("Message");
             }
         }
     }

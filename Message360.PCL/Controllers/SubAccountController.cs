@@ -77,6 +77,9 @@ namespace message360.Controllers
             if (null == input.Email)
                 throw new ArgumentNullException("email", "The property \"Email\" in the input object cannot be null.");
 
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
+
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
 
@@ -150,6 +153,9 @@ namespace message360.Controllers
             if (null == input.SubAccountSID)
                 throw new ArgumentNullException("subAccountSID", "The property \"SubAccountSID\" in the input object cannot be null.");
 
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
+
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();
 
@@ -221,6 +227,9 @@ namespace message360.Controllers
             //validating required parameters
             if (null == input.SubAccountSID)
                 throw new ArgumentNullException("subAccountSID", "The property \"SubAccountSID\" in the input object cannot be null.");
+
+            if (null == input.ResponseType)
+                throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
 
             //the base uri for api requestss
             string _baseUri = Configuration.GetBaseURI();

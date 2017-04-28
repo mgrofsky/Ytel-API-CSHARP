@@ -22,8 +22,8 @@ namespace message360.Models
         // These fields hold the values for the public properties.
         private Models.NumberTypeEnum numberType;
         private string areaCode;
-        private int? pageSize = 10;
         private string responseType = "json";
+        private int? pageSize = 10;
 
         /// <summary>
         /// Number type either SMS,Voice or all
@@ -60,23 +60,6 @@ namespace message360.Models
         }
 
         /// <summary>
-        /// Page Size
-        /// </summary>
-        [JsonProperty("PageSize")]
-        public int? PageSize 
-        { 
-            get 
-            {
-                return this.pageSize; 
-            } 
-            set 
-            {
-                this.pageSize = value;
-                onPropertyChanged("PageSize");
-            }
-        }
-
-        /// <summary>
         /// Response type format xml or json
         /// </summary>
         [JsonProperty("ResponseType")]
@@ -90,6 +73,23 @@ namespace message360.Models
             {
                 this.responseType = value;
                 onPropertyChanged("ResponseType");
+            }
+        }
+
+        /// <summary>
+        /// Page Size
+        /// </summary>
+        [JsonProperty("PageSize")]
+        public int? PageSize 
+        { 
+            get 
+            {
+                return this.pageSize; 
+            } 
+            set 
+            {
+                this.pageSize = value;
+                onPropertyChanged("PageSize");
             }
         }
     }

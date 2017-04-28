@@ -21,6 +21,7 @@ namespace message360.Models
     {
         // These fields hold the values for the public properties.
         private string phoneNumber;
+        private string responseType = "json";
         private string friendlyName;
         private string voiceUrl;
         private Models.HttpActionEnum? voiceMethod;
@@ -34,7 +35,6 @@ namespace message360.Models
         private Models.HttpActionEnum? smsMethod;
         private string smsFallbackUrl;
         private Models.HttpActionEnum? smsFallbackMethod;
-        private string responseType = "json";
 
         /// <summary>
         /// TODO: Write general description for this method
@@ -50,6 +50,23 @@ namespace message360.Models
             {
                 this.phoneNumber = value;
                 onPropertyChanged("PhoneNumber");
+            }
+        }
+
+        /// <summary>
+        /// Response type format xml or json
+        /// </summary>
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
+        { 
+            get 
+            {
+                return this.responseType; 
+            } 
+            set 
+            {
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
             }
         }
 
@@ -271,23 +288,6 @@ namespace message360.Models
             {
                 this.smsFallbackMethod = value;
                 onPropertyChanged("SmsFallbackMethod");
-            }
-        }
-
-        /// <summary>
-        /// Response type format xml or json
-        /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
-        { 
-            get 
-            {
-                return this.responseType; 
-            } 
-            set 
-            {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
             }
         }
     }

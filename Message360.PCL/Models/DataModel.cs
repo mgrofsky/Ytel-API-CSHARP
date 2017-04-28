@@ -17,43 +17,43 @@ using APIMATIC.SDK.Common;
 
 namespace message360.Models
 {
-    public class CreateDeleteSpamInput : BaseModel 
+    public class DataModel : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private string responseType = "json";
-        private string email;
+        private string companyname;
+        private int otpcode;
 
         /// <summary>
-        /// Response type format xml or json
+        /// TODO: Write general description for this method
         /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
+        [JsonProperty("companyname")]
+        public string Companyname 
         { 
             get 
             {
-                return this.responseType; 
+                return this.companyname; 
             } 
             set 
             {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
+                this.companyname = value;
+                onPropertyChanged("Companyname");
             }
         }
 
         /// <summary>
-        /// Email address
+        /// TODO: Write general description for this method
         /// </summary>
-        [JsonProperty("email")]
-        public string Email 
+        [JsonProperty("otpcode")]
+        public int Otpcode 
         { 
             get 
             {
-                return this.email; 
+                return this.otpcode; 
             } 
             set 
             {
-                this.email = value;
-                onPropertyChanged("Email");
+                this.otpcode = value;
+                onPropertyChanged("Otpcode");
             }
         }
     }

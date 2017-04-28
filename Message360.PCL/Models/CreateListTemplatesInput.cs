@@ -20,10 +20,27 @@ namespace message360.Models
     public class CreateListTemplatesInput : BaseModel 
     {
         // These fields hold the values for the public properties.
+        private string responseType = "json";
         private string type = "authorization";
         private int? page;
         private int? pagesize = 10;
-        private string responseType = "json";
+
+        /// <summary>
+        /// Response type format xml or json
+        /// </summary>
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
+        { 
+            get 
+            {
+                return this.responseType; 
+            } 
+            set 
+            {
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
+            }
+        }
 
         /// <summary>
         /// The type (category) of template Valid values: marketing, authorization
@@ -73,23 +90,6 @@ namespace message360.Models
             {
                 this.pagesize = value;
                 onPropertyChanged("Pagesize");
-            }
-        }
-
-        /// <summary>
-        /// Response type format xml or json
-        /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
-        { 
-            get 
-            {
-                return this.responseType; 
-            } 
-            set 
-            {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
             }
         }
     }

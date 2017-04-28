@@ -22,11 +22,11 @@ namespace message360.Models
         // These fields hold the values for the public properties.
         private string callSid;
         private string audioUrl;
+        private string responseType = "json";
         private int? length;
         private Models.DirectionEnum? direction;
         private bool? loop;
         private bool? mix;
-        private string responseType = "json";
 
         /// <summary>
         /// The unique identifier of each call resource
@@ -59,6 +59,23 @@ namespace message360.Models
             {
                 this.audioUrl = value;
                 onPropertyChanged("AudioUrl");
+            }
+        }
+
+        /// <summary>
+        /// Response type format xml or json
+        /// </summary>
+        [JsonProperty("ResponseType")]
+        public string ResponseType 
+        { 
+            get 
+            {
+                return this.responseType; 
+            } 
+            set 
+            {
+                this.responseType = value;
+                onPropertyChanged("ResponseType");
             }
         }
 
@@ -127,23 +144,6 @@ namespace message360.Models
             {
                 this.mix = value;
                 onPropertyChanged("Mix");
-            }
-        }
-
-        /// <summary>
-        /// Response type format xml or json
-        /// </summary>
-        [JsonProperty("ResponseType")]
-        public string ResponseType 
-        { 
-            get 
-            {
-                return this.responseType; 
-            } 
-            set 
-            {
-                this.responseType = value;
-                onPropertyChanged("ResponseType");
             }
         }
     }
