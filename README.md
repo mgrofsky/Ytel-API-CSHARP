@@ -2,8 +2,8 @@
 
 ## PLEASE READ!
 
-Please add the below code to your project before any network calls.  In the future, this will be built directly into the SDK.
-```
+:exclamation: Please add the below code to your project before any network calls.  In the future, this will be built directly into the SDK.
+```c#
 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 ```
 
