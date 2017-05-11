@@ -1,6 +1,6 @@
 # Getting started
 
-## PLEASE READ!
+### PLEASE READ!
 
 :exclamation: Please add the below code to your project before any network calls.  In the future, this will be built directly into the SDK.
 ```c#
