@@ -1,5 +1,12 @@
 # Getting started
 
+## PLEASE READ!
+
+Please add the below code to your project before any network calls.  In the future, this will be built directly into the SDK.
+```
+ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+```
+
 ## How to Build
 
 The generated code uses a few NuGet Packages e.g., Newtonsoft.Json, UniRest,
