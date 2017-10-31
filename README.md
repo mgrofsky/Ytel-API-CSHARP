@@ -1,24 +1,18 @@
 # Getting started
 
-### PLEASE READ!
-
-:exclamation: Please add the below code to your project before any network calls.  In the future, this will be built directly into the SDK.
-```c#
-ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-```
+message360 API version 3
 
 ## How to Build
 
-The generated code uses a few NuGet Packages e.g., Newtonsoft.Json, UniRest,
-and Microsoft Base Class Library. The reference to these packages is already
-added as in the packages.config file. If the automatic NuGet package restore
+The generated code uses the Newtonsoft Json.NET NuGet Package. If the automatic NuGet package restore
 is enabled, these dependencies will be installed automatically. Therefore,
 you will need internet access for build.
 
+"This library requires Visual Studio 2017 for compilation."
 1. Open the solution (Message360.sln) file.
 2. Invoke the build process using `Ctrl+Shift+B` shortcut key or using the `Build` menu as shown below.
 
-![Building SDK using Visual Studio](https://apidocs.io/illustration/cs?step=buildSDK&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
+![Building SDK using Visual Studio](https://apidocs.io/illustration/cs?step=buildSDK&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.Standard)
 
 ## How to Use
 
@@ -31,34 +25,34 @@ The following section explains how to use the Message360 library in a new consol
 
 For starting a new project, right click on the current solution from the *solution explorer* and choose  ``` Add -> New Project ```.
 
-![Add a new project in the existing solution using Visual Studio](https://apidocs.io/illustration/cs?step=addProject&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
+![Add a new project in the existing solution using Visual Studio](https://apidocs.io/illustration/cs?step=addProject&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.Standard)
 
 Next, choose "Console Application", provide a ``` TestConsoleProject ``` as the project name and click ``` OK ```.
 
-![Create a new console project using Visual Studio](https://apidocs.io/illustration/cs?step=createProject&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
+![Create a new console project using Visual Studio](https://apidocs.io/illustration/cs?step=createProject&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.Standard)
 
 ### 2. Set as startup project
 
 The new console project is the entry point for the eventual execution. This requires us to set the ``` TestConsoleProject ``` as the start-up project. To do this, right-click on the  ``` TestConsoleProject ``` and choose  ``` Set as StartUp Project ``` form the context menu.
 
-![Set the new cosole project as the start up project](https://apidocs.io/illustration/cs?step=setStartup&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
+![Set the new cosole project as the start up project](https://apidocs.io/illustration/cs?step=setStartup&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.Standard)
 
 ### 3. Add reference of the library project
 
 In order to use the Message360 library in the new project, first we must add a projet reference to the ``` TestConsoleProject ```. First, right click on the ``` References ``` node in the *solution explorer* and click ``` Add Reference... ```.
 
-![Open references of the TestConsoleProject](https://apidocs.io/illustration/cs?step=addReference&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
+![Open references of the TestConsoleProject](https://apidocs.io/illustration/cs?step=addReference&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.Standard)
 
-Next, a window will be displayed where we must set the ``` checkbox ``` on ``` Message360.PCL ``` and click ``` OK ```. By doing this, we have added a reference of the ```Message360.PCL``` project into the new ``` TestConsoleProject ```.
+Next, a window will be displayed where we must set the ``` checkbox ``` on ``` Message360.Standard ``` and click ``` OK ```. By doing this, we have added a reference of the ```Message360.Standard``` project into the new ``` TestConsoleProject ```.
 
-![Add a reference to the TestConsoleProject](https://apidocs.io/illustration/cs?step=createReference&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
+![Add a reference to the TestConsoleProject](https://apidocs.io/illustration/cs?step=createReference&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.Standard)
 
 ### 4. Write sample code
 
 Once the ``` TestConsoleProject ``` is created, a file named ``` Program.cs ``` will be visible in the *solution explorer* with an empty ``` Main ``` method. This is the entry point for the execution of the entire solution.
 Here, you can add code to initialize the client library and acquire the instance of a *Controller* class. Sample code to initialize the client library and using controller methods is given in the subsequent sections.
 
-![Add a reference to the TestConsoleProject](https://apidocs.io/illustration/cs?step=addCode&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.PCL)
+![Add a reference to the TestConsoleProject](https://apidocs.io/illustration/cs?step=addCode&workspaceFolder=Message360-CSharp&workspaceName=Message360&projectName=Message360.Standard)
 
 ## How to Test
 
@@ -89,43 +83,45 @@ string basicAuthPassword = "basicAuthPassword"; // The password to use with basi
 Message360Client client = new Message360Client(basicAuthUserName, basicAuthPassword);
 ```
 
-## Class Reference
 
-### <a name="list_of_controllers"></a>List of Controllers
 
-* [ShortCodeController](#short_code_controller)
+# Class Reference
+
+## <a name="list_of_controllers"></a>List of Controllers
+
+* [SharedShortCodeController](#shared_short_code_controller)
 * [ConferenceController](#conference_controller)
-* [NumberVerificationController](#number_verification_controller)
+* [TranscriptionController](#transcription_controller)
+* [PhoneNumberController](#phone_number_controller)
+* [UsageController](#usage_controller)
 * [WebRTCController](#web_rtc_controller)
-* [CallController](#call_controller)
-* [SubAccountController](#sub_account_controller)
-* [AddressController](#address_controller)
+* [RecordingController](#recording_controller)
 * [EmailController](#email_controller)
 * [SMSController](#sms_controller)
-* [RecordingController](#recording_controller)
+* [CallController](#call_controller)
 * [CarrierController](#carrier_controller)
-* [PhoneNumberController](#phone_number_controller)
-* [TranscriptionController](#transcription_controller)
-* [UsageController](#usage_controller)
+* [AddressController](#address_controller)
+* [SubAccountController](#sub_account_controller)
 * [AccountController](#account_controller)
+* [ShortCodeController](#short_code_controller)
 
-### <a name="short_code_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.ShortCodeController") ShortCodeController
+## <a name="shared_short_code_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.SharedShortCodeController") SharedShortCodeController
 
-#### Get singleton instance
+### Get singleton instance
 
-The singleton instance of the ``` ShortCodeController ``` class can be accessed from the API Client.
+The singleton instance of the ``` SharedShortCodeController ``` class can be accessed from the API Client.
 
 ```csharp
-ShortCodeController shortCode = client.ShortCode;
+SharedShortCodeController sharedShortCode = client.SharedShortCode;
 ```
 
-#### <a name="create_view_template"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ShortCodeController.CreateViewTemplate") CreateViewTemplate
+### <a name="view_template"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SharedShortCodeController.ViewTemplate") ViewTemplate
 
 > View a Shared ShortCode Template
 
 
 ```csharp
-Task<string> CreateViewTemplate(CreateViewTemplateInput input)
+Task<string> ViewTemplate(Models.ViewTemplateInput input)
 ```
 
 #### Parameters
@@ -139,7 +135,7 @@ Task<string> CreateViewTemplate(CreateViewTemplateInput input)
 #### Example Usage
 
 ```csharp
-CreateViewTemplateInput collect = new CreateViewTemplateInput();
+ViewTemplateInput collect = new ViewTemplateInput();
 
 Guid templateid = Guid.NewGuid();
 collect.Templateid = templateid;
@@ -148,126 +144,52 @@ string responseType = "json";
 collect.ResponseType = responseType;
 
 
-string result = await shortCode.CreateViewTemplate(collect);
+string result = await sharedShortCode.ViewTemplate(collect);
 
 ```
 
 
-#### <a name="create_send_short_code"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ShortCodeController.CreateSendShortCode") CreateSendShortCode
+### <a name="view_shared_shortcodes"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SharedShortCodeController.ViewSharedShortcodes") ViewSharedShortcodes
 
-> Send an SMS from a message360 ShortCode
+> View a ShortCode Message
 
 
 ```csharp
-Task<string> CreateSendShortCode(CreateSendShortCodeInput input)
+Task<string> ViewSharedShortcodes(Models.ViewSharedShortcodesInput input)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| shortcode |  ``` Required ```  | The Short Code number that is the sender of this message |
-| tocountrycode |  ``` Required ```  ``` DefaultValue ```  | The country code for sending this message |
-| to |  ``` Required ```  | A valid 10-digit number that should receive the message+ |
-| templateid |  ``` Required ```  | The unique identifier for the template used for the message |
+| messagesid |  ``` Required ```  | Message sid |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| data |  ``` Required ```  | format of your data, example: {companyname}:test,{otpcode}:1234 |
-| method |  ``` Optional ```  ``` DefaultValue ```  | Specifies the HTTP method used to request the required URL once the Short Code message is sent. |
-| messageStatusCallback |  ``` Optional ```  | URL that can be requested to receive notification when Short Code message was sent. |
 
 
 #### Example Usage
 
 ```csharp
-CreateSendShortCodeInput collect = new CreateSendShortCodeInput();
+ViewSharedShortcodesInput collect = new ViewSharedShortcodesInput();
 
-string shortcode = "shortcode";
-collect.Shortcode = shortcode;
-
-string tocountrycode = "1";
-collect.Tocountrycode = tocountrycode;
-
-string to = "to";
-collect.To = to;
-
-Guid templateid = Guid.NewGuid();
-collect.Templateid = templateid;
+string messagesid = "messagesid";
+collect.Messagesid = messagesid;
 
 string responseType = "json";
 collect.ResponseType = responseType;
 
-string data = "data";
-collect.Data = data;
 
-string method = "GET";
-collect.Method = method;
-
-string messageStatusCallback = "MessageStatusCallback";
-collect.MessageStatusCallback = messageStatusCallback;
-
-
-string result = await shortCode.CreateSendShortCode(collect);
+string result = await sharedShortCode.ViewSharedShortcodes(collect);
 
 ```
 
 
-#### <a name="create_list_inbound_short_code"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ShortCodeController.CreateListInboundShortCode") CreateListInboundShortCode
-
-> List All Inbound ShortCode
-
-
-```csharp
-Task<string> CreateListInboundShortCode(CreateListInboundShortCodeInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
-| mfrom |  ``` Optional ```  | From Number to Inbound ShortCode |
-| shortcode |  ``` Optional ```  | Only list messages sent to this Short Code |
-| dateReceived |  ``` Optional ```  | Only list messages sent with the specified date |
-
-
-#### Example Usage
-
-```csharp
-CreateListInboundShortCodeInput collect = new CreateListInboundShortCodeInput();
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-int? page = 3;
-collect.Page = page;
-
-int? pagesize = 10;
-collect.Pagesize = pagesize;
-
-string mfrom = "from";
-collect.Mfrom = mfrom;
-
-string shortcode = "Shortcode";
-collect.Shortcode = shortcode;
-
-string dateReceived = "DateReceived";
-collect.DateReceived = dateReceived;
-
-
-string result = await shortCode.CreateListInboundShortCode(collect);
-
-```
-
-
-#### <a name="create_list_short_code"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ShortCodeController.CreateListShortCode") CreateListShortCode
+### <a name="list_outbound_shared_shortcodes"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SharedShortCodeController.ListOutboundSharedShortcodes") ListOutboundSharedShortcodes
 
 > List ShortCode Messages
 
 
 ```csharp
-Task<string> CreateListShortCode(CreateListShortCodeInput input)
+Task<string> ListOutboundSharedShortcodes(Models.ListOutboundSharedShortcodesInput input)
 ```
 
 #### Parameters
@@ -275,7 +197,7 @@ Task<string> CreateListShortCode(CreateListShortCodeInput input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
 | pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
 | mfrom |  ``` Optional ```  | Messages sent from this number |
 | to |  ``` Optional ```  | Messages sent to this number |
@@ -285,12 +207,12 @@ Task<string> CreateListShortCode(CreateListShortCodeInput input)
 #### Example Usage
 
 ```csharp
-CreateListShortCodeInput collect = new CreateListShortCodeInput();
+ListOutboundSharedShortcodesInput collect = new ListOutboundSharedShortcodesInput();
 
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? page = 3;
+int? page = 1;
 collect.Page = page;
 
 int? pagesize = 10;
@@ -306,18 +228,122 @@ string datesent = "datesent";
 collect.Datesent = datesent;
 
 
-string result = await shortCode.CreateListShortCode(collect);
+string result = await sharedShortCode.ListOutboundSharedShortcodes(collect);
 
 ```
 
 
-#### <a name="create_list_templates"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ShortCodeController.CreateListTemplates") CreateListTemplates
+### <a name="list_inbound_shared_shortcodes"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SharedShortCodeController.ListInboundSharedShortcodes") ListInboundSharedShortcodes
+
+> List All Inbound ShortCode
+
+
+```csharp
+Task<string> ListInboundSharedShortcodes(Models.ListInboundSharedShortcodesInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| mfrom |  ``` Optional ```  | From Number to Inbound ShortCode |
+| shortcode |  ``` Optional ```  | Only list messages sent to this Short Code |
+| dateReceived |  ``` Optional ```  | Only list messages sent with the specified date |
+
+
+#### Example Usage
+
+```csharp
+ListInboundSharedShortcodesInput collect = new ListInboundSharedShortcodesInput();
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+int? page = 1;
+collect.Page = page;
+
+int? pagesize = 10;
+collect.Pagesize = pagesize;
+
+string mfrom = "from";
+collect.Mfrom = mfrom;
+
+string shortcode = "Shortcode";
+collect.Shortcode = shortcode;
+
+string dateReceived = "DateReceived";
+collect.DateReceived = dateReceived;
+
+
+string result = await sharedShortCode.ListInboundSharedShortcodes(collect);
+
+```
+
+
+### <a name="send_shared_shortcode"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SharedShortCodeController.SendSharedShortcode") SendSharedShortcode
+
+> Send an SMS from a message360 ShortCode
+
+
+```csharp
+Task<string> SendSharedShortcode(Models.SendSharedShortcodeInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| shortcode |  ``` Required ```  | The Short Code number that is the sender of this message |
+| to |  ``` Required ```  | A valid 10-digit number that should receive the message |
+| templateid |  ``` Required ```  | The unique identifier for the template used for the message |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| data |  ``` Required ```  | format of your data, example: {companyname}:test,{otpcode}:1234 |
+| method |  ``` Optional ```  ``` DefaultValue ```  | Specifies the HTTP method used to request the required URL once the Short Code message is sent. |
+| messageStatusCallback |  ``` Optional ```  | URL that can be requested to receive notification when Short Code message was sent. |
+
+
+#### Example Usage
+
+```csharp
+SendSharedShortcodeInput collect = new SendSharedShortcodeInput();
+
+string shortcode = "shortcode";
+collect.Shortcode = shortcode;
+
+string to = "to";
+collect.To = to;
+
+Guid templateid = Guid.NewGuid();
+collect.Templateid = templateid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+string data = "data";
+collect.Data = data;
+
+var method = Models.HttpActionEnum?Helper.ParseString("GET");
+collect.Method = method;
+
+string messageStatusCallback = "MessageStatusCallback";
+collect.MessageStatusCallback = messageStatusCallback;
+
+
+string result = await sharedShortCode.SendSharedShortcode(collect);
+
+```
+
+
+### <a name="list_templates"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SharedShortCodeController.ListTemplates") ListTemplates
 
 > List Shortcode Templates by Type
 
 
 ```csharp
-Task<string> CreateListTemplates(CreateListTemplatesInput input)
+Task<string> ListTemplates(Models.ListTemplatesInput input)
 ```
 
 #### Parameters
@@ -326,14 +352,15 @@ Task<string> CreateListTemplates(CreateListTemplatesInput input)
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 | type |  ``` Optional ```  ``` DefaultValue ```  | The type (category) of template Valid values: marketing, authorization |
-| page |  ``` Optional ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
 | pagesize |  ``` Optional ```  ``` DefaultValue ```  | The count of objects to return per page. |
+| shortcode |  ``` Optional ```  | Only list templates of type |
 
 
 #### Example Usage
 
 ```csharp
-CreateListTemplatesInput collect = new CreateListTemplatesInput();
+ListTemplatesInput collect = new ListTemplatesInput();
 
 string responseType = "json";
 collect.ResponseType = responseType;
@@ -341,57 +368,236 @@ collect.ResponseType = responseType;
 string type = "authorization";
 collect.Type = type;
 
-int? page = 3;
+int? page = 1;
 collect.Page = page;
 
 int? pagesize = 10;
 collect.Pagesize = pagesize;
 
+string shortcode = "Shortcode";
+collect.Shortcode = shortcode;
 
-string result = await shortCode.CreateListTemplates(collect);
+
+string result = await sharedShortCode.ListTemplates(collect);
 
 ```
 
 
-#### <a name="create_view_short_code"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ShortCodeController.CreateViewShortCode") CreateViewShortCode
+### <a name="view_keyword"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SharedShortCodeController.ViewKeyword") ViewKeyword
 
-> View a ShortCode Message
+> View a set of properties for a single keyword.
 
 
 ```csharp
-Task<string> CreateViewShortCode(CreateViewShortCodeInput input)
+Task<string> ViewKeyword(Models.ViewKeywordInput input)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| messagesid |  ``` Required ```  | Message sid |
+| keywordid |  ``` Required ```  | The unique identifier of each keyword |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
 #### Example Usage
 
 ```csharp
-CreateViewShortCodeInput collect = new CreateViewShortCodeInput();
+ViewKeywordInput collect = new ViewKeywordInput();
 
-string messagesid = "messagesid";
-collect.Messagesid = messagesid;
+string keywordid = "Keywordid";
+collect.Keywordid = keywordid;
 
 string responseType = "json";
 collect.ResponseType = responseType;
 
 
-string result = await shortCode.CreateViewShortCode(collect);
+string result = await sharedShortCode.ViewKeyword(collect);
+
+```
+
+
+### <a name="list_keyword"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SharedShortCodeController.ListKeyword") ListKeyword
+
+> Retrieve a list of keywords associated with your message360 account.
+
+
+```csharp
+Task<string> ListKeyword(Models.ListKeywordInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| keyword |  ``` Optional ```  | Only list keywords of keyword |
+| shortcode |  ``` Optional ```  | Only list keywords of shortcode |
+
+
+#### Example Usage
+
+```csharp
+ListKeywordInput collect = new ListKeywordInput();
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+int? page = 1;
+collect.Page = page;
+
+int? pageSize = 10;
+collect.PageSize = pageSize;
+
+string keyword = "Keyword";
+collect.Keyword = keyword;
+
+int? shortcode = 47;
+collect.Shortcode = shortcode;
+
+
+string result = await sharedShortCode.ListKeyword(collect);
+
+```
+
+
+### <a name="view_assignement"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SharedShortCodeController.ViewAssignement") ViewAssignement
+
+> The response returned here contains all resource properties associated with the given Shortcode.
+
+
+```csharp
+Task<string> ViewAssignement(Models.ViewAssignementInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| shortcode |  ``` Required ```  | List of valid Shortcode to your message360 account |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+ViewAssignementInput collect = new ViewAssignementInput();
+
+string shortcode = "Shortcode";
+collect.Shortcode = shortcode;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await sharedShortCode.ViewAssignement(collect);
+
+```
+
+
+### <a name="list_assignment"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SharedShortCodeController.ListAssignment") ListAssignment
+
+> Retrieve a list of shortcode assignment associated with your message360 account.
+
+
+```csharp
+Task<string> ListAssignment(Models.ListAssignmentInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| shortcode |  ``` Optional ```  | Only list keywords of shortcode |
+
+
+#### Example Usage
+
+```csharp
+ListAssignmentInput collect = new ListAssignmentInput();
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+int? page = 1;
+collect.Page = page;
+
+int? pageSize = 10;
+collect.PageSize = pageSize;
+
+string shortcode = "Shortcode";
+collect.Shortcode = shortcode;
+
+
+string result = await sharedShortCode.ListAssignment(collect);
+
+```
+
+
+### <a name="update_assignment"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SharedShortCodeController.UpdateAssignment") UpdateAssignment
+
+> TODO: Add a method description
+
+
+```csharp
+Task<string> UpdateAssignment(Models.UpdateAssignmentInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| shortcode |  ``` Required ```  | List of valid shortcode to your message360 account |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| friendlyName |  ``` Optional ```  | User generated name of the shortcode |
+| callbackUrl |  ``` Optional ```  | URL that can be requested to receive notification when call has ended. A set of default parameters will be sent here once the call is finished. |
+| callbackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required StatusCallBackUrl once call connects. |
+| fallbackUrl |  ``` Optional ```  | URL used if any errors occur during execution of InboundXML or at initial request of the required Url provided with the POST. |
+| fallbackUrlMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required FallbackUrl once call connects. |
+
+
+#### Example Usage
+
+```csharp
+UpdateAssignmentInput collect = new UpdateAssignmentInput();
+
+string shortcode = "Shortcode";
+collect.Shortcode = shortcode;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+string friendlyName = "FriendlyName";
+collect.FriendlyName = friendlyName;
+
+string callbackUrl = "CallbackUrl";
+collect.CallbackUrl = callbackUrl;
+
+var callbackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
+collect.CallbackMethod = callbackMethod;
+
+string fallbackUrl = "FallbackUrl";
+collect.FallbackUrl = fallbackUrl;
+
+var fallbackUrlMethod = Models.HttpActionEnum?Helper.ParseString("GET");
+collect.FallbackUrlMethod = fallbackUrlMethod;
+
+
+string result = await sharedShortCode.UpdateAssignment(collect);
 
 ```
 
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="conference_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.ConferenceController") ConferenceController
+## <a name="conference_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.ConferenceController") ConferenceController
 
-#### Get singleton instance
+### Get singleton instance
 
 The singleton instance of the ``` ConferenceController ``` class can be accessed from the API Client.
 
@@ -399,30 +605,30 @@ The singleton instance of the ``` ConferenceController ``` class can be accessed
 ConferenceController conference = client.Conference;
 ```
 
-#### <a name="create_deaf_mute_participant"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.CreateDeafMuteParticipant") CreateDeafMuteParticipant
+### <a name="deaf_mute_participant"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.DeafMuteParticipant") DeafMuteParticipant
 
 > Deaf Mute Participant
 
 
 ```csharp
-Task<string> CreateDeafMuteParticipant(CreateDeafMuteParticipantInput input)
+Task<string> DeafMuteParticipant(Models.DeafMuteParticipantInput input)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| conferenceSid |  ``` Required ```  | TODO: Add a parameter description |
-| participantSid |  ``` Required ```  | TODO: Add a parameter description |
+| conferenceSid |  ``` Required ```  | ID of the active conference |
+| participantSid |  ``` Required ```  | ID of an active participant |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
-| muted |  ``` Optional ```  | TODO: Add a parameter description |
-| deaf |  ``` Optional ```  | TODO: Add a parameter description |
+| muted |  ``` Optional ```  | Mute a participant |
+| deaf |  ``` Optional ```  | Make it so a participant cant hear |
 
 
 #### Example Usage
 
 ```csharp
-CreateDeafMuteParticipantInput collect = new CreateDeafMuteParticipantInput();
+DeafMuteParticipantInput collect = new DeafMuteParticipantInput();
 
 string conferenceSid = "conferenceSid";
 collect.ConferenceSid = conferenceSid;
@@ -440,106 +646,56 @@ bool? deaf = false;
 collect.Deaf = deaf;
 
 
-string result = await conference.CreateDeafMuteParticipant(collect);
+string result = await conference.DeafMuteParticipant(collect);
 
 ```
 
 
-#### <a name="create_list_conference"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.CreateListConference") CreateListConference
+### <a name="view_participant"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.ViewParticipant") ViewParticipant
 
-> List Conference
+> View Participant
 
 
 ```csharp
-Task<string> CreateListConference(CreateListConferenceInput input)
+Task<string> ViewParticipant(Models.ViewParticipantInput input)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pageSize |  ``` Optional ```  | Number of individual resources listed in the response per page |
-| friendlyName |  ``` Optional ```  | Only return conferences with the specified FriendlyName |
-| status |  ``` Optional ```  | TODO: Add a parameter description |
-| dateCreated |  ``` Optional ```  | TODO: Add a parameter description |
-| dateUpdated |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```csharp
-CreateListConferenceInput collect = new CreateListConferenceInput();
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-int? page = 3;
-collect.Page = page;
-
-int? pageSize = 3;
-collect.PageSize = pageSize;
-
-string friendlyName = "FriendlyName";
-collect.FriendlyName = friendlyName;
-
-var status = Models.InterruptedCallStatusEnum?Helper.ParseString("CANCELED");
-collect.Status = status;
-
-string dateCreated = "DateCreated";
-collect.DateCreated = dateCreated;
-
-string dateUpdated = "DateUpdated";
-collect.DateUpdated = dateUpdated;
-
-
-string result = await conference.CreateListConference(collect);
-
-```
-
-
-#### <a name="create_view_conference"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.CreateViewConference") CreateViewConference
-
-> View Conference
-
-
-```csharp
-Task<string> CreateViewConference(CreateViewConferenceInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| conferencesid |  ``` Required ```  | The unique identifier of each conference resource |
+| conferenceSid |  ``` Required ```  | unique conference sid |
+| participantSid |  ``` Required ```  | TODO: Add a parameter description |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
 #### Example Usage
 
 ```csharp
-CreateViewConferenceInput collect = new CreateViewConferenceInput();
+ViewParticipantInput collect = new ViewParticipantInput();
 
-string conferencesid = "conferencesid";
-collect.Conferencesid = conferencesid;
+string conferenceSid = "ConferenceSid";
+collect.ConferenceSid = conferenceSid;
+
+string participantSid = "ParticipantSid";
+collect.ParticipantSid = participantSid;
 
 string responseType = "json";
 collect.ResponseType = responseType;
 
 
-string result = await conference.CreateViewConference(collect);
+string result = await conference.ViewParticipant(collect);
 
 ```
 
 
-#### <a name="add_participant"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.AddParticipant") AddParticipant
+### <a name="add_participant"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.AddParticipant") AddParticipant
 
 > Add Participant in conference 
 
 
 ```csharp
-Task<string> AddParticipant(AddParticipantInput input)
+Task<string> AddParticipant(Models.AddParticipantInput input)
 ```
 
 #### Parameters
@@ -548,10 +704,9 @@ Task<string> AddParticipant(AddParticipantInput input)
 |-----------|------|-------------|
 | conferencesid |  ``` Required ```  | Unique Conference Sid |
 | participantnumber |  ``` Required ```  | Particiant Number |
-| tocountrycode |  ``` Required ```  | TODO: Add a parameter description |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| muted |  ``` Optional ```  | TODO: Add a parameter description |
-| deaf |  ``` Optional ```  | TODO: Add a parameter description |
+| muted |  ``` Optional ```  | add muted |
+| deaf |  ``` Optional ```  | add without volume |
 
 
 #### Example Usage
@@ -564,9 +719,6 @@ collect.Conferencesid = conferencesid;
 
 string participantnumber = "participantnumber";
 collect.Participantnumber = participantnumber;
-
-int tocountrycode = 3;
-collect.Tocountrycode = tocountrycode;
 
 string responseType = "json";
 collect.ResponseType = responseType;
@@ -583,78 +735,144 @@ string result = await conference.AddParticipant(collect);
 ```
 
 
-#### <a name="create_list_participant"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.CreateListParticipant") CreateListParticipant
+### <a name="view_conference"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.ViewConference") ViewConference
 
-> List Participant
+> View Conference
 
 
 ```csharp
-Task<string> CreateListParticipant(CreateListParticipantInput input)
+Task<string> ViewConference(Models.ViewConferenceInput input)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| conferenceSid |  ``` Required ```  | unique conference sid |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response format, xml or json |
-| page |  ``` Optional ```  | page number |
-| pagesize |  ``` Optional ```  | TODO: Add a parameter description |
-| muted |  ``` Optional ```  | TODO: Add a parameter description |
-| deaf |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```csharp
-CreateListParticipantInput collect = new CreateListParticipantInput();
-
-string conferenceSid = "ConferenceSid";
-collect.ConferenceSid = conferenceSid;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-int? page = 3;
-collect.Page = page;
-
-int? pagesize = 3;
-collect.Pagesize = pagesize;
-
-bool? muted = false;
-collect.Muted = muted;
-
-bool? deaf = false;
-collect.Deaf = deaf;
-
-
-string result = await conference.CreateListParticipant(collect);
-
-```
-
-
-#### <a name="create_view_participant"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.CreateViewParticipant") CreateViewParticipant
-
-> View Participant
-
-
-```csharp
-Task<string> CreateViewParticipant(CreateViewParticipantInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| conferenceSid |  ``` Required ```  | unique conference sid |
-| participantSid |  ``` Required ```  | TODO: Add a parameter description |
+| conferencesid |  ``` Required ```  | The unique identifier of each conference resource |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
 #### Example Usage
 
 ```csharp
-CreateViewParticipantInput collect = new CreateViewParticipantInput();
+ViewConferenceInput collect = new ViewConferenceInput();
+
+string conferencesid = "conferencesid";
+collect.Conferencesid = conferencesid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await conference.ViewConference(collect);
+
+```
+
+
+### <a name="create_conference"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.CreateConference") CreateConference
+
+> Here you can experiment with initiating a conference call through message360 and view the request response generated when doing so.
+
+
+```csharp
+Task<string> CreateConference(Models.CreateConferenceInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| mfrom |  ``` Required ```  | This number to display on Caller ID as calling |
+| to |  ``` Required ```  | To number |
+| url |  ``` Required ```  | URL requested once the call connects |
+| method |  ``` Required ```  ``` DefaultValue ```  | Specifies the HTTP method used to request the required URL once call connects. |
+| recordCallbackUrl |  ``` Required ```  | Recording parameters will be sent here upon completion. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| statusCallBackUrl |  ``` Optional ```  | URL that can be requested to receive notification when call has ended. A set of default parameters will be sent here once the conference is finished. |
+| statusCallBackMethod |  ``` Optional ```  | Specifies the HTTP methodlinkclass used to request StatusCallbackUrl. |
+| fallBackUrl |  ``` Optional ```  | URL requested if the initial Url parameter fails or encounters an error |
+| fallBackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required FallbackUrl once call connects. |
+| record |  ``` Optional ```  | Specifies if the conference should be recorded. |
+| recordCallbackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once conference connects. |
+| schdeuleTime |  ``` Optional ```  | Schedule conference in future. Schedule time must be greater than current time |
+| timeout |  ``` Optional ```  | The number of seconds the call stays on the line while waiting for an answer. The max time limit is 999 and the default limit is 60 seconds but lower times can be set. |
+
+
+#### Example Usage
+
+```csharp
+CreateConferenceInput collect = new CreateConferenceInput();
+
+string mfrom = "From";
+collect.Mfrom = mfrom;
+
+string to = "To";
+collect.To = to;
+
+string url = "Url";
+collect.Url = url;
+
+var method = Models.HttpActionEnumHelper.ParseString("POST");
+collect.Method = method;
+
+string recordCallbackUrl = "RecordCallbackUrl";
+collect.RecordCallbackUrl = recordCallbackUrl;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+string statusCallBackUrl = "StatusCallBackUrl";
+collect.StatusCallBackUrl = statusCallBackUrl;
+
+var statusCallBackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
+collect.StatusCallBackMethod = statusCallBackMethod;
+
+string fallBackUrl = "FallBackUrl";
+collect.FallBackUrl = fallBackUrl;
+
+var fallBackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
+collect.FallBackMethod = fallBackMethod;
+
+bool? record = true;
+collect.Record = record;
+
+var recordCallbackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
+collect.RecordCallbackMethod = recordCallbackMethod;
+
+string schdeuleTime = "SchdeuleTime";
+collect.SchdeuleTime = schdeuleTime;
+
+int? timeout = 138;
+collect.Timeout = timeout;
+
+
+string result = await conference.CreateConference(collect);
+
+```
+
+
+### <a name="hangup_participant"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.HangupParticipant") HangupParticipant
+
+> Remove a participant from a conference.
+
+
+```csharp
+Task<string> HangupParticipant(Models.HangupParticipantInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| conferenceSid |  ``` Required ```  | The unique identifier for a conference object. |
+| participantSid |  ``` Required ```  | The unique identifier for a participant object. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+HangupParticipantInput collect = new HangupParticipantInput();
 
 string conferenceSid = "ConferenceSid";
 collect.ConferenceSid = conferenceSid;
@@ -666,66 +884,656 @@ string responseType = "json";
 collect.ResponseType = responseType;
 
 
-string result = await conference.CreateViewParticipant(collect);
+string result = await conference.HangupParticipant(collect);
 
 ```
 
 
-[Back to List of Controllers](#list_of_controllers)
+### <a name="play_conference_audio"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.PlayConferenceAudio") PlayConferenceAudio
 
-### <a name="number_verification_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.NumberVerificationController") NumberVerificationController
-
-#### Get singleton instance
-
-The singleton instance of the ``` NumberVerificationController ``` class can be accessed from the API Client.
-
-```csharp
-NumberVerificationController numberVerification = client.NumberVerification;
-```
-
-#### <a name="create_verify_number"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.NumberVerificationController.CreateVerifyNumber") CreateVerifyNumber
-
-> Number Verification
+> Play an audio file during a conference.
 
 
 ```csharp
-Task<string> CreateVerifyNumber(CreateVerifyNumberInput input)
+Task<string> PlayConferenceAudio(Models.PlayConferenceAudioInput input)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| phonenumber |  ``` Required ```  | TODO: Add a parameter description |
-| type |  ``` Required ```  | TODO: Add a parameter description |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
+| conferenceSid |  ``` Required ```  | The unique identifier for a conference object. |
+| participantSid |  ``` Required ```  | The unique identifier for a participant object. |
+| audioUrl |  ``` Required ```  | The URL for the audio file that is to be played during the conference. Multiple audio files can be chained by using a semicolon. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
 #### Example Usage
 
 ```csharp
-CreateVerifyNumberInput collect = new CreateVerifyNumberInput();
+PlayConferenceAudioInput collect = new PlayConferenceAudioInput();
 
-string phonenumber = "phonenumber";
-collect.Phonenumber = phonenumber;
+string conferenceSid = "ConferenceSid";
+collect.ConferenceSid = conferenceSid;
 
-string type = "type";
-collect.Type = type;
+string participantSid = "ParticipantSid";
+collect.ParticipantSid = participantSid;
+
+var audioUrl = Models.AudioFormatEnumHelper.ParseString("mp3");
+collect.AudioUrl = audioUrl;
 
 string responseType = "json";
 collect.ResponseType = responseType;
 
 
-string result = await numberVerification.CreateVerifyNumber(collect);
+string result = await conference.PlayConferenceAudio(collect);
+
+```
+
+
+### <a name="list_participant"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.ListParticipant") ListParticipant
+
+> List Participant
+
+
+```csharp
+Task<string> ListParticipant(Models.ListParticipantInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| conferenceSid |  ``` Required ```  | unique conference sid |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response format, xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | page number |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Amount of records to return per page |
+| muted |  ``` Optional ```  | Participants that are muted |
+| deaf |  ``` Optional ```  | Participants cant hear |
+
+
+#### Example Usage
+
+```csharp
+ListParticipantInput collect = new ListParticipantInput();
+
+string conferenceSid = "ConferenceSid";
+collect.ConferenceSid = conferenceSid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+int? page = 1;
+collect.Page = page;
+
+int? pagesize = 10;
+collect.Pagesize = pagesize;
+
+bool? muted = true;
+collect.Muted = muted;
+
+bool? deaf = true;
+collect.Deaf = deaf;
+
+
+string result = await conference.ListParticipant(collect);
+
+```
+
+
+### <a name="list_conference"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ConferenceController.ListConference") ListConference
+
+> List Conference
+
+
+```csharp
+Task<string> ListConference(Models.ListConferenceInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| friendlyName |  ``` Optional ```  | Only return conferences with the specified FriendlyName |
+| dateCreated |  ``` Optional ```  | Conference created date |
+
+
+#### Example Usage
+
+```csharp
+ListConferenceInput collect = new ListConferenceInput();
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+int? page = 1;
+collect.Page = page;
+
+int? pageSize = 10;
+collect.PageSize = pageSize;
+
+string friendlyName = "FriendlyName";
+collect.FriendlyName = friendlyName;
+
+string dateCreated = "DateCreated";
+collect.DateCreated = dateCreated;
+
+
+string result = await conference.ListConference(collect);
 
 ```
 
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="web_rtc_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.WebRTCController") WebRTCController
+## <a name="transcription_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.TranscriptionController") TranscriptionController
 
-#### Get singleton instance
+### Get singleton instance
+
+The singleton instance of the ``` TranscriptionController ``` class can be accessed from the API Client.
+
+```csharp
+TranscriptionController transcription = client.Transcription;
+```
+
+### <a name="list_transcription"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.TranscriptionController.ListTranscription") ListTranscription
+
+> Get All transcriptions
+
+
+```csharp
+Task<string> ListTranscription(Models.ListTranscriptionInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | page number |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Amount of data per page |
+| status |  ``` Optional ```  | Transcription status |
+| dateTranscribed |  ``` Optional ```  | Transcription date |
+
+
+#### Example Usage
+
+```csharp
+ListTranscriptionInput collect = new ListTranscriptionInput();
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+int? page = 1;
+collect.Page = page;
+
+int? pageSize = 10;
+collect.PageSize = pageSize;
+
+var status = Models.StatusEnum?Helper.ParseString("INPROGRESS");
+collect.Status = status;
+
+string dateTranscribed = "DateTranscribed";
+collect.DateTranscribed = dateTranscribed;
+
+
+string result = await transcription.ListTranscription(collect);
+
+```
+
+
+### <a name="view_transcription"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.TranscriptionController.ViewTranscription") ViewTranscription
+
+> View Specific Transcriptions
+
+
+```csharp
+Task<string> ViewTranscription(Models.ViewTranscriptionInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| transcriptionSid |  ``` Required ```  | Unique Transcription ID |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+ViewTranscriptionInput collect = new ViewTranscriptionInput();
+
+string transcriptionSid = "TranscriptionSid";
+collect.TranscriptionSid = transcriptionSid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await transcription.ViewTranscription(collect);
+
+```
+
+
+### <a name="recording_transcription"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.TranscriptionController.RecordingTranscription") RecordingTranscription
+
+> Recording Transcriptions
+
+
+```csharp
+Task<string> RecordingTranscription(Models.RecordingTranscriptionInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recordingSid |  ``` Required ```  | Unique Recording sid |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+RecordingTranscriptionInput collect = new RecordingTranscriptionInput();
+
+string recordingSid = "RecordingSid";
+collect.RecordingSid = recordingSid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await transcription.RecordingTranscription(collect);
+
+```
+
+
+### <a name="audio_url_transcription"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.TranscriptionController.AudioURLTranscription") AudioURLTranscription
+
+> Audio URL Transcriptions
+
+
+```csharp
+Task<string> AudioURLTranscription(Models.AudioURLTranscriptionInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| audioUrl |  ``` Required ```  | Audio url |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+AudioURLTranscriptionInput collect = new AudioURLTranscriptionInput();
+
+string audioUrl = "AudioUrl";
+collect.AudioUrl = audioUrl;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await transcription.AudioURLTranscription(collect);
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="phone_number_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.PhoneNumberController") PhoneNumberController
+
+### Get singleton instance
+
+The singleton instance of the ``` PhoneNumberController ``` class can be accessed from the API Client.
+
+```csharp
+PhoneNumberController phoneNumber = client.PhoneNumber;
+```
+
+### <a name="available_phone_number"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.AvailablePhoneNumber") AvailablePhoneNumber
+
+> Available Phone Number
+
+
+```csharp
+Task<string> AvailablePhoneNumber(Models.AvailablePhoneNumberInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| numberType |  ``` Required ```  | Number type either SMS,Voice or all |
+| areaCode |  ``` Required ```  | Phone Number Area Code |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Page Size |
+
+
+#### Example Usage
+
+```csharp
+AvailablePhoneNumberInput collect = new AvailablePhoneNumberInput();
+
+var numberType = Models.NumberTypeEnumHelper.ParseString("ALL");
+collect.NumberType = numberType;
+
+string areaCode = "AreaCode";
+collect.AreaCode = areaCode;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+int? pageSize = 10;
+collect.PageSize = pageSize;
+
+
+string result = await phoneNumber.AvailablePhoneNumber(collect);
+
+```
+
+
+### <a name="list_number"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.ListNumber") ListNumber
+
+> List Account's Phone number details
+
+
+```csharp
+Task<string> ListNumber(Models.ListNumberInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| numberType |  ``` Optional ```  | SMS or Voice |
+| friendlyName |  ``` Optional ```  | Friendly name of the number |
+
+
+#### Example Usage
+
+```csharp
+ListNumberInput collect = new ListNumberInput();
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+int? page = 1;
+collect.Page = page;
+
+int? pageSize = 10;
+collect.PageSize = pageSize;
+
+var numberType = Models.NumberTypeEnum?Helper.ParseString("ALL");
+collect.NumberType = numberType;
+
+string friendlyName = "FriendlyName";
+collect.FriendlyName = friendlyName;
+
+
+string result = await phoneNumber.ListNumber(collect);
+
+```
+
+
+### <a name="view_number_details"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.ViewNumberDetails") ViewNumberDetails
+
+> Get Phone Number Details
+
+
+```csharp
+Task<string> ViewNumberDetails(Models.ViewNumberDetailsInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| phoneNumber |  ``` Required ```  | Get Phone number Detail |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+ViewNumberDetailsInput collect = new ViewNumberDetailsInput();
+
+string phoneNumber = "PhoneNumber";
+collect.PhoneNumber = phoneNumber;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await phoneNumber.ViewNumberDetails(collect);
+
+```
+
+
+### <a name="release_number"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.ReleaseNumber") ReleaseNumber
+
+> Release number from account
+
+
+```csharp
+Task<string> ReleaseNumber(Models.ReleaseNumberInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| phoneNumber |  ``` Required ```  | Phone number to be relase |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+ReleaseNumberInput collect = new ReleaseNumberInput();
+
+string phoneNumber = "PhoneNumber";
+collect.PhoneNumber = phoneNumber;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await phoneNumber.ReleaseNumber(collect);
+
+```
+
+
+### <a name="buy_number"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.BuyNumber") BuyNumber
+
+> Buy Phone Number 
+
+
+```csharp
+Task<string> BuyNumber(Models.BuyNumberInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| phoneNumber |  ``` Required ```  | Phone number to be purchase |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+BuyNumberInput collect = new BuyNumberInput();
+
+string phoneNumber = "PhoneNumber";
+collect.PhoneNumber = phoneNumber;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await phoneNumber.BuyNumber(collect);
+
+```
+
+
+### <a name="update_phone_number"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.UpdatePhoneNumber") UpdatePhoneNumber
+
+> Update Phone Number Details
+
+
+```csharp
+Task<string> UpdatePhoneNumber(Models.UpdatePhoneNumberInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| phoneNumber |  ``` Required ```  | The phone number to update |
+| voiceUrl |  ``` Required ```  | URL requested once the call connects |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| friendlyName |  ``` Optional ```  | Phone number friendly name description |
+| voiceMethod |  ``` Optional ```  | Post or Get |
+| voiceFallbackUrl |  ``` Optional ```  | URL requested if the voice URL is not available |
+| voiceFallbackMethod |  ``` Optional ```  | Post or Get |
+| hangupCallback |  ``` Optional ```  | callback url after a hangup occurs |
+| hangupCallbackMethod |  ``` Optional ```  | Post or Get |
+| heartbeatUrl |  ``` Optional ```  | URL requested once the call connects |
+| heartbeatMethod |  ``` Optional ```  | URL that can be requested every 60 seconds during the call to notify of elapsed time |
+| smsUrl |  ``` Optional ```  | URL requested when an SMS is received |
+| smsMethod |  ``` Optional ```  | Post or Get |
+| smsFallbackUrl |  ``` Optional ```  | URL requested once the call connects |
+| smsFallbackMethod |  ``` Optional ```  | URL requested if the sms URL is not available |
+
+
+#### Example Usage
+
+```csharp
+UpdatePhoneNumberInput collect = new UpdatePhoneNumberInput();
+
+string phoneNumber = "PhoneNumber";
+collect.PhoneNumber = phoneNumber;
+
+string voiceUrl = "VoiceUrl";
+collect.VoiceUrl = voiceUrl;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+string friendlyName = "FriendlyName";
+collect.FriendlyName = friendlyName;
+
+var voiceMethod = Models.HttpActionEnum?Helper.ParseString("GET");
+collect.VoiceMethod = voiceMethod;
+
+string voiceFallbackUrl = "VoiceFallbackUrl";
+collect.VoiceFallbackUrl = voiceFallbackUrl;
+
+var voiceFallbackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
+collect.VoiceFallbackMethod = voiceFallbackMethod;
+
+string hangupCallback = "HangupCallback";
+collect.HangupCallback = hangupCallback;
+
+var hangupCallbackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
+collect.HangupCallbackMethod = hangupCallbackMethod;
+
+string heartbeatUrl = "HeartbeatUrl";
+collect.HeartbeatUrl = heartbeatUrl;
+
+var heartbeatMethod = Models.HttpActionEnum?Helper.ParseString("GET");
+collect.HeartbeatMethod = heartbeatMethod;
+
+string smsUrl = "SmsUrl";
+collect.SmsUrl = smsUrl;
+
+var smsMethod = Models.HttpActionEnum?Helper.ParseString("GET");
+collect.SmsMethod = smsMethod;
+
+string smsFallbackUrl = "SmsFallbackUrl";
+collect.SmsFallbackUrl = smsFallbackUrl;
+
+var smsFallbackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
+collect.SmsFallbackMethod = smsFallbackMethod;
+
+
+string result = await phoneNumber.UpdatePhoneNumber(collect);
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="usage_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.UsageController") UsageController
+
+### Get singleton instance
+
+The singleton instance of the ``` UsageController ``` class can be accessed from the API Client.
+
+```csharp
+UsageController usage = client.Usage;
+```
+
+### <a name="list_usage"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.UsageController.ListUsage") ListUsage
+
+> Get all usage 
+
+
+```csharp
+Task<string> ListUsage(Models.ListUsageInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| productCode |  ``` Optional ```  ``` DefaultValue ```  | Product Code |
+| startDate |  ``` Optional ```  ``` DefaultValue ```  | Start Usage Date |
+| endDate |  ``` Optional ```  ``` DefaultValue ```  | End Usage Date |
+
+
+#### Example Usage
+
+```csharp
+ListUsageInput collect = new ListUsageInput();
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+var productCode = (Models.ProductCodeEnum?)0;
+collect.ProductCode = productCode;
+
+string startDate = "2016-09-06";
+collect.StartDate = startDate;
+
+string endDate = "2016-09-06";
+collect.EndDate = endDate;
+
+
+string result = await usage.ListUsage(collect);
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="web_rtc_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.WebRTCController") WebRTCController
+
+### Get singleton instance
 
 The singleton instance of the ``` WebRTCController ``` class can be accessed from the API Client.
 
@@ -733,13 +1541,13 @@ The singleton instance of the ``` WebRTCController ``` class can be accessed fro
 WebRTCController webRTC = client.WebRTC;
 ```
 
-#### <a name="create_check_funds"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.WebRTCController.CreateCheckFunds") CreateCheckFunds
+### <a name="check_funds"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.WebRTCController.CheckFunds") CheckFunds
 
 > TODO: Add a method description
 
 
 ```csharp
-Task<string> CreateCheckFunds(CreateCheckFundsInput input)
+Task<string> CheckFunds(Models.CheckFundsInput input)
 ```
 
 #### Parameters
@@ -753,7 +1561,7 @@ Task<string> CreateCheckFunds(CreateCheckFundsInput input)
 #### Example Usage
 
 ```csharp
-CreateCheckFundsInput collect = new CreateCheckFundsInput();
+CheckFundsInput collect = new CheckFundsInput();
 
 string accountSid = "account_sid";
 collect.AccountSid = accountSid;
@@ -762,18 +1570,18 @@ string authToken = "auth_token";
 collect.AuthToken = authToken;
 
 
-string result = await webRTC.CreateCheckFunds(collect);
+string result = await webRTC.CheckFunds(collect);
 
 ```
 
 
-#### <a name="create_token"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.WebRTCController.CreateToken") CreateToken
+### <a name="create_token"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.WebRTCController.CreateToken") CreateToken
 
 > message360 webrtc
 
 
 ```csharp
-Task<string> CreateToken(CreateTokenInput input)
+Task<string> CreateToken(Models.CreateTokenInput input)
 ```
 
 #### Parameters
@@ -811,9 +1619,803 @@ string result = await webRTC.CreateToken(collect);
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="call_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.CallController") CallController
+## <a name="recording_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.RecordingController") RecordingController
 
-#### Get singleton instance
+### Get singleton instance
+
+The singleton instance of the ``` RecordingController ``` class can be accessed from the API Client.
+
+```csharp
+RecordingController recording = client.Recording;
+```
+
+### <a name="view_recording"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.RecordingController.ViewRecording") ViewRecording
+
+> View a specific Recording
+
+
+```csharp
+Task<string> ViewRecording(Models.ViewRecordingInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recordingSid |  ``` Required ```  | Search Recording sid |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+ViewRecordingInput collect = new ViewRecordingInput();
+
+string recordingSid = "RecordingSid";
+collect.RecordingSid = recordingSid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await recording.ViewRecording(collect);
+
+```
+
+
+### <a name="delete_recording"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.RecordingController.DeleteRecording") DeleteRecording
+
+> Delete Recording Record
+
+
+```csharp
+Task<string> DeleteRecording(Models.DeleteRecordingInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recordingSid |  ``` Required ```  | Unique Recording Sid to be delete |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+DeleteRecordingInput collect = new DeleteRecordingInput();
+
+string recordingSid = "RecordingSid";
+collect.RecordingSid = recordingSid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await recording.DeleteRecording(collect);
+
+```
+
+
+### <a name="list_recording"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.RecordingController.ListRecording") ListRecording
+
+> List out Recordings
+
+
+```csharp
+Task<string> ListRecording(Models.ListRecordingInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| dateCreated |  ``` Optional ```  | Recording date |
+| callSid |  ``` Optional ```  | Call ID |
+
+
+#### Example Usage
+
+```csharp
+ListRecordingInput collect = new ListRecordingInput();
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+int? page = 1;
+collect.Page = page;
+
+int? pageSize = 10;
+collect.PageSize = pageSize;
+
+string dateCreated = "DateCreated";
+collect.DateCreated = dateCreated;
+
+string callSid = "CallSid";
+collect.CallSid = callSid;
+
+
+string result = await recording.ListRecording(collect);
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="email_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.EmailController") EmailController
+
+### Get singleton instance
+
+The singleton instance of the ``` EmailController ``` class can be accessed from the API Client.
+
+```csharp
+EmailController email = client.Email;
+```
+
+### <a name="delete_spam"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.DeleteSpam") DeleteSpam
+
+> Deletes a email address marked as spam from the spam list
+
+
+```csharp
+Task<string> DeleteSpam(Models.DeleteSpamInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| email |  ``` Required ```  | Email address |
+
+
+#### Example Usage
+
+```csharp
+DeleteSpamInput collect = new DeleteSpamInput();
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+string email = "email";
+collect.Email = email;
+
+
+string result = await email.DeleteSpam(collect);
+
+```
+
+
+### <a name="delete_block"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.DeleteBlock") DeleteBlock
+
+> Deletes a blocked email
+
+
+```csharp
+Task<string> DeleteBlock(Models.DeleteBlockInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| email |  ``` Required ```  | Email address to remove from block list |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+DeleteBlockInput collect = new DeleteBlockInput();
+
+string email = "email";
+collect.Email = email;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await email.DeleteBlock(collect);
+
+```
+
+
+### <a name="add_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.AddUnsubscribes") AddUnsubscribes
+
+> Add an email to the unsubscribe list
+
+
+```csharp
+Task<string> AddUnsubscribes(Models.AddUnsubscribesInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| email |  ``` Required ```  | The email to add to the unsubscribe list |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+AddUnsubscribesInput collect = new AddUnsubscribesInput();
+
+string email = "email";
+collect.Email = email;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await email.AddUnsubscribes(collect);
+
+```
+
+
+### <a name="send_email"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.SendEmail") SendEmail
+
+> Send out an email
+
+
+```csharp
+Task<string> SendEmail(Models.SendEmailInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| to |  ``` Required ```  | The to email address |
+| mfrom |  ``` Required ```  | The from email address |
+| type |  ``` Required ```  ``` DefaultValue ```  | email format type, html or text |
+| subject |  ``` Required ```  | Email subject |
+| message |  ``` Required ```  | The body of the email message |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| cc |  ``` Optional ```  | CC Email address |
+| bcc |  ``` Optional ```  | BCC Email address |
+| attachment |  ``` Optional ```  | File to be attached.File must be less than 7MB. |
+
+
+#### Example Usage
+
+```csharp
+SendEmailInput collect = new SendEmailInput();
+
+string to = "to";
+collect.To = to;
+
+string mfrom = "from";
+collect.Mfrom = mfrom;
+
+var type = Models.SendEmailAsEnumHelper.ParseString("HTML");
+collect.Type = type;
+
+string subject = "subject";
+collect.Subject = subject;
+
+string message = "message";
+collect.Message = message;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+string cc = "cc";
+collect.Cc = cc;
+
+string bcc = "bcc";
+collect.Bcc = bcc;
+
+string attachment = "attachment";
+collect.Attachment = attachment;
+
+
+string result = await email.SendEmail(collect);
+
+```
+
+
+### <a name="delete_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.DeleteUnsubscribes") DeleteUnsubscribes
+
+> Delete emails from the unsubscribe list
+
+
+```csharp
+Task<string> DeleteUnsubscribes(Models.DeleteUnsubscribesInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| email |  ``` Required ```  | The email to remove from the unsubscribe list |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+DeleteUnsubscribesInput collect = new DeleteUnsubscribesInput();
+
+string email = "email";
+collect.Email = email;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await email.DeleteUnsubscribes(collect);
+
+```
+
+
+### <a name="list_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.ListUnsubscribes") ListUnsubscribes
+
+> List all unsubscribed email addresses
+
+
+```csharp
+Task<string> ListUnsubscribes(Models.ListUnsubscribesInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| offset |  ``` Optional ```  | Starting record of the list |
+| limit |  ``` Optional ```  | Maximum number of records to be returned |
+
+
+#### Example Usage
+
+```csharp
+ListUnsubscribesInput collect = new ListUnsubscribesInput();
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+string offset = "offset";
+collect.Offset = offset;
+
+string limit = "limit";
+collect.Limit = limit;
+
+
+string result = await email.ListUnsubscribes(collect);
+
+```
+
+
+### <a name="list_invalid"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.ListInvalid") ListInvalid
+
+> List out all invalid email addresses
+
+
+```csharp
+Task<string> ListInvalid(Models.ListInvalidInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| offet |  ``` Optional ```  | Starting record for listing out emails |
+| limit |  ``` Optional ```  | Maximum number of records to return |
+
+
+#### Example Usage
+
+```csharp
+ListInvalidInput collect = new ListInvalidInput();
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+string offet = "offet";
+collect.Offet = offet;
+
+string limit = "limit";
+collect.Limit = limit;
+
+
+string result = await email.ListInvalid(collect);
+
+```
+
+
+### <a name="delete_bounces"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.DeleteBounces") DeleteBounces
+
+> Delete an email address from the bounced address list
+
+
+```csharp
+Task<string> DeleteBounces(Models.DeleteBouncesInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| email |  ``` Required ```  | The email address to remove from the bounce list |
+
+
+#### Example Usage
+
+```csharp
+DeleteBouncesInput collect = new DeleteBouncesInput();
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+string email = "email";
+collect.Email = email;
+
+
+string result = await email.DeleteBounces(collect);
+
+```
+
+
+### <a name="list_bounces"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.ListBounces") ListBounces
+
+> List out all email addresses that have bounced
+
+
+```csharp
+Task<string> ListBounces(Models.ListBouncesInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| offset |  ``` Optional ```  | The record to start the list at |
+| limit |  ``` Optional ```  | The maximum number of records to return |
+
+
+#### Example Usage
+
+```csharp
+ListBouncesInput collect = new ListBouncesInput();
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+string offset = "offset";
+collect.Offset = offset;
+
+string limit = "limit";
+collect.Limit = limit;
+
+
+string result = await email.ListBounces(collect);
+
+```
+
+
+### <a name="list_spam"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.ListSpam") ListSpam
+
+> List out all email addresses marked as spam
+
+
+```csharp
+Task<string> ListSpam(Models.ListSpamInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| offset |  ``` Optional ```  | The record number to start the list at |
+| limit |  ``` Optional ```  | Maximum number of records to return |
+
+
+#### Example Usage
+
+```csharp
+ListSpamInput collect = new ListSpamInput();
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+string offset = "offset";
+collect.Offset = offset;
+
+string limit = "limit";
+collect.Limit = limit;
+
+
+string result = await email.ListSpam(collect);
+
+```
+
+
+### <a name="list_blocks"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.ListBlocks") ListBlocks
+
+> Outputs email addresses on your blocklist
+
+
+```csharp
+Task<string> ListBlocks(Models.ListBlocksInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| offset |  ``` Optional ```  | Where to start in the output list |
+| limit |  ``` Optional ```  | Maximum number of records to return |
+
+
+#### Example Usage
+
+```csharp
+ListBlocksInput collect = new ListBlocksInput();
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+string offset = "offset";
+collect.Offset = offset;
+
+string limit = "limit";
+collect.Limit = limit;
+
+
+string result = await email.ListBlocks(collect);
+
+```
+
+
+### <a name="delete_invalid"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.DeleteInvalid") DeleteInvalid
+
+> This endpoint allows you to delete entries in the Invalid Emails list.
+
+
+```csharp
+Task<string> DeleteInvalid(Models.DeleteInvalidInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| email |  ``` Required ```  | Email that was marked invalid |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Json or xml |
+
+
+#### Example Usage
+
+```csharp
+DeleteInvalidInput collect = new DeleteInvalidInput();
+
+string email = "email";
+collect.Email = email;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await email.DeleteInvalid(collect);
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="sms_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.SMSController") SMSController
+
+### Get singleton instance
+
+The singleton instance of the ``` SMSController ``` class can be accessed from the API Client.
+
+```csharp
+SMSController sMS = client.SMS;
+```
+
+### <a name="send_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.SendSMS") SendSMS
+
+> Send an SMS from a message360 number
+
+
+```csharp
+Task<string> SendSMS(Models.SendSMSInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| mfrom |  ``` Required ```  | SMS enabled Message360 number to send this message from |
+| to |  ``` Required ```  | Number to send the SMS to |
+| body |  ``` Required ```  | Text Message To Send |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| method |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once SMS sent. |
+| messagestatuscallback |  ``` Optional ```  | URL that can be requested to receive notification when SMS has Sent. A set of default parameters will be sent here once the SMS is finished. |
+| smartsms |  ``` Optional ```  ``` DefaultValue ```  | Check's 'to' number can receive sms or not using Carrier API, if wireless = true then text sms is sent, else wireless = false then call is recieved to end user with audible message. |
+
+
+#### Example Usage
+
+```csharp
+SendSMSInput collect = new SendSMSInput();
+
+string mfrom = "from";
+collect.Mfrom = mfrom;
+
+string to = "to";
+collect.To = to;
+
+string body = "body";
+collect.Body = body;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+var method = Models.HttpActionEnum?Helper.ParseString("GET");
+collect.Method = method;
+
+string messagestatuscallback = "messagestatuscallback";
+collect.Messagestatuscallback = messagestatuscallback;
+
+bool? smartsms = false;
+collect.Smartsms = smartsms;
+
+
+string result = await sMS.SendSMS(collect);
+
+```
+
+
+### <a name="view_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.ViewSMS") ViewSMS
+
+> View a Particular SMS
+
+
+```csharp
+Task<string> ViewSMS(Models.ViewSMSInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| messagesid |  ``` Required ```  | Message sid |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+ViewSMSInput collect = new ViewSMSInput();
+
+string messagesid = "messagesid";
+collect.Messagesid = messagesid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await sMS.ViewSMS(collect);
+
+```
+
+
+### <a name="list_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.ListSMS") ListSMS
+
+> List All SMS
+
+
+```csharp
+Task<string> ListSMS(Models.ListSMSInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| mfrom |  ``` Optional ```  | Messages sent from this number |
+| to |  ``` Optional ```  | Messages sent to this number |
+| datesent |  ``` Optional ```  | Only list SMS messages sent in the specified date range |
+
+
+#### Example Usage
+
+```csharp
+ListSMSInput collect = new ListSMSInput();
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+int? page = 1;
+collect.Page = page;
+
+int? pagesize = 10;
+collect.Pagesize = pagesize;
+
+string mfrom = "from";
+collect.Mfrom = mfrom;
+
+string to = "to";
+collect.To = to;
+
+string datesent = "datesent";
+collect.Datesent = datesent;
+
+
+string result = await sMS.ListSMS(collect);
+
+```
+
+
+### <a name="list_inbound_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.ListInboundSMS") ListInboundSMS
+
+> List All Inbound SMS
+
+
+```csharp
+Task<string> ListInboundSMS(Models.ListInboundSMSInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| mfrom |  ``` Optional ```  | From Number to Inbound SMS |
+| to |  ``` Optional ```  | To Number to get Inbound SMS |
+| dateSent |  ``` Optional ```  | Filter sms message objects by this date. |
+
+
+#### Example Usage
+
+```csharp
+ListInboundSMSInput collect = new ListInboundSMSInput();
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+int? page = 1;
+collect.Page = page;
+
+int? pagesize = 10;
+collect.Pagesize = pagesize;
+
+string mfrom = "from";
+collect.Mfrom = mfrom;
+
+string to = "to";
+collect.To = to;
+
+string dateSent = "DateSent";
+collect.DateSent = dateSent;
+
+
+string result = await sMS.ListInboundSMS(collect);
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="call_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.CallController") CallController
+
+### Get singleton instance
 
 The singleton instance of the ``` CallController ``` class can be accessed from the API Client.
 
@@ -821,55 +2423,52 @@ The singleton instance of the ``` CallController ``` class can be accessed from 
 CallController call = client.Call;
 ```
 
-#### <a name="create_group_call"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateGroupCall") CreateGroupCall
+### <a name="make_call"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.MakeCall") MakeCall
 
-> Group Call
+> You can experiment with initiating a call through Message360 and view the request response generated when doing so and get the response in json
 
 
 ```csharp
-Task<string> CreateGroupCall(CreateGroupCallInput input)
+Task<string> MakeCall(Models.MakeCallInput input)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| fromCountryCode |  ``` Required ```  ``` DefaultValue ```  | TODO: Add a parameter description |
-| mfrom |  ``` Required ```  | TODO: Add a parameter description |
-| toCountryCode |  ``` Required ```  ``` DefaultValue ```  | TODO: Add a parameter description |
-| to |  ``` Required ```  | TODO: Add a parameter description |
-| url |  ``` Required ```  | TODO: Add a parameter description |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | TODO: Add a parameter description |
-| method |  ``` Optional ```  | TODO: Add a parameter description |
-| statusCallBackUrl |  ``` Optional ```  | TODO: Add a parameter description |
-| statusCallBackMethod |  ``` Optional ```  | TODO: Add a parameter description |
-| fallBackUrl |  ``` Optional ```  | TODO: Add a parameter description |
-| fallBackMethod |  ``` Optional ```  | TODO: Add a parameter description |
-| heartBeatUrl |  ``` Optional ```  | TODO: Add a parameter description |
-| heartBeatMethod |  ``` Optional ```  | TODO: Add a parameter description |
-| timeout |  ``` Optional ```  | TODO: Add a parameter description |
-| playDtmf |  ``` Optional ```  | TODO: Add a parameter description |
-| hideCallerId |  ``` Optional ```  | TODO: Add a parameter description |
-| record |  ``` Optional ```  | TODO: Add a parameter description |
-| recordCallBackUrl |  ``` Optional ```  | TODO: Add a parameter description |
-| recordCallBackMethod |  ``` Optional ```  | TODO: Add a parameter description |
-| transcribe |  ``` Optional ```  | TODO: Add a parameter description |
-| transcribeCallBackUrl |  ``` Optional ```  | TODO: Add a parameter description |
+| mfrom |  ``` Required ```  | This number to display on Caller ID as calling |
+| to |  ``` Required ```  | To number |
+| url |  ``` Required ```  | URL requested once the call connects |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| method |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once call connects. |
+| statusCallBackUrl |  ``` Optional ```  | specifies the HTTP methodlinkclass used to request StatusCallbackUrl. |
+| statusCallBackMethod |  ``` Optional ```  | Specifies the HTTP methodlinkclass used to request StatusCallbackUrl. |
+| fallBackUrl |  ``` Optional ```  | URL requested if the initial Url parameter fails or encounters an error |
+| fallBackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required FallbackUrl once call connects. |
+| heartBeatUrl |  ``` Optional ```  | URL that can be requested every 60 seconds during the call to notify of elapsed tim |
+| heartBeatMethod |  ``` Optional ```  | Specifies the HTTP method used to request HeartbeatUrl. |
+| timeout |  ``` Optional ```  | Time (in seconds) Message360 should wait while the call is ringing before canceling the call |
+| playDtmf |  ``` Optional ```  | DTMF Digits to play to the call once it connects. 0-9, #, or * |
+| hideCallerId |  ``` Optional ```  | Specifies if the caller id will be hidden |
+| record |  ``` Optional ```  | Specifies if the call should be recorded |
+| recordCallBackUrl |  ``` Optional ```  | Recording parameters will be sent here upon completion |
+| recordCallBackMethod |  ``` Optional ```  | Method used to request the RecordCallback URL. |
+| transcribe |  ``` Optional ```  | Specifies if the call recording should be transcribed |
+| transcribeCallBackUrl |  ``` Optional ```  | Transcription parameters will be sent here upon completion |
+| ifMachine |  ``` Optional ```  | How Message360 should handle the receiving numbers voicemail machine |
+| ifMachineUrl |  ``` Optional ```  | URL requested when IfMachine=continue |
+| ifMachineMethod |  ``` Optional ```  | Method used to request the IfMachineUrl. |
+| feedback |  ``` Optional ```  | Specify if survey should be enable or not |
+| surveyId |  ``` Optional ```  | The unique identifier for the survey. |
 
 
 #### Example Usage
 
 ```csharp
-CreateGroupCallInput collect = new CreateGroupCallInput();
-
-string fromCountryCode = "1";
-collect.FromCountryCode = fromCountryCode;
+MakeCallInput collect = new MakeCallInput();
 
 string mfrom = "From";
 collect.Mfrom = mfrom;
-
-string toCountryCode = "1";
-collect.ToCountryCode = toCountryCode;
 
 string to = "To";
 collect.To = to;
@@ -901,16 +2500,16 @@ collect.HeartBeatUrl = heartBeatUrl;
 var heartBeatMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.HeartBeatMethod = heartBeatMethod;
 
-int? timeout = 3;
+int? timeout = 138;
 collect.Timeout = timeout;
 
 string playDtmf = "PlayDtmf";
 collect.PlayDtmf = playDtmf;
 
-string hideCallerId = "HideCallerId";
+bool? hideCallerId = true;
 collect.HideCallerId = hideCallerId;
 
-bool? record = false;
+bool? record = true;
 collect.Record = record;
 
 string recordCallBackUrl = "RecordCallBackUrl";
@@ -919,83 +2518,94 @@ collect.RecordCallBackUrl = recordCallBackUrl;
 var recordCallBackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.RecordCallBackMethod = recordCallBackMethod;
 
-bool? transcribe = false;
+bool? transcribe = true;
 collect.Transcribe = transcribe;
 
 string transcribeCallBackUrl = "TranscribeCallBackUrl";
 collect.TranscribeCallBackUrl = transcribeCallBackUrl;
 
+var ifMachine = Models.IfMachineEnum?Helper.ParseString("CONTINUE");
+collect.IfMachine = ifMachine;
 
-string result = await call.CreateGroupCall(collect);
+string ifMachineUrl = "IfMachineUrl";
+collect.IfMachineUrl = ifMachineUrl;
+
+var ifMachineMethod = Models.HttpActionEnum?Helper.ParseString("GET");
+collect.IfMachineMethod = ifMachineMethod;
+
+bool? feedback = true;
+collect.Feedback = feedback;
+
+string surveyId = "SurveyId";
+collect.SurveyId = surveyId;
+
+
+string result = await call.MakeCall(collect);
 
 ```
 
 
-#### <a name="create_voice_effect"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateVoiceEffect") CreateVoiceEffect
+### <a name="play_audio"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.PlayAudio") PlayAudio
 
-> Voice Effect
+> Play Dtmf and send the Digit
 
 
 ```csharp
-Task<string> CreateVoiceEffect(CreateVoiceEffectInput input)
+Task<string> PlayAudio(Models.PlayAudioInput input)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| callSid |  ``` Required ```  | TODO: Add a parameter description |
+| callSid |  ``` Required ```  | The unique identifier of each call resource |
+| audioUrl |  ``` Required ```  | URL to sound that should be played. You also can add more than one audio file using semicolons e.g. http://example.com/audio1.mp3;http://example.com/audio2.wav |
+| sayText |  ``` Required ```  | Valid alphanumeric string that should be played to the In-progress call. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| audioDirection |  ``` Optional ```  | TODO: Add a parameter description |
-| pitchSemiTones |  ``` Optional ```  | value between -14 and 14 |
-| pitchOctaves |  ``` Optional ```  | value between -1 and 1 |
-| pitch |  ``` Optional ```  | value greater than 0 |
-| rate |  ``` Optional ```  | value greater than 0 |
-| tempo |  ``` Optional ```  | value greater than 0 |
+| length |  ``` Optional ```  | Time limit in seconds for audio play back |
+| direction |  ``` Optional ```  | The leg of the call audio will be played to |
+| mix |  ``` Optional ```  | If false, all other audio will be muted |
 
 
 #### Example Usage
 
 ```csharp
-CreateVoiceEffectInput collect = new CreateVoiceEffectInput();
+PlayAudioInput collect = new PlayAudioInput();
 
 string callSid = "CallSid";
 collect.CallSid = callSid;
 
+string audioUrl = "AudioUrl";
+collect.AudioUrl = audioUrl;
+
+string sayText = "SayText";
+collect.SayText = sayText;
+
 string responseType = "json";
 collect.ResponseType = responseType;
 
-var audioDirection = Models.AudioDirectionEnum?Helper.ParseString("IN");
-collect.AudioDirection = audioDirection;
+int? length = 138;
+collect.Length = length;
 
-double? pitchSemiTones = 3.86420395638058;
-collect.PitchSemiTones = pitchSemiTones;
+var direction = Models.DirectionEnum?Helper.ParseString("IN");
+collect.Direction = direction;
 
-double? pitchOctaves = 3.86420395638058;
-collect.PitchOctaves = pitchOctaves;
-
-double? pitch = 3.86420395638058;
-collect.Pitch = pitch;
-
-double? rate = 3.86420395638058;
-collect.Rate = rate;
-
-double? tempo = 3.86420395638058;
-collect.Tempo = tempo;
+bool? mix = true;
+collect.Mix = mix;
 
 
-string result = await call.CreateVoiceEffect(collect);
+string result = await call.PlayAudio(collect);
 
 ```
 
 
-#### <a name="create_record_call"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateRecordCall") CreateRecordCall
+### <a name="record_call"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.RecordCall") RecordCall
 
 > Record a Call
 
 
 ```csharp
-Task<string> CreateRecordCall(CreateRecordCallInput input)
+Task<string> RecordCall(Models.RecordCallInput input)
 ```
 
 #### Parameters
@@ -1014,12 +2624,12 @@ Task<string> CreateRecordCall(CreateRecordCallInput input)
 #### Example Usage
 
 ```csharp
-CreateRecordCallInput collect = new CreateRecordCallInput();
+RecordCallInput collect = new RecordCallInput();
 
 string callSid = "CallSid";
 collect.CallSid = callSid;
 
-bool record = false;
+bool record = true;
 collect.Record = record;
 
 string responseType = "json";
@@ -1028,7 +2638,7 @@ collect.ResponseType = responseType;
 var direction = Models.DirectionEnum?Helper.ParseString("IN");
 collect.Direction = direction;
 
-int? timeLimit = 3;
+int? timeLimit = 138;
 collect.TimeLimit = timeLimit;
 
 string callBackUrl = "CallBackUrl";
@@ -1038,18 +2648,76 @@ var fileformat = Models.AudioFormatEnum?Helper.ParseString("mp3");
 collect.Fileformat = fileformat;
 
 
-string result = await call.CreateRecordCall(collect);
+string result = await call.RecordCall(collect);
 
 ```
 
 
-#### <a name="create_play_audio"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreatePlayAudio") CreatePlayAudio
+### <a name="voice_effect"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.VoiceEffect") VoiceEffect
+
+> Voice Effect
+
+
+```csharp
+Task<string> VoiceEffect(Models.VoiceEffectInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| callSid |  ``` Required ```  | The unique identifier for the in-progress voice call. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| audioDirection |  ``` Optional ```  | The direction the audio effect should be placed on. If IN, the effects will occur on the incoming audio stream. If OUT, the effects will occur on the outgoing audio stream. |
+| pitchSemiTones |  ``` Optional ```  | value between -14 and 14 |
+| pitchOctaves |  ``` Optional ```  | value between -1 and 1 |
+| pitch |  ``` Optional ```  | value greater than 0 |
+| rate |  ``` Optional ```  | value greater than 0 |
+| tempo |  ``` Optional ```  | value greater than 0 |
+
+
+#### Example Usage
+
+```csharp
+VoiceEffectInput collect = new VoiceEffectInput();
+
+string callSid = "CallSid";
+collect.CallSid = callSid;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+var audioDirection = Models.AudioDirectionEnum?Helper.ParseString("IN");
+collect.AudioDirection = audioDirection;
+
+double? pitchSemiTones = 138.971774137566;
+collect.PitchSemiTones = pitchSemiTones;
+
+double? pitchOctaves = 138.971774137566;
+collect.PitchOctaves = pitchOctaves;
+
+double? pitch = 138.971774137566;
+collect.Pitch = pitch;
+
+double? rate = 138.971774137566;
+collect.Rate = rate;
+
+double? tempo = 138.971774137566;
+collect.Tempo = tempo;
+
+
+string result = await call.VoiceEffect(collect);
+
+```
+
+
+### <a name="send_digit"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.SendDigit") SendDigit
 
 > Play Dtmf and send the Digit
 
 
 ```csharp
-Task<string> CreatePlayAudio(CreatePlayAudioInput input)
+Task<string> SendDigit(Models.SendDigitInput input)
 ```
 
 #### Parameters
@@ -1057,53 +2725,41 @@ Task<string> CreatePlayAudio(CreatePlayAudioInput input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | callSid |  ``` Required ```  | The unique identifier of each call resource |
-| audioUrl |  ``` Required ```  | URL to sound that should be played. You also can add more than one audio file using semicolons e.g. http://example.com/audio1.mp3;http://example.com/audio2.wav |
+| playDtmf |  ``` Required ```  | DTMF digits to play to the call. 0-9, #, *, W, or w |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| length |  ``` Optional ```  | Time limit in seconds for audio play back |
-| direction |  ``` Optional ```  | The leg of the call audio will be played to |
-| loop |  ``` Optional ```  | Repeat audio playback indefinitely |
-| mix |  ``` Optional ```  | If false, all other audio will be muted |
+| playDtmfDirection |  ``` Optional ```  | The leg of the call DTMF digits should be sent to |
 
 
 #### Example Usage
 
 ```csharp
-CreatePlayAudioInput collect = new CreatePlayAudioInput();
+SendDigitInput collect = new SendDigitInput();
 
 string callSid = "CallSid";
 collect.CallSid = callSid;
 
-string audioUrl = "AudioUrl";
-collect.AudioUrl = audioUrl;
+string playDtmf = "PlayDtmf";
+collect.PlayDtmf = playDtmf;
 
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? length = 3;
-collect.Length = length;
-
-var direction = Models.DirectionEnum?Helper.ParseString("IN");
-collect.Direction = direction;
-
-bool? loop = false;
-collect.Loop = loop;
-
-bool? mix = false;
-collect.Mix = mix;
+var playDtmfDirection = Models.DirectionEnum?Helper.ParseString("IN");
+collect.PlayDtmfDirection = playDtmfDirection;
 
 
-string result = await call.CreatePlayAudio(collect);
+string result = await call.SendDigit(collect);
 
 ```
 
 
-#### <a name="create_interrupted_call"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateInterruptedCall") CreateInterruptedCall
+### <a name="interrupted_call"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.InterruptedCall") InterruptedCall
 
 > Interrupt the Call by Call Sid
 
 
 ```csharp
-Task<string> CreateInterruptedCall(CreateInterruptedCallInput input)
+Task<string> InterruptedCall(Models.InterruptedCallInput input)
 ```
 
 #### Parameters
@@ -1120,7 +2776,7 @@ Task<string> CreateInterruptedCall(CreateInterruptedCallInput input)
 #### Example Usage
 
 ```csharp
-CreateInterruptedCallInput collect = new CreateInterruptedCallInput();
+InterruptedCallInput collect = new InterruptedCallInput();
 
 string callSid = "CallSid";
 collect.CallSid = callSid;
@@ -1138,74 +2794,32 @@ var status = Models.InterruptedCallStatusEnum?Helper.ParseString("CANCELED");
 collect.Status = status;
 
 
-string result = await call.CreateInterruptedCall(collect);
+string result = await call.InterruptedCall(collect);
 
 ```
 
 
-#### <a name="create_send_digit"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateSendDigit") CreateSendDigit
+### <a name="group_call"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.GroupCall") GroupCall
 
-> Play Dtmf and send the Digit
+> Group Call
 
 
 ```csharp
-Task<string> CreateSendDigit(CreateSendDigitInput input)
+Task<string> GroupCall(Models.GroupCallInput input)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| callSid |  ``` Required ```  | The unique identifier of each call resource |
-| playDtmf |  ``` Required ```  | DTMF digits to play to the call. 0-9, #, *, W, or w |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| playDtmfDirection |  ``` Optional ```  | The leg of the call DTMF digits should be sent to |
-
-
-#### Example Usage
-
-```csharp
-CreateSendDigitInput collect = new CreateSendDigitInput();
-
-string callSid = "CallSid";
-collect.CallSid = callSid;
-
-string playDtmf = "PlayDtmf";
-collect.PlayDtmf = playDtmf;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-var playDtmfDirection = Models.DirectionEnum?Helper.ParseString("IN");
-collect.PlayDtmfDirection = playDtmfDirection;
-
-
-string result = await call.CreateSendDigit(collect);
-
-```
-
-
-#### <a name="create_make_call"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateMakeCall") CreateMakeCall
-
-> You can experiment with initiating a call through Message360 and view the request response generated when doing so and get the response in json
-
-
-```csharp
-Task<string> CreateMakeCall(CreateMakeCallInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| fromCountryCode |  ``` Required ```  | from country code |
 | mfrom |  ``` Required ```  | This number to display on Caller ID as calling |
-| toCountryCode |  ``` Required ```  | To cuntry code number |
-| to |  ``` Required ```  | To number |
+| to |  ``` Required ```  | Please enter multiple E164 number. You can add max 10 numbers. Add numbers separated with comma. e.g : 1111111111,2222222222 |
 | url |  ``` Required ```  | URL requested once the call connects |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | TODO: Add a parameter description |
+| groupConfirmKey |  ``` Required ```  | Define the DTMF that the called party should send to bridge the call. Allowed Values : 0-9, #, * |
+| groupConfirmFile |  ``` Required ```  | Specify the audio file you want to play when the called party picks up the call |
 | method |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once call connects. |
-| statusCallBackUrl |  ``` Optional ```  | specifies the HTTP methodlinkclass used to request StatusCallbackUrl. |
+| statusCallBackUrl |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once call connects. |
 | statusCallBackMethod |  ``` Optional ```  | Specifies the HTTP methodlinkclass used to request StatusCallbackUrl. |
 | fallBackUrl |  ``` Optional ```  | URL requested if the initial Url parameter fails or encounters an error |
 | fallBackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required FallbackUrl once call connects. |
@@ -1219,22 +2833,15 @@ Task<string> CreateMakeCall(CreateMakeCallInput input)
 | recordCallBackMethod |  ``` Optional ```  | Method used to request the RecordCallback URL. |
 | transcribe |  ``` Optional ```  | Specifies if the call recording should be transcribed |
 | transcribeCallBackUrl |  ``` Optional ```  | Transcription parameters will be sent here upon completion |
-| ifMachine |  ``` Optional ```  | How Message360 should handle the receiving numbers voicemail machine |
 
 
 #### Example Usage
 
 ```csharp
-CreateMakeCallInput collect = new CreateMakeCallInput();
-
-string fromCountryCode = "FromCountryCode";
-collect.FromCountryCode = fromCountryCode;
+GroupCallInput collect = new GroupCallInput();
 
 string mfrom = "From";
 collect.Mfrom = mfrom;
-
-string toCountryCode = "ToCountryCode";
-collect.ToCountryCode = toCountryCode;
 
 string to = "To";
 collect.To = to;
@@ -1244,6 +2851,12 @@ collect.Url = url;
 
 string responseType = "json";
 collect.ResponseType = responseType;
+
+string groupConfirmKey = "GroupConfirmKey";
+collect.GroupConfirmKey = groupConfirmKey;
+
+var groupConfirmFile = Models.AudioFormatEnumHelper.ParseString("mp3");
+collect.GroupConfirmFile = groupConfirmFile;
 
 var method = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.Method = method;
@@ -1263,19 +2876,19 @@ collect.FallBackMethod = fallBackMethod;
 string heartBeatUrl = "HeartBeatUrl";
 collect.HeartBeatUrl = heartBeatUrl;
 
-bool? heartBeatMethod = false;
+var heartBeatMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.HeartBeatMethod = heartBeatMethod;
 
-int? timeout = 3;
+int? timeout = 230;
 collect.Timeout = timeout;
 
 string playDtmf = "PlayDtmf";
 collect.PlayDtmf = playDtmf;
 
-bool? hideCallerId = false;
+string hideCallerId = "HideCallerId";
 collect.HideCallerId = hideCallerId;
 
-bool? record = false;
+bool? record = true;
 collect.Record = record;
 
 string recordCallBackUrl = "RecordCallBackUrl";
@@ -1284,28 +2897,25 @@ collect.RecordCallBackUrl = recordCallBackUrl;
 var recordCallBackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.RecordCallBackMethod = recordCallBackMethod;
 
-bool? transcribe = false;
+bool? transcribe = true;
 collect.Transcribe = transcribe;
 
 string transcribeCallBackUrl = "TranscribeCallBackUrl";
 collect.TranscribeCallBackUrl = transcribeCallBackUrl;
 
-var ifMachine = Models.IfMachineEnum?Helper.ParseString("CONTINUE");
-collect.IfMachine = ifMachine;
 
-
-string result = await call.CreateMakeCall(collect);
+string result = await call.GroupCall(collect);
 
 ```
 
 
-#### <a name="create_list_calls"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateListCalls") CreateListCalls
+### <a name="list_calls"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.ListCalls") ListCalls
 
 > A list of calls associated with your Message360 account
 
 
 ```csharp
-Task<string> CreateListCalls(CreateListCallsInput input)
+Task<string> ListCalls(Models.ListCallsInput input)
 ```
 
 #### Parameters
@@ -1313,7 +2923,7 @@ Task<string> CreateListCalls(CreateListCallsInput input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
 | pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
 | to |  ``` Optional ```  | Only list calls to this number |
 | mfrom |  ``` Optional ```  | Only list calls from this number |
@@ -1323,12 +2933,12 @@ Task<string> CreateListCalls(CreateListCallsInput input)
 #### Example Usage
 
 ```csharp
-CreateListCallsInput collect = new CreateListCallsInput();
+ListCallsInput collect = new ListCallsInput();
 
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? page = 3;
+int? page = 1;
 collect.Page = page;
 
 int? pageSize = 10;
@@ -1344,31 +2954,30 @@ string dateCreated = "DateCreated";
 collect.DateCreated = dateCreated;
 
 
-string result = await call.CreateListCalls(collect);
+string result = await call.ListCalls(collect);
 
 ```
 
 
-#### <a name="create_send_ringless_vm"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateSendRinglessVM") CreateSendRinglessVM
+### <a name="send_ringless_vm"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.SendRinglessVM") SendRinglessVM
 
 > API endpoint used to send a Ringless Voicemail
 
 
 ```csharp
-Task<string> CreateSendRinglessVM(CreateSendRinglessVMInput input)
+Task<string> SendRinglessVM(Models.SendRinglessVMInput input)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| fromCountryCode |  ``` Required ```  | From country code |
 | mfrom |  ``` Required ```  | This number to display on Caller ID as calling |
-| toCountryCode |  ``` Required ```  | To country code |
+| rVMCallerId |  ``` Required ```  | Alternate caller ID required for RVM |
 | to |  ``` Required ```  | To number |
 | voiceMailURL |  ``` Required ```  | URL to an audio file |
-| method |  ``` Required ```  ``` DefaultValue ```  | Not currently used in this version |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| method |  ``` Optional ```  ``` DefaultValue ```  | Not currently used in this version |
 | statusCallBackUrl |  ``` Optional ```  | URL to post the status of the Ringless request |
 | statsCallBackMethod |  ``` Optional ```  | POST or GET |
 
@@ -1376,16 +2985,13 @@ Task<string> CreateSendRinglessVM(CreateSendRinglessVMInput input)
 #### Example Usage
 
 ```csharp
-CreateSendRinglessVMInput collect = new CreateSendRinglessVMInput();
-
-string fromCountryCode = "FromCountryCode";
-collect.FromCountryCode = fromCountryCode;
+SendRinglessVMInput collect = new SendRinglessVMInput();
 
 string mfrom = "From";
 collect.Mfrom = mfrom;
 
-string toCountryCode = "ToCountryCode";
-collect.ToCountryCode = toCountryCode;
+string rVMCallerId = "RVMCallerId";
+collect.RVMCallerId = rVMCallerId;
 
 string to = "To";
 collect.To = to;
@@ -1393,31 +2999,31 @@ collect.To = to;
 string voiceMailURL = "VoiceMailURL";
 collect.VoiceMailURL = voiceMailURL;
 
-string method = "GET";
-collect.Method = method;
-
 string responseType = "json";
 collect.ResponseType = responseType;
+
+var method = Models.HttpActionEnum?Helper.ParseString("GET");
+collect.Method = method;
 
 string statusCallBackUrl = "StatusCallBackUrl";
 collect.StatusCallBackUrl = statusCallBackUrl;
 
-string statsCallBackMethod = "StatsCallBackMethod";
+var statsCallBackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.StatsCallBackMethod = statsCallBackMethod;
 
 
-string result = await call.CreateSendRinglessVM(collect);
+string result = await call.SendRinglessVM(collect);
 
 ```
 
 
-#### <a name="create_view_call"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.CreateViewCall") CreateViewCall
+### <a name="view_call"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CallController.ViewCall") ViewCall
 
 > View Call Response
 
 
 ```csharp
-Task<string> CreateViewCall(CreateViewCallInput input)
+Task<string> ViewCall(Models.ViewCallInput input)
 ```
 
 #### Parameters
@@ -1431,7 +3037,7 @@ Task<string> CreateViewCall(CreateViewCallInput input)
 #### Example Usage
 
 ```csharp
-CreateViewCallInput collect = new CreateViewCallInput();
+ViewCallInput collect = new ViewCallInput();
 
 string callsid = "callsid";
 collect.Callsid = callsid;
@@ -1440,146 +3046,100 @@ string responseType = "json";
 collect.ResponseType = responseType;
 
 
-string result = await call.CreateViewCall(collect);
+string result = await call.ViewCall(collect);
 
 ```
 
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="sub_account_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.SubAccountController") SubAccountController
+## <a name="carrier_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.CarrierController") CarrierController
 
-#### Get singleton instance
+### Get singleton instance
 
-The singleton instance of the ``` SubAccountController ``` class can be accessed from the API Client.
+The singleton instance of the ``` CarrierController ``` class can be accessed from the API Client.
 
 ```csharp
-SubAccountController subAccount = client.SubAccount;
+CarrierController carrier = client.Carrier;
 ```
 
-#### <a name="create_sub_account"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SubAccountController.CreateSubAccount") CreateSubAccount
+### <a name="carrier_lookup_list"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CarrierController.CarrierLookupList") CarrierLookupList
 
-> Create a sub user account under the parent account
+> Get the All Purchase Number's Carrier lookup
 
 
 ```csharp
-Task<string> CreateSubAccount(CreateSubAccountInput input)
+Task<string> CarrierLookupList(Models.CarrierLookupListInput input)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| firstName |  ``` Required ```  | Sub account user first name |
-| lastName |  ``` Required ```  | sub account user last name |
-| email |  ``` Required ```  | Sub account email address |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Page Number |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Page Size |
+
+
+#### Example Usage
+
+```csharp
+CarrierLookupListInput collect = new CarrierLookupListInput();
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+int? page = 1;
+collect.Page = page;
+
+int? pagesize = 10;
+collect.Pagesize = pagesize;
+
+
+string result = await carrier.CarrierLookupList(collect);
+
+```
+
+
+### <a name="carrier_lookup"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CarrierController.CarrierLookup") CarrierLookup
+
+> Get the Carrier Lookup
+
+
+```csharp
+Task<string> CarrierLookup(Models.CarrierLookupInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| phonenumber |  ``` Required ```  | The number to lookup |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
 #### Example Usage
 
 ```csharp
-CreateSubAccountInput collect = new CreateSubAccountInput();
+CarrierLookupInput collect = new CarrierLookupInput();
 
-string firstName = "FirstName";
-collect.FirstName = firstName;
-
-string lastName = "LastName";
-collect.LastName = lastName;
-
-string email = "Email";
-collect.Email = email;
+string phonenumber = "phonenumber";
+collect.Phonenumber = phonenumber;
 
 string responseType = "json";
 collect.ResponseType = responseType;
 
 
-string result = await subAccount.CreateSubAccount(collect);
-
-```
-
-
-#### <a name="create_suspend_sub_account"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SubAccountController.CreateSuspendSubAccount") CreateSuspendSubAccount
-
-> Suspend or unsuspend
-
-
-```csharp
-Task<string> CreateSuspendSubAccount(CreateSuspendSubAccountInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subAccountSID |  ``` Required ```  | The SubaccountSid to be activated or suspended |
-| activate |  ``` Required ```  ``` DefaultValue ```  | 0 to suspend or 1 to activate |
-| responseType |  ``` Required ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```csharp
-CreateSuspendSubAccountInput collect = new CreateSuspendSubAccountInput();
-
-string subAccountSID = "SubAccountSID";
-collect.SubAccountSID = subAccountSID;
-
-var activate = (Models.ActivateStatusEnum)0;
-collect.Activate = activate;
-
-string responseType = "ResponseType";
-collect.ResponseType = responseType;
-
-
-string result = await subAccount.CreateSuspendSubAccount(collect);
-
-```
-
-
-#### <a name="create_delete_sub_account"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SubAccountController.CreateDeleteSubAccount") CreateDeleteSubAccount
-
-> Delete sub account or merge numbers into parent
-
-
-```csharp
-Task<string> CreateDeleteSubAccount(CreateDeleteSubAccountInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subAccountSID |  ``` Required ```  | The SubaccountSid to be deleted |
-| mergeNumber |  ``` Required ```  ``` DefaultValue ```  | 0 to delete or 1 to merge numbers to parent account. |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-#### Example Usage
-
-```csharp
-CreateDeleteSubAccountInput collect = new CreateDeleteSubAccountInput();
-
-string subAccountSID = "SubAccountSID";
-collect.SubAccountSID = subAccountSID;
-
-var mergeNumber = (Models.MergeNumberStatusEnum)0;
-collect.MergeNumber = mergeNumber;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await subAccount.CreateDeleteSubAccount(collect);
+string result = await carrier.CarrierLookup(collect);
 
 ```
 
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="address_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.AddressController") AddressController
+## <a name="address_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.AddressController") AddressController
 
-#### Get singleton instance
+### Get singleton instance
 
 The singleton instance of the ``` AddressController ``` class can be accessed from the API Client.
 
@@ -1587,13 +3147,13 @@ The singleton instance of the ``` AddressController ``` class can be accessed fr
 AddressController address = client.Address;
 ```
 
-#### <a name="create_address"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.AddressController.CreateAddress") CreateAddress
+### <a name="create_address"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.AddressController.CreateAddress") CreateAddress
 
 > To add an address to your address book, you create a new address object. You can retrieve and delete individual addresses as well as get a list of addresses. Addresses are identified by a unique random ID.
 
 
 ```csharp
-Task<string> CreateAddress(CreateAddressInput input)
+Task<string> CreateAddress(Models.CreateAddressInput input)
 ```
 
 #### Parameters
@@ -1653,27 +3213,27 @@ string result = await address.CreateAddress(collect);
 ```
 
 
-#### <a name="create_delete_address"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.AddressController.CreateDeleteAddress") CreateDeleteAddress
+### <a name="view_address"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.AddressController.ViewAddress") ViewAddress
 
-> To delete Address to your address book
+> View Address Specific address Book by providing the address id
 
 
 ```csharp
-Task<string> CreateDeleteAddress(CreateDeleteAddressInput input)
+Task<string> ViewAddress(Models.ViewAddressInput input)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| addressSID |  ``` Required ```  | The identifier of the address to be deleted. |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type either json or xml |
+| addressSID |  ``` Required ```  | The identifier of the address to be retrieved. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
 
 
 #### Example Usage
 
 ```csharp
-CreateDeleteAddressInput collect = new CreateDeleteAddressInput();
+ViewAddressInput collect = new ViewAddressInput();
 
 string addressSID = "AddressSID";
 collect.AddressSID = addressSID;
@@ -1682,52 +3242,18 @@ string responseType = "json";
 collect.ResponseType = responseType;
 
 
-string result = await address.CreateDeleteAddress(collect);
+string result = await address.ViewAddress(collect);
 
 ```
 
 
-#### <a name="create_verify_address"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.AddressController.CreateVerifyAddress") CreateVerifyAddress
-
-> Validates an address given.
-
-
-```csharp
-Task<string> CreateVerifyAddress(CreateVerifyAddressInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| addressSID |  ``` Required ```  | The identifier of the address to be verified. |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type either json or xml |
-
-
-#### Example Usage
-
-```csharp
-CreateVerifyAddressInput collect = new CreateVerifyAddressInput();
-
-string addressSID = "AddressSID";
-collect.AddressSID = addressSID;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await address.CreateVerifyAddress(collect);
-
-```
-
-
-#### <a name="create_list_address"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.AddressController.CreateListAddress") CreateListAddress
+### <a name="list_address"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.AddressController.ListAddress") ListAddress
 
 > List All Address 
 
 
 ```csharp
-Task<string> CreateListAddress(CreateListAddressInput input)
+Task<string> ListAddress(Models.ListAddressInput input)
 ```
 
 #### Parameters
@@ -1744,7 +3270,7 @@ Task<string> CreateListAddress(CreateListAddressInput input)
 #### Example Usage
 
 ```csharp
-CreateListAddressInput collect = new CreateListAddressInput();
+ListAddressInput collect = new ListAddressInput();
 
 string responseType = "json";
 collect.ResponseType = responseType;
@@ -1762,32 +3288,32 @@ string dateCreated = "DateCreated";
 collect.DateCreated = dateCreated;
 
 
-string result = await address.CreateListAddress(collect);
+string result = await address.ListAddress(collect);
 
 ```
 
 
-#### <a name="create_view_address"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.AddressController.CreateViewAddress") CreateViewAddress
+### <a name="verify_address"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.AddressController.VerifyAddress") VerifyAddress
 
-> View Address Specific address Book by providing the address id
+> Validates an address given.
 
 
 ```csharp
-Task<string> CreateViewAddress(CreateViewAddressInput input)
+Task<string> VerifyAddress(Models.VerifyAddressInput input)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| addressSID |  ``` Required ```  | The identifier of the address to be retrieved. |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
+| addressSID |  ``` Required ```  | The identifier of the address to be verified. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type either json or xml |
 
 
 #### Example Usage
 
 ```csharp
-CreateViewAddressInput collect = new CreateViewAddressInput();
+VerifyAddressInput collect = new VerifyAddressInput();
 
 string addressSID = "AddressSID";
 collect.AddressSID = addressSID;
@@ -1796,625 +3322,263 @@ string responseType = "json";
 collect.ResponseType = responseType;
 
 
-string result = await address.CreateViewAddress(collect);
+string result = await address.VerifyAddress(collect);
+
+```
+
+
+### <a name="delete_address"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.AddressController.DeleteAddress") DeleteAddress
+
+> To delete Address to your address book
+
+
+```csharp
+Task<string> DeleteAddress(Models.DeleteAddressInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| addressSID |  ``` Required ```  | The identifier of the address to be deleted. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type either json or xml |
+
+
+#### Example Usage
+
+```csharp
+DeleteAddressInput collect = new DeleteAddressInput();
+
+string addressSID = "AddressSID";
+collect.AddressSID = addressSID;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await address.DeleteAddress(collect);
 
 ```
 
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="email_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.EmailController") EmailController
+## <a name="sub_account_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.SubAccountController") SubAccountController
 
-#### Get singleton instance
+### Get singleton instance
 
-The singleton instance of the ``` EmailController ``` class can be accessed from the API Client.
+The singleton instance of the ``` SubAccountController ``` class can be accessed from the API Client.
 
 ```csharp
-EmailController email = client.Email;
+SubAccountController subAccount = client.SubAccount;
 ```
 
-#### <a name="create_list_blocks"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListBlocks") CreateListBlocks
+### <a name="delete_sub_account"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SubAccountController.DeleteSubAccount") DeleteSubAccount
 
-> Outputs email addresses on your blocklist
-
-
-```csharp
-Task<string> CreateListBlocks(CreateListBlocksInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| offset |  ``` Optional ```  | Where to start in the output list |
-| limit |  ``` Optional ```  | Maximum number of records to return |
-
-
-#### Example Usage
-
-```csharp
-CreateListBlocksInput collect = new CreateListBlocksInput();
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-string offset = "offset";
-collect.Offset = offset;
-
-string limit = "limit";
-collect.Limit = limit;
-
-
-string result = await email.CreateListBlocks(collect);
-
-```
-
-
-#### <a name="create_list_spam"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListSpam") CreateListSpam
-
-> List out all email addresses marked as spam
+> Delete sub account or merge numbers into parent
 
 
 ```csharp
-Task<string> CreateListSpam(CreateListSpamInput input)
+Task<string> DeleteSubAccount(Models.DeleteSubAccountInput input)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| offset |  ``` Optional ```  | The record number to start the list at |
-| limit |  ``` Optional ```  | Maximum number of records to return |
-
-
-#### Example Usage
-
-```csharp
-CreateListSpamInput collect = new CreateListSpamInput();
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-string offset = "offset";
-collect.Offset = offset;
-
-string limit = "limit";
-collect.Limit = limit;
-
-
-string result = await email.CreateListSpam(collect);
-
-```
-
-
-#### <a name="create_list_bounces"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListBounces") CreateListBounces
-
-> List out all email addresses that have bounced
-
-
-```csharp
-Task<string> CreateListBounces(CreateListBouncesInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| offset |  ``` Optional ```  | The record to start the list at |
-| limit |  ``` Optional ```  | The maximum number of records to return |
-
-
-#### Example Usage
-
-```csharp
-CreateListBouncesInput collect = new CreateListBouncesInput();
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-string offset = "offset";
-collect.Offset = offset;
-
-string limit = "limit";
-collect.Limit = limit;
-
-
-string result = await email.CreateListBounces(collect);
-
-```
-
-
-#### <a name="create_delete_bounces"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteBounces") CreateDeleteBounces
-
-> Delete an email address from the bounced address list
-
-
-```csharp
-Task<string> CreateDeleteBounces(CreateDeleteBouncesInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| email |  ``` Required ```  | The email address to remove from the bounce list |
-
-
-#### Example Usage
-
-```csharp
-CreateDeleteBouncesInput collect = new CreateDeleteBouncesInput();
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-string email = "email";
-collect.Email = email;
-
-
-string result = await email.CreateDeleteBounces(collect);
-
-```
-
-
-#### <a name="create_list_invalid"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListInvalid") CreateListInvalid
-
-> List out all invalid email addresses
-
-
-```csharp
-Task<string> CreateListInvalid(CreateListInvalidInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| offet |  ``` Optional ```  | Starting record for listing out emails |
-| limit |  ``` Optional ```  | Maximum number of records to return |
-
-
-#### Example Usage
-
-```csharp
-CreateListInvalidInput collect = new CreateListInvalidInput();
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-string offet = "offet";
-collect.Offet = offet;
-
-string limit = "limit";
-collect.Limit = limit;
-
-
-string result = await email.CreateListInvalid(collect);
-
-```
-
-
-#### <a name="create_list_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateListUnsubscribes") CreateListUnsubscribes
-
-> List all unsubscribed email addresses
-
-
-```csharp
-Task<string> CreateListUnsubscribes(CreateListUnsubscribesInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| offset |  ``` Optional ```  | Starting record of the list |
-| limit |  ``` Optional ```  | Maximum number of records to be returned |
-
-
-#### Example Usage
-
-```csharp
-CreateListUnsubscribesInput collect = new CreateListUnsubscribesInput();
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-string offset = "offset";
-collect.Offset = offset;
-
-string limit = "limit";
-collect.Limit = limit;
-
-
-string result = await email.CreateListUnsubscribes(collect);
-
-```
-
-
-#### <a name="create_delete_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteUnsubscribes") CreateDeleteUnsubscribes
-
-> Delete emails from the unsubscribe list
-
-
-```csharp
-Task<string> CreateDeleteUnsubscribes(CreateDeleteUnsubscribesInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| email |  ``` Required ```  | The email to remove from the unsubscribe list |
+| subAccountSID |  ``` Required ```  | The SubaccountSid to be deleted |
+| mergeNumber |  ``` Required ```  ``` DefaultValue ```  | 0 to delete or 1 to merge numbers to parent account. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
 #### Example Usage
 
 ```csharp
-CreateDeleteUnsubscribesInput collect = new CreateDeleteUnsubscribesInput();
+DeleteSubAccountInput collect = new DeleteSubAccountInput();
 
-string email = "email";
-collect.Email = email;
+string subAccountSID = "SubAccountSID";
+collect.SubAccountSID = subAccountSID;
+
+var mergeNumber = (Models.MergeNumberStatusEnum)0;
+collect.MergeNumber = mergeNumber;
 
 string responseType = "json";
 collect.ResponseType = responseType;
 
 
-string result = await email.CreateDeleteUnsubscribes(collect);
+string result = await subAccount.DeleteSubAccount(collect);
 
 ```
 
 
-#### <a name="add_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.AddUnsubscribes") AddUnsubscribes
+### <a name="suspend_sub_account"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SubAccountController.SuspendSubAccount") SuspendSubAccount
 
-> Add an email to the unsubscribe list
+> Suspend or unsuspend
 
 
 ```csharp
-Task<string> AddUnsubscribes(AddUnsubscribesInput input)
+Task<string> SuspendSubAccount(Models.SuspendSubAccountInput input)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| email |  ``` Required ```  | The email to add to the unsubscribe list |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-#### Example Usage
-
-```csharp
-AddUnsubscribesInput collect = new AddUnsubscribesInput();
-
-string email = "email";
-collect.Email = email;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await email.AddUnsubscribes(collect);
-
-```
-
-
-#### <a name="create_delete_block"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteBlock") CreateDeleteBlock
-
-> Deletes a blocked email
-
-
-```csharp
-Task<string> CreateDeleteBlock(CreateDeleteBlockInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| email |  ``` Required ```  | Email address to remove from block list |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-#### Example Usage
-
-```csharp
-CreateDeleteBlockInput collect = new CreateDeleteBlockInput();
-
-string email = "email";
-collect.Email = email;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await email.CreateDeleteBlock(collect);
-
-```
-
-
-#### <a name="create_delete_spam"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteSpam") CreateDeleteSpam
-
-> Deletes a email address marked as spam from the spam list
-
-
-```csharp
-Task<string> CreateDeleteSpam(CreateDeleteSpamInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| email |  ``` Required ```  | Email address |
-
-
-#### Example Usage
-
-```csharp
-CreateDeleteSpamInput collect = new CreateDeleteSpamInput();
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-string email = "email";
-collect.Email = email;
-
-
-string result = await email.CreateDeleteSpam(collect);
-
-```
-
-
-#### <a name="create_send_email"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateSendEmail") CreateSendEmail
-
-> Send out an email
-
-
-```csharp
-Task<string> CreateSendEmail(CreateSendEmailInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| to |  ``` Required ```  | The to email address |
-| mfrom |  ``` Required ```  | The from email address |
-| type |  ``` Required ```  ``` DefaultValue ```  | email format type, html or text |
-| subject |  ``` Required ```  | Email subject |
-| message |  ``` Required ```  | The body of the email message |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| cc |  ``` Optional ```  | CC Email address |
-| bcc |  ``` Optional ```  | BCC Email address |
-| attachment |  ``` Optional ```  | File to be attached.File must be less than 7MB. |
-
-
-#### Example Usage
-
-```csharp
-CreateSendEmailInput collect = new CreateSendEmailInput();
-
-string to = "to";
-collect.To = to;
-
-string mfrom = "from";
-collect.Mfrom = mfrom;
-
-var type = Models.SendEmailAsEnumHelper.ParseString("HTML");
-collect.Type = type;
-
-string subject = "subject";
-collect.Subject = subject;
-
-string message = "message";
-collect.Message = message;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-string cc = "cc";
-collect.Cc = cc;
-
-string bcc = "bcc";
-collect.Bcc = bcc;
-
-string attachment = "attachment";
-collect.Attachment = attachment;
-
-
-string result = await email.CreateSendEmail(collect);
-
-```
-
-
-#### <a name="create_delete_invalid"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.EmailController.CreateDeleteInvalid") CreateDeleteInvalid
-
-> This endpoint allows you to delete entries in the Invalid Emails list.
-
-
-```csharp
-Task<string> CreateDeleteInvalid(CreateDeleteInvalidInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| email |  ``` Required ```  | TODO: Add a parameter description |
+| subAccountSID |  ``` Required ```  | The SubaccountSid to be activated or suspended |
+| activate |  ``` Required ```  ``` DefaultValue ```  | 0 to suspend or 1 to activate |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | TODO: Add a parameter description |
 
 
 #### Example Usage
 
 ```csharp
-CreateDeleteInvalidInput collect = new CreateDeleteInvalidInput();
+SuspendSubAccountInput collect = new SuspendSubAccountInput();
 
-string email = "email";
+string subAccountSID = "SubAccountSID";
+collect.SubAccountSID = subAccountSID;
+
+var activate = (Models.ActivateStatusEnum)0;
+collect.Activate = activate;
+
+string responseType = "json";
+collect.ResponseType = responseType;
+
+
+string result = await subAccount.SuspendSubAccount(collect);
+
+```
+
+
+### <a name="create_sub_account"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SubAccountController.CreateSubAccount") CreateSubAccount
+
+> Create a sub user account under the parent account
+
+
+```csharp
+Task<string> CreateSubAccount(Models.CreateSubAccountInput input)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| firstName |  ``` Required ```  | Sub account user first name |
+| lastName |  ``` Required ```  | sub account user last name |
+| email |  ``` Required ```  | Sub account email address |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+#### Example Usage
+
+```csharp
+CreateSubAccountInput collect = new CreateSubAccountInput();
+
+string firstName = "FirstName";
+collect.FirstName = firstName;
+
+string lastName = "LastName";
+collect.LastName = lastName;
+
+string email = "Email";
 collect.Email = email;
 
 string responseType = "json";
 collect.ResponseType = responseType;
 
 
-string result = await email.CreateDeleteInvalid(collect);
+string result = await subAccount.CreateSubAccount(collect);
 
 ```
 
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="sms_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.SMSController") SMSController
+## <a name="account_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.AccountController") AccountController
 
-#### Get singleton instance
+### Get singleton instance
 
-The singleton instance of the ``` SMSController ``` class can be accessed from the API Client.
+The singleton instance of the ``` AccountController ``` class can be accessed from the API Client.
 
 ```csharp
-SMSController sMS = client.SMS;
+AccountController account = client.Account;
 ```
 
-#### <a name="create_list_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateListSMS") CreateListSMS
+### <a name="view_account"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.AccountController.ViewAccount") ViewAccount
 
-> List All SMS
+> Display Account Description
 
 
 ```csharp
-Task<string> CreateListSMS(CreateListSMSInput input)
+Task<string> ViewAccount(Models.ViewAccountInput input)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
+| date |  ``` Required ```  | TODO: Add a parameter description |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pagesize |  ``` Optional ```  | Number of individual resources listed in the response per page |
-| mfrom |  ``` Optional ```  | Messages sent from this number |
-| to |  ``` Optional ```  | Messages sent to this number |
-| datesent |  ``` Optional ```  | Only list SMS messages sent in the specified date range |
 
 
 #### Example Usage
 
 ```csharp
-CreateListSMSInput collect = new CreateListSMSInput();
+ViewAccountInput collect = new ViewAccountInput();
+
+string date = "Date";
+collect.Date = date;
 
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? page = 217;
-collect.Page = page;
 
-int? pagesize = 217;
-collect.Pagesize = pagesize;
-
-string mfrom = "from";
-collect.Mfrom = mfrom;
-
-string to = "to";
-collect.To = to;
-
-string datesent = "datesent";
-collect.Datesent = datesent;
-
-
-string result = await sMS.CreateListSMS(collect);
+string result = await account.ViewAccount(collect);
 
 ```
 
 
-#### <a name="create_list_inbound_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateListInboundSMS") CreateListInboundSMS
+[Back to List of Controllers](#list_of_controllers)
 
-> List All Inbound SMS
+## <a name="short_code_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.ShortCodeController") ShortCodeController
+
+### Get singleton instance
+
+The singleton instance of the ``` ShortCodeController ``` class can be accessed from the API Client.
+
+```csharp
+ShortCodeController shortCode = client.ShortCode;
+```
+
+### <a name="send_dedicated_shortcode"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ShortCodeController.SendDedicatedShortcode") SendDedicatedShortcode
+
+> TODO: Add a method description
 
 
 ```csharp
-Task<string> CreateListInboundSMS(CreateListInboundSMSInput input)
+Task<string> SendDedicatedShortcode(Models.SendDedicatedShortcodeInput input)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
+| shortcode |  ``` Required ```  | Your dedicated shortcode |
+| to |  ``` Required ```  | The number to send your SMS to |
+| body |  ``` Required ```  | The body of your message |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pagesize |  ``` Optional ```  | Number of individual resources listed in the response per page |
-| mfrom |  ``` Optional ```  | From Number to Inbound SMS |
-| to |  ``` Optional ```  | To Number to get Inbound SMS |
+| method |  ``` Optional ```  | Callback status method, POST or GET |
+| messagestatuscallback |  ``` Optional ```  | Callback url for SMS status |
 
 
 #### Example Usage
 
 ```csharp
-CreateListInboundSMSInput collect = new CreateListInboundSMSInput();
+SendDedicatedShortcodeInput collect = new SendDedicatedShortcodeInput();
 
-string responseType = "json";
-collect.ResponseType = responseType;
+int shortcode = 230;
+collect.Shortcode = shortcode;
 
-int? page = 217;
-collect.Page = page;
-
-string pagesize = "pagesize";
-collect.Pagesize = pagesize;
-
-string mfrom = "from";
-collect.Mfrom = mfrom;
-
-string to = "to";
-collect.To = to;
-
-
-string result = await sMS.CreateListInboundSMS(collect);
-
-```
-
-
-#### <a name="create_send_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateSendSMS") CreateSendSMS
-
-> Send an SMS from a message360 number
-
-
-```csharp
-Task<string> CreateSendSMS(CreateSendSMSInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| fromcountrycode |  ``` Required ```  ``` DefaultValue ```  | From Country Code |
-| mfrom |  ``` Required ```  | SMS enabled Message360 number to send this message from |
-| tocountrycode |  ``` Required ```  ``` DefaultValue ```  | To country code |
-| to |  ``` Required ```  | Number to send the SMS to |
-| body |  ``` Required ```  | Text Message To Send |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| method |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once SMS sent. |
-| messagestatuscallback |  ``` Optional ```  | URL that can be requested to receive notification when SMS has Sent. A set of default parameters will be sent here once the SMS is finished. |
-
-
-#### Example Usage
-
-```csharp
-CreateSendSMSInput collect = new CreateSendSMSInput();
-
-int fromcountrycode = 1;
-collect.Fromcountrycode = fromcountrycode;
-
-string mfrom = "from";
-collect.Mfrom = mfrom;
-
-int tocountrycode = 1;
-collect.Tocountrycode = tocountrycode;
-
-string to = "to";
+double to = 230.467056029228;
 collect.To = to;
 
 string body = "body";
@@ -2430,64 +3594,52 @@ string messagestatuscallback = "messagestatuscallback";
 collect.Messagestatuscallback = messagestatuscallback;
 
 
-string result = await sMS.CreateSendSMS(collect);
+string result = await shortCode.SendDedicatedShortcode(collect);
 
 ```
 
 
-#### <a name="create_view_sms"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.SMSController.CreateViewSMS") CreateViewSMS
+### <a name="view_shortcode"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ShortCodeController.ViewShortcode") ViewShortcode
 
-> View a Particular SMS
+> View a single Sms Short Code message.
 
 
 ```csharp
-Task<string> CreateViewSMS(CreateViewSMSInput input)
+Task<string> ViewShortcode(Models.ViewShortcodeInput input)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| messagesid |  ``` Required ```  | Message sid |
+| messageSid |  ``` Required ```  | The unique identifier for the sms resource |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
 #### Example Usage
 
 ```csharp
-CreateViewSMSInput collect = new CreateViewSMSInput();
+ViewShortcodeInput collect = new ViewShortcodeInput();
 
-string messagesid = "messagesid";
-collect.Messagesid = messagesid;
+string messageSid = "MessageSid";
+collect.MessageSid = messageSid;
 
 string responseType = "json";
 collect.ResponseType = responseType;
 
 
-string result = await sMS.CreateViewSMS(collect);
+string result = await shortCode.ViewShortcode(collect);
 
 ```
 
 
-[Back to List of Controllers](#list_of_controllers)
+### <a name="list_shortcode"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ShortCodeController.ListShortcode") ListShortcode
 
-### <a name="recording_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.RecordingController") RecordingController
-
-#### Get singleton instance
-
-The singleton instance of the ``` RecordingController ``` class can be accessed from the API Client.
-
-```csharp
-RecordingController recording = client.Recording;
-```
-
-#### <a name="create_list_recording"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.RecordingController.CreateListRecording") CreateListRecording
-
-> List out Recordings
+> Retrieve a list of Short Code message objects.
 
 
 ```csharp
-Task<string> CreateListRecording(CreateListRecordingInput input)
+Task<string> ListShortcode(Models.ListShortcodeInput input)
 ```
 
 #### Parameters
@@ -2495,125 +3647,49 @@ Task<string> CreateListRecording(CreateListRecordingInput input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pageSize |  ``` Optional ```  | Number of individual resources listed in the response per page |
-| dateCreated |  ``` Optional ```  | TODO: Add a parameter description |
-| callSid |  ``` Optional ```  | TODO: Add a parameter description |
+| shortcode |  ``` Optional ```  | Only list messages sent from this Short Code |
+| to |  ``` Optional ```  | Only list messages sent to this number |
+| dateSent |  ``` Optional ```  | Only list messages sent with the specified date |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | The count of objects to return per page. |
 
 
 #### Example Usage
 
 ```csharp
-CreateListRecordingInput collect = new CreateListRecordingInput();
+ListShortcodeInput collect = new ListShortcodeInput();
 
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? page = 217;
+string shortcode = "Shortcode";
+collect.Shortcode = shortcode;
+
+string to = "To";
+collect.To = to;
+
+DateTime? dateSent = DateTime.Now();
+collect.DateSent = dateSent;
+
+int? page = 1;
 collect.Page = page;
 
-int? pageSize = 217;
+int? pageSize = 10;
 collect.PageSize = pageSize;
 
-string dateCreated = "DateCreated";
-collect.DateCreated = dateCreated;
 
-string callSid = "CallSid";
-collect.CallSid = callSid;
-
-
-string result = await recording.CreateListRecording(collect);
+string result = await shortCode.ListShortcode(collect);
 
 ```
 
 
-#### <a name="create_delete_recording"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.RecordingController.CreateDeleteRecording") CreateDeleteRecording
+### <a name="list_inbound_shortcode"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.ShortCodeController.ListInboundShortcode") ListInboundShortcode
 
-> Delete Recording Record
-
-
-```csharp
-Task<string> CreateDeleteRecording(CreateDeleteRecordingInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| recordingSid |  ``` Required ```  | Unique Recording Sid to be delete |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-#### Example Usage
-
-```csharp
-CreateDeleteRecordingInput collect = new CreateDeleteRecordingInput();
-
-string recordingSid = "RecordingSid";
-collect.RecordingSid = recordingSid;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await recording.CreateDeleteRecording(collect);
-
-```
-
-
-#### <a name="create_view_recording"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.RecordingController.CreateViewRecording") CreateViewRecording
-
-> View a specific Recording
+> Retrive a list of inbound Sms Short Code messages associated with your message360 account.
 
 
 ```csharp
-Task<string> CreateViewRecording(CreateViewRecordingInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| recordingSid |  ``` Required ```  | Search Recording sid |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-#### Example Usage
-
-```csharp
-CreateViewRecordingInput collect = new CreateViewRecordingInput();
-
-string recordingSid = "RecordingSid";
-collect.RecordingSid = recordingSid;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await recording.CreateViewRecording(collect);
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-### <a name="carrier_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.CarrierController") CarrierController
-
-#### Get singleton instance
-
-The singleton instance of the ``` CarrierController ``` class can be accessed from the API Client.
-
-```csharp
-CarrierController carrier = client.Carrier;
-```
-
-#### <a name="create_carrier_lookup_list"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CarrierController.CreateCarrierLookupList") CreateCarrierLookupList
-
-> Get the All Purchase Number's Carrier lookup
-
-
-```csharp
-Task<string> CreateCarrierLookupList(CreateCarrierLookupListInput input)
+Task<string> ListInboundShortcode(Models.ListInboundShortcodeInput input)
 ```
 
 #### Parameters
@@ -2621,608 +3697,38 @@ Task<string> CreateCarrierLookupList(CreateCarrierLookupListInput input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | Page Number |
-| pagesize |  ``` Optional ```  | Page Size |
-
-
-#### Example Usage
-
-```csharp
-CreateCarrierLookupListInput collect = new CreateCarrierLookupListInput();
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-int? page = 217;
-collect.Page = page;
-
-int? pagesize = 217;
-collect.Pagesize = pagesize;
-
-
-string result = await carrier.CreateCarrierLookupList(collect);
-
-```
-
-
-#### <a name="create_carrier_lookup"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.CarrierController.CreateCarrierLookup") CreateCarrierLookup
-
-> Get the Carrier Lookup
-
-
-```csharp
-Task<string> CreateCarrierLookup(CreateCarrierLookupInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| phonenumber |  ``` Required ```  | The number to lookup |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-#### Example Usage
-
-```csharp
-CreateCarrierLookupInput collect = new CreateCarrierLookupInput();
-
-string phonenumber = "phonenumber";
-collect.Phonenumber = phonenumber;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await carrier.CreateCarrierLookup(collect);
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-### <a name="phone_number_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.PhoneNumberController") PhoneNumberController
-
-#### Get singleton instance
-
-The singleton instance of the ``` PhoneNumberController ``` class can be accessed from the API Client.
-
-```csharp
-PhoneNumberController phoneNumber = client.PhoneNumber;
-```
-
-#### <a name="create_buy_number"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateBuyNumber") CreateBuyNumber
-
-> Buy Phone Number 
-
-
-```csharp
-Task<string> CreateBuyNumber(CreateBuyNumberInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | Phone number to be purchase |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-#### Example Usage
-
-```csharp
-CreateBuyNumberInput collect = new CreateBuyNumberInput();
-
-string phoneNumber = "PhoneNumber";
-collect.PhoneNumber = phoneNumber;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await phoneNumber.CreateBuyNumber(collect);
-
-```
-
-
-#### <a name="create_release_number"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateReleaseNumber") CreateReleaseNumber
-
-> Release number from account
-
-
-```csharp
-Task<string> CreateReleaseNumber(CreateReleaseNumberInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | Phone number to be relase |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-#### Example Usage
-
-```csharp
-CreateReleaseNumberInput collect = new CreateReleaseNumberInput();
-
-string phoneNumber = "PhoneNumber";
-collect.PhoneNumber = phoneNumber;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await phoneNumber.CreateReleaseNumber(collect);
-
-```
-
-
-#### <a name="create_view_number_details"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateViewNumberDetails") CreateViewNumberDetails
-
-> Get Phone Number Details
-
-
-```csharp
-Task<string> CreateViewNumberDetails(CreateViewNumberDetailsInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | Get Phone number Detail |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-#### Example Usage
-
-```csharp
-CreateViewNumberDetailsInput collect = new CreateViewNumberDetailsInput();
-
-string phoneNumber = "PhoneNumber";
-collect.PhoneNumber = phoneNumber;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await phoneNumber.CreateViewNumberDetails(collect);
-
-```
-
-
-#### <a name="create_list_number"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateListNumber") CreateListNumber
-
-> List Account's Phone number details
-
-
-```csharp
-Task<string> CreateListNumber(CreateListNumberInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
 | pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
-| numberType |  ``` Optional ```  | TODO: Add a parameter description |
-| friendlyName |  ``` Optional ```  | TODO: Add a parameter description |
+| mfrom |  ``` Optional ```  | Only list SMS messages sent from this number |
+| shortcode |  ``` Optional ```  | Only list SMS messages sent to Shortcode |
+| dateReceived |  ``` Optional ```  | Only list SMS messages sent in the specified date MAKE REQUEST |
 
 
 #### Example Usage
 
 ```csharp
-CreateListNumberInput collect = new CreateListNumberInput();
+ListInboundShortcodeInput collect = new ListInboundShortcodeInput();
 
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? page = 217;
+int? page = 1;
 collect.Page = page;
 
 int? pageSize = 10;
 collect.PageSize = pageSize;
 
-var numberType = Models.NumberTypeEnum?Helper.ParseString("ALL");
-collect.NumberType = numberType;
+string mfrom = "From";
+collect.Mfrom = mfrom;
 
-string friendlyName = "FriendlyName";
-collect.FriendlyName = friendlyName;
+string shortcode = "Shortcode";
+collect.Shortcode = shortcode;
 
+string dateReceived = "DateReceived";
+collect.DateReceived = dateReceived;
 
-string result = await phoneNumber.CreateListNumber(collect);
 
-```
-
-
-#### <a name="create_available_phone_number"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.CreateAvailablePhoneNumber") CreateAvailablePhoneNumber
-
-> Available Phone Number
-
-
-```csharp
-Task<string> CreateAvailablePhoneNumber(CreateAvailablePhoneNumberInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| numberType |  ``` Required ```  | Number type either SMS,Voice or all |
-| areaCode |  ``` Required ```  | Phone Number Area Code |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Page Size |
-
-
-#### Example Usage
-
-```csharp
-CreateAvailablePhoneNumberInput collect = new CreateAvailablePhoneNumberInput();
-
-var numberType = Models.NumberTypeEnumHelper.ParseString("ALL");
-collect.NumberType = numberType;
-
-string areaCode = "AreaCode";
-collect.AreaCode = areaCode;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-int? pageSize = 10;
-collect.PageSize = pageSize;
-
-
-string result = await phoneNumber.CreateAvailablePhoneNumber(collect);
-
-```
-
-
-#### <a name="update_phone_number"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.PhoneNumberController.UpdatePhoneNumber") UpdatePhoneNumber
-
-> Update Phone Number Details
-
-
-```csharp
-Task<string> UpdatePhoneNumber(UpdatePhoneNumberInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | TODO: Add a parameter description |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| friendlyName |  ``` Optional ```  | TODO: Add a parameter description |
-| voiceUrl |  ``` Optional ```  | URL requested once the call connects |
-| voiceMethod |  ``` Optional ```  | TODO: Add a parameter description |
-| voiceFallbackUrl |  ``` Optional ```  | URL requested if the voice URL is not available |
-| voiceFallbackMethod |  ``` Optional ```  | TODO: Add a parameter description |
-| hangupCallback |  ``` Optional ```  | TODO: Add a parameter description |
-| hangupCallbackMethod |  ``` Optional ```  | TODO: Add a parameter description |
-| heartbeatUrl |  ``` Optional ```  | URL requested once the call connects |
-| heartbeatMethod |  ``` Optional ```  | URL that can be requested every 60 seconds during the call to notify of elapsed time |
-| smsUrl |  ``` Optional ```  | URL requested when an SMS is received |
-| smsMethod |  ``` Optional ```  | TODO: Add a parameter description |
-| smsFallbackUrl |  ``` Optional ```  | URL requested once the call connects |
-| smsFallbackMethod |  ``` Optional ```  | URL requested if the sms URL is not available |
-
-
-#### Example Usage
-
-```csharp
-UpdatePhoneNumberInput collect = new UpdatePhoneNumberInput();
-
-string phoneNumber = "PhoneNumber";
-collect.PhoneNumber = phoneNumber;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-string friendlyName = "FriendlyName";
-collect.FriendlyName = friendlyName;
-
-string voiceUrl = "VoiceUrl";
-collect.VoiceUrl = voiceUrl;
-
-var voiceMethod = Models.HttpActionEnum?Helper.ParseString("GET");
-collect.VoiceMethod = voiceMethod;
-
-string voiceFallbackUrl = "VoiceFallbackUrl";
-collect.VoiceFallbackUrl = voiceFallbackUrl;
-
-var voiceFallbackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
-collect.VoiceFallbackMethod = voiceFallbackMethod;
-
-string hangupCallback = "HangupCallback";
-collect.HangupCallback = hangupCallback;
-
-var hangupCallbackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
-collect.HangupCallbackMethod = hangupCallbackMethod;
-
-string heartbeatUrl = "HeartbeatUrl";
-collect.HeartbeatUrl = heartbeatUrl;
-
-var heartbeatMethod = Models.HttpActionEnum?Helper.ParseString("GET");
-collect.HeartbeatMethod = heartbeatMethod;
-
-string smsUrl = "SmsUrl";
-collect.SmsUrl = smsUrl;
-
-var smsMethod = Models.HttpActionEnum?Helper.ParseString("GET");
-collect.SmsMethod = smsMethod;
-
-string smsFallbackUrl = "SmsFallbackUrl";
-collect.SmsFallbackUrl = smsFallbackUrl;
-
-var smsFallbackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
-collect.SmsFallbackMethod = smsFallbackMethod;
-
-
-string result = await phoneNumber.UpdatePhoneNumber(collect);
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-### <a name="transcription_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.TranscriptionController") TranscriptionController
-
-#### Get singleton instance
-
-The singleton instance of the ``` TranscriptionController ``` class can be accessed from the API Client.
-
-```csharp
-TranscriptionController transcription = client.Transcription;
-```
-
-#### <a name="create_audio_url_transcription"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.TranscriptionController.CreateAudioURLTranscription") CreateAudioURLTranscription
-
-> Audio URL Transcriptions
-
-
-```csharp
-Task<string> CreateAudioURLTranscription(CreateAudioURLTranscriptionInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| audioUrl |  ``` Required ```  | Audio url |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-#### Example Usage
-
-```csharp
-CreateAudioURLTranscriptionInput collect = new CreateAudioURLTranscriptionInput();
-
-string audioUrl = "AudioUrl";
-collect.AudioUrl = audioUrl;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await transcription.CreateAudioURLTranscription(collect);
-
-```
-
-
-#### <a name="create_recording_transcription"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.TranscriptionController.CreateRecordingTranscription") CreateRecordingTranscription
-
-> Recording Transcriptions
-
-
-```csharp
-Task<string> CreateRecordingTranscription(CreateRecordingTranscriptionInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| recordingSid |  ``` Required ```  | Unique Recording sid |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-#### Example Usage
-
-```csharp
-CreateRecordingTranscriptionInput collect = new CreateRecordingTranscriptionInput();
-
-string recordingSid = "RecordingSid";
-collect.RecordingSid = recordingSid;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await transcription.CreateRecordingTranscription(collect);
-
-```
-
-
-#### <a name="create_view_transcription"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.TranscriptionController.CreateViewTranscription") CreateViewTranscription
-
-> View Specific Transcriptions
-
-
-```csharp
-Task<string> CreateViewTranscription(CreateViewTranscriptionInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| transcriptionSid |  ``` Required ```  | Unique Transcription ID |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-#### Example Usage
-
-```csharp
-CreateViewTranscriptionInput collect = new CreateViewTranscriptionInput();
-
-string transcriptionSid = "TranscriptionSid";
-collect.TranscriptionSid = transcriptionSid;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await transcription.CreateViewTranscription(collect);
-
-```
-
-
-#### <a name="create_list_transcription"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.TranscriptionController.CreateListTranscription") CreateListTranscription
-
-> Get All transcriptions
-
-
-```csharp
-Task<string> CreateListTranscription(CreateListTranscriptionInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | TODO: Add a parameter description |
-| pageSize |  ``` Optional ```  | TODO: Add a parameter description |
-| status |  ``` Optional ```  | TODO: Add a parameter description |
-| dateTranscribed |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```csharp
-CreateListTranscriptionInput collect = new CreateListTranscriptionInput();
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-int? page = 217;
-collect.Page = page;
-
-int? pageSize = 217;
-collect.PageSize = pageSize;
-
-var status = Models.StatusEnum?Helper.ParseString("INPROGRESS");
-collect.Status = status;
-
-string dateTranscribed = "DateTranscribed";
-collect.DateTranscribed = dateTranscribed;
-
-
-string result = await transcription.CreateListTranscription(collect);
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-### <a name="usage_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.UsageController") UsageController
-
-#### Get singleton instance
-
-The singleton instance of the ``` UsageController ``` class can be accessed from the API Client.
-
-```csharp
-UsageController usage = client.Usage;
-```
-
-#### <a name="create_list_usage"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.UsageController.CreateListUsage") CreateListUsage
-
-> Get all usage 
-
-
-```csharp
-Task<string> CreateListUsage(CreateListUsageInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| productCode |  ``` Required ```  ``` DefaultValue ```  | Product Code |
-| startDate |  ``` Required ```  ``` DefaultValue ```  | Start Usage Date |
-| endDate |  ``` Required ```  ``` DefaultValue ```  | End Usage Date |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-#### Example Usage
-
-```csharp
-CreateListUsageInput collect = new CreateListUsageInput();
-
-var productCode = (Models.ProductCodeEnum)0;
-collect.ProductCode = productCode;
-
-string startDate = "2016-09-06";
-collect.StartDate = startDate;
-
-string endDate = "2016-09-06";
-collect.EndDate = endDate;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await usage.CreateListUsage(collect);
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-### <a name="account_controller"></a>![Class: ](https://apidocs.io/img/class.png "message360.Controllers.AccountController") AccountController
-
-#### Get singleton instance
-
-The singleton instance of the ``` AccountController ``` class can be accessed from the API Client.
-
-```csharp
-AccountController account = client.Account;
-```
-
-#### <a name="create_view_account"></a>![Method: ](https://apidocs.io/img/method.png "message360.Controllers.AccountController.CreateViewAccount") CreateViewAccount
-
-> Display Account Description
-
-
-```csharp
-Task<string> CreateViewAccount(CreateViewAccountInput input)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| date |  ``` Required ```  | TODO: Add a parameter description |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-#### Example Usage
-
-```csharp
-CreateViewAccountInput collect = new CreateViewAccountInput();
-
-string date = "Date";
-collect.Date = date;
-
-string responseType = "json";
-collect.ResponseType = responseType;
-
-
-string result = await account.CreateViewAccount(collect);
+string result = await shortCode.ListInboundShortcode(collect);
 
 ```
 
