@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ - Message360.Standard
+ -
+ - This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <AssemblyName>Message360.Standard</AssemblyName>
+    <Version>3.0.0.0</Version>
+    <Authors></Authors>
+    <Company></Company>
+    <Product>Message360.Standard</Product>
+    <Copyright>Copyright ©  2017</Copyright>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
+    <FileVersion>3.0.0.0</FileVersion>
+    <Description>Automatically generated using APIMatic.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+	<PackageReference Include="APIMATIC.SDK.Common" Version="2.1.0.0"  />
+  </ItemGroup>
+
+</Project>
