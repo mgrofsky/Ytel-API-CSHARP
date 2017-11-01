@@ -454,7 +454,7 @@ collect.PageSize = pageSize;
 string keyword = "Keyword";
 collect.Keyword = keyword;
 
-int? shortcode = 47;
+int? shortcode = 43;
 collect.Shortcode = shortcode;
 
 
@@ -833,7 +833,7 @@ collect.FallBackUrl = fallBackUrl;
 var fallBackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.FallBackMethod = fallBackMethod;
 
-bool? record = true;
+bool? record = false;
 collect.Record = record;
 
 var recordCallbackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
@@ -842,7 +842,7 @@ collect.RecordCallbackMethod = recordCallbackMethod;
 string schdeuleTime = "SchdeuleTime";
 collect.SchdeuleTime = schdeuleTime;
 
-int? timeout = 138;
+int? timeout = 43;
 collect.Timeout = timeout;
 
 
@@ -969,10 +969,10 @@ collect.Page = page;
 int? pagesize = 10;
 collect.Pagesize = pagesize;
 
-bool? muted = true;
+bool? muted = false;
 collect.Muted = muted;
 
-bool? deaf = true;
+bool? deaf = false;
 collect.Deaf = deaf;
 
 
@@ -2500,7 +2500,7 @@ collect.HeartBeatUrl = heartBeatUrl;
 var heartBeatMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.HeartBeatMethod = heartBeatMethod;
 
-int? timeout = 138;
+int? timeout = 135;
 collect.Timeout = timeout;
 
 string playDtmf = "PlayDtmf";
@@ -2584,7 +2584,7 @@ collect.SayText = sayText;
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? length = 138;
+int? length = 135;
 collect.Length = length;
 
 var direction = Models.DirectionEnum?Helper.ParseString("IN");
@@ -2638,7 +2638,7 @@ collect.ResponseType = responseType;
 var direction = Models.DirectionEnum?Helper.ParseString("IN");
 collect.Direction = direction;
 
-int? timeLimit = 138;
+int? timeLimit = 135;
 collect.TimeLimit = timeLimit;
 
 string callBackUrl = "CallBackUrl";
@@ -2690,19 +2690,19 @@ collect.ResponseType = responseType;
 var audioDirection = Models.AudioDirectionEnum?Helper.ParseString("IN");
 collect.AudioDirection = audioDirection;
 
-double? pitchSemiTones = 138.971774137566;
+double? pitchSemiTones = 135.48754373588;
 collect.PitchSemiTones = pitchSemiTones;
 
-double? pitchOctaves = 138.971774137566;
+double? pitchOctaves = 135.48754373588;
 collect.PitchOctaves = pitchOctaves;
 
-double? pitch = 138.971774137566;
+double? pitch = 135.48754373588;
 collect.Pitch = pitch;
 
-double? rate = 138.971774137566;
+double? rate = 135.48754373588;
 collect.Rate = rate;
 
-double? tempo = 138.971774137566;
+double? tempo = 135.48754373588;
 collect.Tempo = tempo;
 
 
@@ -2879,7 +2879,7 @@ collect.HeartBeatUrl = heartBeatUrl;
 var heartBeatMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.HeartBeatMethod = heartBeatMethod;
 
-int? timeout = 230;
+int? timeout = 135;
 collect.Timeout = timeout;
 
 string playDtmf = "PlayDtmf";
@@ -3575,10 +3575,10 @@ Task<string> SendDedicatedShortcode(Models.SendDedicatedShortcodeInput input)
 ```csharp
 SendDedicatedShortcodeInput collect = new SendDedicatedShortcodeInput();
 
-int shortcode = 230;
+int shortcode = 135;
 collect.Shortcode = shortcode;
 
-double to = 230.467056029228;
+double to = 135.48754373588;
 collect.To = to;
 
 string body = "body";
@@ -3668,7 +3668,7 @@ collect.Shortcode = shortcode;
 string to = "To";
 collect.To = to;
 
-DateTime? dateSent = DateTime.Now();
+string dateSent = "DateSent";
 collect.DateSent = dateSent;
 
 int? page = 1;
