@@ -23,7 +23,7 @@ namespace message360.Models
         private string responseType = "json";
         private string shortcode;
         private string to;
-        private DateTime? dateSent;
+        private string dateSent;
         private int? page = 1;
         private int? pageSize = 10;
 
@@ -81,9 +81,8 @@ namespace message360.Models
         /// <summary>
         /// Only list messages sent with the specified date
         /// </summary>
-        [JsonConverter(typeof(CustomDateTimeConverter), "yyyy'-'MM'-'dd")]
         [JsonProperty("DateSent")]
-        public DateTime? DateSent 
+        public string DateSent 
         { 
             get 
             {

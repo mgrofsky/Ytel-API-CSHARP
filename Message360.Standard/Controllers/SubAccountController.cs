@@ -230,6 +230,12 @@ namespace message360.Controllers
             if (null == input.Email)
                 throw new ArgumentNullException("email", "The property \"Email\" in the input object cannot be null.");
 
+            if (null == input.FriendlyName)
+                throw new ArgumentNullException("friendlyName", "The property \"FriendlyName\" in the input object cannot be null.");
+
+            if (null == input.Password)
+                throw new ArgumentNullException("password", "The property \"Password\" in the input object cannot be null.");
+
             if (null == input.ResponseType)
                 throw new ArgumentNullException("responseType", "The property \"ResponseType\" in the input object cannot be null.");
 
@@ -261,7 +267,9 @@ namespace message360.Controllers
             {
                 new KeyValuePair<string, object>( "FirstName", input.FirstName ),
                 new KeyValuePair<string, object>( "LastName", input.LastName ),
-                new KeyValuePair<string, object>( "Email", input.Email )
+                new KeyValuePair<string, object>( "Email", input.Email ),
+                new KeyValuePair<string, object>( "FriendlyName", input.FriendlyName ),
+                new KeyValuePair<string, object>( "Password", input.Password )
             };
             //remove null parameters
             _fields = _fields.Where(kvp => kvp.Value != null).ToList();

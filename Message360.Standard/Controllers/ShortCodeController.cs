@@ -254,7 +254,7 @@ namespace message360.Controllers
             {
                 new KeyValuePair<string, object>( "Shortcode", input.Shortcode ),
                 new KeyValuePair<string, object>( "To", input.To ),
-                new KeyValuePair<string, object>( "DateSent", (input.DateSent.HasValue) ? input.DateSent.Value.ToString("yyyy'-'MM'-'dd") : null ),
+                new KeyValuePair<string, object>( "DateSent", input.DateSent ),
                 new KeyValuePair<string, object>( "Page", input.Page ),
                 new KeyValuePair<string, object>( "PageSize", input.PageSize )
             };
