@@ -782,7 +782,7 @@ namespace message360.Controllers
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/calls/makeringlessvoicemailcall.{ResponseType}");
+            _queryBuilder.Append("/calls/makervm.{ResponseType}");
 
             //process optional template parameters
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()

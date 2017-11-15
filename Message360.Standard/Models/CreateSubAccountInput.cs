@@ -23,6 +23,8 @@ namespace message360.Models
         private string firstName;
         private string lastName;
         private string email;
+        private string friendlyName;
+        private string password;
         private string responseType = "json";
 
         /// <summary>
@@ -73,6 +75,40 @@ namespace message360.Models
             {
                 this.email = value;
                 onPropertyChanged("Email");
+            }
+        }
+
+        /// <summary>
+        /// Descriptive name of the sub account
+        /// </summary>
+        [JsonProperty("FriendlyName")]
+        public string FriendlyName 
+        { 
+            get 
+            {
+                return this.friendlyName; 
+            } 
+            set 
+            {
+                this.friendlyName = value;
+                onPropertyChanged("FriendlyName");
+            }
+        }
+
+        /// <summary>
+        /// The password of the sub account.  Please make sure to make as password that is at least 8 characters long, contain a symbol, uppercase and a number.
+        /// </summary>
+        [JsonProperty("Password")]
+        public string Password 
+        { 
+            get 
+            {
+                return this.password; 
+            } 
+            set 
+            {
+                this.password = value;
+                onPropertyChanged("Password");
             }
         }
 

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Message360.Standard", "Message360.Standard/Message360.Standard.csproj", "{99c6c841-0bc5-4470-a133-14e2338a8128}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Message360.Standard", "Message360.Standard/Message360.Standard.csproj", "{1664c8ed-61f9-406a-b1c5-7733a26eaab1}"
 EndProject
 Global
     GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
         Release|Any CPU = Release|Any CPU
     EndGlobalSection
     GlobalSection(ProjectConfigurationPlatforms) = postSolution
-        {99c6c841-0bc5-4470-a133-14e2338a8128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-        {99c6c841-0bc5-4470-a133-14e2338a8128}.Debug|Any CPU.Build.0 = Debug|Any CPU
-        {99c6c841-0bc5-4470-a133-14e2338a8128}.Release|Any CPU.ActiveCfg = Release|Any CPU
-        {99c6c841-0bc5-4470-a133-14e2338a8128}.Release|Any CPU.Build.0 = Release|Any CPU
+        {1664c8ed-61f9-406a-b1c5-7733a26eaab1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {1664c8ed-61f9-406a-b1c5-7733a26eaab1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {1664c8ed-61f9-406a-b1c5-7733a26eaab1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {1664c8ed-61f9-406a-b1c5-7733a26eaab1}.Release|Any CPU.Build.0 = Release|Any CPU
     EndGlobalSection
     GlobalSection(SolutionProperties) = preSolution
         HideSolutionNode = FALSE

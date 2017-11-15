@@ -454,7 +454,7 @@ collect.PageSize = pageSize;
 string keyword = "Keyword";
 collect.Keyword = keyword;
 
-int? shortcode = 43;
+int? shortcode = 25;
 collect.Shortcode = shortcode;
 
 
@@ -842,7 +842,7 @@ collect.RecordCallbackMethod = recordCallbackMethod;
 string schdeuleTime = "SchdeuleTime";
 collect.SchdeuleTime = schdeuleTime;
 
-int? timeout = 43;
+int? timeout = 25;
 collect.Timeout = timeout;
 
 
@@ -2500,16 +2500,16 @@ collect.HeartBeatUrl = heartBeatUrl;
 var heartBeatMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.HeartBeatMethod = heartBeatMethod;
 
-int? timeout = 135;
+int? timeout = 116;
 collect.Timeout = timeout;
 
 string playDtmf = "PlayDtmf";
 collect.PlayDtmf = playDtmf;
 
-bool? hideCallerId = true;
+bool? hideCallerId = false;
 collect.HideCallerId = hideCallerId;
 
-bool? record = true;
+bool? record = false;
 collect.Record = record;
 
 string recordCallBackUrl = "RecordCallBackUrl";
@@ -2518,7 +2518,7 @@ collect.RecordCallBackUrl = recordCallBackUrl;
 var recordCallBackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.RecordCallBackMethod = recordCallBackMethod;
 
-bool? transcribe = true;
+bool? transcribe = false;
 collect.Transcribe = transcribe;
 
 string transcribeCallBackUrl = "TranscribeCallBackUrl";
@@ -2533,7 +2533,7 @@ collect.IfMachineUrl = ifMachineUrl;
 var ifMachineMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.IfMachineMethod = ifMachineMethod;
 
-bool? feedback = true;
+bool? feedback = false;
 collect.Feedback = feedback;
 
 string surveyId = "SurveyId";
@@ -2584,13 +2584,13 @@ collect.SayText = sayText;
 string responseType = "json";
 collect.ResponseType = responseType;
 
-int? length = 135;
+int? length = 116;
 collect.Length = length;
 
 var direction = Models.DirectionEnum?Helper.ParseString("IN");
 collect.Direction = direction;
 
-bool? mix = true;
+bool? mix = false;
 collect.Mix = mix;
 
 
@@ -2629,7 +2629,7 @@ RecordCallInput collect = new RecordCallInput();
 string callSid = "CallSid";
 collect.CallSid = callSid;
 
-bool record = true;
+bool record = false;
 collect.Record = record;
 
 string responseType = "json";
@@ -2638,7 +2638,7 @@ collect.ResponseType = responseType;
 var direction = Models.DirectionEnum?Helper.ParseString("IN");
 collect.Direction = direction;
 
-int? timeLimit = 135;
+int? timeLimit = 116;
 collect.TimeLimit = timeLimit;
 
 string callBackUrl = "CallBackUrl";
@@ -2690,19 +2690,19 @@ collect.ResponseType = responseType;
 var audioDirection = Models.AudioDirectionEnum?Helper.ParseString("IN");
 collect.AudioDirection = audioDirection;
 
-double? pitchSemiTones = 135.48754373588;
+double? pitchSemiTones = 116.54648599054;
 collect.PitchSemiTones = pitchSemiTones;
 
-double? pitchOctaves = 135.48754373588;
+double? pitchOctaves = 116.54648599054;
 collect.PitchOctaves = pitchOctaves;
 
-double? pitch = 135.48754373588;
+double? pitch = 116.54648599054;
 collect.Pitch = pitch;
 
-double? rate = 135.48754373588;
+double? rate = 116.54648599054;
 collect.Rate = rate;
 
-double? tempo = 135.48754373588;
+double? tempo = 116.54648599054;
 collect.Tempo = tempo;
 
 
@@ -2879,7 +2879,7 @@ collect.HeartBeatUrl = heartBeatUrl;
 var heartBeatMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.HeartBeatMethod = heartBeatMethod;
 
-int? timeout = 135;
+int? timeout = 116;
 collect.Timeout = timeout;
 
 string playDtmf = "PlayDtmf";
@@ -2888,7 +2888,7 @@ collect.PlayDtmf = playDtmf;
 string hideCallerId = "HideCallerId";
 collect.HideCallerId = hideCallerId;
 
-bool? record = true;
+bool? record = false;
 collect.Record = record;
 
 string recordCallBackUrl = "RecordCallBackUrl";
@@ -2897,7 +2897,7 @@ collect.RecordCallBackUrl = recordCallBackUrl;
 var recordCallBackMethod = Models.HttpActionEnum?Helper.ParseString("GET");
 collect.RecordCallBackMethod = recordCallBackMethod;
 
-bool? transcribe = true;
+bool? transcribe = false;
 collect.Transcribe = transcribe;
 
 string transcribeCallBackUrl = "TranscribeCallBackUrl";
@@ -3465,6 +3465,8 @@ Task<string> CreateSubAccount(Models.CreateSubAccountInput input)
 | firstName |  ``` Required ```  | Sub account user first name |
 | lastName |  ``` Required ```  | sub account user last name |
 | email |  ``` Required ```  | Sub account email address |
+| friendlyName |  ``` Required ```  | Descriptive name of the sub account |
+| password |  ``` Required ```  | The password of the sub account.  Please make sure to make as password that is at least 8 characters long, contain a symbol, uppercase and a number. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -3481,6 +3483,12 @@ collect.LastName = lastName;
 
 string email = "Email";
 collect.Email = email;
+
+string friendlyName = "FriendlyName";
+collect.FriendlyName = friendlyName;
+
+string password = "Password";
+collect.Password = password;
 
 string responseType = "json";
 collect.ResponseType = responseType;
@@ -3575,10 +3583,10 @@ Task<string> SendDedicatedShortcode(Models.SendDedicatedShortcodeInput input)
 ```csharp
 SendDedicatedShortcodeInput collect = new SendDedicatedShortcodeInput();
 
-int shortcode = 135;
+int shortcode = 116;
 collect.Shortcode = shortcode;
 
-double to = 135.48754373588;
+double to = 116.54648599054;
 collect.To = to;
 
 string body = "body";
