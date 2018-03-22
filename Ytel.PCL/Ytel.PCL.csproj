@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ - Ytel.PCL
+ -
+ - This file was automatically generated for ytel by APIMATIC v2.0 ( https://apimatic.io )
+-->
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <RootNamespace>ytel</RootNamespace>
+    <AssemblyName>Ytel.PCL</AssemblyName>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin/DEBUG/</OutputPath>
+    <ProjectGuid>{3348554f-eac6-48d6-a1c3-16374834ff1e}</ProjectGuid>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <NuGetPackageImportStamp>ee2bb91c</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>  
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile328</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+  
+    <Reference Include="APIMATIC.SDK.Common">
+      <HintPath>..\packages\APIMATIC.SDK.Common.2.1.0.0\lib\portable-net40+sl5+wp80+win8+wpa81\APIMATIC.SDK.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net40+sl4+win8+wp71+wpa81\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net40+sl4+win8+wp71+wpa81\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+	  <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\portable-net40+sl5+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8+wp8+wpa81\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8+wp8+wpa81\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8+wp8+wpa81\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\CreateTokenInput.cs" />
+    <Compile Include="Models\ListConferenceInput.cs" />
+    <Compile Include="Models\ListParticipantInput.cs" />
+    <Compile Include="Models\UpdateAssignmentInput.cs" />
+    <Compile Include="Models\ListAssignmentInput.cs" />
+    <Compile Include="Models\ViewAssignementInput.cs" />
+    <Compile Include="Models\ListKeywordInput.cs" />
+    <Compile Include="Models\ViewKeywordInput.cs" />
+    <Compile Include="Models\ListInboundShortcodeInput.cs" />
+    <Compile Include="Models\ListShortcodeInput.cs" />
+    <Compile Include="Models\ViewShortcodeInput.cs" />
+    <Compile Include="Models\PlayConferenceAudioInput.cs" />
+    <Compile Include="Models\HangupParticipantInput.cs" />
+    <Compile Include="Models\CreateConferenceInput.cs" />
+    <Compile Include="Models\ListInboundSMSInput.cs" />
+    <Compile Include="Models\ListTemplatesInput.cs" />
+    <Compile Include="Models\SendDedicatedShortcodeInput.cs" />
+    <Compile Include="Models\AddParticipantInput.cs" />
+    <Compile Include="Models\ListTranscriptionInput.cs" />
+    <Compile Include="Models\ListRecordingInput.cs" />
+    <Compile Include="Models\UpdatePhoneNumberInput.cs" />
+    <Compile Include="Models\ViewCallInput.cs" />
+    <Compile Include="Models\TransferNumberInput.cs" />
+    <Compile Include="Models\ViewDedicatedShortcodeAssignmentInput.cs" />
+    <Compile Include="Models\CreateSubAccountInput.cs" />
+    <Compile Include="Models\ViewPostcardInput.cs" />
+    <Compile Include="Models\TemplateDataModel.cs" />
+    <Compile Include="Models\MessageModel.cs" />
+    <Compile Include="Models\ErrorsModel.cs" />
+    <Compile Include="Models\GroupCallInput.cs" />
+    <Compile Include="Models\ListShortCodeAssignmentInput.cs" />
+    <Compile Include="Models\UpdateDedicatedShortCodeAssignmentInput.cs" />
+    <Compile Include="Models\DeleteAreaMailInput.cs" />
+    <Compile Include="Models\ListAreaMailInput.cs" />
+    <Compile Include="Models\ViewAreaMailInput.cs" />
+    <Compile Include="Models\CreateAreaMailInput.cs" />
+    <Compile Include="Models\CarrierLookupInput.cs" />
+    <Compile Include="Models\DeletePostcardInput.cs" />
+    <Compile Include="Models\CreatePostcardInput.cs" />
+    <Compile Include="Models\DeleteLetterInput.cs" />
+    <Compile Include="Models\ListLettersInput.cs" />
+    <Compile Include="Models\CreateLetterInput.cs" />
+    <Compile Include="Models\BulkBuyNumberInput.cs" />
+    <Compile Include="Models\GetDIDScoreNumberInput.cs" />
+    <Compile Include="Models\MassUpdateNumberInput.cs" />
+    <Compile Include="Models\ListNumberInput.cs" />
+    <Compile Include="Models\ViewDetailSMSInput.cs" />
+    <Compile Include="Models\ViewLetterInput.cs" />
+    <Compile Include="Models\ListPostcardsInput.cs" />
+    <Compile Include="Models\DeleteInvalidInput.cs" />
+    <Compile Include="Models\ListUsageInput.cs" />
+    <Compile Include="Models\ListCallsInput.cs" />
+    <Compile Include="Models\PlayAudioInput.cs" />
+    <Compile Include="Models\MakeCallInput.cs" />
+    <Compile Include="Models\SendSMSInput.cs" />
+    <Compile Include="Models\SendRinglessVMInput.cs" />
+    <Compile Include="Models\ViewConferenceInput.cs" />
+    <Compile Include="Models\AddUnsubscribesInput.cs" />
+    <Compile Include="Models\DeleteBlockInput.cs" />
+    <Compile Include="Models\DeleteSpamInput.cs" />
+    <Compile Include="Models\BuyNumberInput.cs" />
+    <Compile Include="Models\ReleaseNumberInput.cs" />
+    <Compile Include="Models\RecordCallInput.cs" />
+    <Compile Include="Models\ViewNumberDetailsInput.cs" />
+    <Compile Include="Models\ViewRecordingInput.cs" />
+    <Compile Include="Models\AudioURLTranscriptionInput.cs" />
+    <Compile Include="Models\RecordingTranscriptionInput.cs" />
+    <Compile Include="Models\ViewTranscriptionInput.cs" />
+    <Compile Include="Models\CheckFundsInput.cs" />
+    <Compile Include="Models\MassReleaseNumberInput.cs" />
+    <Compile Include="Models\AvailablePhoneNumberInput.cs" />
+    <Compile Include="Models\ViewParticipantInput.cs" />
+    <Compile Include="Models\DeafMuteParticipantInput.cs" />
+    <Compile Include="Models\ViewTemplateInput.cs" />
+    <Compile Include="Models\DeleteRecordingInput.cs" />
+    <Compile Include="Models\VoiceEffectInput.cs" />
+    <Compile Include="Models\SendEmailInput.cs" />
+    <Compile Include="Models\ListUnsubscribesInput.cs" />
+    <Compile Include="Models\ListSMSInput.cs" />
+    <Compile Include="Models\SendSharedShortcodeInput.cs" />
+    <Compile Include="Models\ListInboundSharedShortcodesInput.cs" />
+    <Compile Include="Models\ListOutboundSharedShortcodesInput.cs" />
+    <Compile Include="Models\DeleteUnsubscribesInput.cs" />
+    <Compile Include="Models\ViewSMSInput.cs" />
+    <Compile Include="Models\ViewAccountInput.cs" />
+    <Compile Include="Models\SuspendSubAccountInput.cs" />
+    <Compile Include="Models\DeleteSubAccountInput.cs" />
+    <Compile Include="Models\DeleteAddressInput.cs" />
+    <Compile Include="Models\VerifyAddressInput.cs" />
+    <Compile Include="Models\ViewSharedShortcodesInput.cs" />
+    <Compile Include="Models\ViewAddressInput.cs" />
+    <Compile Include="Models\SendDigitInput.cs" />
+    <Compile Include="Models\ListAddressInput.cs" />
+    <Compile Include="Models\InterruptedCallInput.cs" />
+    <Compile Include="Models\CarrierLookupListInput.cs" />
+    <Compile Include="Models\ListInvalidInput.cs" />
+    <Compile Include="Models\ErrorModel.cs" />
+    <Compile Include="Models\DeleteBouncesInput.cs" />
+    <Compile Include="Models\ListBouncesInput.cs" />
+    <Compile Include="Models\ListSpamInput.cs" />
+    <Compile Include="Models\ListBlocksInput.cs" />
+    <Compile Include="Models\CreateAddressInput.cs" />
+    <Compile Include="Models\InterruptedCallStatusEnum.cs" />
+    <Compile Include="Models\IfMachineEnum.cs" />
+    <Compile Include="Models\HttpActionEnum.cs" />
+    <Compile Include="Models\ProductCodeEnum.cs" />
+    <Compile Include="Models\MergeNumberStatusEnum.cs" />
+    <Compile Include="Models\AudioFormatEnum.cs" />
+    <Compile Include="Models\ActivateStatusEnum.cs" />
+    <Compile Include="Models\SendEmailAsEnum.cs" />
+    <Compile Include="Models\StatusEnum.cs" />
+    <Compile Include="Models\DirectionEnum.cs" />
+    <Compile Include="Models\AudioDirectionEnum.cs" />
+    <Compile Include="Models\NumberTypeEnum.cs" />
+    <Compile Include="Controllers\WebRTCController.cs" />
+    <Compile Include="Controllers\SharedShortCodeController.cs" />
+    <Compile Include="Controllers\ConferenceController.cs" />
+    <Compile Include="Controllers\PhoneNumberController.cs" />
+    <Compile Include="Controllers\TranscriptionController.cs" />
+    <Compile Include="Controllers\RecordingController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
+    <Compile Include="Controllers\SMSController.cs" />
+    <Compile Include="Controllers\CallController.cs" />
+    <Compile Include="Controllers\CarrierController.cs" />
+    <Compile Include="Controllers\AddressController.cs" />
+    <Compile Include="Controllers\SubAccountController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\UsageController.cs" />
+    <Compile Include="Controllers\ShortCodeController.cs" />
+    <Compile Include="Controllers\PostCardController.cs" />
+    <Compile Include="Controllers\LetterController.cs" />
+    <Compile Include="Controllers\AreaMailController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Configuration.cs" />
+    <Compile Include="YtelClient.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="packages.config" />
+    <None Include="Ytel.PCL.nuspec">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="$(SolutionDir)\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('$(SolutionDir)\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>    
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
